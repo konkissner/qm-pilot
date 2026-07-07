@@ -158,24 +158,30 @@ model RoleRight {
 }
 
 model User {
-    id                  String     @id @default(cuid())
-    tenantId            String
-    tenant              Tenant     @relation(fields: [tenantId], references: [id], onDelete: Cascade)
-    email               String?
-    firstName           String
-    lastName            String
-    initials            String?
-    avatarColor         String?
-    avatarUrl           String?
-    status              UserStatus @default(active)
-    retiredAt           DateTime?
-    pinHash             String?
-    pinFailedAttempts   Int        @default(0)
-    pinLockedUntil      DateTime?
-    oidcSubject         String?
-    isPlatformDeveloper Boolean    @default(false)
-    createdAt           DateTime   @default(now())
-    updatedAt           DateTime   @updatedAt
+    id                     String     @id @default(cuid())
+    tenantId               String
+    tenant                 Tenant     @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+    email                  String?
+    name                   String
+    firstName              String
+    lastName               String
+    initials               String?
+    avatarColor            String?
+    avatarUrl              String?
+    emailVerified          Boolean    @default(false)
+    twoFactorEnabled       Boolean    @default(false)
+    mustChangePassword     Boolean    @default(false)
+    status                 UserStatus @default(active)
+    retiredAt              DateTime?
+    pinHash                String?
+    pinFailedAttempts      Int        @default(0)
+    pinLockedUntil         DateTime?
+    passwordFailedAttempts Int        @default(0)
+    passwordLockedUntil    DateTime?
+    oidcSubject            String?
+    isPlatformDeveloper    Boolean    @default(false)
+    createdAt              DateTime   @default(now())
+    updatedAt              DateTime   @updatedAt
 
     roles                  Role[]
     userRights             UserRight[]
@@ -184,6 +190,10 @@ model User {
     auditorInvite          AuditorInvite?  @relation("AuditorInviteUser")
     auditEvents            AuditEvent[]
     signatures             Signature[]
+    authSessions           AuthSession[]
+    authAccounts           AuthAccount[]
+    twoFactor              TwoFactor?
+    kioskSessions          KioskSession[]
 
     @@unique([tenantId, email])
     @@deny('all', auth() == null)
@@ -224,22 +234,102 @@ model Holiday {
 }
 
 model KioskDevice {
-    id             String            @id @default(cuid())
-    tenantId       String
-    tenant         Tenant            @relation(fields: [tenantId], references: [id], onDelete: Cascade)
-    name           String
-    deviceToken    String
-    status         KioskDeviceStatus @default(active)
-    registeredById String
-    registeredBy   User              @relation("KioskRegisteredBy", fields: [registeredById], references: [id])
-    registeredAt   DateTime          @default(now())
-    lastSeenAt     DateTime?
-    createdAt      DateTime          @default(now())
-    updatedAt      DateTime          @updatedAt
+    id              String            @id @default(cuid())
+    tenantId        String
+    tenant          Tenant            @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+    name            String
+    deviceTokenHash String
+    status          KioskDeviceStatus @default(active)
+    registeredById  String
+    registeredBy    User              @relation("KioskRegisteredBy", fields: [registeredById], references: [id])
+    registeredAt    DateTime          @default(now())
+    lastSeenAt      DateTime?
+    createdAt       DateTime          @default(now())
+    updatedAt       DateTime          @updatedAt
+    kioskSessions   KioskSession[]
 
     @@deny('all', auth() == null)
     @@allow('read', auth().tenantId == tenantId)
     @@allow('create,update', auth().tenantId == tenantId && auth().status == active)
+}
+
+/// Better Auth — server-only, no client CRUD
+model AuthSession {
+    id        String   @id
+    userId    String
+    user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+    token     String   @unique
+    expiresAt DateTime
+    ipAddress String?
+    userAgent String?
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+    @@index([userId])
+    @@deny('all', true)
+}
+
+/// Better Auth credential / OAuth linkage — server-only
+model AuthAccount {
+    id                    String    @id
+    userId                String
+    user                  User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+    accountId             String
+    providerId            String
+    accessToken           String?
+    refreshToken          String?
+    idToken               String?
+    accessTokenExpiresAt  DateTime?
+    refreshTokenExpiresAt DateTime?
+    scope                 String?
+    password              String?
+    createdAt             DateTime  @default(now())
+    updatedAt             DateTime  @updatedAt
+
+    @@index([userId])
+    @@deny('all', true)
+}
+
+/// Better Auth email verification tokens — server-only
+model AuthVerification {
+    id         String    @id
+    identifier String
+    value      String
+    expiresAt  DateTime
+    createdAt  DateTime? @default(now())
+    updatedAt  DateTime? @updatedAt
+
+    @@deny('all', true)
+}
+
+/// Better Auth TOTP — server-only
+model TwoFactor {
+    id          String  @id
+    userId      String  @unique
+    user        User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+    secret      String
+    backupCodes String
+    verified    Boolean @default(false)
+
+    @@deny('all', true)
+}
+
+/// PIN kiosk session — server-only
+model KioskSession {
+    id            String      @id @default(cuid())
+    tenantId      String
+    userId        String
+    user          User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+    kioskDeviceId String
+    kioskDevice   KioskDevice @relation(fields: [kioskDeviceId], references: [id], onDelete: Cascade)
+    tokenHash     String      @unique
+    expiresAt     DateTime
+    lastActiveAt  DateTime    @default(now())
+    createdAt     DateTime    @default(now())
+
+    @@index([userId])
+    @@index([kioskDeviceId])
+    @@deny('all', true)
 }
 
 model AuditorInvite {

@@ -1,6 +1,10 @@
 import type { PrismaClient } from '@prisma/client';
+import { randomUUID } from 'node:crypto';
+import { hashPassword } from 'better-auth/crypto';
 import { auditedMutation, loadUserNameSnapshot } from '../audit/audited';
 import type { AuditEventContext } from '../audit/types';
+import { displayName } from '../auth/constants';
+import { randomInitialPassword } from '../auth/kiosk-device';
 import {
   assertManageUsers,
   getEffectivePermissions,
@@ -95,4 +99,84 @@ export async function createAuditorInvite(
       },
     };
   });
+}
+
+export async function activateAuditorInvite(
+  db: DbClient,
+  actor: ActorContext,
+  inviteId: string,
+  email: string,
+  auditContext?: AuditEventContext,
+) {
+  assertManageUsers(
+    getEffectivePermissions(
+      { roleKeys: actor.roleKeys },
+      await loadRoleRights(db, actor.tenantId),
+      await loadUserRights(db, actor.id),
+    ),
+  );
+
+  const invite = await db.auditorInvite.findUniqueOrThrow({ where: { id: inviteId } });
+  if (invite.tenantId !== actor.tenantId) throw new Error('Mandant stimmt nicht überein.');
+  if (invite.status !== 'pending') throw new Error('Einladung ist nicht mehr ausstehend.');
+
+  const auditorRole = await db.role.findUniqueOrThrow({
+    where: { tenantId_key: { tenantId: actor.tenantId, key: 'auditor' } },
+    select: { id: true },
+  });
+
+  const initialPassword = randomInitialPassword();
+  const passwordHash = await hashPassword(initialPassword);
+
+  const actorCtx = {
+    tenantId: actor.tenantId,
+    userId: actor.id,
+    userNameSnapshot: await loadUserNameSnapshot(db, actor.id),
+    context: auditContext,
+  };
+
+  const result = await auditedMutation(asPrismaClient(db), actorCtx, async (tx) => {
+    const [firstName, ...rest] = invite.auditorName.split(' ');
+    const lastName = rest.join(' ') || 'Auditor';
+    const user = await tx.user.create({
+      data: {
+        tenantId: actor.tenantId,
+        email,
+        name: displayName(firstName, lastName),
+        firstName,
+        lastName,
+        initials: `${firstName[0] ?? 'A'}${lastName[0] ?? 'U'}`.toUpperCase(),
+        mustChangePassword: true,
+        emailVerified: true,
+        roles: { connect: { id: auditorRole.id } },
+        authAccounts: {
+          create: {
+            id: randomUUID(),
+            accountId: email,
+            providerId: 'credential',
+            password: passwordHash,
+          },
+        },
+      },
+    });
+
+    const updatedInvite = await tx.auditorInvite.update({
+      where: { id: inviteId },
+      data: { userId: user.id, status: 'active' },
+    });
+
+    return {
+      result: { userId: user.id, initialPassword, invite: updatedInvite },
+      event: {
+        action: 'auditorInvite.activated',
+        actionLabel: 'Auditor-Konto aktiviert',
+        objectType: 'AuditorInvite',
+        objectId: inviteId,
+        objectLabel: invite.auditorName,
+        diff: { userId: { old: null, new: user.id } },
+      },
+    };
+  });
+
+  return result;
 }

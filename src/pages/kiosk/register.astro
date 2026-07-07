@@ -1,0 +1,56 @@
+---
+import '../../styles/global.css';
+
+const session = Astro.locals.session;
+if (!session) {
+  return Astro.redirect('/login?next=/kiosk/register');
+}
+---
+
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Kiosk registrieren — QM-Pilot</title>
+  </head>
+  <body class="flex min-h-screen items-center justify-center bg-[#eef1f0] p-6">
+    <form
+      id="register-form"
+      class="w-full max-w-md rounded-[14px] border border-[#e6ebe9] bg-white p-8"
+    >
+      <h1 class="mb-4 text-xl font-bold text-[#16241f]">Kiosk-Gerät registrieren</h1>
+      <label class="block text-sm">
+        Gerätename
+        <input
+          name="name"
+          class="mt-1 w-full rounded-[9px] border border-[#dce4e0] px-3 py-2"
+          placeholder="z. B. PIN-Kiosk Lager"
+          required
+        />
+      </label>
+      <button type="submit" class="mt-6 w-full rounded-[9px] bg-[#0f6e56] py-2.5 text-white">
+        Registrieren
+      </button>
+      <p id="msg" class="mt-3 text-sm text-[#c62a0d]"></p>
+    </form>
+    <script>
+      document.getElementById('register-form')?.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const fd = new FormData(e.target as HTMLFormElement);
+        const name = String(fd.get('name') ?? '');
+        const res = await fetch('/api/kiosk/register', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ name }),
+        });
+        const msg = document.getElementById('msg');
+        if (res.ok) {
+          window.location.href = '/kiosk';
+          return;
+        }
+        const data = (await res.json()) as { error?: string };
+        if (msg) msg.textContent = data.error ?? 'Registrierung fehlgeschlagen.';
+      });
+    </script>
+  </body>
+</html>

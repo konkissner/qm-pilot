@@ -2,6 +2,8 @@ import type { Prisma, PrismaClient } from '@prisma/client';
 import { buildDiff } from '../audit/diff';
 import { auditedMutation, loadUserNameSnapshot } from '../audit/audited';
 import type { AuditEventContext } from '../audit/types';
+import { revokeAllUserSessions } from '../auth/sessions';
+import { writeAuthAuditEvent } from '../auth/audit';
 import {
   assertManageUsers,
   canAssignRole,
@@ -128,6 +130,7 @@ export async function createUser(
       data: {
         tenantId,
         email: data.email ?? null,
+        name: `${data.firstName} ${data.lastName}`.trim(),
         firstName: data.firstName,
         lastName: data.lastName,
         initials: data.initials ?? null,
@@ -213,6 +216,14 @@ export async function retireUser(
       where: { id: userId },
       data: { status: 'retired', retiredAt: new Date() },
     });
+    await revokeAllUserSessions(asPrismaClient(db), userId);
+    await writeAuthAuditEvent(
+      asPrismaClient(db),
+      target.tenantId,
+      userId,
+      { action: 'auth.accessRevoked', actionLabel: 'Zugang entzogen (Austritt)' },
+      options.auditContext,
+    );
 
     return {
       result: undefined,

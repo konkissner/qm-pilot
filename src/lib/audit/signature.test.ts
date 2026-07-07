@@ -15,7 +15,7 @@ describe('createSignature with fake verifier', () => {
         name: 'Sig',
         slug: `sig-${Date.now()}`,
         config: { create: {} },
-        users: { create: { firstName: 'Sig', lastName: 'User', email: `sig-${Date.now()}@example.com` } },
+        users: { create: { name: 'Sig User', firstName: 'Sig', lastName: 'User', email: `sig-${Date.now()}@example.com` } },
       },
       include: { users: true },
     });
@@ -49,7 +49,7 @@ describe('createSignature with fake verifier', () => {
         name: 'Sig2',
         slug: `sig2-${Date.now()}`,
         config: { create: {} },
-        users: { create: { firstName: 'Sig', lastName: 'OK', email: `sig2-${Date.now()}@example.com` } },
+        users: { create: { name: 'Sig OK', firstName: 'Sig', lastName: 'OK', email: `sig2-${Date.now()}@example.com` } },
       },
       include: { users: true },
     });

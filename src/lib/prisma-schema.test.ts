@@ -20,6 +20,10 @@ describe('zenstack generate', () => {
       'SchedulerRun',
       'AuditEvent',
       'Signature',
+      'AuthSession',
+      'AuthAccount',
+      'TwoFactor',
+      'KioskSession',
     ]) {
       expect(schema).toContain(`model ${model}`);
     }
