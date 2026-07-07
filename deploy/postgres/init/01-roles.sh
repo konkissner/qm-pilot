@@ -1,5 +1,5 @@
 #!/bin/bash
-# Creates qmpilot_app and qmpilot_migrator roles (WP-02 GRANTs — AuditEvent stub TODO)
+# Creates qmpilot_app and qmpilot_migrator roles (aligned with WP-02 migration GRANTs)
 set -euo pipefail
 
 psql -v ON_ERROR_STOP=1 --username "$POSTGRES_USER" --dbname "$POSTGRES_DB" <<-EOSQL
@@ -24,11 +24,20 @@ psql -v ON_ERROR_STOP=1 --username "$POSTGRES_USER" --dbname "$POSTGRES_DB" <<-E
   ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT ALL ON TABLES TO qmpilot_migrator;
   ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT ALL ON SEQUENCES TO qmpilot_migrator;
 
-  -- TODO(WP-02): REVOKE UPDATE, DELETE ON "AuditEvent" FROM qmpilot_app;
-  -- TODO(WP-02): CREATE TRIGGER audit_event_immutable ...
-
   GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA public TO qmpilot_app;
   GRANT ALL ON ALL TABLES IN SCHEMA public TO qmpilot_migrator;
   GRANT USAGE, SELECT ON ALL SEQUENCES IN SCHEMA public TO qmpilot_app;
   GRANT ALL ON ALL SEQUENCES IN SCHEMA public TO qmpilot_migrator;
+
+  -- AuditEvent append-only for qmpilot_app (matches migration 20260707140000_wp02_audit_trail_immutability)
+  DO \$\$
+  BEGIN
+    IF EXISTS (
+      SELECT FROM pg_tables WHERE schemaname = 'public' AND tablename = 'AuditEvent'
+    ) THEN
+      REVOKE UPDATE, DELETE, TRUNCATE ON TABLE "AuditEvent" FROM qmpilot_app;
+      GRANT SELECT, INSERT ON TABLE "AuditEvent" TO qmpilot_app;
+    END IF;
+  END
+  \$\$;
 EOSQL
