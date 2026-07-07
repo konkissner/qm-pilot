@@ -16,7 +16,11 @@
     "worker": "tsx src/worker.ts",
     "db:generate": "zenstack generate",
     "db:migrate": "prisma migrate dev",
-    "postinstall": "zenstack generate"
+    "postinstall": "zenstack generate",
+    "db:seed": "tsx scripts/seed.ts"
+  },
+  "optionalDependencies": {
+    "magicast": "0.3.5"
   },
   "dependencies": {
     "@astrojs/node": "^9.2.1",
