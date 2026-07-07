@@ -1,4 +1,4 @@
-// QM-Pilot — Core data model (WP-01)
+// QM-Pilot — Core data model (WP-01 + WP-02 audit)
 // All identifiers in English camelCase.
 
 datasource db {
@@ -50,6 +50,24 @@ enum FreightApprovalRule {
     qmbOnly
 }
 
+enum AuditSeverity {
+    info
+    warning
+    critical
+}
+
+enum SignatureMeaning {
+    created
+    reviewed
+    approved
+    acknowledged
+}
+
+enum ReAuthMethod {
+    password
+    pin
+}
+
 model Tenant {
     id        String   @id @default(cuid())
     name      String
@@ -65,6 +83,8 @@ model Tenant {
     holidays       Holiday[]
     kioskDevices   KioskDevice[]
     auditorInvites AuditorInvite[]
+    auditEvents    AuditEvent[]
+    signatures     Signature[]
 
     @@deny('all', auth() == null)
     @@allow('read', auth().tenantId == id)
@@ -77,27 +97,27 @@ model TenantConfig {
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
 
-    holidayRegion            String              @default("BW")
-    workingDays              Json                @default("[1,2,3,4,5]")
-    escalationRpDays         Int                 @default(2)
-    escalationGlDays         Int                 @default(10)
-    sessionTimeoutMinutes    Int                 @default(30)
-    kioskAutoLockSeconds     Int                 @default(60)
-    retentionYears           Int                 @default(5)
-    motivationTexts          Json                @default("[]")
-    vacationTexts            Json                @default("[]")
-    companyName              String?
-    street                   String?
-    zip                      String?
-    city                     String?
-    country                  String?             @default("DE")
-    phone                    String?
-    email                    String?
-    legalStatus              String?
-    ssoEnabled               Boolean             @default(false)
-    ssoConfig                Json?
-    freightApprovalRule      FreightApprovalRule @default(rpAndQmb)
-    brokerChapterNotApplicable Boolean           @default(false)
+    holidayRegion              String              @default("BW")
+    workingDays                Json                @default("[1,2,3,4,5]")
+    escalationRpDays           Int                 @default(2)
+    escalationGlDays           Int                 @default(10)
+    sessionTimeoutMinutes      Int                 @default(30)
+    kioskAutoLockSeconds       Int                 @default(60)
+    retentionYears             Int                 @default(5)
+    motivationTexts            Json                @default("[]")
+    vacationTexts              Json                @default("[]")
+    companyName                String?
+    street                     String?
+    zip                        String?
+    city                       String?
+    country                    String?             @default("DE")
+    phone                      String?
+    email                      String?
+    legalStatus                String?
+    ssoEnabled                 Boolean             @default(false)
+    ssoConfig                  Json?
+    freightApprovalRule        FreightApprovalRule @default(rpAndQmb)
+    brokerChapterNotApplicable Boolean             @default(false)
 
     @@deny('all', auth() == null)
     @@allow('read', auth().tenantId == tenantId)
@@ -135,7 +155,6 @@ model RoleRight {
     @@unique([roleId, kind, rightKey])
     @@deny('all', auth() == null)
     @@allow('read', auth().tenantId == tenantId)
-    @@allow('create,update', auth().tenantId == tenantId && auth().status == active)
 }
 
 model User {
@@ -163,11 +182,12 @@ model User {
     registeredKioskDevices KioskDevice[]   @relation("KioskRegisteredBy")
     createdAuditorInvites  AuditorInvite[] @relation("AuditorInviteCreatedBy")
     auditorInvite          AuditorInvite?  @relation("AuditorInviteUser")
+    auditEvents            AuditEvent[]
+    signatures             Signature[]
 
     @@unique([tenantId, email])
     @@deny('all', auth() == null)
     @@allow('read', auth().tenantId == tenantId && (auth().id == id || auth().status == active))
-    @@allow('create,update', auth().tenantId == tenantId && auth().status == active)
 }
 
 model UserRight {
@@ -185,7 +205,6 @@ model UserRight {
     @@unique([userId, kind, rightKey])
     @@deny('all', auth() == null)
     @@allow('read', auth().tenantId == tenantId && (auth().id == userId || auth().status == active))
-    @@allow('create,update', auth().tenantId == tenantId && auth().status == active)
 }
 
 model Holiday {
@@ -242,7 +261,52 @@ model AuditorInvite {
 
     @@deny('all', auth() == null)
     @@allow('read', auth().tenantId == tenantId)
-    @@allow('create,update', auth().tenantId == tenantId && auth().status == active)
+}
+
+model AuditEvent {
+    id               String        @id @default(cuid())
+    tenantId         String
+    tenant           Tenant        @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+    occurredAt       DateTime      @default(now()) @db.Timestamptz
+    userId           String
+    user             User          @relation(fields: [userId], references: [id], onDelete: Restrict)
+    userNameSnapshot String
+    action           String
+    actionLabel      String
+    objectType       String
+    objectId         String
+    objectLabel      String
+    diff             Json?
+    context          Json?
+    severity         AuditSeverity @default(info)
+
+    @@index([tenantId, occurredAt])
+    @@index([tenantId, objectType, objectId])
+    @@index([tenantId, userId])
+    @@deny('all', auth() == null)
+    @@allow('read', auth().tenantId == tenantId)
+}
+
+model Signature {
+    id               String           @id @default(cuid())
+    tenantId         String
+    tenant           Tenant           @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+    userId           String
+    user             User             @relation(fields: [userId], references: [id], onDelete: Restrict)
+    userNameSnapshot String
+    signedAt         DateTime         @default(now()) @db.Timestamptz
+    meaning          SignatureMeaning
+    objectType       String
+    objectId         String
+    objectLabel      String
+    reAuthMethod     ReAuthMethod
+    comment          String?
+    lockedAt         DateTime?        @db.Timestamptz
+
+    @@index([tenantId, objectType, objectId])
+    @@index([tenantId, userId])
+    @@deny('all', auth() == null)
+    @@allow('read', auth().tenantId == tenantId)
 }
 
 enum SchedulerRunKind {

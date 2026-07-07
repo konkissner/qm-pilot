@@ -87,3 +87,9 @@ export function canAssignRole(actor: PermissionUser, roleKey: RoleKey) { if (rol
 export function hasManageUsers(perm: EffectivePermissions) { return hasInputRight(perm, 'manageUsers'); }
 export function assertManageUsers(perm: EffectivePermissions) { assertInputRight(perm, 'manageUsers'); }
 export function auditorDefaultVisibleModules(): ModuleKey[] { return [...ROLE_DEFAULTS.auditor.modules]; }
+
+const AUDIT_VIEW_ROLES: RoleKey[] = ['gl', 'rp', 'qmb', 'auditor'];
+
+export function canViewAuditTrail(user: PermissionUser): boolean {
+  return user.roleKeys.some((role) => AUDIT_VIEW_ROLES.includes(role));
+}

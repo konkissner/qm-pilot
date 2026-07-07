@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { assertInputRight, canAssignRole, canSeeModule, getEffectivePermissions, hasInputRight, INPUT_RIGHT_KEYS, isReadOnly, MODULE_KEYS, PermissionForbiddenError, ROLE_DEFAULTS, ROLE_KEYS, type ModuleKey, type RoleKey } from './permissions';
+import { assertInputRight, canAssignRole, canSeeModule, canViewAuditTrail, getEffectivePermissions, hasInputRight, INPUT_RIGHT_KEYS, isReadOnly, MODULE_KEYS, PermissionForbiddenError, ROLE_DEFAULTS, ROLE_KEYS, type ModuleKey, type RoleKey } from './permissions';
 
 const permFor = (roleKeys: RoleKey[], roleRights: Parameters<typeof getEffectivePermissions>[1] = [], userRights: Parameters<typeof getEffectivePermissions>[2] = [], invite?: Parameters<typeof getEffectivePermissions>[3]) => getEffectivePermissions({ roleKeys }, roleRights, userRights, invite);
 const mods = (p: ReturnType<typeof getEffectivePermissions>) => MODULE_KEYS.filter((m) => p.modules.has(m));
@@ -36,4 +36,11 @@ describe('hard guards', () => {
 describe('canAssignRole', () => {
   it('GL rp', () => expect(canAssignRole({roleKeys:['gl']},'rp')).toBe(true));
   it('QMB warehouse not rp', () => { expect(canAssignRole({roleKeys:['qmb']},'warehouse')).toBe(true); expect(canAssignRole({roleKeys:['qmb']},'rp')).toBe(false); });
+});
+describe('canViewAuditTrail', () => {
+  it('allows GL/RP/QMB/auditor', () => {
+    expect(canViewAuditTrail({ roleKeys: ['gl'] })).toBe(true);
+    expect(canViewAuditTrail({ roleKeys: ['auditor'] })).toBe(true);
+  });
+  it('denies warehouse', () => expect(canViewAuditTrail({ roleKeys: ['warehouse'] })).toBe(false));
 });

@@ -10,7 +10,21 @@ URS-F-005,Benutzerverwaltung nur mit manageUsers,src/lib/services/users.ts,src/l
 URS-F-006,Kein DELETE auf User — Deaktivierung,schema.zmodel User.status/retiredAt,src/lib/tenant-policy.test.ts,WP-01,done
 URS-F-007,Funktionstrennung Auditor read-only + Admin ohne QM,src/lib/permissions.ts isReadOnly/admin guard,src/lib/permissions.test.ts,WP-01,done
 URS-F-008,Natürliche Person pro Konto keine Sammelkonten,schema.zmodel User firstName/lastName Pflicht,scripts/seed.ts,WP-01,done
-URS-F-009,Rechteänderungen auditpflichtig (Hook-Punkte),src/lib/services/users.ts AUDIT(WP-02),src/lib/tenant-policy.test.ts,WP-01,done
+URS-F-009,Rechteänderungen auditpflichtig,src/lib/services/users.ts + audited.ts,src/lib/audit/audit.integration.test.ts (R-012),WP-02,done
 URS-F-014,AuditorInvite Modell Sichtbereich,schema.zmodel AuditorInvite,src/lib/permissions.test.ts,WP-01,done
+URS-F-019,Audit-Trail wer/was/wann,schema.zmodel AuditEvent + audited.ts,src/lib/audit/audit.integration.test.ts (R-012),WP-02,done
+URS-F-020,Audit-Trail alt→neu Diff,src/lib/audit/diff.ts buildDiff,src/lib/audit/diff.test.ts (R-015),WP-02,done
+URS-F-021,Audit-Trail unveränderbar DB-seitig,prisma migration triggers + GRANTs,src/lib/audit/audit.integration.test.ts (R-013),WP-02,done
+URS-F-022,Zeitstempel UTC timestamptz DB-Default,schema.zmodel AuditEvent.occurredAt @db.Timestamptz,src/lib/audit/query.test.ts,WP-02,done
+URS-F-023,Kein physisches Löschen Fachdaten,src/lib/architecture/no-domain-delete.test.ts,src/lib/architecture/no-domain-delete.test.ts (R-013),WP-02,done
+URS-F-024,Audit-Trail Export CSV,src/lib/audit/query.ts exportAuditCsv,src/lib/audit/query.test.ts,WP-02,done
+URS-F-025,Audit-Trail Filter/Suche,src/lib/audit/query.ts queryAuditEvents,src/lib/audit/audit.integration.test.ts,WP-02,done
+URS-F-026,Audit-Trail Aufbewahrung,schema.zmodel + docs/db-roles.md,src/lib/audit/audit.integration.test.ts,WP-02,done
+URS-F-027,Audit-Trail keine Lösch-API,prevent_audit_event_mutation trigger,src/lib/audit/audit.integration.test.ts (R-013),WP-02,done
+URS-F-028,Unveränderbarkeit freigegebener Datensätze,enforce_immutable() trigger,src/lib/audit/audit.integration.test.ts (R-017),WP-02,done
+URS-F-029,Immutability lockedAt Mechanismus,enforce_immutable() + Signature.lockedAt,src/lib/audit/signature.test.ts (R-017),WP-02,done
+URS-F-030,Löschsperre retentionUntil,enforce_retention() trigger,src/lib/audit/audit.integration.test.ts (R-018),WP-02,done
+URS-F-033,E-Signatur Metadaten,schema.zmodel Signature + signature.ts,src/lib/audit/signature.test.ts,WP-02,done
 URS-F-056,DSGVO personenbezogene Felder tenant-isoliert,schema.zmodel ZenStack @@allow Policies,src/lib/tenant-policy.test.ts,WP-01,done
+URS-F-058,Diff-Redaktion sensible Felder,src/lib/audit/diff.ts DEFAULT_REDACT_KEYS,src/lib/audit/diff.test.ts (R-015),WP-02,done
 URS-F-066,TenantConfig statt Hardcoding,schema.zmodel TenantConfig + scripts/seed.ts,src/lib/prisma-schema.test.ts,WP-01,done

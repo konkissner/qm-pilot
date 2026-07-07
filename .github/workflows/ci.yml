@@ -36,6 +36,7 @@ jobs:
           --health-retries 5
     env:
       DATABASE_URL: postgresql://qmpilot:qmpilot@localhost:5432/qmpilot?schema=public
+      DATABASE_URL_APP: postgresql://qmpilot_app:qmpilot_app@localhost:5432/qmpilot?schema=public
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -50,6 +51,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       DATABASE_URL: postgresql://qmpilot:qmpilot@localhost:5432/qmpilot?schema=public
+      DATABASE_URL_APP: postgresql://qmpilot_app:qmpilot_app@localhost:5432/qmpilot?schema=public
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -77,6 +79,7 @@ jobs:
           --health-retries 5
     env:
       DATABASE_URL: postgresql://qmpilot:qmpilot@localhost:5432/qmpilot?schema=public
+      DATABASE_URL_APP: postgresql://qmpilot_app:qmpilot_app@localhost:5432/qmpilot?schema=public
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
