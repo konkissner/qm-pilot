@@ -1,8 +1,12 @@
 import { randomUUID } from 'node:crypto';
+import { writeFileSync } from 'node:fs';
+import { resolve } from 'node:path';
 import { PrismaClient } from '@prisma/client';
 import { hashPassword } from 'better-auth/crypto';
+import { authenticator } from 'otplib';
 import { ROLE_KEYS, ROLE_LABELS, auditorDefaultVisibleModules, type RoleKey } from '../src/lib/permissions';
 import { hashPin } from '../src/lib/auth/pin';
+import { getAuthForTenant } from '../src/lib/auth/config';
 
 const prisma = new PrismaClient();
 const TENANT_SLUG = 'pharmazeutika-73-3';
@@ -11,8 +15,8 @@ const DOMAIN = 'pharmazeutika.net';
 /** Documented example PIN for dev/kiosk. */
 export const EXTERNAL_PIN = '4711';
 export const DEV_USER_PASSWORD = process.env.DEV_USER_PASSWORD ?? 'DevPassword12!';
-/** Fixed TOTP secret for Lena in dev/e2e (otplib). */
-export const LENA_TOTP_SECRET = 'JBSWY3DPEHPK3PXP';
+/** Populated during seed when Lena TOTP is enabled — also written to e2e/.totp-secret */
+export let LENA_TOTP_SECRET = '';
 
 interface SeedUser {
   email?: string;
@@ -114,19 +118,40 @@ async function ensureCredentialAccount(userId: string, email: string, passwordHa
   });
 }
 
-async function ensureTotp(userId: string) {
-  await prisma.twoFactor.upsert({
-    where: { userId },
-    create: {
-      id: randomUUID(),
-      userId,
-      secret: LENA_TOTP_SECRET,
-      backupCodes: '[]',
-      verified: true,
-    },
-    update: { secret: LENA_TOTP_SECRET, verified: true },
+async function ensureTotp(userId: string, email: string) {
+  const existing = await prisma.twoFactor.findUnique({ where: { userId } });
+  if (existing?.verified && LENA_TOTP_SECRET) return;
+
+  if (existing) {
+    await prisma.twoFactor.delete({ where: { userId } });
+    await prisma.user.update({ where: { id: userId }, data: { twoFactorEnabled: false } });
+  }
+
+  process.env.BETTER_AUTH_SECRET = process.env.BETTER_AUTH_SECRET ?? 'dev-secret-minimum-32-characters-long';
+  process.env.BETTER_AUTH_URL = process.env.BETTER_AUTH_URL ?? 'http://localhost:4321';
+
+  const auth = await getAuthForTenant(prisma);
+  const signIn = await auth.api.signInEmail({
+    body: { email, password: DEV_USER_PASSWORD },
+    asResponse: true,
   });
-  await prisma.user.update({ where: { id: userId }, data: { twoFactorEnabled: true } });
+  if (!signIn.ok) throw new Error('TOTP seed: sign-in failed');
+
+  const cookieHeader = signIn.headers.get('set-cookie') ?? '';
+  const sessionCookie = cookieHeader.split(',').map((c) => c.trim().split(';')[0]).join('; ');
+  const headers = new Headers({ cookie: sessionCookie });
+
+  const enable = await auth.api.enableTwoFactor({
+    body: { password: DEV_USER_PASSWORD },
+    headers,
+  });
+  const secret = new URL(enable.totpURI).searchParams.get('secret');
+  if (!secret) throw new Error('TOTP seed: missing secret in totpURI');
+  LENA_TOTP_SECRET = secret;
+  writeFileSync(resolve(process.cwd(), 'e2e/.totp-secret'), secret, 'utf8');
+
+  const code = authenticator.generate(secret);
+  await auth.api.verifyTOTP({ body: { code }, headers });
 }
 
 async function upsertUser(tenantId: string, roleMap: Map<RoleKey, string>, seed: SeedUser, passwordHash: string) {
@@ -170,7 +195,7 @@ async function upsertUser(tenantId: string, roleMap: Map<RoleKey, string>, seed:
   }
 
   if (seed.email) await ensureCredentialAccount(user.id, seed.email, passwordHash);
-  if (seed.totp) await ensureTotp(user.id);
+  if (seed.totp && seed.email) await ensureTotp(user.id, seed.email);
   return user;
 }
 
