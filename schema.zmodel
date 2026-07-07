@@ -1,4 +1,4 @@
-// QM-Pilot — Data Model (placeholder for WP-00)
+// QM-Pilot — Core data model (WP-01)
 // All identifiers in English camelCase.
 
 datasource db {
@@ -10,9 +10,238 @@ generator client {
     provider = "prisma-client-js"
 }
 
-model SystemInfo {
+type Auth {
+    id       String     @id
+    tenantId String
+    status   UserStatus
+
+    @@auth
+}
+
+enum UserStatus {
+    active
+    retired
+}
+
+enum RightKind {
+    module
+    input
+}
+
+enum KioskDeviceStatus {
+    active
+    revoked
+}
+
+enum AuditorInviteStatus {
+    pending
+    active
+    expired
+}
+
+enum HolidaySource {
+    computed
+    manual
+}
+
+enum FreightApprovalRule {
+    rpAndQmb
+    rpOnly
+    qmbOnly
+}
+
+model Tenant {
     id        String   @id @default(cuid())
-    key       String   @unique
-    value     String
+    name      String
+    slug      String   @unique
     createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+    config         TenantConfig?
+    users          User[]
+    roles          Role[]
+    roleRights     RoleRight[]
+    userRights     UserRight[]
+    holidays       Holiday[]
+    kioskDevices   KioskDevice[]
+    auditorInvites AuditorInvite[]
+
+    @@deny('all', auth() == null)
+    @@allow('read', auth().tenantId == id)
+}
+
+model TenantConfig {
+    id        String   @id @default(cuid())
+    tenantId  String   @unique
+    tenant    Tenant   @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+    holidayRegion            String              @default("BW")
+    workingDays              Json                @default("[1,2,3,4,5]")
+    escalationRpDays         Int                 @default(2)
+    escalationGlDays         Int                 @default(10)
+    sessionTimeoutMinutes    Int                 @default(30)
+    kioskAutoLockSeconds     Int                 @default(60)
+    retentionYears           Int                 @default(5)
+    motivationTexts          Json                @default("[]")
+    vacationTexts            Json                @default("[]")
+    companyName              String?
+    street                   String?
+    zip                      String?
+    city                     String?
+    country                  String?             @default("DE")
+    phone                    String?
+    email                    String?
+    legalStatus              String?
+    ssoEnabled               Boolean             @default(false)
+    ssoConfig                Json?
+    freightApprovalRule      FreightApprovalRule @default(rpAndQmb)
+    brokerChapterNotApplicable Boolean           @default(false)
+
+    @@deny('all', auth() == null)
+    @@allow('read', auth().tenantId == tenantId)
+    @@allow('update', auth().tenantId == tenantId && auth().status == active)
+}
+
+model Role {
+    id        String   @id @default(cuid())
+    tenantId  String
+    tenant    Tenant   @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+    key       String
+    label     String
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+    users      User[]
+    roleRights RoleRight[]
+
+    @@unique([tenantId, key])
+    @@deny('all', auth() == null)
+    @@allow('read', auth().tenantId == tenantId)
+}
+
+model RoleRight {
+    id        String    @id @default(cuid())
+    tenantId  String
+    tenant    Tenant    @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+    roleId    String
+    role      Role      @relation(fields: [roleId], references: [id], onDelete: Cascade)
+    kind      RightKind
+    rightKey  String
+    allowed   Boolean
+    createdAt DateTime  @default(now())
+    updatedAt DateTime  @updatedAt
+
+    @@unique([roleId, kind, rightKey])
+    @@deny('all', auth() == null)
+    @@allow('read', auth().tenantId == tenantId)
+    @@allow('create,update', auth().tenantId == tenantId && auth().status == active)
+}
+
+model User {
+    id                  String     @id @default(cuid())
+    tenantId            String
+    tenant              Tenant     @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+    email               String?
+    firstName           String
+    lastName            String
+    initials            String?
+    avatarColor         String?
+    avatarUrl           String?
+    status              UserStatus @default(active)
+    retiredAt           DateTime?
+    pinHash             String?
+    pinFailedAttempts   Int        @default(0)
+    pinLockedUntil      DateTime?
+    oidcSubject         String?
+    isPlatformDeveloper Boolean    @default(false)
+    createdAt           DateTime   @default(now())
+    updatedAt           DateTime   @updatedAt
+
+    roles                  Role[]
+    userRights             UserRight[]
+    registeredKioskDevices KioskDevice[]   @relation("KioskRegisteredBy")
+    createdAuditorInvites  AuditorInvite[] @relation("AuditorInviteCreatedBy")
+    auditorInvite          AuditorInvite?  @relation("AuditorInviteUser")
+
+    @@unique([tenantId, email])
+    @@deny('all', auth() == null)
+    @@allow('read', auth().tenantId == tenantId && (auth().id == id || auth().status == active))
+    @@allow('create,update', auth().tenantId == tenantId && auth().status == active)
+}
+
+model UserRight {
+    id        String    @id @default(cuid())
+    tenantId  String
+    tenant    Tenant    @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+    userId    String
+    user      User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+    kind      RightKind
+    rightKey  String
+    allowed   Boolean
+    createdAt DateTime  @default(now())
+    updatedAt DateTime  @updatedAt
+
+    @@unique([userId, kind, rightKey])
+    @@deny('all', auth() == null)
+    @@allow('read', auth().tenantId == tenantId && (auth().id == userId || auth().status == active))
+    @@allow('create,update', auth().tenantId == tenantId && auth().status == active)
+}
+
+model Holiday {
+    id        String        @id @default(cuid())
+    tenantId  String
+    tenant    Tenant        @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+    date      DateTime      @db.Date
+    label     String
+    source    HolidaySource
+    createdAt DateTime      @default(now())
+    updatedAt DateTime      @updatedAt
+
+    @@unique([tenantId, date])
+    @@deny('all', auth() == null)
+    @@allow('read', auth().tenantId == tenantId)
+    @@allow('create,update', auth().tenantId == tenantId && auth().status == active)
+}
+
+model KioskDevice {
+    id             String            @id @default(cuid())
+    tenantId       String
+    tenant         Tenant            @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+    name           String
+    deviceToken    String
+    status         KioskDeviceStatus @default(active)
+    registeredById String
+    registeredBy   User              @relation("KioskRegisteredBy", fields: [registeredById], references: [id])
+    registeredAt   DateTime          @default(now())
+    lastSeenAt     DateTime?
+    createdAt      DateTime          @default(now())
+    updatedAt      DateTime          @updatedAt
+
+    @@deny('all', auth() == null)
+    @@allow('read', auth().tenantId == tenantId)
+    @@allow('create,update', auth().tenantId == tenantId && auth().status == active)
+}
+
+model AuditorInvite {
+    id             String              @id @default(cuid())
+    tenantId       String
+    tenant         Tenant              @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+    auditorName    String
+    userId         String?             @unique
+    user           User?               @relation("AuditorInviteUser", fields: [userId], references: [id])
+    validFrom      DateTime
+    validUntil     DateTime
+    visibleModules String[]
+    templateName   String?
+    createdById    String
+    createdBy      User                @relation("AuditorInviteCreatedBy", fields: [createdById], references: [id])
+    status         AuditorInviteStatus @default(pending)
+    createdAt      DateTime            @default(now())
+    updatedAt      DateTime            @updatedAt
+
+    @@deny('all', auth() == null)
+    @@allow('read', auth().tenantId == tenantId)
+    @@allow('create,update', auth().tenantId == tenantId && auth().status == active)
 }
