@@ -1,0 +1,169 @@
+Funktional-/Design-Spezifikation
+QM-Pilot — Modul „Aufgaben" (Stufe 1)
+Pharmazeutika 73.3 GmbH
+Version 0.1 (Entwurf) · Stand: 30.06.2026
+Erstellt von: Claude · Freigabe: Produkt-/Software-Governance (GL)
+
+
+Inhaltsverzeichnis
+
+
+
+
+1  Zweck & Geltungsbereich
+1.1  Zweck
+Diese Funktional-/Design-Spezifikation beschreibt, wie die Anforderungen der URS Stufe 1 (Aufgaben-Modul, URS-A-001 bis URS-A-045) in QM-Pilot technisch und funktional umgesetzt werden. Sie ist die Grundlage für die Entwicklung und für die Ableitung der Qualifizierungstests (IQ/OQ/PQ).
+1.2  Verhältnis zur URS
+Die FS/DS führt keine neuen Anforderungen ein. Jede Festlegung verweist auf die zugehörige URS-A-Nummer. Zeigt sich eine Lücke oder ein Widerspruch, wird zuerst die URS angepasst — nicht still in der FS/DS abgewichen.
+1.3  Geltungsbereich
+Die FS/DS gilt für das Aufgaben-Modul (Stufe 1). Sie setzt auf dem validierten Fundament (Stufe 0) auf und nutzt dessen Benutzer, Rollen, Audit-Trail und Design. Technische Basis sind die Grundsatzentscheidungen (Django, PostgreSQL, Hosting bei Hetzner).
+1.4  Funktional- vs. Design-Anteil
+Der funktionale Teil (Abschnitt 4) beschreibt das beobachtbare Verhalten, der Design-Teil (Abschnitte 5 und 6) die technische Gestaltung (Datenmodell, Hintergrundverarbeitung). Beide sind hier zusammengeführt, bleiben aber unterscheidbar.
+1.5  Verbindlichkeit
+QM-Pilot ist ein eigenständiges Software-Produkt und kein Bestandteil des QMS. Diese FS/DS ist ein Software-Entwicklungsdokument und wird daher im Rahmen der Software-/Produkt-Governance freigegeben — nicht über die QM-Dokumentenlenkung: Erstellt durch Claude, fachlich/technisch geprüft (fachkundige technische Person bzw. Standby-Entwickler), freigegeben durch den Produktverantwortlichen (Geschäftsleitung). Eine QM-seitige Beteiligung erfolgt erst bei Validierung und Freigabe für den produktiven Einsatz. Änderungen an produktiver Software laufen über den Software-Versionierungs-/Freigabeprozess (URS-F-052).
+2  Mitgeltende Dokumente
+2.1  Projektinterne Dokumente
+URS Stufe 1 (v0.1) — die umzusetzenden Anforderungen (URS-A-001 bis URS-A-045). Technische Grundsatzentscheidungen (v0.1). Die Stufe-0-Dokumente URS (v0.2) und FS/DS (v0.2) — das wiederverwendete Fundament (Benutzer, Rollen, Audit-Trail, Archivierung, Design). Design-Grundlinie / Marken-Tokens.
+2.2  Bezug zum QM-System (verwaltete Inhalte)
+Der Routineplan und die SOPs liefern die fachlichen Aufgabeninhalte; sie sind verwaltete Inhalte bzw. Quelle funktionaler Anforderungen, nicht der Validierungsmaßstab der Software (QM-Pilot ist kein Bestandteil des QMS).
+2.3  Regulatorische Grundlagen
+GDP-Leitlinie 2013/C 343/01 (Kapitel 1 und 4); EU-Annex 11 (sinngemäß); ALCOA+; GAMP 5 als Methodik. Verbindlicher Maßstab sind die gesetzlichen Vorgaben.
+3  Architektur-Einordnung
+3.1  Einbettung ins Fundament
+Das Aufgaben-Modul wird als eigene Django-App („aufgaben") innerhalb von QM-Pilot umgesetzt. Es nutzt das bestehende Fundament unverändert mit: Anmeldung und Rollen (Stufe 0), den zentralen Audit-Trail, die revisionssichere Archivierung sowie das Marken-Design. Es entsteht kein zweites System, sondern ein zusätzlicher Baustein auf demselben Fundament.
+3.2  Neue Bestandteile
+Neu hinzu kommen: die Datenmodelle des Moduls (Abschnitt 5), die zugehörigen Oberflächen (Aufgabenlisten, Dashboard-Erweiterung, Reinigungs-Ansicht) sowie ein regelmäßiger Hintergrundlauf (Scheduler).
+3.3  Hintergrundlauf (Scheduler)
+Ein wiederkehrender Lauf — als Django-Verwaltungsbefehl, zeitgesteuert auf dem Hetzner-Server (z. B. per Cron) — erledigt die zeitabhängige Logik: nächste Fälligkeiten erzeugen, überfällige erkennen, Erinnerungen/Eskalationen versenden, Abwesenheiten/Vertretungen berücksichtigen. Überwacht (URS-A-043); Details in Abschnitt 6.
+4  Funktionale Spezifikation
+4.1  Aufgaben-Definition
+Modell (URS-A-001/002/003): Eine „Aufgaben-Definition" wird als eigenes Datenmodell geführt — mit Titel, Beschreibung, optionalem Bezug zum Quelldokument, Zuständigkeit (Person/Rolle/Gruppe), Art (einmalig/wiederkehrend) und Status aktiv/inaktiv. Die Wiederholungs-Angaben hängen an dieser Definition (4.2).
+Bearbeitung & Berechtigung (URS-A-004): Anlegen/Ändern/Deaktivieren über gestaltete Formulare; Zugriff beschränkt auf QMB/RP. Operative Mitarbeitende erledigen, definieren aber nicht.
+Deaktivieren statt Löschen (URS-A-005): Aktiv-Kennzeichen; bei Deaktivierung keine neuen Fälligkeiten, erfasste Erledigungen bleiben erhalten.
+Protokollierung (URS-A-006): Das Modell wird in die zentral protokollierten Modelle aufgenommen; Anlegen/Änderung erscheinen im Audit-Trail.
+4.2  Terminierung & Wiederholung
+Trennung Definition/Fälligkeit: Neben der Definition (Vorlage) gibt es ein Modell „Fälligkeit" für das konkrete, datierte Vorkommen (Fälligkeitsdatum, Status, zuständige Person). Das hält Vorlage und Einzeltermine sauber auseinander.
+Frequenzen (URS-A-007/009): An der Definition werden Frequenz (täglich/wöchentlich/monatlich/quartalsweise/jährlich) und nähere Angaben (Wochentag, Monat/Quartal) hinterlegt.
+Erzeugung & Überfälligkeit (URS-A-008/010/022): Der Hintergrundlauf erzeugt die nächste Fälligkeit nach Plan; mit der Erledigung einer wiederkehrenden Aufgabe entsteht die Folgefälligkeit. Verstrichene, nicht erledigte Fälligkeiten gelten als überfällig.
+Arbeitstag-/Feiertagslogik (URS-A-045): Fällt eine berechnete Fälligkeit auf einen arbeitsfreien Tag (Feiertag oder Nicht-Arbeitstag), wird sie auf den vorherigen Arbeitstag vorgezogen (Bsp.: Fr-Feiertag → Do). Bundesland (Feiertagskalender) und Arbeitstage sind je Mandant konfigurierbar (Auswahlfunktion; Standard Baden-Württemberg, Mo–Fr); als Daten geführt, nicht fest verdrahtet.
+4.3  Zuweisung
+Zuweisungsarten (URS-A-011): Eine Fälligkeit kann Person, Rolle oder Gruppe zugeordnet sein; die Zuständigkeit liegt an der Definition und wird auf die Fälligkeiten übertragen.
+Gruppen-/Claim-Logik (URS-A-012): Bei Gruppen-/Rollenzuweisung erscheint die Fälligkeit bei allen Berechtigten; erledigt eine Person sie, wird sie als erledigt markiert (mit Festhalten der erledigenden Person) und bei allen anderen ausgeblendet. So führt genau eine Person sie aus.
+(Um-)Zuweisung (URS-A-013): QMB/RP können Zuständigkeiten ändern und einzelne Fälligkeiten umzuweisen.
+Protokollierung (URS-A-014): Zuweisungen/Umverteilungen werden im Audit-Trail festgehalten.
+4.4  Abwesenheit & Vertretung
+Modell „Abwesenheit" (URS-A-015/016): Je Person mehrere Abwesenheiten (von–bis) mit hinterlegter Vertretung, auch weit im Voraus (Jahresplanung).
+Vertretungs-Logik (URS-A-017): Maßgeblich ist die zum Fälligkeitsdatum effektiv zuständige Person: Ist die zugewiesene Person abwesend, geht die Fälligkeit an die Vertretung; nach Ende der Abwesenheit zurück an die ursprüngliche Person. Gilt in Anzeige und Hintergrundlauf.
+Berechtigung & Protokollierung (URS-A-018): Pflege durch QMB/RP; jede Eintragung/Änderung im Audit-Trail.
+Motivations-Nachrichten (URS-A-019): Das Dashboard wertet die Abwesenheiten aus und zeigt am Tag vor Urlaubsbeginn bzw. am ersten Tag nach Rückkehr die freundliche Meldung; Texte konfigurierbar.
+4.5  Erledigung & Quittierung
+Erledigung als Aufzeichnung (URS-A-020/023): Eigener Datensatz zur Fälligkeit mit Person, Zeitstempel, Kommentar; unveränderbar (Korrektur als neuer Vorgang, ALCOA+).
+Nachweise/Uploads (URS-A-021): Foto und/oder weitere Dateien (PDF, Dokumente) als „Nachweis"-Datensätze, revisionssicher archiviert; erlaubte Typen/Größen konfigurierbar.
+Berechtigung (URS-A-024): Nur effektiv zuständige Person bzw. Vertretung; bei Gruppenaufgaben wird das erledigende Mitglied festgehalten.
+Folgefälligkeit (URS-A-022): Mit der Erledigung wiederkehrender Aufgaben entsteht die nächste Fälligkeit (4.2).
+Protokollierung (URS-A-025/039): Jede Erledigung — samt Hinweis auf die Nachweise — im Audit-Trail.
+4.6  Eskalation & Erinnerung
+Erinnerung (URS-A-026): Der Hintergrundlauf ermittelt fällige Aufgaben und sendet der zuständigen Person eine Reminder-E-Mail (E-Mail-Anbindung des Fundaments).
+Eskalation (URS-A-027/028): Bei Überfälligkeit Reminder an die Person und Information an die QMB; gestuft über konfigurierbare Schwellen (z. B. überfällig → QMB; später zusätzlich RP).
+Rückfallebene ohne E-Mail (URS-A-029): Ohne konfigurierte E-Mail erscheinen Erinnerung/Eskalation als deutlicher Dashboard-Hinweis (überfällig in Warmrot).
+Protokollierung (URS-A-030): Jede Eskalation im Audit-Trail (was, wann, an wen).
+4.7  Anzeige
+Dashboard (URS-A-031): Erweiterung um echte Aufgaben — Kennzahlen (heute fällig, offen, überfällig) und Liste der eigenen Fälligkeiten; ersetzt die Platzhalter.
+Reinigungs-Ansicht (URS-A-032): Heutige Aufgaben als große Kacheln mit „erledigt"-Bestätigung und optionalem Foto/Datei, auf Basis derselben Daten.
+Filter & Suche (URS-A-033): Nach Status, Zeitraum, Person/Rolle, SOP-Bezug (analog Audit-Trail-Ansicht).
+Statusfarben (URS-A-034): erledigt = Türkisgrün, heute fällig = Gelb, überfällig = Warmrot.
+Gesamtübersicht (URS-A-035): QMB/RP/GL sehen alle Aufgaben (nicht nur eigene), mit denselben Filtern.
+Motivierendes Feedback (URS-A-036/037): Das Dashboard zeigt die Zahl erledigter Aufgaben (z. B. Vormonat) mit positiver Rückmeldung und einfacher Tendenz; die Person kann ihre erledigten Aufgaben eines Zeitraums als Liste sehen. Bewusst ermutigend, ohne bloßstellende Vergleiche.
+4.8  Audit-Trail-Kopplung
+Zentrale Protokollierung (URS-A-038): Die neuen Modelle (Aufgaben-Definition, Fälligkeit, Erledigung, Nachweis, Abwesenheit/Vertretung) werden in den bestehenden zentralen Audit-Trail-Mechanismus (Signale aus Stufe 0) aufgenommen; kein Vorgang umgeht die Protokollierung.
+Unveränderbare Aufzeichnungen (URS-A-039): Erledigungen samt Nachweisen unterliegen der revisionssicheren Archivierung des Fundaments (ALCOA+).
+5  Datenmodell-Überblick
+Die neuen „Bausteine" des Aufgaben-Moduls:
+5.1 Aufgaben-Definition — die wiederkehrende Vorlage (Titel, Beschreibung, Quelldokument-Bezug, Zuständigkeit, Art, Wiederholungs-Angaben, Status).
+5.2 Fälligkeit — das konkrete, datierte Vorkommen (Bezug zur Definition, Fälligkeitsdatum, Status, effektiv zuständige Person).
+5.3 Erledigung — Aufzeichnung zur Fälligkeit (Person, Zeitstempel, Kommentar); unveränderbar.
+5.4 Nachweis — zur Erledigung hochgeladene Datei (Foto/PDF/Dokument), revisionssicher.
+5.5 Abwesenheit — Person, Zeitraum, Vertretung; steuert die effektiv zuständige Person.
+5.6 Konfiguration (mandantenfähig) — Bundesland/Feiertagskalender, Arbeitstage, Eskalationsschwellen, Texte der Motivations-Nachrichten; als Daten geführt.
+5.7 Zusammenspiel — Definition erzeugt Fälligkeiten; je Fälligkeit höchstens eine Erledigung (mit Nachweisen); Abwesenheiten verschieben die Zuständigkeit; alle Vorgänge hängen am zentralen Audit-Trail.
+6  Hintergrundverarbeitung (Scheduler)
+6.1  Mechanik
+Ein Django-Verwaltungsbefehl wird auf dem Hetzner-Server zeitgesteuert ausgeführt (z. B. per Cron, mehrmals täglich) — die zentrale Stelle für alle zeitabhängigen Vorgänge.
+6.2  Aufgaben des Laufs
+Er erzeugt die nächsten Fälligkeiten nach Plan (inkl. Vorziehen bei Feiertagen/arbeitsfreien Tagen, 4.2); setzt verstrichene Fälligkeiten auf „überfällig"; löst Erinnerungen und gestufte Eskalationen aus (4.6) und berücksichtigt Abwesenheiten/Vertretungen zum Stichtag.
+6.3  Verlässlichkeit & Idempotenz (URS-A-042)
+Der Lauf ist gefahrlos wiederholbar — keine doppelten Fälligkeiten oder Mehrfach-Erinnerungen. Fällt ein Lauf aus, holt der nächste den Rückstand auf, ohne Verlust oder Dublette.
+6.4  Überwachung (URS-A-043)
+Jeder Lauf wird protokolliert; bleibt er aus oder schlägt fehl, wird das gemeldet (analog zur Backup-Überwachung). So bleibt keine Fälligkeit dauerhaft unbemerkt.
+7  Nicht-funktionale Umsetzung
+Bedienbarkeit (URS-A-040): Erledigen in wenigen Schritten; durchgängiges Design-System; niederschwellige Reinigungs-Ansicht (4.7).
+Performance (URS-A-041): Indizierte Abfragen (Person, Datum, Status), seitenweise Darstellung; auch beim vollen Routineplan im Sekundenbereich.
+Verlässliche Wiederholung (URS-A-042): über die idempotente Arbeitsweise des Hintergrundlaufs (6.3).
+Geplante Verarbeitung (URS-A-043): regelmäßiger, überwachter Lauf mit Aufhol-Logik und Ausfallmeldung (6.4).
+Datenintegrität & Wartbarkeit (URS-A-044): Vorgaben des Fundaments (ALCOA+, dokumentierter Code im Git, Konfigurationstrennung); Definitionen, Feiertagskalender/Arbeitstage, Schwellen und Texte als Daten geführt.
+8  Anforderungs-Nachverfolgung
+URS-Anforderung
+umgesetzt in FS/DS
+A-001–006 (Aufgaben-Definition)
+4.1
+A-007–010 (Terminierung & Wiederholung)
+4.2
+A-045 (Feiertags-/Arbeitstag-Logik)*
+4.2 / 5.6
+A-011–014 (Zuweisung, Gruppen-/Claim)
+4.3
+A-015–019 (Abwesenheit & Vertretung)
+4.4
+A-020–025 (Erledigung & Quittierung)
+4.5
+A-026–030 (Eskalation & Erinnerung)
+4.6 / 6
+A-031–037 (Anzeige, Feedback)
+4.7
+A-038–039 (Audit-Trail-Kopplung)
+4.8
+A-040–044 (nicht-funktional)
+6 / 7
+
+*URS-A-045 wird in der URS bei v0.2 ergänzt; in dieser FS/DS bereits umgesetzt. Die detaillierte Matrix (je einzelne URS-A-Nummer) wird als eigenes, lebendes Dokument geführt und in die Testskripte (IQ/OQ/PQ) weitergetragen.
+9  Annahmen & offene Punkte
+9.1  Annahmen
+Das Fundament (Stufe 0) ist verfügbar und validiert. Auf dem Hetzner-Server kann ein zeitgesteuerter Lauf (Cron) betrieben werden. Die E-Mail-Anbindung wird verfügbar gemacht (sonst Dashboard-Hinweis). Die Aufgaben des Routineplans werden manuell in QM-Pilot erfasst.
+9.2  Offene Punkte (bei der Umsetzung festzulegen)
+Die konkrete Frequenz des Hintergrundlaufs; die konkreten Eskalationsschwellen-Werte; die erlaubten Dateitypen und Maximalgrößen für Nachweise; die technische Quelle/Pflege des Feiertagskalenders (berechnete Feiertage je Bundesland vs. gepflegte Liste); sowie die konkreten Texte der Motivations- und Urlaubsnachrichten.
+10  Abnahme & Versionskontrolle
+10.1  Freigabe (Software-/Produkt-Governance)
+Diese FS/DS ist ein Software-Entwicklungsdokument von QM-Pilot und wird unter der Software-/Produkt-Governance freigegeben (nicht über die QM-Dokumentenlenkung). Mit der Freigabe wird bestätigt, dass sie die Umsetzung der URS-Anforderungen zutreffend beschreibt.
+Funktion
+Rolle
+Name
+Datum
+Untersch.
+Erstellt
+—
+Claude (Entwurf)
+
+
+Fachlich/technisch geprüft
+fachkundige techn. Person / Standby-Entwickler
+(noch zu benennen)
+
+
+Freigegeben
+Produktverantwortlicher / Geschäftsleitung
+Jochen Schulze
+
+
+
+10.2  Versionskontrolle
+Version
+Datum
+Autor
+Änderung
+0.1 (Entwurf)
+30.06.2026
+Jochen Schulze / Claude
+Erstentwurf, Abschnitte 1–10
+
+10.3  Geltung
+Die FS/DS ist ein lebendes Dokument. Änderungen nach Freigabe erfolgen über eine neue Version; Änderungen an produktiver Software laufen über den Software-Versionierungs-/Freigabeprozess (URS-F-052).

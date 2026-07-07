@@ -1,0 +1,2242 @@
+[
+ {
+  "nr": "1",
+  "kap": "1 Qualitätsmanagement",
+  "anf": "Großhändler müssen ein Qualitätssystem unterhalten, in dem die Zuständigkeiten, Verfahren und Grundsätze des Risikomanagements in Bezug auf ihre Tätigkeiten festgelegt sind.",
+  "quelle": "EU-GDP-Leitlinie Kap. 1.1",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "2",
+  "kap": "1 Qualitätsmanagement",
+  "anf": "Alle Vertriebsaktivitäten sollten klar definiert und systematisch überprüft werden.",
+  "quelle": "EU-GDP-Leitlinie Kap. 1.1",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "3",
+  "kap": "1 Qualitätsmanagement",
+  "anf": "Alle kritischen Schritte der Vertriebsprozesse und wesentliche Änderungen sollten begründet und, sofern relevant, validiert werden.",
+  "quelle": "EU-GDP-Leitlinie Kap. 1.1; EU-Annex 11",
+  "turnus": "anlassbezogen (bei Änderung)"
+ },
+ {
+  "nr": "4",
+  "kap": "1 Qualitätsmanagement",
+  "anf": "Das Qualitätssystem liegt in der Verantwortung der Unternehmensleitung und erfordert deren Führung und aktive Mitwirkung; es sollte durch das Engagement der Mitarbeiter unterstützt werden.",
+  "quelle": "EU-GDP-Leitlinie Kap. 1.1",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "5",
+  "kap": "1 Qualitätsmanagement",
+  "anf": "Das Qualitätsmanagementsystem sollte die Organisationsstruktur, Verfahren, Prozesse und Ressourcen sowie die Aktivitäten umfassen, die erforderlich sind, um sicherzustellen, dass das gelieferte Produkt seine Qualität und Integrität bewahrt und während der Lagerung und/oder des Transports innerhalb der legalen Lieferkette verbleibt.",
+  "quelle": "EU-GDP-Leitlinie Kap. 1.2; § 6 AM-HandelsV",
+  "turnus": "je Versand (laufend)"
+ },
+ {
+  "nr": "6",
+  "kap": "1 Qualitätsmanagement",
+  "anf": "Das Qualitätsmanagementsystem sollte vollständig dokumentiert und seine Wirksamkeit überwacht werden.",
+  "quelle": "EU-GDP-Leitlinie Kap. 1.2",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "7",
+  "kap": "1 Qualitätsmanagement",
+  "anf": "Alle Aktivitäten im Zusammenhang mit dem Qualitätsmanagementsystem sollten definiert und dokumentiert werden.",
+  "quelle": "EU-GDP-Leitlinie Kap. 1.2",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "8",
+  "kap": "1 Qualitätsmanagement",
+  "anf": "Es sollte ein Qualitätshandbuch oder ein gleichwertiger Dokumentationsansatz erstellt werden.",
+  "quelle": "EU-GDP-Leitlinie Kap. 1.2",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "9",
+  "kap": "1 Qualitätsmanagement",
+  "anf": "Die Geschäftsleitung sollte eine verantwortliche Person benennen, die über klar festgelegte Befugnisse und Verantwortlichkeiten verfügt, um sicherzustellen, dass ein Qualitätssystem eingeführt und aufrechterhalten wird.",
+  "quelle": "EU-GDP-Leitlinie Kap. 1.2; § 2 AM-HandelsV; § 52a AMG",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "10",
+  "kap": "1 Qualitätsmanagement",
+  "anf": "Die Geschäftsleitung des Vertriebsunternehmens sollte sicherstellen, dass alle Teile des Qualitätssystems mit kompetentem Personal sowie geeigneten und ausreichenden Räumlichkeiten, Ausrüstungen und Einrichtungen ausgestattet sind.",
+  "quelle": "EU-GDP-Leitlinie Kap. 1.2",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "11",
+  "kap": "1 Qualitätsmanagement",
+  "anf": "Bei der Entwicklung oder Änderung des Qualitätssystems sollten der Umfang, die Struktur und die Komplexität der Tätigkeiten des Vertriebsunternehmens berücksichtigt werden.",
+  "quelle": "EU-GDP-Leitlinie Kap. 1.2",
+  "turnus": "anlassbezogen (bei Änderung)"
+ },
+ {
+  "nr": "12",
+  "kap": "1 Qualitätsmanagement",
+  "anf": "Es sollte ein System zur Änderungskontrolle vorhanden sein.",
+  "quelle": "EU-GDP-Leitlinie Kap. 1.2",
+  "turnus": "anlassbezogen (bei Änderung)"
+ },
+ {
+  "nr": "13",
+  "kap": "1 Qualitätsmanagement",
+  "anf": "Dieses System sollte Grundsätze des Qualitätsrisikomanagements beinhalten und verhältnismäßig sowie wirksam sein.",
+  "quelle": "EU-GDP-Leitlinie Kap. 1.2",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "14",
+  "kap": "1 Qualitätsmanagement",
+  "anf": "„Das Qualitätssicherungssystem sollte sicherstellen, dass:",
+  "quelle": "EU-GDP-Leitlinie Kap. 1.2",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "15",
+  "kap": "1 Qualitätsmanagement",
+  "anf": "(i) Arzneimittel in einer Weise beschafft, gelagert, geliefert oder exportiert werden, die den Anforderungen der Guten Vertriebspraxis (GDP) entspricht“",
+  "quelle": "EU-GDP-Leitlinie Kap. 1.2",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "16",
+  "kap": "1 Qualitätsmanagement",
+  "anf": "(ii) die Verantwortlichkeiten der Geschäftsleitung klar festgelegt sind;",
+  "quelle": "EU-GDP-Leitlinie Kap. 1.2",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "17",
+  "kap": "1 Qualitätsmanagement",
+  "anf": "(iii) die Produkte innerhalb einer angemessenen Frist an die richtigen Empfänger geliefert werden;",
+  "quelle": "EU-GDP-Leitlinie Kap. 1.2",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "18",
+  "kap": "1 Qualitätsmanagement",
+  "anf": "(iv) Aufzeichnungen zeitnah angefertigt werden;",
+  "quelle": "EU-GDP-Leitlinie Kap. 1.2",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "19",
+  "kap": "1 Qualitätsmanagement",
+  "anf": "(v) Abweichungen von festgelegten Verfahren dokumentiert und untersucht werden;",
+  "quelle": "EU-GDP-Leitlinie Kap. 1.2",
+  "turnus": "anlassbezogen"
+ },
+ {
+  "nr": "20",
+  "kap": "1 Qualitätsmanagement",
+  "anf": "(vi) geeignete Korrektur- und Vorbeugungsmaßnahmen (allgemein bekannt als CAPA) ergriffen werden, um Abweichungen zu beheben und im Einklang mit den Grundsätzen des Qualitätsrisikomanagements zu verhindern.“",
+  "quelle": "EU-GDP-Leitlinie Kap. 1.2",
+  "turnus": "anlassbezogen"
+ },
+ {
+  "nr": "21",
+  "kap": "1 Qualitätsmanagement",
+  "anf": "„Diese Prozesse sollten ein Qualitätsrisikomanagement beinhalten und Folgendes umfassen: (i) die Bewertung der Eignung und Kompetenz des Auftragnehmers zur Durchführung der Tätigkeit sowie gegebenenfalls die Überprüfung des Genehmigungsstatus;“",
+  "quelle": "EU-GDP-Leitlinie Kap. 1.3",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "22",
+  "kap": "1 Qualitätsmanagement",
+  "anf": "(ii) die Festlegung der Verantwortlichkeiten und Kommunikationsprozesse für die qualitätsbezogenen Tätigkeiten der beteiligten Parteien",
+  "quelle": "EU-GDP-Leitlinie Kap. 1.3",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "23",
+  "kap": "1 Qualitätsmanagement",
+  "anf": "(iii) die Überwachung und Überprüfung der Leistung des Auftragnehmers sowie die regelmäßige Ermittlung und Umsetzung erforderlicher Verbesserungen",
+  "quelle": "EU-GDP-Leitlinie Kap. 1.3",
+  "turnus": "jährlich (Review)"
+ },
+ {
+  "nr": "24",
+  "kap": "1 Qualitätsmanagement",
+  "anf": "Die Leitung sollte über einen formellen Prozess zur regelmäßigen Überprüfung des Qualitätssystems verfügen.",
+  "quelle": "EU-GDP-Leitlinie Kap. 1.4",
+  "turnus": "jährlich (Review)"
+ },
+ {
+  "nr": "25",
+  "kap": "1 Qualitätsmanagement",
+  "anf": "„Die Überprüfung sollte Folgendes umfassen: (i) die Messung der Erreichung der Ziele des Qualitätssystems;“",
+  "quelle": "EU-GDP-Leitlinie Kap. 1.4",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "26",
+  "kap": "1 Qualitätsmanagement",
+  "anf": "(ii) die Bewertung von Leistungsindikatoren, die zur Überwachung der Wirksamkeit von Prozessen innerhalb des Qualitätssystems herangezogen werden können, wie z. B. Beschwerden, Abweichungen, CAPA, Prozessänderungen; Rückmeldungen zu ausgelagerten Tätigkeiten; Selbstbewertungsprozesse einschließlich Risikobewertungen und Audits; sowie externe Bewertungen wie Inspektionen, Feststellungen und Kundenaudits",
+  "quelle": "EU-GDP-Leitlinie Kap. 1.4",
+  "turnus": "jährlich / risikobasiert"
+ },
+ {
+  "nr": "27",
+  "kap": "1 Qualitätsmanagement",
+  "anf": "(iii) neue Vorschriften, Leitlinien und Qualitätsfragen, die sich auf das Qualitätsmanagementsystem auswirken können",
+  "quelle": "EU-GDP-Leitlinie Kap. 1.4",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "28",
+  "kap": "1 Qualitätsmanagement",
+  "anf": "(iv) Innovationen, die das Qualitätssystem verbessern könnten",
+  "quelle": "EU-GDP-Leitlinie Kap. 1.4",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "29",
+  "kap": "1 Qualitätsmanagement",
+  "anf": "(v) Veränderungen im Geschäftsumfeld und bei den Zielen",
+  "quelle": "EU-GDP-Leitlinie Kap. 1.4",
+  "turnus": "anlassbezogen (bei Änderung)"
+ },
+ {
+  "nr": "30",
+  "kap": "1 Qualitätsmanagement",
+  "anf": "Das Ergebnis jeder Managementbewertung des Qualitätssystems sollte zeitnah dokumentiert und intern wirksam kommuniziert werden.",
+  "quelle": "EU-GDP-Leitlinie Kap. 1.4",
+  "turnus": "jährlich"
+ },
+ {
+  "nr": "31",
+  "kap": "1 Qualitätsmanagement",
+  "anf": "Das Qualitätsrisikomanagement ist ein systematischer Prozess zur Bewertung, Kontrolle, Kommunikation und Überprüfung von Risiken für die Qualität von Arzneimitteln. Es kann sowohl proaktiv als auch retrospektiv angewendet werden.",
+  "quelle": "EU-GDP-Leitlinie Kap. 1.5",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "32",
+  "kap": "1 Qualitätsmanagement",
+  "anf": "Das Qualitätsrisikomanagement sollte sicherstellen, dass die Bewertung des Qualitätsrisikos auf wissenschaftlichen Erkenntnissen und Erfahrungen mit dem Prozess basiert und letztlich dem Schutz des Patienten dient.",
+  "quelle": "EU-GDP-Leitlinie Kap. 1.5",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "33",
+  "kap": "1 Qualitätsmanagement",
+  "anf": "Der Aufwand, der Formalisierungsgrad und die Dokumentation des Prozesses sollten dem Risikoniveau angemessen sein.",
+  "quelle": "EU-GDP-Leitlinie Kap. 1.5",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "34",
+  "kap": "1 Qualitätsmanagement",
+  "anf": "Beispiele für die Prozesse und Anwendungen des Qualitätsrisikomanagements finden sich in der Leitlinie Q9 der Internationalen Konferenz zur Harmonisierung (ICH).",
+  "quelle": "EU-GDP-Leitlinie Kap. 1.5",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "35",
+  "kap": "2 Personal",
+  "anf": "Die ordnungsgemäße Verteilung von Arzneimitteln hängt von den Menschen ab.",
+  "quelle": "EU-GDP-Leitlinie Kap. 2.1",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "36",
+  "kap": "2 Personal",
+  "anf": "Aus diesem Grund muss ausreichend qualifiziertes Personal vorhanden sein, um alle Aufgaben zu erfüllen, für die der Großhändler verantwortlich ist. Die einzelnen Zuständigkeiten sollten den Mitarbeitern klar verständlich sein und schriftlich festgehalten werden.",
+  "quelle": "EU-GDP-Leitlinie Kap. 2.1",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "37",
+  "kap": "2 Personal",
+  "anf": "Der Großhändler muss eine Person als Verantwortliche Person benennen.",
+  "quelle": "EU-GDP-Leitlinie Kap. 2.2; § 2 AM-HandelsV; § 52a AMG",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "38",
+  "kap": "2 Personal",
+  "anf": "Die Verantwortliche Person sollte die Qualifikationen und alle Voraussetzungen erfüllen, die in den Rechtsvorschriften des betreffenden Mitgliedstaats vorgesehen sind.",
+  "quelle": "EU-GDP-Leitlinie Kap. 2.2; § 2 AM-HandelsV; § 52a AMG",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "39",
+  "kap": "2 Personal",
+  "anf": "Ein Abschluss in Pharmazie ist wünschenswert.",
+  "quelle": "EU-GDP-Leitlinie Kap. 2.2",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "40",
+  "kap": "2 Personal",
+  "anf": "Die verantwortliche Person sollte über angemessene Kompetenz und Erfahrung sowie über Kenntnisse und eine Ausbildung in den guten Vertriebspraxis (GDP) verfügen.",
+  "quelle": "EU-GDP-Leitlinie Kap. 2.2; § 2 AM-HandelsV; § 52a AMG",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "41",
+  "kap": "2 Personal",
+  "anf": "Die verantwortliche Person sollte ihre Aufgaben persönlich wahrnehmen und jederzeit erreichbar sein.",
+  "quelle": "EU-GDP-Leitlinie Kap. 2.2; § 2 AM-HandelsV; § 52a AMG",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "42",
+  "kap": "2 Personal",
+  "anf": "Die verantwortliche Person kann Aufgaben delegieren, jedoch keine Verantwortlichkeiten.",
+  "quelle": "EU-GDP-Leitlinie Kap. 2.2; § 2 AM-HandelsV; § 52a AMG",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "43",
+  "kap": "2 Personal",
+  "anf": "In der schriftlichen Stellenbeschreibung der verantwortlichen Person sollte deren Entscheidungsbefugnis im Hinblick auf ihre Aufgaben festgelegt sein.",
+  "quelle": "EU-GDP-Leitlinie Kap. 2.2; § 2 AM-HandelsV; § 52a AMG",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "44",
+  "kap": "2 Personal",
+  "anf": "Der Großhändler sollte der verantwortlichen Person die festgelegten Befugnisse, Ressourcen und die Verantwortung übertragen, die zur Erfüllung ihrer Aufgaben erforderlich sind.",
+  "quelle": "EU-GDP-Leitlinie Kap. 2.2; § 2 AM-HandelsV; § 52a AMG",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "45",
+  "kap": "2 Personal",
+  "anf": "Die verantwortliche Person sollte ihre Aufgaben so wahrnehmen, dass der Großhändler die Einhaltung der GDP nachweisen kann und die gemeinwirtschaftlichen Verpflichtungen erfüllt werden.",
+  "quelle": "EU-GDP-Leitlinie Kap. 2.2; § 2 AM-HandelsV; § 52a AMG",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "46",
+  "kap": "2 Personal",
+  "anf": "„Zu den Aufgaben der verantwortlichen Person gehören: (i) die Sicherstellung, dass ein Qualitätsmanagementsystem eingeführt und aufrechterhalten wird“",
+  "quelle": "EU-GDP-Leitlinie Kap. 2.2; § 2 AM-HandelsV; § 52a AMG",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "47",
+  "kap": "2 Personal",
+  "anf": "(ii) die Konzentration auf die Steuerung der genehmigten Tätigkeiten sowie auf die Richtigkeit und Qualität der Aufzeichnungen",
+  "quelle": "EU-GDP-Leitlinie Kap. 2.2",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "48",
+  "kap": "2 Personal",
+  "anf": "(iii) die Sicherstellung, dass Schulungs- und Fortbildungsprogramme eingeführt und aufrechterhalten werden",
+  "quelle": "EU-GDP-Leitlinie Kap. 2.2",
+  "turnus": "jährlich"
+ },
+ {
+  "nr": "49",
+  "kap": "2 Personal",
+  "anf": "(iv) die Koordinierung und unverzügliche Durchführung etwaiger Rückrufaktionen für Arzneimittel;",
+  "quelle": "EU-GDP-Leitlinie Kap. 2.2; § 7a AM-HandelsV",
+  "turnus": "anlassbezogen"
+ },
+ {
+  "nr": "50",
+  "kap": "2 Personal",
+  "anf": "(v) die Sicherstellung, dass relevante Kundenbeschwerden wirksam bearbeitet werden;",
+  "quelle": "EU-GDP-Leitlinie Kap. 2.2",
+  "turnus": "anlassbezogen"
+ },
+ {
+  "nr": "51",
+  "kap": "2 Personal",
+  "anf": "(vi) sicherzustellen, dass Lieferanten und Kunden zugelassen sind;",
+  "quelle": "EU-GDP-Leitlinie Kap. 2.2",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "52",
+  "kap": "2 Personal",
+  "anf": "(vii) alle an Subunternehmer vergebenen Tätigkeiten zu genehmigen, die sich auf die gute Herstellungspraxis (GDP) auswirken können;",
+  "quelle": "EU-GDP-Leitlinie Kap. 2.2",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "53",
+  "kap": "2 Personal",
+  "anf": "(viii) sicherzustellen, dass Selbstinspektionen in angemessenen regelmäßigen Abständen nach einem vorab festgelegten Programm durchgeführt und die erforderlichen Korrekturmaßnahmen ergriffen werden;",
+  "quelle": "EU-GDP-Leitlinie Kap. 2.2; § 7c AM-HandelsV",
+  "turnus": "jährlich"
+ },
+ {
+  "nr": "54",
+  "kap": "2 Personal",
+  "anf": "(ix) angemessene Aufzeichnungen über alle delegierten Aufgaben zu führen;",
+  "quelle": "EU-GDP-Leitlinie Kap. 2.2",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "55",
+  "kap": "2 Personal",
+  "anf": "(X) über die endgültige Entsorgung von zurückgesandten, zurückgewiesenen, zurückgerufenen oder gefälschten Produkten zu entscheiden;",
+  "quelle": "EU-GDP-Leitlinie Kap. 2.2; § 7b AM-HandelsV",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "56",
+  "kap": "2 Personal",
+  "anf": "(xi) Genehmigung der Rückführung in den verkaufsfähigen Bestand;",
+  "quelle": "EU-GDP-Leitlinie Kap. 2.2",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "57",
+  "kap": "2 Personal",
+  "anf": "(xii) Sicherstellung, dass alle zusätzlichen Anforderungen, die durch nationales Recht für bestimmte Produkte vorgeschrieben sind, eingehalten werden.",
+  "quelle": "EU-GDP-Leitlinie Kap. 2.2",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "58",
+  "kap": "2 Personal",
+  "anf": "An allen Phasen der Großhandelsaktivitäten mit Arzneimitteln sollte eine ausreichende Anzahl kompetenter Mitarbeiter beteiligt sein.",
+  "quelle": "EU-GDP-Leitlinie Kap. 2.3",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "59",
+  "kap": "2 Personal",
+  "anf": "Die erforderliche Mitarbeiterzahl hängt vom Umfang und vom Umfang der Tätigkeiten ab.",
+  "quelle": "EU-GDP-Leitlinie Kap. 2.3",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "60",
+  "kap": "2 Personal",
+  "anf": "Die Organisationsstruktur des Großhändlers sollte in einem Organigramm dargestellt werden.",
+  "quelle": "EU-GDP-Leitlinie Kap. 2.3",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "61",
+  "kap": "2 Personal",
+  "anf": "Die Aufgaben, Zuständigkeiten und Wechselbeziehungen aller Mitarbeiter sollten klar ausgewiesen sein.",
+  "quelle": "EU-GDP-Leitlinie Kap. 2.3",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "62",
+  "kap": "2 Personal",
+  "anf": "Die Aufgaben und Zuständigkeiten der Mitarbeiter in Schlüsselpositionen sollten in schriftlichen Stellenbeschreibungen festgelegt werden, ebenso wie etwaige Regelungen zur Stellvertretung.",
+  "quelle": "EU-GDP-Leitlinie Kap. 2.3",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "63",
+  "kap": "2 Personal",
+  "anf": "Das gesamte an den Großhandelsaktivitäten beteiligte Personal sollte in den Anforderungen der Guten Vertriebspraxis (GDP) geschult werden.",
+  "quelle": "EU-GDP-Leitlinie Kap. 2.4",
+  "turnus": "jährlich"
+ },
+ {
+  "nr": "64",
+  "kap": "2 Personal",
+  "anf": "Es sollte vor Aufnahme seiner Aufgaben über die entsprechenden Kompetenzen und Erfahrungen verfügen.",
+  "quelle": "EU-GDP-Leitlinie Kap. 2.4",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "65",
+  "kap": "2 Personal",
+  "anf": "Das Personal sollte auf der Grundlage schriftlicher Verfahren und gemäß einem schriftlichen Schulungsprogramm eine für seine Rolle relevante Erst- und Fortbildung erhalten.",
+  "quelle": "EU-GDP-Leitlinie Kap. 2.4",
+  "turnus": "jährlich"
+ },
+ {
+  "nr": "66",
+  "kap": "2 Personal",
+  "anf": "Die verantwortliche Person sollte ihre Kompetenz in Bezug auf die GDP ebenfalls durch regelmäßige Schulungen aufrechterhalten.",
+  "quelle": "EU-GDP-Leitlinie Kap. 2.4; § 2 AM-HandelsV; § 52a AMG",
+  "turnus": "jährlich"
+ },
+ {
+  "nr": "67",
+  "kap": "2 Personal",
+  "anf": "Darüber hinaus sollten die Schulungen Aspekte der Produktidentifizierung und der Vermeidung des Eindringens gefälschter Arzneimittel in die Lieferkette umfassen.",
+  "quelle": "EU-GDP-Leitlinie Kap. 2.4",
+  "turnus": "jährlich"
+ },
+ {
+  "nr": "68",
+  "kap": "2 Personal",
+  "anf": "Mitarbeiter, die mit Produkten umgehen, die strengere Handhabungsbedingungen erfordern, sollten eine spezifische Schulung erhalten.",
+  "quelle": "EU-GDP-Leitlinie Kap. 2.4",
+  "turnus": "jährlich"
+ },
+ {
+  "nr": "69",
+  "kap": "2 Personal",
+  "anf": "Beispiele für solche Produkte sind gefährliche Produkte, radioaktive Stoffe, Produkte, die ein besonderes Missbrauchsrisiko darstellen (einschließlich Betäubungs- und psychotroper Substanzen), sowie temperaturempfindliche Produkte",
+  "quelle": "EU-GDP-Leitlinie Kap. 2.4",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "70",
+  "kap": "2 Personal",
+  "anf": "Es sollte ein Verzeichnis aller Schulungen geführt werden, und die Wirksamkeit der Schulungen sollte regelmäßig bewertet und dokumentiert werden.",
+  "quelle": "EU-GDP-Leitlinie Kap. 2.4",
+  "turnus": "jährlich"
+ },
+ {
+  "nr": "71",
+  "kap": "2 Personal",
+  "anf": "Es sollten geeignete Verfahren zur persönlichen Hygiene festgelegt und eingehalten werden, die den ausgeübten Tätigkeiten entsprechen.",
+  "quelle": "EU-GDP-Leitlinie Kap. 2.5",
+  "turnus": "nach Reinigungsplan"
+ },
+ {
+  "nr": "72",
+  "kap": "2 Personal",
+  "anf": "Diese Verfahren sollten die Bereiche Gesundheit, Hygiene und Kleidung abdecken.",
+  "quelle": "EU-GDP-Leitlinie Kap. 2.5",
+  "turnus": "nach Reinigungsplan"
+ },
+ {
+  "nr": "73",
+  "kap": "3 Räumlichkeiten & Ausrüstung",
+  "anf": "Großhändler müssen über geeignete und angemessene Räumlichkeiten, Einrichtungen und Ausrüstung verfügen, um eine ordnungsgemäße Lagerung und den ordnungsgemäßen Vertrieb von Arzneimitteln zu gewährleisten.",
+  "quelle": "EU-GDP-Leitlinie Kap. 3.1",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "74",
+  "kap": "3 Räumlichkeiten & Ausrüstung",
+  "anf": "Die Räumlichkeiten sollten so gestaltet oder angepasst sein, dass die erforderlichen Lagerbedingungen gewährleistet sind.",
+  "quelle": "EU-GDP-Leitlinie Kap. 3.2",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "75",
+  "kap": "3 Räumlichkeiten & Ausrüstung",
+  "anf": "Sie sollten angemessen gesichert, baulich einwandfrei und von ausreichender Kapazität sein, um eine sichere Lagerung und Handhabung der Arzneimittel zu ermöglichen.",
+  "quelle": "EU-GDP-Leitlinie Kap. 3.2",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "76",
+  "kap": "3 Räumlichkeiten & Ausrüstung",
+  "anf": "Lagerbereiche sollten über eine angemessene Beleuchtung verfügen, damit alle Tätigkeiten präzise und sicher ausgeführt werden können.",
+  "quelle": "EU-GDP-Leitlinie Kap. 3.2",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "77",
+  "kap": "3 Räumlichkeiten & Ausrüstung",
+  "anf": "Werden die Räumlichkeiten nicht direkt vom Großhändler betrieben, sollte ein Vertrag vorliegen.",
+  "quelle": "EU-GDP-Leitlinie Kap. 3.2",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "78",
+  "kap": "3 Räumlichkeiten & Ausrüstung",
+  "anf": "Für die vertraglich vereinbarten Räumlichkeiten sollte eine separate Großhandelsgenehmigung vorliegen.",
+  "quelle": "EU-GDP-Leitlinie Kap. 3.2",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "79",
+  "kap": "3 Räumlichkeiten & Ausrüstung",
+  "anf": "Arzneimittel sollten in abgetrennten Bereichen gelagert werden, die deutlich gekennzeichnet sind und zu denen nur befugtes Personal Zugang hat.",
+  "quelle": "EU-GDP-Leitlinie Kap. 3.2",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "80",
+  "kap": "3 Räumlichkeiten & Ausrüstung",
+  "anf": "Jedes System, das die physische Trennung ersetzt, wie beispielsweise eine elektronische Trennung auf Basis eines computergestützten Systems, sollte eine gleichwertige Sicherheit bieten und validiert sein.",
+  "quelle": "EU-GDP-Leitlinie Kap. 3.2; EU-Annex 11",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "81",
+  "kap": "3 Räumlichkeiten & Ausrüstung",
+  "anf": "Produkte, über deren Verbleib noch nicht entschieden wurde, oder Produkte, die aus dem verkaufsfähigen Bestand entfernt wurden, sollten entweder physisch oder durch ein gleichwertiges elektronisches System getrennt gelagert werden. Dazu gehören beispielsweise Produkte, bei denen der Verdacht auf Fälschung besteht, sowie zurückgesandte Produkte.",
+  "quelle": "EU-GDP-Leitlinie Kap. 3.2; § 7b AM-HandelsV",
+  "turnus": "anlassbezogen"
+ },
+ {
+  "nr": "82",
+  "kap": "3 Räumlichkeiten & Ausrüstung",
+  "anf": "Arzneimittel, die aus einem Drittland stammen, aber nicht für den Unionsmarkt bestimmt sind, sollten ebenfalls physisch getrennt gelagert werden.",
+  "quelle": "EU-GDP-Leitlinie Kap. 3.2; § 73 Abs. 3 AMG",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "83",
+  "kap": "3 Räumlichkeiten & Ausrüstung",
+  "anf": "Alle gefälschten Arzneimittel, abgelaufenen Produkte, zurückgerufenen Produkte und zurückgewiesenen Produkte, die in der Lieferkette entdeckt werden, sollten unverzüglich physisch getrennt und in einem dafür vorgesehenen Bereich, getrennt von allen anderen Arzneimitteln, gelagert werden.",
+  "quelle": "EU-GDP-Leitlinie Kap. 3.2",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "84",
+  "kap": "3 Räumlichkeiten & Ausrüstung",
+  "anf": "In diesen Bereichen sollte ein angemessenes Maß an Sicherheit gewährleistet sein, um sicherzustellen, dass diese Artikel von den verkaufsfähigen Beständen getrennt bleiben. Diese Bereiche sollten eindeutig gekennzeichnet sein.",
+  "quelle": "EU-GDP-Leitlinie Kap. 3.2",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "85",
+  "kap": "3 Räumlichkeiten & Ausrüstung",
+  "anf": "Besondere Aufmerksamkeit sollte der Lagerung von Produkten gewidmet werden, für die gemäß nationalem Recht spezifische Handhabungsanweisungen gelten.",
+  "quelle": "EU-GDP-Leitlinie Kap. 3.2",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "86",
+  "kap": "3 Räumlichkeiten & Ausrüstung",
+  "anf": "Für solche Produkte (z. B. Betäubungsmittel und psychotrope Stoffe) können besondere Lagerbedingungen (und besondere Genehmigungen) erforderlich sein.",
+  "quelle": "EU-GDP-Leitlinie Kap. 3.2",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "87",
+  "kap": "3 Räumlichkeiten & Ausrüstung",
+  "anf": "Radioaktive Stoffe und andere gefährliche Produkte sowie Produkte, die besondere Sicherheitsrisiken hinsichtlich Brand oder Explosion darstellen (z. B. medizinische Gase, brennbare Stoffe, entzündliche Flüssigkeiten und Feststoffe), sollten in einem oder mehreren dafür vorgesehenen Bereichen gelagert werden, wobei die örtlichen Rechtsvorschriften und angemessene Sicherheits- und Schutzmaßnahmen einzuhalten sind.",
+  "quelle": "EU-GDP-Leitlinie Kap. 3.2",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "88",
+  "kap": "3 Räumlichkeiten & Ausrüstung",
+  "anf": "Annahme- und Versandbereiche sollten die Produkte vor den vorherrschenden Witterungsbedingungen schützen.",
+  "quelle": "EU-GDP-Leitlinie Kap. 3.2; § 6 AM-HandelsV",
+  "turnus": "je Versand (laufend)"
+ },
+ {
+  "nr": "89",
+  "kap": "3 Räumlichkeiten & Ausrüstung",
+  "anf": "Es sollte eine angemessene Trennung zwischen den Annahme- und Versandbereichen sowie den Lagerbereichen bestehen.",
+  "quelle": "EU-GDP-Leitlinie Kap. 3.2; § 6 AM-HandelsV",
+  "turnus": "je Versand (laufend)"
+ },
+ {
+  "nr": "90",
+  "kap": "3 Räumlichkeiten & Ausrüstung",
+  "anf": "Es sollten Verfahren zur Kontrolle der ein- und ausgehenden Waren vorhanden sein. Es sollten Empfangsbereiche ausgewiesen und entsprechend ausgestattet werden, in denen die Lieferungen nach dem Wareneingang geprüft werden.",
+  "quelle": "EU-GDP-Leitlinie Kap. 3.2",
+  "turnus": "je Vorgang (laufend)"
+ },
+ {
+  "nr": "91",
+  "kap": "3 Räumlichkeiten & Ausrüstung",
+  "anf": "Der unbefugte Zugang zu allen Bereichen der zugelassenen Räumlichkeiten sollte verhindert werden. Zu den Präventionsmaßnahmen gehören in der Regel eine überwachte Einbruchmeldeanlage und eine geeignete Zugangskontrolle.",
+  "quelle": "EU-GDP-Leitlinie Kap. 3.2",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "92",
+  "kap": "3 Räumlichkeiten & Ausrüstung",
+  "anf": "Besucher sollten begleitet werden.",
+  "quelle": "EU-GDP-Leitlinie Kap. 3.2",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "93",
+  "kap": "3 Räumlichkeiten & Ausrüstung",
+  "anf": "Die Räumlichkeiten und Lagereinrichtungen sollten sauber und frei von Abfällen und Staub sein.",
+  "quelle": "EU-GDP-Leitlinie Kap. 3.2",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "94",
+  "kap": "3 Räumlichkeiten & Ausrüstung",
+  "anf": "Es sollten Reinigungsprogramme, Anweisungen und Aufzeichnungen vorhanden sein. Es sollten geeignete Reinigungsgeräte und Reinigungsmittel ausgewählt und verwendet werden, damit diese keine Kontaminationsquelle darstellen.",
+  "quelle": "EU-GDP-Leitlinie Kap. 3.2",
+  "turnus": "nach Reinigungsplan"
+ },
+ {
+  "nr": "95",
+  "kap": "3 Räumlichkeiten & Ausrüstung",
+  "anf": "Die Räumlichkeiten sollten so gestaltet und ausgestattet sein, dass sie Schutz vor dem Eindringen von Insekten, Nagetieren oder anderen Tieren bieten. Es sollte ein vorbeugendes Schädlingsbekämpfungsprogramm vorhanden sein.",
+  "quelle": "EU-GDP-Leitlinie Kap. 3.2",
+  "turnus": "monatlich"
+ },
+ {
+  "nr": "96",
+  "kap": "3 Räumlichkeiten & Ausrüstung",
+  "anf": "Ruhe-, Wasch- und Erfrischungsräume für Mitarbeiter sollten angemessen von den Lagerbereichen getrennt sein. Das Mitführen von Lebensmitteln, Getränken, Rauchwaren oder Arzneimitteln für den persönlichen Gebrauch sollte in den Lagerbereichen verboten sein.",
+  "quelle": "EU-GDP-Leitlinie Kap. 3.2",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "97",
+  "kap": "3 Räumlichkeiten & Ausrüstung",
+  "anf": "Es sollten geeignete Geräte und Verfahren zur Überprüfung der Umgebungsbedingungen vorhanden sein, unter denen Arzneimittel gelagert werden.",
+  "quelle": "EU-GDP-Leitlinie Kap. 3.2.1",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "98",
+  "kap": "3 Räumlichkeiten & Ausrüstung",
+  "anf": "Zu berücksichtigende Umgebungsfaktoren sind unter anderem Temperatur, Licht, Luftfeuchtigkeit und Sauberkeit der Räumlichkeiten.",
+  "quelle": "EU-GDP-Leitlinie Kap. 3.2.1",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "99",
+  "kap": "3 Räumlichkeiten & Ausrüstung",
+  "anf": "Vor der Nutzung sollte im Lagerbereich unter repräsentativen Bedingungen eine erste Temperaturverteilung durchgeführt werden.",
+  "quelle": "EU-GDP-Leitlinie Kap. 3.2.1",
+  "turnus": "alle 3 Jahre + nach wesentlicher Änderung"
+ },
+ {
+  "nr": "100",
+  "kap": "3 Räumlichkeiten & Ausrüstung",
+  "anf": "Die Temperaturüberwachungsgeräte sollten entsprechend den Ergebnissen der Kartierung so angeordnet werden, dass sie in den Bereichen positioniert sind, in denen die stärksten Schwankungen auftreten.",
+  "quelle": "EU-GDP-Leitlinie Kap. 3.2.1",
+  "turnus": "alle 3 Jahre + nach wesentlicher Änderung"
+ },
+ {
+  "nr": "101",
+  "kap": "3 Räumlichkeiten & Ausrüstung",
+  "anf": "Das Mapping sollte entsprechend den Ergebnissen einer Risikobewertung oder immer dann wiederholt werden, wenn wesentliche Änderungen an der Anlage oder den Temperaturregelungsgeräten vorgenommen werden.",
+  "quelle": "EU-GDP-Leitlinie Kap. 3.2.1",
+  "turnus": "alle 3 Jahre + nach wesentlicher Änderung"
+ },
+ {
+  "nr": "102",
+  "kap": "3 Räumlichkeiten & Ausrüstung",
+  "anf": "Bei kleinen Räumlichkeiten von wenigen Quadratmetern, die Raumtemperatur aufweisen, sollte eine Bewertung potenzieller Risiken (z. B. Heizgeräte) durchgeführt und Temperaturüberwachungsgeräte entsprechend platziert werden.",
+  "quelle": "EU-GDP-Leitlinie Kap. 3.2.1",
+  "turnus": "laufend (kont.); tägl. Sichtprüfung"
+ },
+ {
+  "nr": "103",
+  "kap": "3 Räumlichkeiten & Ausrüstung",
+  "anf": "Alle Geräte, die sich auf die Lagerung und den Vertrieb von Arzneimitteln auswirken, sollten so konstruiert, aufgestellt und gewartet werden, dass sie dem vorgesehenen Verwendungszweck entsprechen.",
+  "quelle": "EU-GDP-Leitlinie Kap. 3.3",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "104",
+  "kap": "3 Räumlichkeiten & Ausrüstung",
+  "anf": "Für wichtige Geräte, die für den Betriebsablauf unerlässlich sind, sollte eine planmäßige Wartung vorgesehen sein.",
+  "quelle": "EU-GDP-Leitlinie Kap. 3.3",
+  "turnus": "jährlich (nach Wartungsplan)"
+ },
+ {
+  "nr": "105",
+  "kap": "3 Räumlichkeiten & Ausrüstung",
+  "anf": "Geräte, die zur Regelung oder Überwachung der Umgebung dienen, in der die Arzneimittel gelagert werden, sollten in festgelegten Intervallen auf der Grundlage einer Risiko- und Zuverlässigkeitsbewertung kalibriert werden.",
+  "quelle": "EU-GDP-Leitlinie Kap. 3.3",
+  "turnus": "jährlich"
+ },
+ {
+  "nr": "106",
+  "kap": "3 Räumlichkeiten & Ausrüstung",
+  "anf": "Die Kalibrierung der Geräte sollte auf einen nationalen oder internationalen Messstandard rückführbar sein.",
+  "quelle": "EU-GDP-Leitlinie Kap. 3.3",
+  "turnus": "jährlich"
+ },
+ {
+  "nr": "107",
+  "kap": "3 Räumlichkeiten & Ausrüstung",
+  "anf": "Es sollten geeignete Alarmsysteme vorhanden sein, die bei Abweichungen von den vordefinierten Lagerbedingungen Alarm auslösen.",
+  "quelle": "EU-GDP-Leitlinie Kap. 3.3",
+  "turnus": "laufend; Alarmtest halbjährlich"
+ },
+ {
+  "nr": "108",
+  "kap": "3 Räumlichkeiten & Ausrüstung",
+  "anf": "Die Alarmstufen sollten angemessen eingestellt und die Alarme regelmäßig getestet werden, um eine einwandfreie Funktionsfähigkeit sicherzustellen.",
+  "quelle": "EU-GDP-Leitlinie Kap. 3.3",
+  "turnus": "laufend; Alarmtest halbjährlich"
+ },
+ {
+  "nr": "109",
+  "kap": "3 Räumlichkeiten & Ausrüstung",
+  "anf": "Reparatur-, Wartungs- und Kalibrierungsarbeiten an den Geräten sollten so durchgeführt werden, dass die Unversehrtheit der Arzneimittel nicht beeinträchtigt wird.",
+  "quelle": "EU-GDP-Leitlinie Kap. 3.3",
+  "turnus": "jährlich"
+ },
+ {
+  "nr": "110",
+  "kap": "3 Räumlichkeiten & Ausrüstung",
+  "anf": "Über Reparatur-, Wartungs- und Kalibrierungsarbeiten an wichtigen Geräten sollten angemessene Aufzeichnungen angefertigt und die Ergebnisse aufbewahrt werden.",
+  "quelle": "EU-GDP-Leitlinie Kap. 3.3; § 7 AM-HandelsV (Aufbewahrung 5 J.)",
+  "turnus": "jährlich"
+ },
+ {
+  "nr": "111",
+  "kap": "3 Räumlichkeiten & Ausrüstung",
+  "anf": "Zu den wichtigen Geräten zählen beispielsweise Kühlräume, überwachte Einbruchmelde- und Zugangskontrollsysteme, Kühlschränke, Thermo-Hygrometer oder andere Geräte zur Aufzeichnung von Temperatur und Luftfeuchtigkeit, Lüftungsgeräte sowie alle Geräte, die in Verbindung mit der weiteren Lieferkette verwendet werden.",
+  "quelle": "EU-GDP-Leitlinie Kap. 3.3",
+  "turnus": "laufend (kont.); tägl. Sichtprüfung"
+ },
+ {
+  "nr": "112",
+  "kap": "3 Räumlichkeiten & Ausrüstung",
+  "anf": "Bevor ein computergestütztes System in Betrieb genommen wird, sollte durch geeignete Validierungs- oder Verifizierungsstudien nachgewiesen werden, dass das System in der Lage ist, die gewünschten Ergebnisse genau, konsistent und reproduzierbar zu erzielen.",
+  "quelle": "EU-GDP-Leitlinie Kap. 3.3.1; Del. VO (EU) 2016/161 (FMD)",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "113",
+  "kap": "3 Räumlichkeiten & Ausrüstung",
+  "anf": "Eine schriftliche, detaillierte Beschreibung des Systems sollte vorliegen (gegebenenfalls einschließlich Diagrammen).",
+  "quelle": "EU-GDP-Leitlinie Kap. 3.3.1",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "114",
+  "kap": "3 Räumlichkeiten & Ausrüstung",
+  "anf": "Diese sollte auf dem neuesten Stand gehalten werden.",
+  "quelle": "EU-GDP-Leitlinie Kap. 3.3.1",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "115",
+  "kap": "3 Räumlichkeiten & Ausrüstung",
+  "anf": "Das Dokument sollte die Grundsätze, Ziele, Sicherheitsmaßnahmen, den Umfang und die Hauptmerkmale des Systems beschreiben sowie die Art und Weise, wie das computergestützte System genutzt wird und mit anderen Systemen interagiert.",
+  "quelle": "EU-GDP-Leitlinie Kap. 3.3.1; EU-Annex 11",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "116",
+  "kap": "3 Räumlichkeiten & Ausrüstung",
+  "anf": "Daten dürfen nur von dazu befugten Personen in das computergestützte System eingegeben oder geändert werden.",
+  "quelle": "EU-GDP-Leitlinie Kap. 3.3.1; EU-Annex 11",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "117",
+  "kap": "3 Räumlichkeiten & Ausrüstung",
+  "anf": "Daten sind durch physische oder elektronische Maßnahmen zu sichern und vor versehentlichen oder unbefugten Änderungen zu schützen.",
+  "quelle": "EU-GDP-Leitlinie Kap. 3.3.1; EU-Annex 11",
+  "turnus": "anlassbezogen (bei Änderung)"
+ },
+ {
+  "nr": "118",
+  "kap": "3 Räumlichkeiten & Ausrüstung",
+  "anf": "Die Zugänglichkeit gespeicherter Daten ist regelmäßig zu überprüfen.",
+  "quelle": "EU-GDP-Leitlinie Kap. 3.3.1",
+  "turnus": "jährlich (Review)"
+ },
+ {
+  "nr": "119",
+  "kap": "3 Räumlichkeiten & Ausrüstung",
+  "anf": "Daten sind durch regelmäßige Datensicherungen zu schützen.",
+  "quelle": "EU-GDP-Leitlinie Kap. 3.3.1",
+  "turnus": "Backup laufend; Restore-Test jährlich"
+ },
+ {
+  "nr": "120",
+  "kap": "3 Räumlichkeiten & Ausrüstung",
+  "anf": "Sicherungsdaten sind für den in den nationalen Rechtsvorschriften festgelegten Zeitraum, mindestens jedoch fünf Jahre lang, an einem separaten und sicheren Ort aufzubewahren.",
+  "quelle": "EU-GDP-Leitlinie Kap. 3.3.1; § 7 AM-HandelsV (Aufbewahrung 5 J.)",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "121",
+  "kap": "3 Räumlichkeiten & Ausrüstung",
+  "anf": "Es sollten Verfahren festgelegt werden, die bei einem Systemausfall oder einer Störung zu befolgen sind. Dies sollte Systeme zur Wiederherstellung von Daten umfassen.",
+  "quelle": "EU-GDP-Leitlinie Kap. 3.3.1",
+  "turnus": "Backup laufend; Restore-Test jährlich"
+ },
+ {
+  "nr": "122",
+  "kap": "3 Räumlichkeiten & Ausrüstung",
+  "anf": "Großhändler sollten ermitteln, welche Qualifizierung von Schlüsselgeräten und/oder welche Validierung von Schlüsselprozessen erforderlich ist, um eine korrekte Installation und einen korrekten Betrieb sicherzustellen.",
+  "quelle": "EU-GDP-Leitlinie Kap. 3.3.2; EU-Annex 11",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "123",
+  "kap": "3 Räumlichkeiten & Ausrüstung",
+  "anf": "Umfang und Ausmaß solcher Qualifizierungs- und/oder Validierungsmaßnahmen (wie z. B. Lager-, Kommissionier- und Verpackungsprozesse) sollten anhand eines dokumentierten Risikobewertungsansatzes festgelegt werden.",
+  "quelle": "EU-GDP-Leitlinie Kap. 3.3.2; EU-Annex 11",
+  "turnus": "je Vorgang (laufend)"
+ },
+ {
+  "nr": "124",
+  "kap": "3 Räumlichkeiten & Ausrüstung",
+  "anf": "Geräte und Prozesse sollten vor der Inbetriebnahme und nach wesentlichen Änderungen (z. B. Reparatur oder Wartung) entsprechend qualifiziert und/oder validiert werden.",
+  "quelle": "EU-GDP-Leitlinie Kap. 3.3.2; EU-Annex 11",
+  "turnus": "jährlich (nach Wartungsplan)"
+ },
+ {
+  "nr": "125",
+  "kap": "3 Räumlichkeiten & Ausrüstung",
+  "anf": "Es sollten Validierungs- und Qualifizierungsberichte erstellt werden, in denen die erzielten Ergebnisse zusammengefasst und festgestellte Abweichungen kommentiert werden.",
+  "quelle": "EU-GDP-Leitlinie Kap. 3.3.2; EU-Annex 11",
+  "turnus": "anlassbezogen"
+ },
+ {
+  "nr": "126",
+  "kap": "3 Räumlichkeiten & Ausrüstung",
+  "anf": "Abweichungen von festgelegten Verfahren sollten dokumentiert und weitere Maßnahmen beschlossen werden, um Abweichungen zu beheben und deren Wiederholung zu vermeiden (Korrektur- und Vorbeugungsmaßnahmen).",
+  "quelle": "EU-GDP-Leitlinie Kap. 3.3.2",
+  "turnus": "anlassbezogen"
+ },
+ {
+  "nr": "127",
+  "kap": "3 Räumlichkeiten & Ausrüstung",
+  "anf": "Die CAPA-Grundsätze sollten bei Bedarf angewendet werden.",
+  "quelle": "EU-GDP-Leitlinie Kap. 3.3.2",
+  "turnus": "anlassbezogen"
+ },
+ {
+  "nr": "128",
+  "kap": "3 Räumlichkeiten & Ausrüstung",
+  "anf": "Der Nachweis einer zufriedenstellenden Validierung und Abnahme eines Prozesses oder einer Anlage sollte erbracht und von den zuständigen Mitarbeitern genehmigt werden.",
+  "quelle": "EU-GDP-Leitlinie Kap. 3.3.2; EU-Annex 11",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "129",
+  "kap": "4 Dokumentation",
+  "anf": "Eine gute Dokumentation ist ein wesentlicher Bestandteil des Qualitätssicherungssystems.",
+  "quelle": "EU-GDP-Leitlinie Kap. 4.1",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "130",
+  "kap": "4 Dokumentation",
+  "anf": "Die schriftliche Dokumentation soll Fehler in der mündlichen Kommunikation verhindern und ermöglicht die Rückverfolgung relevanter Vorgänge während des Vertriebs von Arzneimitteln.",
+  "quelle": "EU-GDP-Leitlinie Kap. 4.1",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "131",
+  "kap": "4 Dokumentation",
+  "anf": "Die Dokumentation umfasst alle schriftlichen Verfahren, Anweisungen, Verträge, Aufzeichnungen und Daten, sei es in Papierform oder in elektronischer Form.",
+  "quelle": "EU-GDP-Leitlinie Kap. 4.2; EU-Annex 11",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "132",
+  "kap": "4 Dokumentation",
+  "anf": "Die Dokumentation sollte jederzeit verfügbar bzw. abrufbar sein.",
+  "quelle": "EU-GDP-Leitlinie Kap. 4.2",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "133",
+  "kap": "4 Dokumentation",
+  "anf": "Hinsichtlich der Verarbeitung personenbezogener Daten von Mitarbeitern, Beschwerdeführern oder anderen natürlichen Personen gilt die Richtlinie 95/46/EG zum Schutz natürlicher Personen bei der Verarbeitung personenbezogener Daten und zum freien Datenverkehr.",
+  "quelle": "EU-GDP-Leitlinie Kap. 4.2",
+  "turnus": "anlassbezogen"
+ },
+ {
+  "nr": "134",
+  "kap": "4 Dokumentation",
+  "anf": "Die Dokumentation sollte im Hinblick auf den Umfang der Tätigkeiten des Großhändlers ausreichend umfassend sein und in einer für das Personal verständlichen Sprache verfasst sein.",
+  "quelle": "EU-GDP-Leitlinie Kap. 4.2",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "135",
+  "kap": "4 Dokumentation",
+  "anf": "Sie sollte in klarer, eindeutiger Sprache verfasst und fehlerfrei sein.",
+  "quelle": "EU-GDP-Leitlinie Kap. 4.2",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "136",
+  "kap": "4 Dokumentation",
+  "anf": "Die Verfahren sollten von der verantwortlichen Person genehmigt, unterzeichnet und datiert werden.",
+  "quelle": "EU-GDP-Leitlinie Kap. 4.2; § 2 AM-HandelsV; § 52a AMG",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "137",
+  "kap": "4 Dokumentation",
+  "anf": "Die Dokumentation sollte, soweit erforderlich, von den entsprechend befugten Personen genehmigt, unterzeichnet und datiert werden.",
+  "quelle": "EU-GDP-Leitlinie Kap. 4.2",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "138",
+  "kap": "4 Dokumentation",
+  "anf": "Sie sollte nicht handschriftlich verfasst sein; falls dies jedoch erforderlich ist, sollte ausreichend Platz für solche Einträge vorgesehen werden.",
+  "quelle": "EU-GDP-Leitlinie Kap. 4.2",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "139",
+  "kap": "4 Dokumentation",
+  "anf": "Jede Änderung an der Dokumentation sollte unterzeichnet und datiert werden; die Änderung sollte das Lesen der ursprünglichen Informationen ermöglichen.",
+  "quelle": "EU-GDP-Leitlinie Kap. 4.2",
+  "turnus": "anlassbezogen (bei Änderung)"
+ },
+ {
+  "nr": "140",
+  "kap": "4 Dokumentation",
+  "anf": "Gegebenenfalls sollte der Grund für die Änderung vermerkt werden.",
+  "quelle": "EU-GDP-Leitlinie Kap. 4.2",
+  "turnus": "anlassbezogen (bei Änderung)"
+ },
+ {
+  "nr": "141",
+  "kap": "4 Dokumentation",
+  "anf": "Dokumente sollten für den in den nationalen Rechtsvorschriften festgelegten Zeitraum, mindestens jedoch für 5 Jahre, aufbewahrt werden.",
+  "quelle": "EU-GDP-Leitlinie Kap. 4.2; § 7 AM-HandelsV (Aufbewahrung 5 J.)",
+  "turnus": "dauerhaft (Frist 5 Jahre)"
+ },
+ {
+  "nr": "142",
+  "kap": "4 Dokumentation",
+  "anf": "Personenbezogene Daten sollten gelöscht oder anonymisiert werden, sobald ihre Speicherung für die Zwecke der Vertriebsaktivitäten nicht mehr erforderlich ist.",
+  "quelle": "EU-GDP-Leitlinie Kap. 4.2",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "143",
+  "kap": "4 Dokumentation",
+  "anf": "Jeder Mitarbeiter sollte jederzeit Zugang zu allen für die Ausführung seiner Aufgaben erforderlichen Unterlagen haben.",
+  "quelle": "EU-GDP-Leitlinie Kap. 4.2",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "144",
+  "kap": "4 Dokumentation",
+  "anf": "Es ist darauf zu achten, dass gültige und genehmigte Verfahren angewendet werden.",
+  "quelle": "EU-GDP-Leitlinie Kap. 4.2",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "145",
+  "kap": "4 Dokumentation",
+  "anf": "Dokumente sollten einen eindeutigen Inhalt haben; Titel, Art und Zweck sollten klar angegeben sein.",
+  "quelle": "EU-GDP-Leitlinie Kap. 4.2",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "146",
+  "kap": "4 Dokumentation",
+  "anf": "Dokumente sollten regelmäßig überprüft und auf dem neuesten Stand gehalten werden.",
+  "quelle": "EU-GDP-Leitlinie Kap. 4.2",
+  "turnus": "jährlich (Review)"
+ },
+ {
+  "nr": "147",
+  "kap": "4 Dokumentation",
+  "anf": "Für Verfahren sollte eine Versionskontrolle angewendet werden.",
+  "quelle": "EU-GDP-Leitlinie Kap. 4.2",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "148",
+  "kap": "4 Dokumentation",
+  "anf": "Nach der Überarbeitung eines Dokuments sollte ein System vorhanden sein, das die versehentliche Verwendung der ersetzten Version verhindert.",
+  "quelle": "EU-GDP-Leitlinie Kap. 4.2",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "149",
+  "kap": "4 Dokumentation",
+  "anf": "Ersetzte oder veraltete Verfahren sollten von den Arbeitsplätzen entfernt und archiviert werden.",
+  "quelle": "EU-GDP-Leitlinie Kap. 4.2",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "150",
+  "kap": "4 Dokumentation",
+  "anf": "Für jede Transaktion mit erhaltenen, gelieferten oder vermittelten Arzneimitteln müssen Aufzeichnungen entweder in Form von Kauf-/Verkaufsrechnungen, Lieferscheinen oder auf dem Computer oder in anderer Form geführt werden.",
+  "quelle": "EU-GDP-Leitlinie Kap. 4.2; EU-Annex 11",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "151",
+  "kap": "4 Dokumentation",
+  "anf": "Die Aufzeichnungen müssen mindestens folgende Angaben enthalten: Datum; Name des Arzneimittels; erhaltene, gelieferte oder vermittelte Menge; Name und Anschrift des Lieferanten, Kunden, Vermittlers oder Empfängers, je nach Fall; sowie Chargennummer, zumindest für Arzneimittel, die mit Sicherheitsmerkmalen versehen sind.",
+  "quelle": "EU-GDP-Leitlinie Kap. 4.2; Del. VO (EU) 2016/161 (FMD)",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "152",
+  "kap": "5 Betrieb",
+  "anf": "Alle Maßnahmen des Großhändlers müssen sicherstellen, dass die Identität des Arzneimittels nicht verloren geht und dass der Großhandel mit Arzneimitteln gemäß den Angaben auf der äußeren Verpackung erfolgt.",
+  "quelle": "EU-GDP-Leitlinie Kap. 5.1",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "153",
+  "kap": "5 Betrieb",
+  "anf": "Der Großhändler sollte alle verfügbaren Mittel einsetzen, um das Risiko zu minimieren, dass gefälschte Arzneimittel in die legale Lieferkette gelangen.",
+  "quelle": "EU-GDP-Leitlinie Kap. 5.1",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "154",
+  "kap": "5 Betrieb",
+  "anf": "Alle Arzneimittel, die von einem Großhändler in der EU vertrieben werden, müssen über eine von der EU oder einem Mitgliedstaat erteilte Zulassung verfügen.",
+  "quelle": "EU-GDP-Leitlinie Kap. 5.1",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "155",
+  "kap": "5 Betrieb",
+  "anf": "Jeder Händler, der nicht der Inhaber der Genehmigung für das Inverkehrbringen ist und ein Arzneimittel aus einem anderen Mitgliedstaat einführt, muss den Inhaber der Genehmigung für das Inverkehrbringen und die zuständige Behörde des Mitgliedstaats, in den das Arzneimittel eingeführt wird, über seine Absicht zur Einfuhr dieses Produkts unterrichten.",
+  "quelle": "EU-GDP-Leitlinie Kap. 5.1; § 73 Abs. 3 AMG",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "156",
+  "kap": "5 Betrieb",
+  "anf": "Alle nachstehend beschriebenen wesentlichen Vorgänge sollten im Qualitätssicherungssystem in geeigneter Dokumentation vollständig beschrieben werden.",
+  "quelle": "EU-GDP-Leitlinie Kap. 5.1",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "157",
+  "kap": "5 Betrieb",
+  "anf": "Großhändler dürfen ihre Lieferungen von Arzneimitteln nur von Personen beziehen, die selbst im Besitz einer Großhandelsgenehmigung sind oder die im Besitz einer Herstellungsgenehmigung sind, die das betreffende Produkt abdeckt.",
+  "quelle": "EU-GDP-Leitlinie Kap. 5.2",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "158",
+  "kap": "5 Betrieb",
+  "anf": "Großhändler, die Arzneimittel aus Drittländern zum Zwecke der Einfuhr, d. h. zum Zwecke des Inverkehrbringens dieser Produkte auf dem EU-Markt, beziehen, müssen über eine Herstellungsgenehmigung verfügen.",
+  "quelle": "EU-GDP-Leitlinie Kap. 5.2; § 73 Abs. 3 AMG",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "159",
+  "kap": "5 Betrieb",
+  "anf": "Werden Arzneimittel von einem anderen Großhändler bezogen, muss der empfangende Großhändler überprüfen, ob der Lieferant die Grundsätze und Leitlinien der guten Vertriebspraxis einhält und über eine Genehmigung verfügt, beispielsweise durch Abfrage der Unionsdatenbank.",
+  "quelle": "EU-GDP-Leitlinie Kap. 5.2",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "160",
+  "kap": "5 Betrieb",
+  "anf": "Wird das Arzneimittel über einen Vermittler bezogen, muss der Großhändler überprüfen, ob der Vermittler registriert ist und die Anforderungen in Kapitel 10 erfüllt.",
+  "quelle": "EU-GDP-Leitlinie Kap. 5.2; § 52c AMG",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "161",
+  "kap": "5 Betrieb",
+  "anf": "Vor jeder Beschaffung von Arzneimitteln sollte eine angemessene Qualifizierung und Zulassung der Lieferanten erfolgen.",
+  "quelle": "EU-GDP-Leitlinie Kap. 5.2",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "162",
+  "kap": "5 Betrieb",
+  "anf": "Dies sollte durch ein Verfahren kontrolliert und die Ergebnisse dokumentiert sowie regelmäßig überprüft werden.",
+  "quelle": "EU-GDP-Leitlinie Kap. 5.2",
+  "turnus": "jährlich (Review)"
+ },
+ {
+  "nr": "163",
+  "kap": "5 Betrieb",
+  "anf": "Bei Abschluss eines neuen Vertrags mit neuen Lieferanten sollte der Großhändler „Due-Diligence“-Prüfungen durchführen, um die Eignung, Kompetenz und Zuverlässigkeit der anderen Partei zu beurteilen.",
+  "quelle": "EU-GDP-Leitlinie Kap. 5.2",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "164",
+  "kap": "5 Betrieb",
+  "anf": "„Besondere Aufmerksamkeit sollte folgenden Punkten gewidmet werden: (i) dem Ruf oder der Zuverlässigkeit des Lieferanten;“",
+  "quelle": "EU-GDP-Leitlinie Kap. 5.2",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "165",
+  "kap": "5 Betrieb",
+  "anf": "(ii) Angeboten von Arzneimitteln, bei denen die Wahrscheinlichkeit einer Fälschung höher ist;",
+  "quelle": "EU-GDP-Leitlinie Kap. 5.2; Del. VO (EU) 2016/161 (FMD)",
+  "turnus": "anlassbezogen"
+ },
+ {
+  "nr": "166",
+  "kap": "5 Betrieb",
+  "anf": "(m) großen Angeboten von Arzneimitteln, die in der Regel nur in begrenzten Mengen verfügbar sind; und",
+  "quelle": "EU-GDP-Leitlinie Kap. 5.2",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "167",
+  "kap": "5 Betrieb",
+  "anf": "(iv) Preisen, die außerhalb der üblichen Preisspanne liegen.",
+  "quelle": "EU-GDP-Leitlinie Kap. 5.2",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "168",
+  "kap": "5 Betrieb",
+  "anf": "Großhändler müssen sicherstellen, dass sie Arzneimittel nur an Personen liefern, die selbst über eine Großhandelsgenehmigung verfügen oder die befugt oder berechtigt sind, Arzneimittel an die Öffentlichkeit abzugeben.",
+  "quelle": "EU-GDP-Leitlinie Kap. 5.3",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "169",
+  "kap": "5 Betrieb",
+  "anf": "Zu den Kontrollen und regelmäßigen Nachprüfungen können gehören: die Anforderung von Kopien der Genehmigungen des Kunden gemäß nationalem Recht, die Überprüfung des Status auf der Website einer Behörde sowie die Anforderung von Nachweisen über Qualifikationen oder Berechtigungen gemäß nationaler Gesetzgebung.",
+  "quelle": "EU-GDP-Leitlinie Kap. 5.3",
+  "turnus": "vor Erstbelieferung; Recheck jährlich"
+ },
+ {
+  "nr": "170",
+  "kap": "5 Betrieb",
+  "anf": "Großhändler sollten ihre Transaktionen überwachen und Unregelmäßigkeiten in den Verkaufsmustern von Betäubungsmitteln, psychotropen Stoffen oder anderen gefährlichen Substanzen untersuchen.",
+  "quelle": "EU-GDP-Leitlinie Kap. 5.3",
+  "turnus": "anlassbezogen"
+ },
+ {
+  "nr": "171",
+  "kap": "5 Betrieb",
+  "anf": "Ungewöhnliche Verkaufsmuster, die eine Abzweigung oder einen Missbrauch von Arzneimitteln darstellen könnten, sollten untersucht und gegebenenfalls den zuständigen Behörden gemeldet werden.",
+  "quelle": "EU-GDP-Leitlinie Kap. 5.3",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "172",
+  "kap": "5 Betrieb",
+  "anf": "Es sollten Maßnahmen ergriffen werden, um die Erfüllung der ihnen auferlegten gemeinwirtschaftlichen Verpflichtungen sicherzustellen.",
+  "quelle": "EU-GDP-Leitlinie Kap. 5.3",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "173",
+  "kap": "5 Betrieb",
+  "anf": "Der Zweck der Wareneingangsfunktion besteht darin, sicherzustellen, dass die eingehende Sendung korrekt ist, dass die Arzneimittel von zugelassenen Lieferanten stammen und dass sie während des Transports keine sichtbaren Schäden erlitten haben.",
+  "quelle": "EU-GDP-Leitlinie Kap. 5.4; § 6 AM-HandelsV",
+  "turnus": "je Vorgang (laufend)"
+ },
+ {
+  "nr": "174",
+  "kap": "5 Betrieb",
+  "anf": "Arzneimittel, die besondere Lagerungs- oder Sicherheitsmaßnahmen erfordern, sollten vorrangig behandelt werden und nach Durchführung der entsprechenden Kontrollen unverzüglich in geeignete Lagereinrichtungen überführt werden.",
+  "quelle": "EU-GDP-Leitlinie Kap. 5.4",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "175",
+  "kap": "5 Betrieb",
+  "anf": "Chargen von Arzneimitteln, die für die EU- und EWR-Länder bestimmt sind, dürfen erst dann in den verkaufsfähigen Bestand überführt werden, wenn gemäß den schriftlichen Verfahren sichergestellt wurde, dass sie zum Verkauf zugelassen sind.",
+  "quelle": "EU-GDP-Leitlinie Kap. 5.4",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "176",
+  "kap": "5 Betrieb",
+  "anf": "Bei Chargen, die aus einem anderen Mitgliedstaat stammen, sollte vor ihrer Überführung in den Verkaufsbestand der in Artikel 51 Absatz 1 der Richtlinie 2001/83/EG genannte Kontrollbericht oder ein anderer Nachweis der Freigabe für den betreffenden Markt auf der Grundlage eines gleichwertigen Systems von entsprechend geschultem Personal sorgfältig geprüft werden.",
+  "quelle": "EU-GDP-Leitlinie Kap. 5.4",
+  "turnus": "jährlich"
+ },
+ {
+  "nr": "177",
+  "kap": "5 Betrieb",
+  "anf": "Arzneimittel und gegebenenfalls Medizinprodukte sollten getrennt von anderen Produkten gelagert werden, die sie verändern könnten, und vor den schädlichen Auswirkungen von Licht, Temperatur, Feuchtigkeit und anderen äußeren Einflüssen geschützt werden.",
+  "quelle": "EU-GDP-Leitlinie Kap. 5.5",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "178",
+  "kap": "5 Betrieb",
+  "anf": "Besondere Aufmerksamkeit sollte Produkten gewidmet werden, die spezifische Lagerbedingungen erfordern.",
+  "quelle": "EU-GDP-Leitlinie Kap. 5.5",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "179",
+  "kap": "5 Betrieb",
+  "anf": "Ankommende Behälter mit Arzneimitteln sollten vor der Lagerung gegebenenfalls gereinigt werden.",
+  "quelle": "EU-GDP-Leitlinie Kap. 5.5",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "180",
+  "kap": "5 Betrieb",
+  "anf": "Die Lagerhaltung muss gewährleisten, dass angemessene Lagerbedingungen aufrechterhalten werden und eine angemessene Sicherheit der Bestände gewährleistet ist.",
+  "quelle": "EU-GDP-Leitlinie Kap. 5.5",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "181",
+  "kap": "5 Betrieb",
+  "anf": "Die Bestände sollten nach dem FEFO-Prinzip (First Expired, First Out) rotiert werden. Ausnahmen sollten dokumentiert werden.",
+  "quelle": "EU-GDP-Leitlinie Kap. 5.5",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "182",
+  "kap": "5 Betrieb",
+  "anf": "Arzneimittel sollten so gehandhabt und gelagert werden, dass Verschütten, Bruch, Verunreinigungen und Verwechslungen verhindert werden.",
+  "quelle": "EU-GDP-Leitlinie Kap. 5.5",
+  "turnus": "nach Reinigungsplan"
+ },
+ {
+  "nr": "183",
+  "kap": "5 Betrieb",
+  "anf": "Arzneimittel sollten nicht direkt auf dem Boden gelagert werden, es sei denn, die Verpackung ist für eine solche Lagerung ausgelegt (wie beispielsweise bei einigen medizinischen Gasflaschen).",
+  "quelle": "EU-GDP-Leitlinie Kap. 5.5",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "184",
+  "kap": "5 Betrieb",
+  "anf": "Arzneimittel, deren Verfallsdatum bzw. Haltbarkeitsdauer bald abläuft, sollten unverzüglich aus dem verkaufsfähigen Bestand entfernt werden, entweder physisch oder durch eine gleichwertige elektronische Trennung.",
+  "quelle": "EU-GDP-Leitlinie Kap. 5.5; EU-Annex 11",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "185",
+  "kap": "5 Betrieb",
+  "anf": "Bestandsaufnahmen sollten regelmäßig unter Berücksichtigung der nationalen gesetzlichen Anforderungen durchgeführt werden.",
+  "quelle": "EU-GDP-Leitlinie Kap. 5.5",
+  "turnus": "jährlich"
+ },
+ {
+  "nr": "186",
+  "kap": "5 Betrieb",
+  "anf": "Unregelmäßigkeiten im Bestand sollten untersucht und dokumentiert werden.",
+  "quelle": "EU-GDP-Leitlinie Kap. 5.5",
+  "turnus": "anlassbezogen"
+ },
+ {
+  "nr": "187",
+  "kap": "5 Betrieb",
+  "anf": "Arzneimittel, die zur Vernichtung bestimmt sind, sollten entsprechend gekennzeichnet, getrennt gelagert und gemäß einem schriftlichen Verfahren behandelt werden.",
+  "quelle": "EU-GDP-Leitlinie Kap. 5.6",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "188",
+  "kap": "5 Betrieb",
+  "anf": "Die Vernichtung von Arzneimitteln sollte in Übereinstimmung mit den nationalen oder internationalen Anforderungen für die Handhabung, den Transport und die Entsorgung solcher Produkte erfolgen.",
+  "quelle": "EU-GDP-Leitlinie Kap. 5.6; § 6 AM-HandelsV",
+  "turnus": "je Versand (laufend)"
+ },
+ {
+  "nr": "189",
+  "kap": "5 Betrieb",
+  "anf": "Aufzeichnungen über alle vernichteten Arzneimittel sollten für einen festgelegten Zeitraum aufbewahrt werden.",
+  "quelle": "EU-GDP-Leitlinie Kap. 5.6; § 7 AM-HandelsV (Aufbewahrung 5 J.)",
+  "turnus": "dauerhaft (Frist 5 Jahre)"
+ },
+ {
+  "nr": "190",
+  "kap": "5 Betrieb",
+  "anf": "Es sollten Kontrollen vorhanden sein, um sicherzustellen, dass das richtige Produkt kommissioniert wird.",
+  "quelle": "EU-GDP-Leitlinie Kap. 5.7",
+  "turnus": "je Vorgang (laufend)"
+ },
+ {
+  "nr": "191",
+  "kap": "5 Betrieb",
+  "anf": "Das Produkt sollte zum Zeitpunkt der Kommissionierung eine angemessene Resthaltbarkeit aufweisen.",
+  "quelle": "EU-GDP-Leitlinie Kap. 5.7",
+  "turnus": "je Vorgang (laufend)"
+ },
+ {
+  "nr": "192",
+  "kap": "5 Betrieb",
+  "anf": "„Allen Lieferungen muss ein Dokument (z. B. ein Lieferschein) beiliegen, aus dem Folgendes hervorgeht: das Datum;“",
+  "quelle": "EU-GDP-Leitlinie Kap. 5.8",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "193",
+  "kap": "5 Betrieb",
+  "anf": "„Name und Darreichungsform des Arzneimittels;",
+  "quelle": "EU-GDP-Leitlinie Kap. 5.8",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "194",
+  "kap": "5 Betrieb",
+  "anf": "Chargennummer, zumindest für Produkte, die mit Sicherheitsmerkmalen versehen sind;",
+  "quelle": "EU-GDP-Leitlinie Kap. 5.8; Del. VO (EU) 2016/161 (FMD)",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "195",
+  "kap": "5 Betrieb",
+  "anf": "gelieferte Menge;",
+  "quelle": "EU-GDP-Leitlinie Kap. 5.8",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "196",
+  "kap": "5 Betrieb",
+  "anf": "Name und Anschrift des Lieferanten,",
+  "quelle": "EU-GDP-Leitlinie Kap. 5.8",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "197",
+  "kap": "5 Betrieb",
+  "anf": "Name und Lieferadresse des Empfängers (tatsächlicher physischer Lagerort, falls abweichend)",
+  "quelle": "EU-GDP-Leitlinie Kap. 5.8",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "198",
+  "kap": "5 Betrieb",
+  "anf": "sowie die geltenden Transport- und Lagerbedingungen.",
+  "quelle": "EU-GDP-Leitlinie Kap. 5.8; § 6 AM-HandelsV",
+  "turnus": "je Versand (laufend)"
+ },
+ {
+  "nr": "199",
+  "kap": "5 Betrieb",
+  "anf": "Es sind Aufzeichnungen zu führen, damit der tatsächliche Standort des Produkts ermittelt werden kann.",
+  "quelle": "EU-GDP-Leitlinie Kap. 5.8",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "200",
+  "kap": "5 Betrieb",
+  "anf": "Der Export von Arzneimitteln fällt unter die Definition des „Großhandels“ (Z). Eine Person, die Arzneimittel exportiert, muss über eine Großhandelsgenehmigung oder eine Herstellungsgenehmigung verfügen.",
+  "quelle": "EU-GDP-Leitlinie Kap. 5.9",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "201",
+  "kap": "5 Betrieb",
+  "anf": "Dies gilt auch, wenn der exportierende Großhändler von einer Freihandelszone aus tätig ist.",
+  "quelle": "EU-GDP-Leitlinie Kap. 5.9",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "202",
+  "kap": "5 Betrieb",
+  "anf": "Die Vorschriften für den Großhandel gelten im Falle des Exports von Arzneimitteln in vollem Umfang.",
+  "quelle": "EU-GDP-Leitlinie Kap. 5.9",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "203",
+  "kap": "5 Betrieb",
+  "anf": "Werden Arzneimittel exportiert, müssen sie jedoch nicht über eine Zulassung der Union oder eines Mitgliedstaats verfügen.",
+  "quelle": "EU-GDP-Leitlinie Kap. 5.9",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "204",
+  "kap": "5 Betrieb",
+  "anf": "Großhändler sollten geeignete Maßnahmen ergreifen, um zu verhindern, dass diese Arzneimittel auf den Markt der Union gelangen.",
+  "quelle": "EU-GDP-Leitlinie Kap. 5.9",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "205",
+  "kap": "5 Betrieb",
+  "anf": "Wenn Großhändler Arzneimittel an Personen in Drittländern liefern, müssen sie sicherstellen, dass diese Lieferungen nur an Personen erfolgen, die gemäß den geltenden Rechts- und Verwaltungsvorschriften des betreffenden Landes befugt oder berechtigt sind, Arzneimittel für den Großhandel oder die Abgabe an die Öffentlichkeit zu erhalten.",
+  "quelle": "EU-GDP-Leitlinie Kap. 5.9",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "206",
+  "kap": "6 Beanstandungen, Retouren, Fälschungen, Rückrufe",
+  "anf": "Alle Beschwerden, Rücksendungen, Verdachtsfälle von Arzneimittelfälschungen und Rückrufe müssen gemäß schriftlichen Verfahren sorgfältig erfasst und bearbeitet werden.",
+  "quelle": "EU-GDP-Leitlinie Kap. 6.1; § 7a AM-HandelsV",
+  "turnus": "anlassbezogen"
+ },
+ {
+  "nr": "207",
+  "kap": "6 Beanstandungen, Retouren, Fälschungen, Rückrufe",
+  "anf": "Die Aufzeichnungen sollten den zuständigen Behörden zur Verfügung gestellt werden. Vor einer Genehmigung zum Weiterverkauf sollte eine Bewertung der zurückgesandten Arzneimittel erfolgen.",
+  "quelle": "EU-GDP-Leitlinie Kap. 6.1; § 7b AM-HandelsV",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "208",
+  "kap": "6 Beanstandungen, Retouren, Fälschungen, Rückrufe",
+  "anf": "Um im Kampf gegen Arzneimittelfälschungen erfolgreich zu sein, ist ein einheitliches Vorgehen aller Partner in der Lieferkette erforderlich.",
+  "quelle": "EU-GDP-Leitlinie Kap. 6.1; Del. VO (EU) 2016/161 (FMD)",
+  "turnus": "anlassbezogen"
+ },
+ {
+  "nr": "209",
+  "kap": "6 Beanstandungen, Retouren, Fälschungen, Rückrufe",
+  "anf": "Beschwerden sollten mit allen ursprünglichen Details erfasst werden.",
+  "quelle": "EU-GDP-Leitlinie Kap. 6.2",
+  "turnus": "anlassbezogen"
+ },
+ {
+  "nr": "210",
+  "kap": "6 Beanstandungen, Retouren, Fälschungen, Rückrufe",
+  "anf": "Es sollte zwischen Beschwerden bezüglich der Qualität eines Arzneimittels und solchen bezüglich des Vertriebs unterschieden werden.",
+  "quelle": "EU-GDP-Leitlinie Kap. 6.2",
+  "turnus": "anlassbezogen"
+ },
+ {
+  "nr": "211",
+  "kap": "6 Beanstandungen, Retouren, Fälschungen, Rückrufe",
+  "anf": "Im Falle einer Beschwerde über die Qualität eines Arzneimittels und einen möglichen Produktfehler sollten der Hersteller und/oder der Inhaber der Zulassung unverzüglich informiert werden.",
+  "quelle": "EU-GDP-Leitlinie Kap. 6.2",
+  "turnus": "anlassbezogen"
+ },
+ {
+  "nr": "212",
+  "kap": "6 Beanstandungen, Retouren, Fälschungen, Rückrufe",
+  "anf": "Jede Beschwerde bezüglich des Produktvertriebs sollte gründlich untersucht werden, um den Ursprung oder den Grund der Beschwerde zu ermitteln.",
+  "quelle": "EU-GDP-Leitlinie Kap. 6.2",
+  "turnus": "anlassbezogen"
+ },
+ {
+  "nr": "213",
+  "kap": "6 Beanstandungen, Retouren, Fälschungen, Rückrufe",
+  "anf": "Es sollte eine Person für die Bearbeitung von Beschwerden benannt und mit ausreichend Unterstützungspersonal ausgestattet werden.",
+  "quelle": "EU-GDP-Leitlinie Kap. 6.2",
+  "turnus": "anlassbezogen"
+ },
+ {
+  "nr": "214",
+  "kap": "6 Beanstandungen, Retouren, Fälschungen, Rückrufe",
+  "anf": "Falls erforderlich, sollten nach der Untersuchung und Bewertung der Beschwerde geeignete Folgemaßnahmen (einschließlich CAPA) ergriffen werden, gegebenenfalls einschließlich der Meldung an die zuständigen nationalen Behörden.",
+  "quelle": "EU-GDP-Leitlinie Kap. 6.2",
+  "turnus": "anlassbezogen"
+ },
+ {
+  "nr": "215",
+  "kap": "6 Beanstandungen, Retouren, Fälschungen, Rückrufe",
+  "anf": "Zurückgesandte Produkte müssen gemäß einem schriftlichen, risikobasierten Verfahren behandelt werden, das das betreffende Produkt, etwaige spezifische Lagerungsanforderungen und die seit dem ursprünglichen Versand des Arzneimittels verstrichene Zeit berücksichtigt.",
+  "quelle": "EU-GDP-Leitlinie Kap. 6.3; § 7b AM-HandelsV",
+  "turnus": "je Versand (laufend)"
+ },
+ {
+  "nr": "216",
+  "kap": "6 Beanstandungen, Retouren, Fälschungen, Rückrufe",
+  "anf": "Rückgaben sollten im Einklang mit den nationalen Rechtsvorschriften und den vertraglichen Vereinbarungen zwischen den Parteien erfolgen.",
+  "quelle": "EU-GDP-Leitlinie Kap. 6.3",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "217",
+  "kap": "6 Beanstandungen, Retouren, Fälschungen, Rückrufe",
+  "anf": "„Arzneimittel, die die Räumlichkeiten des Großhändlers verlassen haben, sollten nur dann wieder in den verkaufsfähigen Bestand aufgenommen werden, wenn alle folgenden Punkte bestätigt sind: (i) Die Arzneimittel befinden sich in ihrer ungeöffneten und unbeschädigten Umverpackung und sind in gutem Zustand; sie sind nicht abgelaufen und wurden nicht zurückgerufen.“",
+  "quelle": "EU-GDP-Leitlinie Kap. 6.3",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "218",
+  "kap": "6 Beanstandungen, Retouren, Fälschungen, Rückrufe",
+  "anf": "(ii) Arzneimittel, die von einem Kunden ohne Großhandelsgenehmigung oder von Apotheken, die zur Abgabe von Arzneimitteln an die Öffentlichkeit berechtigt sind, zurückgegeben werden, sollten nur dann in den verkaufsfähigen Bestand zurückgeführt werden, wenn sie innerhalb einer akzeptablen Frist, beispielsweise 10 Tagen, zurückgegeben werden.",
+  "quelle": "EU-GDP-Leitlinie Kap. 6.3; § 7b AM-HandelsV",
+  "turnus": "vor Erstbelieferung; Recheck jährlich"
+ },
+ {
+  "nr": "219",
+  "kap": "6 Beanstandungen, Retouren, Fälschungen, Rückrufe",
+  "anf": "(m) der Kunde hat nachgewiesen, dass die Arzneimittel unter Einhaltung ihrer spezifischen Lagerungsanforderungen transportiert, gelagert und gehandhabt wurden;",
+  "quelle": "EU-GDP-Leitlinie Kap. 6.3; § 6 AM-HandelsV",
+  "turnus": "je Versand (laufend)"
+ },
+ {
+  "nr": "220",
+  "kap": "6 Beanstandungen, Retouren, Fälschungen, Rückrufe",
+  "anf": "(iv) sie wurden von einer ausreichend geschulten und kompetenten, dazu befugten Person geprüft und bewertet;",
+  "quelle": "EU-GDP-Leitlinie Kap. 6.3",
+  "turnus": "jährlich"
+ },
+ {
+  "nr": "221",
+  "kap": "6 Beanstandungen, Retouren, Fälschungen, Rückrufe",
+  "anf": "(v) der Händler verfügt über hinreichende Nachweise dafür, dass das Produkt an diesen Kunden geliefert wurde (durch Kopien des Original-Lieferscheins oder durch Angabe von Rechnungsnummern usw.) und die Chargennummer für Produkte mit Sicherheitsmerkmalen bekannt ist, und es besteht kein Grund zu der Annahme, dass das Produkt gefälscht wurde.",
+  "quelle": "EU-GDP-Leitlinie Kap. 6.3; Del. VO (EU) 2016/161 (FMD)",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "222",
+  "kap": "6 Beanstandungen, Retouren, Fälschungen, Rückrufe",
+  "anf": "Darüber hinaus dürfen Arzneimittel, die bestimmte Lagerbedingungen wie beispielsweise niedrige Temperaturen erfordern, nur dann wieder in den verkaufsfähigen Bestand aufgenommen werden, wenn dokumentiert ist, dass das Produkt während der gesamten Zeit unter den zugelassenen Lagerbedingungen gelagert wurde.",
+  "quelle": "EU-GDP-Leitlinie Kap. 6.3",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "223",
+  "kap": "6 Beanstandungen, Retouren, Fälschungen, Rückrufe",
+  "anf": "Sollte es zu Abweichungen gekommen sein, muss eine Risikobewertung durchgeführt werden, auf deren Grundlage die Unversehrtheit des Produkts nachgewiesen werden kann.",
+  "quelle": "EU-GDP-Leitlinie Kap. 6.3",
+  "turnus": "anlassbezogen"
+ },
+ {
+  "nr": "224",
+  "kap": "6 Beanstandungen, Retouren, Fälschungen, Rückrufe",
+  "anf": "„Der Nachweis sollte Folgendes umfassen: (i) die Lieferung an den Kunden;“",
+  "quelle": "EU-GDP-Leitlinie Kap. 6.3",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "225",
+  "kap": "6 Beanstandungen, Retouren, Fälschungen, Rückrufe",
+  "anf": "(ii) die Prüfung des Produkts;",
+  "quelle": "EU-GDP-Leitlinie Kap. 6.3",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "226",
+  "kap": "6 Beanstandungen, Retouren, Fälschungen, Rückrufe",
+  "anf": "(m) das Öffnen der Transportverpackung;",
+  "quelle": "EU-GDP-Leitlinie Kap. 6.3; § 6 AM-HandelsV",
+  "turnus": "je Versand (laufend)"
+ },
+ {
+  "nr": "227",
+  "kap": "6 Beanstandungen, Retouren, Fälschungen, Rückrufe",
+  "anf": "(iv) das Zurücklegen des Produkts in die Verpackung;",
+  "quelle": "EU-GDP-Leitlinie Kap. 6.3",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "228",
+  "kap": "6 Beanstandungen, Retouren, Fälschungen, Rückrufe",
+  "anf": "(v) die Abholung und Rückgabe an den Händler;",
+  "quelle": "EU-GDP-Leitlinie Kap. 6.3",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "229",
+  "kap": "6 Beanstandungen, Retouren, Fälschungen, Rückrufe",
+  "anf": "(vi) die Rückführung in den Kühlraum des Vertriebsstandorts.",
+  "quelle": "EU-GDP-Leitlinie Kap. 6.3",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "230",
+  "kap": "6 Beanstandungen, Retouren, Fälschungen, Rückrufe",
+  "anf": "Produkte, die in den verkaufsfähigen Bestand zurückgeführt werden, sollten so gelagert werden, dass das „First Expired First Out“-System (FEFO) effektiv funktioniert.",
+  "quelle": "EU-GDP-Leitlinie Kap. 6.3",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "231",
+  "kap": "6 Beanstandungen, Retouren, Fälschungen, Rückrufe",
+  "anf": "Gestohlene Produkte, die wiedergefunden wurden, dürfen nicht in den verkaufsfähigen Bestand zurückgeführt und an Kunden verkauft werden.",
+  "quelle": "EU-GDP-Leitlinie Kap. 6.3",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "232",
+  "kap": "6 Beanstandungen, Retouren, Fälschungen, Rückrufe",
+  "anf": "Großhändler müssen die zuständige Behörde und den Inhaber der Genehmigung für das Inverkehrbringen unverzüglich über alle Arzneimittel informieren, die sie als gefälscht identifizieren oder bei denen sie den Verdacht auf Fälschung haben.",
+  "quelle": "EU-GDP-Leitlinie Kap. 6.4; Del. VO (EU) 2016/161 (FMD)",
+  "turnus": "anlassbezogen"
+ },
+ {
+  "nr": "233",
+  "kap": "6 Beanstandungen, Retouren, Fälschungen, Rückrufe",
+  "anf": "Zu diesem Zweck sollte ein Verfahren vorhanden sein.",
+  "quelle": "EU-GDP-Leitlinie Kap. 6.4",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "234",
+  "kap": "6 Beanstandungen, Retouren, Fälschungen, Rückrufe",
+  "anf": "Es sollte unter Angabe aller ursprünglichen Details protokolliert und untersucht werden.",
+  "quelle": "EU-GDP-Leitlinie Kap. 6.4",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "235",
+  "kap": "6 Beanstandungen, Retouren, Fälschungen, Rückrufe",
+  "anf": "Alle in der Lieferkette aufgefundenen gefälschten Arzneimittel sollten unverzüglich physisch abgetrennt und in einem dafür vorgesehenen Bereich, getrennt von allen anderen Arzneimitteln, gelagert werden.",
+  "quelle": "EU-GDP-Leitlinie Kap. 6.4",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "236",
+  "kap": "6 Beanstandungen, Retouren, Fälschungen, Rückrufe",
+  "anf": "Alle relevanten Tätigkeiten im Zusammenhang mit solchen Produkten sollten dokumentiert und die Aufzeichnungen aufbewahrt werden.",
+  "quelle": "EU-GDP-Leitlinie Kap. 6.4; § 7 AM-HandelsV (Aufbewahrung 5 J.)",
+  "turnus": "dauerhaft (Frist 5 Jahre)"
+ },
+ {
+  "nr": "237",
+  "kap": "6 Beanstandungen, Retouren, Fälschungen, Rückrufe",
+  "anf": "Die Wirksamkeit der Vorkehrungen für Produktrückrufe sollte regelmäßig (mindestens einmal jährlich) bewertet werden.",
+  "quelle": "EU-GDP-Leitlinie Kap. 6.5; § 7a AM-HandelsV",
+  "turnus": "anlassbezogen"
+ },
+ {
+  "nr": "238",
+  "kap": "6 Beanstandungen, Retouren, Fälschungen, Rückrufe",
+  "anf": "Rückrufmaßnahmen sollten unverzüglich und jederzeit eingeleitet werden können.",
+  "quelle": "EU-GDP-Leitlinie Kap. 6.5; § 7a AM-HandelsV",
+  "turnus": "anlassbezogen"
+ },
+ {
+  "nr": "239",
+  "kap": "6 Beanstandungen, Retouren, Fälschungen, Rückrufe",
+  "anf": "Der Händler muss die Anweisungen einer Rückrufmitteilung befolgen, die gegebenenfalls von den zuständigen Behörden genehmigt werden sollte.",
+  "quelle": "EU-GDP-Leitlinie Kap. 6.5; § 7a AM-HandelsV",
+  "turnus": "anlassbezogen"
+ },
+ {
+  "nr": "240",
+  "kap": "6 Beanstandungen, Retouren, Fälschungen, Rückrufe",
+  "anf": "Jede Rückrufmaßnahme sollte zum Zeitpunkt ihrer Durchführung aufgezeichnet werden.",
+  "quelle": "EU-GDP-Leitlinie Kap. 6.5; § 7a AM-HandelsV",
+  "turnus": "anlassbezogen"
+ },
+ {
+  "nr": "241",
+  "kap": "6 Beanstandungen, Retouren, Fälschungen, Rückrufe",
+  "anf": "Die Aufzeichnungen sollten den zuständigen Behörden unverzüglich zur Verfügung gestellt werden.",
+  "quelle": "EU-GDP-Leitlinie Kap. 6.5",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "242",
+  "kap": "6 Beanstandungen, Retouren, Fälschungen, Rückrufe",
+  "anf": "Die Vertriebsaufzeichnungen sollten für die für den Rückruf verantwortliche(n) Person(en) leicht zugänglich sein und ausreichende Informationen über Händler und direkt belieferte Kunden enthalten (mit Adressen, Telefon- und/oder Faxnummern innerhalb und außerhalb der Geschäftszeiten, Chargennummern zumindest für Arzneimittel, die gemäß den gesetzlichen Bestimmungen mit Sicherheitsmerkmalen versehen sind, sowie gelieferte Mengen), einschließlich derjenigen für exportierte Produkte und Arzneimittelproben.",
+  "quelle": "EU-GDP-Leitlinie Kap. 6.5; § 7a AM-HandelsV",
+  "turnus": "anlassbezogen"
+ },
+ {
+  "nr": "243",
+  "kap": "6 Beanstandungen, Retouren, Fälschungen, Rückrufe",
+  "anf": "Der Verlauf des Rückrufprozesses sollte für einen Abschlussbericht aufgezeichnet werden.",
+  "quelle": "EU-GDP-Leitlinie Kap. 6.5; § 7a AM-HandelsV",
+  "turnus": "anlassbezogen"
+ },
+ {
+  "nr": "244",
+  "kap": "7 Ausgelagerte Tätigkeiten",
+  "anf": "Jede im GDP-Leitfaden behandelte Tätigkeit, die ausgelagert wird, sollte genau definiert, vereinbart und kontrolliert werden, um Missverständnisse zu vermeiden, die die Unversehrtheit des Produkts beeinträchtigen könnten.",
+  "quelle": "EU-GDP-Leitlinie Kap. 7.1",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "245",
+  "kap": "7 Ausgelagerte Tätigkeiten",
+  "anf": "Zwischen dem Auftraggeber und dem Auftragnehmer muss ein schriftlicher Vertrag bestehen, in dem die Pflichten jeder Partei klar festgelegt sind.",
+  "quelle": "EU-GDP-Leitlinie Kap. 7.1",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "246",
+  "kap": "7 Ausgelagerte Tätigkeiten",
+  "anf": "Der Auftraggeber ist für die ausgelagerten Tätigkeiten verantwortlich.",
+  "quelle": "EU-GDP-Leitlinie Kap. 7.2",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "247",
+  "kap": "7 Ausgelagerte Tätigkeiten",
+  "anf": "Der Auftraggeber ist dafür verantwortlich, die Kompetenz des Auftragnehmers zur erfolgreichen Ausführung der erforderlichen Arbeiten zu beurteilen und durch den Vertrag sowie durch Audits sicherzustellen, dass die Grundsätze und Leitlinien der GDP eingehalten werden.",
+  "quelle": "EU-GDP-Leitlinie Kap. 7.2",
+  "turnus": "jährlich / risikobasiert"
+ },
+ {
+  "nr": "248",
+  "kap": "7 Ausgelagerte Tätigkeiten",
+  "anf": "Ein Audit des Auftragnehmers sollte vor Beginn der ausgelagerten Tätigkeiten sowie bei jeder Änderung dieser Tätigkeiten durchgeführt werden.",
+  "quelle": "EU-GDP-Leitlinie Kap. 7.2",
+  "turnus": "jährlich / risikobasiert"
+ },
+ {
+  "nr": "249",
+  "kap": "7 Ausgelagerte Tätigkeiten",
+  "anf": "Die Häufigkeit der Audits sollte risikobasiert und in Abhängigkeit von der Art der ausgelagerten Tätigkeiten festgelegt werden.",
+  "quelle": "EU-GDP-Leitlinie Kap. 7.2",
+  "turnus": "jährlich / risikobasiert"
+ },
+ {
+  "nr": "250",
+  "kap": "7 Ausgelagerte Tätigkeiten",
+  "anf": "Audits sollten jederzeit zulässig sein.",
+  "quelle": "EU-GDP-Leitlinie Kap. 7.2",
+  "turnus": "jährlich / risikobasiert"
+ },
+ {
+  "nr": "251",
+  "kap": "7 Ausgelagerte Tätigkeiten",
+  "anf": "Der Auftraggeber sollte dem Auftragnehmer alle Informationen zur Verfügung stellen, die zur Durchführung der vertraglich vereinbarten Tätigkeiten gemäß den spezifischen Produktanforderungen und allen anderen relevanten Anforderungen erforderlich sind.",
+  "quelle": "EU-GDP-Leitlinie Kap. 7.2",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "252",
+  "kap": "7 Ausgelagerte Tätigkeiten",
+  "anf": "Der Auftragnehmer muss über geeignete Räumlichkeiten und Ausrüstung, Verfahren, Kenntnisse und Erfahrungen sowie über kompetentes Personal verfügen, um die vom Auftraggeber in Auftrag gegebenen Arbeiten auszuführen.",
+  "quelle": "EU-GDP-Leitlinie Kap. 7.3",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "253",
+  "kap": "7 Ausgelagerte Tätigkeiten",
+  "anf": "Der Auftragnehmer darf keine der ihm im Rahmen des Vertrags anvertrauten Arbeiten an Dritte weitergeben, ohne dass der Auftraggeber zuvor die Vereinbarungen geprüft und genehmigt hat und ohne dass der Auftraggeber oder der Auftragnehmer eine Überprüfung des Dritten vorgenommen hat.",
+  "quelle": "EU-GDP-Leitlinie Kap. 7.3",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "254",
+  "kap": "7 Ausgelagerte Tätigkeiten",
+  "anf": "Vereinbarungen zwischen dem Auftragnehmer und Dritten müssen sicherstellen, dass die Informationen zum Großhandel in derselben Weise zur Verfügung gestellt werden wie zwischen dem ursprünglichen Auftraggeber und dem Auftragnehmer.",
+  "quelle": "EU-GDP-Leitlinie Kap. 7.3",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "255",
+  "kap": "7 Ausgelagerte Tätigkeiten",
+  "anf": "Der Vertragspartner hat jegliche Tätigkeit zu unterlassen, die die Qualität der für den Auftraggeber gehandelten Produkte beeinträchtigen könnte.",
+  "quelle": "EU-GDP-Leitlinie Kap. 7.3",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "256",
+  "kap": "7 Ausgelagerte Tätigkeiten",
+  "anf": "Der Vertragspartner hat alle Informationen, die die Qualität der Produkte beeinflussen können, gemäß den Vertragsbestimmungen an den Auftraggeber weiterzuleiten.",
+  "quelle": "EU-GDP-Leitlinie Kap. 7.3",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "257",
+  "kap": "8 Selbstinspektionen",
+  "anf": "Es sollten Selbstinspektionen durchgeführt werden, um die Umsetzung und Einhaltung der GDP-Grundsätze zu überwachen und erforderliche Korrekturmaßnahmen vorzuschlagen.",
+  "quelle": "EU-GDP-Leitlinie Kap. 8.1; § 7c AM-HandelsV",
+  "turnus": "jährlich"
+ },
+ {
+  "nr": "258",
+  "kap": "8 Selbstinspektionen",
+  "anf": "Es sollte ein Selbstinspektionsprogramm eingeführt werden, das alle Aspekte der GMP sowie die Einhaltung der Vorschriften, Leitlinien und Verfahren innerhalb eines festgelegten Zeitrahmens abdeckt. Selbstinspektionen können in mehrere einzelne Selbstinspektionen mit begrenztem Umfang unterteilt werden.",
+  "quelle": "EU-GDP-Leitlinie Kap. 8.2; § 7c AM-HandelsV",
+  "turnus": "jährlich"
+ },
+ {
+  "nr": "259",
+  "kap": "8 Selbstinspektionen",
+  "anf": "Selbstinspektionen sollten von benanntem, kompetentem Personal des Unternehmens unparteiisch und detailliert durchgeführt werden.",
+  "quelle": "EU-GDP-Leitlinie Kap. 8.2; § 7c AM-HandelsV",
+  "turnus": "jährlich"
+ },
+ {
+  "nr": "260",
+  "kap": "8 Selbstinspektionen",
+  "anf": "Audits durch unabhängige externe Experten können ebenfalls nützlich sein, dürfen jedoch nicht als Ersatz für Selbstinspektionen dienen.",
+  "quelle": "EU-GDP-Leitlinie Kap. 8.2; § 7c AM-HandelsV",
+  "turnus": "jährlich"
+ },
+ {
+  "nr": "261",
+  "kap": "8 Selbstinspektionen",
+  "anf": "Alle Selbstinspektionen sollten dokumentiert werden. Die Berichte sollten alle während der Inspektion gemachten Feststellungen enthalten.",
+  "quelle": "EU-GDP-Leitlinie Kap. 8.2; § 7c AM-HandelsV",
+  "turnus": "jährlich"
+ },
+ {
+  "nr": "262",
+  "kap": "8 Selbstinspektionen",
+  "anf": "Eine Kopie des Berichts sollte der Geschäftsleitung und anderen relevanten Personen zur Verfügung gestellt werden.",
+  "quelle": "EU-GDP-Leitlinie Kap. 8.2",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "263",
+  "kap": "8 Selbstinspektionen",
+  "anf": "Falls Unregelmäßigkeiten und/oder Mängel festgestellt werden, sollte deren Ursache ermittelt und die Korrektur- und Vorbeugungsmaßnahmen (CAPA) dokumentiert und weiterverfolgt werden.",
+  "quelle": "EU-GDP-Leitlinie Kap. 8.2",
+  "turnus": "anlassbezogen"
+ },
+ {
+  "nr": "264",
+  "kap": "9 Transport",
+  "anf": "Es liegt in der Verantwortung des liefernden Großhändlers, Arzneimittel vor Bruch, Verfälschung und Diebstahl zu schützen und sicherzustellen, dass die Temperaturbedingungen während des Transports innerhalb akzeptabler Grenzen eingehalten werden.",
+  "quelle": "EU-GDP-Leitlinie Kap. 9.1; Del. VO (EU) 2016/161 (FMD)",
+  "turnus": "anlassbezogen"
+ },
+ {
+  "nr": "265",
+  "kap": "9 Transport",
+  "anf": "Unabhängig von der Transportart sollte nachgewiesen werden können, dass die Arzneimittel keinen Bedingungen ausgesetzt waren, die ihre Qualität und Unversehrtheit beeinträchtigen könnten.",
+  "quelle": "EU-GDP-Leitlinie Kap. 9.1; § 6 AM-HandelsV",
+  "turnus": "je Versand (laufend)"
+ },
+ {
+  "nr": "266",
+  "kap": "9 Transport",
+  "anf": "Bei der Transportplanung sollte ein risikobasierter Ansatz verfolgt werden.",
+  "quelle": "EU-GDP-Leitlinie Kap. 9.1; § 6 AM-HandelsV",
+  "turnus": "je Versand (laufend)"
+ },
+ {
+  "nr": "267",
+  "kap": "9 Transport",
+  "anf": "Die erforderlichen Lagerbedingungen für Arzneimittel sollten während des Transports innerhalb der festgelegten Grenzen eingehalten werden, wie sie vom Hersteller oder auf der Außenverpackung angegeben sind.",
+  "quelle": "EU-GDP-Leitlinie Kap. 9.2; § 6 AM-HandelsV",
+  "turnus": "je Versand (laufend)"
+ },
+ {
+  "nr": "268",
+  "kap": "9 Transport",
+  "anf": "Sollte es während des Transports zu Abweichungen wie Temperaturüberschreitungen oder Produktschäden gekommen sein, ist dies dem Großhändler und dem Empfänger der betroffenen Arzneimittel zu melden.",
+  "quelle": "EU-GDP-Leitlinie Kap. 9.2; § 6 AM-HandelsV",
+  "turnus": "anlassbezogen"
+ },
+ {
+  "nr": "269",
+  "kap": "9 Transport",
+  "anf": "Es sollte auch ein Verfahren zur Untersuchung und Behandlung von Temperaturabweichungen vorhanden sein.",
+  "quelle": "EU-GDP-Leitlinie Kap. 9.2",
+  "turnus": "anlassbezogen"
+ },
+ {
+  "nr": "270",
+  "kap": "9 Transport",
+  "anf": "Es liegt in der Verantwortung des Großhändlers, sicherzustellen, dass die für den Vertrieb, die Lagerung oder den Umgang mit Arzneimitteln verwendeten Fahrzeuge und Ausrüstungen für ihren Verwendungszweck geeignet und angemessen ausgestattet sind, um zu verhindern, dass die Produkte Bedingungen ausgesetzt werden, die ihre Qualität und die Unversehrtheit der Verpackung beeinträchtigen könnten.",
+  "quelle": "EU-GDP-Leitlinie Kap. 9.2",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "271",
+  "kap": "9 Transport",
+  "anf": "Es sollten schriftliche Verfahren für den Betrieb und die Wartung aller am Vertriebsprozess beteiligten Fahrzeuge und Geräte vorhanden sein, einschließlich Reinigungs- und Sicherheitsvorkehrungen.",
+  "quelle": "EU-GDP-Leitlinie Kap. 9.2",
+  "turnus": "jährlich (nach Wartungsplan)"
+ },
+ {
+  "nr": "272",
+  "kap": "9 Transport",
+  "anf": "Anhand einer Risikobewertung der Lieferrouten sollte ermittelt werden, wo Temperaturkontrollen erforderlich sind.",
+  "quelle": "EU-GDP-Leitlinie Kap. 9.2",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "273",
+  "kap": "9 Transport",
+  "anf": "Geräte, die zur Temperaturüberwachung während des Transports in Fahrzeugen und/oder Containern verwendet werden, sollten in regelmäßigen Abständen, mindestens einmal jährlich, gewartet und kalibriert werden.",
+  "quelle": "EU-GDP-Leitlinie Kap. 9.2; § 6 AM-HandelsV",
+  "turnus": "jährlich"
+ },
+ {
+  "nr": "274",
+  "kap": "9 Transport",
+  "anf": "Für den Umgang mit Arzneimitteln sollten nach Möglichkeit spezielle Fahrzeuge und Ausrüstungen verwendet werden.",
+  "quelle": "EU-GDP-Leitlinie Kap. 9.2",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "275",
+  "kap": "9 Transport",
+  "anf": "Werden nicht spezielle Fahrzeuge und Ausrüstungen verwendet, sollten Verfahren vorhanden sein, die sicherstellen, dass die Qualität des Arzneimittels nicht beeinträchtigt wird.",
+  "quelle": "EU-GDP-Leitlinie Kap. 9.2",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "276",
+  "kap": "9 Transport",
+  "anf": "Lieferungen sollten an die auf dem Lieferschein angegebene Adresse und in die Obhut oder die Räumlichkeiten des Empfängers erfolgen.",
+  "quelle": "EU-GDP-Leitlinie Kap. 9.2",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "277",
+  "kap": "9 Transport",
+  "anf": "Arzneimittel sollten nicht an anderen Standorten zurückgelassen werden.",
+  "quelle": "EU-GDP-Leitlinie Kap. 9.2",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "278",
+  "kap": "9 Transport",
+  "anf": "Für Notfalllieferungen außerhalb der normalen Geschäftszeiten sollten Personen benannt und schriftliche Verfahren verfügbar sein.",
+  "quelle": "EU-GDP-Leitlinie Kap. 9.2",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "279",
+  "kap": "9 Transport",
+  "anf": "Wird der Transport von einem Dritten durchgeführt, sollte der bestehende Vertrag die Anforderungen von Kapitel 7 umfassen.",
+  "quelle": "EU-GDP-Leitlinie Kap. 9.2; § 6 AM-HandelsV",
+  "turnus": "je Versand (laufend)"
+ },
+ {
+  "nr": "280",
+  "kap": "9 Transport",
+  "anf": "Transportdienstleister sollten vom Großhändler über die für die Sendung geltenden Transportbedingungen informiert werden.",
+  "quelle": "EU-GDP-Leitlinie Kap. 9.2; § 6 AM-HandelsV",
+  "turnus": "je Versand (laufend)"
+ },
+ {
+  "nr": "281",
+  "kap": "9 Transport",
+  "anf": "Wenn die Transportroute das Entladen und Wiederverladen oder die Zwischenlagerung an einem Verkehrsknotenpunkt umfasst, ist besonders auf die Temperaturüberwachung, die Sauberkeit und die Sicherheit etwaiger Zwischenlager zu achten.",
+  "quelle": "EU-GDP-Leitlinie Kap. 9.2; § 6 AM-HandelsV",
+  "turnus": "laufend (kont.); tägl. Sichtprüfung"
+ },
+ {
+  "nr": "282",
+  "kap": "9 Transport",
+  "anf": "Es sind Vorkehrungen zu treffen, um die Dauer der Zwischenlagerung bis zum nächsten Abschnitt der Transportroute so kurz wie möglich zu halten.",
+  "quelle": "EU-GDP-Leitlinie Kap. 9.2; § 6 AM-HandelsV",
+  "turnus": "je Versand (laufend)"
+ },
+ {
+  "nr": "283",
+  "kap": "9 Transport",
+  "anf": "Arzneimittel sollten in Behältern transportiert werden, die die Qualität der Produkte nicht beeinträchtigen und einen angemessenen Schutz vor äußeren Einflüssen, einschließlich Kontamination, bieten.",
+  "quelle": "EU-GDP-Leitlinie Kap. 9.3; § 6 AM-HandelsV",
+  "turnus": "je Versand (laufend)"
+ },
+ {
+  "nr": "284",
+  "kap": "9 Transport",
+  "anf": "Die Auswahl von Behältern und Verpackungen sollte auf den Lager- und Transportanforderungen der Arzneimittel basieren;",
+  "quelle": "EU-GDP-Leitlinie Kap. 9.3; § 6 AM-HandelsV",
+  "turnus": "je Versand (laufend)"
+ },
+ {
+  "nr": "285",
+  "kap": "9 Transport",
+  "anf": "dem für die Arzneimittelmenge erforderlichen Platzbedarf;",
+  "quelle": "EU-GDP-Leitlinie Kap. 9.3",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "286",
+  "kap": "9 Transport",
+  "anf": "den zu erwartenden äußeren Temperaturextremen;",
+  "quelle": "EU-GDP-Leitlinie Kap. 9.3",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "287",
+  "kap": "9 Transport",
+  "anf": "der geschätzten maximalen Transportdauer einschließlich der Zwischenlagerung beim Zoll;",
+  "quelle": "EU-GDP-Leitlinie Kap. 9.3; § 6 AM-HandelsV",
+  "turnus": "je Versand (laufend)"
+ },
+ {
+  "nr": "288",
+  "kap": "9 Transport",
+  "anf": "dem Qualifizierungsstatus der Verpackung",
+  "quelle": "EU-GDP-Leitlinie Kap. 9.3",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "289",
+  "kap": "9 Transport",
+  "anf": "und dem Validierungsstatus der Transportbehälter.",
+  "quelle": "EU-GDP-Leitlinie Kap. 9.3; EU-Annex 11",
+  "turnus": "je Versand (laufend)"
+ },
+ {
+  "nr": "290",
+  "kap": "9 Transport",
+  "anf": "Die Behälter sollten mit Etiketten versehen sein, die ausreichende Informationen zu den Handhabungs- und Lagerungsanforderungen sowie zu Vorsichtsmaßnahmen enthalten, um sicherzustellen, dass die Produkte jederzeit ordnungsgemäß gehandhabt und gesichert sind.",
+  "quelle": "EU-GDP-Leitlinie Kap. 9.3",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "291",
+  "kap": "9 Transport",
+  "anf": "Die Behälter sollten die Identifizierung des Inhalts und der Herkunft ermöglichen.",
+  "quelle": "EU-GDP-Leitlinie Kap. 9.3",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "292",
+  "kap": "9 Transport",
+  "anf": "Bei Lieferungen, die Arzneimittel enthalten, für die besondere Bedingungen gelten, wie beispielsweise Betäubungsmittel oder psychotrope Stoffe, sollte der Großhändler eine sichere und geschützte Lieferkette für diese Produkte gemäß den von den betreffenden Mitgliedstaaten festgelegten Anforderungen aufrechterhalten.",
+  "quelle": "EU-GDP-Leitlinie Kap. 9.4",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "293",
+  "kap": "9 Transport",
+  "anf": "Für die Lieferung dieser Produkte sollten zusätzliche Kontrollsysteme vorhanden sein. Es sollte ein Protokoll vorhanden sein, das den Fall eines Diebstahls regelt.",
+  "quelle": "EU-GDP-Leitlinie Kap. 9.4",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "294",
+  "kap": "9 Transport",
+  "anf": "Arzneimittel, die hochaktive und radioaktive Stoffe enthalten, sollten in sicheren, dafür vorgesehenen und geschützten Behältern und Fahrzeugen transportiert werden. Die entsprechenden Sicherheitsmaßnahmen sollten im Einklang mit internationalen Abkommen und nationalen Rechtsvorschriften stehen.",
+  "quelle": "EU-GDP-Leitlinie Kap. 9.4; § 6 AM-HandelsV",
+  "turnus": "je Versand (laufend)"
+ },
+ {
+  "nr": "295",
+  "kap": "9 Transport",
+  "anf": "Bei temperaturempfindlichen Produkten sollte geeignete Ausrüstung (z. B. Thermoverpackungen, temperaturgeregelte Behälter oder temperaturgeregelte Fahrzeuge) verwendet werden, um sicherzustellen, dass zwischen Hersteller, Großhändler und Kunde die richtigen Transportbedingungen aufrechterhalten werden.",
+  "quelle": "EU-GDP-Leitlinie Kap. 9.4; § 6 AM-HandelsV",
+  "turnus": "je Versand (laufend)"
+ },
+ {
+  "nr": "296",
+  "kap": "9 Transport",
+  "anf": "Werden temperaturgeregelte Fahrzeuge eingesetzt, sollten die während des Transports verwendeten Temperaturüberwachungsgeräte in regelmäßigen Abständen gewartet und kalibriert werden.",
+  "quelle": "EU-GDP-Leitlinie Kap. 9.4; § 6 AM-HandelsV",
+  "turnus": "jährlich"
+ },
+ {
+  "nr": "297",
+  "kap": "9 Transport",
+  "anf": "Es sollte eine Temperaturkartierung unter repräsentativen Bedingungen durchgeführt werden, wobei saisonale Schwankungen zu berücksichtigen sind.",
+  "quelle": "EU-GDP-Leitlinie Kap. 9.4",
+  "turnus": "alle 3 Jahre + nach wesentlicher Änderung"
+ },
+ {
+  "nr": "298",
+  "kap": "9 Transport",
+  "anf": "Auf Anfrage sollten den Kunden Informationen zur Verfügung gestellt werden, die belegen, dass die Produkte die Temperaturbedingungen für die Lagerung eingehalten haben.",
+  "quelle": "EU-GDP-Leitlinie Kap. 9.4",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "299",
+  "kap": "9 Transport",
+  "anf": "Werden Kühlakkus in Isolierboxen verwendet, müssen diese so platziert werden, dass das Produkt nicht in direkten Kontakt mit dem Kühlakku kommt. Das Personal muss in den Verfahren zum Zusammenstellen der Isolierboxen (saisonale Konfigurationen) und zur Wiederverwendung von Kühlakkus geschult werden.",
+  "quelle": "EU-GDP-Leitlinie Kap. 9.4",
+  "turnus": "jährlich"
+ },
+ {
+  "nr": "300",
+  "kap": "9 Transport",
+  "anf": "Es sollte ein System zur Kontrolle der Wiederverwendung von Kühlakkus vorhanden sein, um sicherzustellen, dass nicht vollständig abgekühlte Akkus nicht versehentlich verwendet werden.",
+  "quelle": "EU-GDP-Leitlinie Kap. 9.4",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "301",
+  "kap": "9 Transport",
+  "anf": "Es sollte eine angemessene räumliche Trennung zwischen gefrorenen und gekühlten Kühlakkus bestehen.",
+  "quelle": "EU-GDP-Leitlinie Kap. 9.4",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "302",
+  "kap": "9 Transport",
+  "anf": "Der Prozess für die Lieferung empfindlicher Produkte und die Kontrolle saisonaler Temperaturschwankungen sollte in einer schriftlichen Verfahrensanweisung beschrieben werden.",
+  "quelle": "EU-GDP-Leitlinie Kap. 9.4",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "303",
+  "kap": "10 Vermittler (Broker)",
+  "anf": "Ein „Makler“ ist eine Person, die Tätigkeiten im Zusammenhang mit dem Verkauf oder Kauf von Arzneimitteln ausübt – mit Ausnahme des Großhandels –, die keine physische Handhabung umfassen und darin bestehen, unabhängig und im Namen einer anderen juristischen oder natürlichen Person zu verhandeln.",
+  "quelle": "EU-GDP-Leitlinie Kap. 10.1; § 52c AMG",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "304",
+  "kap": "10 Vermittler (Broker)",
+  "anf": "Vermittler unterliegen einer Registrierungspflicht.",
+  "quelle": "EU-GDP-Leitlinie Kap. 10.1; § 52c AMG",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "305",
+  "kap": "10 Vermittler (Broker)",
+  "anf": "Sie müssen über eine ständige Anschrift und Kontaktdaten in dem Mitgliedstaat verfügen, in dem sie registriert sind.",
+  "quelle": "EU-GDP-Leitlinie Kap. 10.1",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "306",
+  "kap": "10 Vermittler (Broker)",
+  "anf": "Sie müssen der zuständigen Behörde Änderungen dieser Angaben unverzüglich mitteilen.",
+  "quelle": "EU-GDP-Leitlinie Kap. 10.1",
+  "turnus": "anlassbezogen (bei Änderung)"
+ },
+ {
+  "nr": "307",
+  "kap": "10 Vermittler (Broker)",
+  "anf": "Per Definition beschaffen, liefern oder lagern Vermittler keine Arzneimittel.",
+  "quelle": "EU-GDP-Leitlinie Kap. 10.1; § 52c AMG",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "308",
+  "kap": "10 Vermittler (Broker)",
+  "anf": "Daher gelten die in der Richtlinie 2001/83/EG festgelegten Anforderungen an Räumlichkeiten, Einrichtungen und Ausrüstung nicht.",
+  "quelle": "EU-GDP-Leitlinie Kap. 10.1",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "309",
+  "kap": "10 Vermittler (Broker)",
+  "anf": "Alle anderen Vorschriften der Richtlinie 2001/83/EG, die für Großhändler gelten, gelten jedoch auch für Vermittler.",
+  "quelle": "EU-GDP-Leitlinie Kap. 10.1; § 52c AMG",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "310",
+  "kap": "10 Vermittler (Broker)",
+  "anf": "Das Qualitätssicherungssystem eines Vermittlers sollte schriftlich festgelegt, genehmigt und auf dem neuesten Stand gehalten werden. Es sollte die Zuständigkeiten, Prozesse und das Risikomanagement in Bezug auf seine Tätigkeiten festlegen.",
+  "quelle": "EU-GDP-Leitlinie Kap. 10.2; § 52c AMG",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "311",
+  "kap": "10 Vermittler (Broker)",
+  "anf": "Das Qualitätssicherungssystem sollte einen Notfallplan enthalten, der einen wirksamen Rückruf von Arzneimitteln vom Markt gewährleistet, der vom Hersteller oder den zuständigen Behörden angeordnet oder in Zusammenarbeit mit dem Hersteller oder dem Inhaber der Genehmigung für das Inverkehrbringen des betreffenden Arzneimittels durchgeführt wird.",
+  "quelle": "EU-GDP-Leitlinie Kap. 10.2; § 7a AM-HandelsV",
+  "turnus": "anlassbezogen"
+ },
+ {
+  "nr": "312",
+  "kap": "10 Vermittler (Broker)",
+  "anf": "Die zuständigen Behörden müssen unverzüglich über jeden Verdacht auf gefälschte Arzneimittel in der Lieferkette informiert werden.",
+  "quelle": "EU-GDP-Leitlinie Kap. 10.2",
+  "turnus": "anlassbezogen"
+ },
+ {
+  "nr": "313",
+  "kap": "10 Vermittler (Broker)",
+  "anf": "Alle Mitarbeiter, die an den Vermittlungsaktivitäten beteiligt sind, sollten in den geltenden EU- und nationalen Rechtsvorschriften sowie in Fragen im Zusammenhang mit gefälschten Arzneimitteln geschult werden.",
+  "quelle": "EU-GDP-Leitlinie Kap. 10.3; § 52c AMG",
+  "turnus": "jährlich"
+ },
+ {
+  "nr": "314",
+  "kap": "10 Vermittler (Broker)",
+  "anf": "„Darüber hinaus sollten mindestens die folgenden Verfahren und Anweisungen sowie die entsprechenden Aufzeichnungen über deren Durchführung vorhanden sein: (i) Verfahren zur Bearbeitung von Beschwerden“",
+  "quelle": "EU-GDP-Leitlinie Kap. 10.4",
+  "turnus": "anlassbezogen"
+ },
+ {
+  "nr": "315",
+  "kap": "10 Vermittler (Broker)",
+  "anf": "(ii) Verfahren zur Unterrichtung der zuständigen Behörden und der Inhaber von Zulassungen über den Verdacht auf gefälschte Arzneimittel;",
+  "quelle": "EU-GDP-Leitlinie Kap. 10.4",
+  "turnus": "anlassbezogen"
+ },
+ {
+  "nr": "316",
+  "kap": "10 Vermittler (Broker)",
+  "anf": "(iii) Verfahren zur Unterstützung von Rückrufaktionen;",
+  "quelle": "EU-GDP-Leitlinie Kap. 10.4; § 7a AM-HandelsV",
+  "turnus": "anlassbezogen"
+ },
+ {
+  "nr": "317",
+  "kap": "10 Vermittler (Broker)",
+  "anf": "(iv) Verfahren zur Sicherstellung, dass die vermittelten Arzneimittel über eine Zulassung verfügen;",
+  "quelle": "EU-GDP-Leitlinie Kap. 10.4",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "318",
+  "kap": "10 Vermittler (Broker)",
+  "anf": "(v) Verfahren zur Überprüfung, ob die liefernden Großhändler über eine Vertriebsgenehmigung, die liefernden Hersteller oder Importeure über eine Herstellungsgenehmigung und die Kunden über eine Genehmigung zur Abgabe von Arzneimitteln in dem betreffenden Mitgliedstaat verfügen;",
+  "quelle": "EU-GDP-Leitlinie Kap. 10.4; § 73 Abs. 3 AMG",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "319",
+  "kap": "10 Vermittler (Broker)",
+  "anf": "(vi) Aufzeichnungen sollten entweder in Form von Kauf-/Verkaufsrechnungen oder elektronisch oder in jeder anderen Form für jede Transaktion mit vermittelten Arzneimitteln geführt werden und mindestens folgende Angaben enthalten: Datum; Name des Arzneimittels; vermittelte Menge; Name und Anschrift des Lieferanten und des Kunden; sowie Chargennummer zumindest für Produkte, die mit Sicherheitsmerkmalen versehen sind.",
+  "quelle": "EU-GDP-Leitlinie Kap. 10.4; Del. VO (EU) 2016/161 (FMD)",
+  "turnus": "dauerhaft (Grundanforderung)"
+ },
+ {
+  "nr": "320",
+  "kap": "10 Vermittler (Broker)",
+  "anf": "Die Aufzeichnungen sollten den zuständigen Behörden zu Kontrollzwecken für den in den nationalen Rechtsvorschriften festgelegten Zeitraum, mindestens jedoch für fünf Jahre, zur Verfügung gestellt werden.",
+  "quelle": "EU-GDP-Leitlinie Kap. 10.4; § 7 AM-HandelsV (Aufbewahrung 5 J.)",
+  "turnus": "dauerhaft (Grundanforderung)"
+ }
+]

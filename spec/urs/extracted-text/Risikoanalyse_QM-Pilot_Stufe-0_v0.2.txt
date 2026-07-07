@@ -1,0 +1,224 @@
+Risikoanalyse
+QM-Pilot — Modul „Fundament" (Stufe 0)
+Pharmazeutika 73.3 GmbH
+Version 0.2 (Entwurf) · Stand: 30.06.2026
+Erstellt von: Claude · Risiko-Akzeptanz: Jochen Schulze (GL/RP)
+
+
+Inhaltsverzeichnis
+
+
+
+
+1  Zweck & Geltungsbereich
+1.1  Zweck
+Diese Risikoanalyse identifiziert und bewertet die Risiken der Stufe-0-Funktionen von QM-Pilot und leitet daraus Maßnahmen und den Schwerpunkt der späteren Qualifizierungstests (IQ/OQ/PQ) ab. Sie setzt den risikobasierten Ansatz nach GAMP 5 um.
+1.2  Geltungsbereich & Grundlagen
+Bewertet werden die Funktionsbereiche der FS/DS (4.1–4.8). Grundlage sind URS und FS/DS; verbindlicher Maßstab für die Schwere sind die gesetzlichen Vorgaben (GDP, Annex 11 sinngemäß, DSGVO) und das Schutzziel Arzneimittel-/Versorgungssicherheit.
+2  Methodik & Bewertungsmaßstab
+2.1  Vorgehen
+Je kritischer Funktion wird beschrieben: möglicher Fehler → Auswirkung → Bewertung nach Schwere (S), Wahrscheinlichkeit (W) und Erkennbarkeit (E) → Risikoklasse → Maßnahme und Testschwerpunkt.
+2.2  Bewertungsstufen
+S (Schwere): gering / mittel / hoch — Auswirkung auf Datenintegrität, Compliance, Schutzziel.
+W (Wahrscheinlichkeit): gering / mittel / hoch.
+E (Erkennbarkeit): gut / mittel / schlecht — Chance, den Fehler vor einem Schaden zu bemerken.
+2.3  Ableitung der Risikoklasse
+Hoch: Schwere hoch in Verbindung mit mittlerer/hoher Wahrscheinlichkeit oder schlechter Erkennbarkeit. Mittel: mittlere Kombinationen. Gering: geringe Schwere bei guter Erkennbarkeit.
+2.4  Umgang je Klasse
+Hoch → verpflichtende Maßnahme und Pflicht-Test. Mittel → gezielter Test. Gering → stichprobenartige Prüfung.
+3  Risikobewertung je Funktionsbereich
+3.1  Benutzer, Rollen & Rechte
+R-001 · Zu weitreichende Rechtevergabe (URS-F-004)
+Fehler: Eine Rolle erhält mehr Rechte als vorgesehen. Auswirkung: unbefugter Zugriff oder Änderung, Compliance-Verstoß.
+S hoch · W mittel · E mittel → Risikoklasse: hoch. Maßnahme/Test: dokumentierte Rechtematrix, „nichts erlaubt" als Grundeinstellung; Pflicht-Test je Rolle.
+R-002 · Nicht eindeutig zuordenbares Konto (URS-F-008)
+Fehler: geteiltes Sammelkonto, Handlung nicht zuordenbar. Auswirkung: ALCOA+ („attributable") verletzt.
+S hoch · W gering · E gut → Risikoklasse: mittel. Maßnahme/Test: Sammelkonten technisch ausgeschlossen; Test, dass jede Handlung eine Person trägt.
+R-003 · Benutzer gelöscht statt deaktiviert (URS-F-006)
+Fehler: Konto wird entfernt, Historie geht verloren. Auswirkung: Nachvollziehbarkeit verloren.
+S hoch · W gering · E gut → Risikoklasse: mittel. Maßnahme/Test: keine Löschfunktion, nur „inaktiv"; Test, dass Historie erhalten bleibt.
+R-004 · Fehlende Funktionstrennung (URS-F-007)
+Fehler: Eine Person gibt ihre eigene Arbeit frei. Auswirkung: 4-Augen-Prinzip umgangen.
+S hoch · W mittel · E mittel → Risikoklasse: hoch. Maßnahme/Test: Rollen-/Workflow-Sperre gegen Selbstfreigabe; Pflicht-Test.
+R-005 · Rollen-/Rechteänderung nicht protokolliert (URS-F-009)
+Fehler: Änderung an Berechtigungen erscheint nicht im Audit-Trail. Auswirkung: Audit-Lücke.
+S mittel · W gering · E gut → Risikoklasse: gering. Maßnahme/Test: zentrale Protokollierung; stichprobenartige Prüfung.
+3.2  Authentifizierung & Login
+R-006 · Login-Umgehung / 2FA unwirksam (URS-F-010/011)
+Fehler: Fehlkonfiguration des M365-Logins, Anmeldung ohne 2-Faktor. Auswirkung: unbefugter Zugang.
+S hoch · W gering · E mittel → Risikoklasse: mittel. Maßnahme/Test: korrekte OIDC-Konfiguration, 2FA durch M365 erzwungen; gezielter Anmelde-Test (auch Negativfall).
+R-007 · Zugang bleibt nach Austritt bestehen (URS-F-012)
+Fehler: Konto nach Deaktivierung des M365-Kontos weiter nutzbar. Auswirkung: Ex-Mitarbeitende behalten Zugriff.
+S hoch · W mittel · E mittel → Risikoklasse: hoch. Maßnahme/Test: Zugang an M365-Status gekoppelt, zusätzlich Deaktivierung; Pflicht-Test.
+R-008 · PIN geteilt oder erraten (URS-F-013/016)
+Fehler: niederschwelliger PIN wird weitergegeben oder durchprobiert. Auswirkung: Erledigung nicht zuordenbar, Missbrauch.
+S mittel · W mittel · E mittel → Risikoklasse: mittel. Maßnahme/Test: persönliche PIN, Sperre nach Fehlversuchen; gezielter Test.
+R-009 · Auditor-Konto zu lange aktiv oder mit Schreibrechten (URS-F-014)
+Fehler: befristetes Konto läuft weiter oder kann schreiben. Auswirkung: unbefugter Schreibzugriff von außen.
+S hoch · W gering · E gut → Risikoklasse: mittel. Maßnahme/Test: automatisches Ablaufdatum, rein lesend; Test von Ablauf und Leserechten.
+R-010 · Keine Abmeldung am gemeinsamen Tablet (URS-F-017/018)
+Fehler: Sitzung bleibt offen, die nächste Person handelt unter fremder Identität. Auswirkung: Zuordnung falsch (ALCOA+).
+S hoch · W mittel · E mittel → Risikoklasse: hoch. Maßnahme/Test: Inaktivitäts-Timeout und schneller Benutzerwechsel; Pflicht-Test.
+R-011 · Anmeldungen nicht protokolliert (URS-F-015)
+Fehler: An-/Abmeldungen erscheinen nicht im Audit-Trail. Auswirkung: Audit-Lücke.
+S mittel · W gering · E gut → Risikoklasse: gering. Maßnahme/Test: Protokollierung; stichprobenartige Prüfung.
+3.3  Audit-Trail
+R-012 · Vorgang wird nicht protokolliert (URS-F-019)
+Fehler: Eine qualitätsrelevante Handlung erzeugt keinen Audit-Eintrag; fällt kaum auf. Auswirkung: Lücke in der Nachvollziehbarkeit.
+S hoch · W mittel · E schlecht → Risikoklasse: hoch. Maßnahme/Test: zentrale Protokollierung, durch die alle Vorgänge laufen; Pflicht-Test über alle Vorgangsarten.
+R-013 · Audit-Eintrag nachträglich verändert/gelöscht (URS-F-021)
+Fehler: Einträge lassen sich ändern oder entfernen. Auswirkung: Manipulation, ALCOA+ verletzt.
+S hoch · W gering · E schlecht → Risikoklasse: hoch. Maßnahme/Test: nur Anhängen, auf Datenbankebene gesperrt; Pflicht-Test (Änderungs-/Löschversuch muss scheitern).
+R-014 · Falsche oder uneinheitliche Zeitstempel (URS-F-022)
+Fehler: Zeitangaben weichen ab. Auswirkung: Reihenfolge und Beweiskraft fraglich.
+S mittel · W gering · E mittel → Risikoklasse: mittel. Maßnahme/Test: synchronisierte Zeitquelle (NTP); gezielter Test.
+R-015 · Eintrag ohne Alt-/Neu-Wert (URS-F-020)
+Fehler: Bei einer Änderung wird der vorherige Wert nicht festgehalten. Auswirkung: Änderung nicht nachvollziehbar.
+S mittel · W mittel · E mittel → Risikoklasse: mittel. Maßnahme/Test: Pflichtfelder je Eintrag; gezielter Test.
+R-016 · Audit-Trail nicht exportierbar/lesbar (URS-F-024)
+Fehler: Für eine Inspektion lässt sich der Audit-Trail nicht ausgeben. Auswirkung: Behörde kann nicht prüfen.
+S mittel · W gering · E gut → Risikoklasse: gering. Maßnahme/Test: Export/Druck (PDF/CSV); stichprobenartige Prüfung.
+3.4  Archivierung & Speicherung
+R-017 · Freigegebenes Dokument nachträglich änderbar (URS-F-029)
+Fehler: Eine freigegebene Fassung lässt sich unbemerkt ändern. Auswirkung: Revisionssicherheit und ALCOA+ verletzt.
+S hoch · W gering · E schlecht → Risikoklasse: hoch. Maßnahme/Test: Schreibschutz nach Freigabe, Korrektur nur über neue Version; Pflicht-Test.
+R-018 · Löschung vor Fristablauf (URS-F-030)
+Fehler: Ein aufbewahrungspflichtiger Datensatz wird vorzeitig gelöscht. Auswirkung: Verletzung der Aufbewahrungspflicht.
+S hoch · W gering · E mittel → Risikoklasse: mittel. Maßnahme/Test: keine Löschfunktion innerhalb der Frist; gezielter Test.
+R-019 · Daten am Fristende nicht mehr lesbar (URS-F-031)
+Fehler: Format veraltet, Nachweis unbrauchbar. Auswirkung: Nachweise nicht mehr verwertbar.
+S mittel · W gering · E gut → Risikoklasse: gering. Maßnahme/Test: offene Langzeitformate (PDF/A), Export; stichprobenartige Prüfung.
+R-020 · Fehlende/falsche Metadaten (URS-F-033)
+Fehler: Version oder Status stimmen nicht. Auswirkung: eine veraltete Fassung gilt als aktuell.
+S mittel · W mittel · E mittel → Risikoklasse: mittel. Maßnahme/Test: Pflicht-Metadaten und klare Statuslogik; gezielter Test.
+R-021 · Unbefugter Zugriff auf Archivdaten (URS-F-032/034)
+Fehler: Nicht berechtigte Rolle sieht Archivdaten. Auswirkung: Vertraulichkeit verletzt.
+S mittel · W gering · E mittel → Risikoklasse: mittel. Maßnahme/Test: Zugriff nach Rollenmodell, Verschlüsselung; gezielter Test.
+3.5  Backup & Wiederherstellung
+R-022 · Backup schlägt unbemerkt fehl (URS-F-035/043)
+Fehler: Eine Sicherung läuft nicht, ohne dass es auffällt. Auswirkung: kein Wiederherstellungspunkt, Datenverlust bei Ausfall.
+S hoch · W mittel · E schlecht → Risikoklasse: hoch. Maßnahme/Test: Überwachung mit automatischer Meldung; Pflicht-Test (Fehlschlag simulieren).
+R-023 · Wiederherstellung unvollständig oder unmöglich (URS-F-042)
+Fehler: Trotz Backup lassen sich Daten nicht vollständig zurückholen — fällt erst im Ernstfall auf. Auswirkung: Datenverlust.
+S hoch · W mittel · E schlecht → Risikoklasse: hoch. Maßnahme/Test: jährliche dokumentierte Wiederherstellungs-Übung mit Integritätsprüfung; Pflicht-Test (Test-Wiederherstellung).
+R-024 · Backup unverschlüsselt oder nur an einem Standort (URS-F-036)
+Fehler: Sicherung nicht verschlüsselt oder nicht georedundant. Auswirkung: Datenleck oder Totalverlust bei Standortschaden.
+S hoch · W gering · E mittel → Risikoklasse: mittel. Maßnahme/Test: Verschlüsselung und zweiter Standort; gezielter Test/Nachweis.
+R-025 · RPO/RTO nicht eingehalten (URS-F-038/039)
+Fehler: Datenverlust größer als 24 h oder Wiederanlauf länger als ein Arbeitstag. Auswirkung: Vorgaben verfehlt.
+S mittel · W mittel · E mittel → Risikoklasse: mittel. Maßnahme/Test: Sicherungsfrequenz und Wiederherstellungs-Anleitung; Messung in der jährlichen Übung.
+R-026 · Audit-Trail/Konfiguration nicht im Backup (URS-F-041)
+Fehler: Sicherung umfasst nicht alle nötigen Bestandteile. Auswirkung: nach Wiederherstellung fehlen Nachvollziehbarkeit oder Einstellungen.
+S hoch · W gering · E mittel → Risikoklasse: mittel. Maßnahme/Test: definierter Sicherungsumfang; Prüfung im Wiederherstellungs-Test.
+3.6  Hosting, Betrieb & Sicherheit
+R-027 · Unbefugter externer Zugriff / Angriff (URS-F-046/047/050)
+Fehler: Lücke in Verschlüsselung, Firewall oder durch fehlende Updates. Auswirkung: Datenleck oder Manipulation.
+S hoch · W mittel · E mittel → Risikoklasse: hoch. Maßnahme/Test: TLS, Firewall, Härtung, regelmäßige Updates; Pflicht-Test (Konfigurations-/Sicherheitsprüfung).
+R-028 · Vermischung Produktiv-/Testumgebung (URS-F-045)
+Fehler: Tests laufen auf echten Daten oder beeinflussen das Produktivsystem. Auswirkung: Datenschutz-/Integritätsproblem.
+S hoch · W gering · E mittel → Risikoklasse: mittel. Maßnahme/Test: strikte Trennung, künstliche Testdaten; gezielter Test.
+R-029 · Ungetestete Software-Version geht in Produktiv (URS-F-052)
+Fehler: Eine Änderung wird ohne Prüfung/Freigabe eingespielt. Auswirkung: fehlerhaftes Produktivsystem, Compliance-Risiko.
+S hoch · W mittel · E mittel → Risikoklasse: hoch. Maßnahme/Test: verbindlicher Ablauf Test → Freigabe → eingefrorene Version → Einspielen; Pflicht-Test des Freigabeprozesses.
+R-030 · Software-Prozess mit QM-Prozess vermischt (URS-F-053)
+Fehler: Software-Änderungen oder Software-Fehler werden über die QM-Change-Control bzw. als QM-Abweichung (SOP-01-004) behandelt. Auswirkung: unklare Verantwortlichkeiten, falsche Dokumentation.
+S mittel · W mittel · E gut → Risikoklasse: mittel. Maßnahme/Test: getrennte Prozesse dokumentiert — Software-Änderungen und -Fehler laufen im Software-Prozess, nicht als QM-Abweichung; Prozessprüfung.
+R-031 · Admin-Zugang missbraucht oder ungeschützt (URS-F-049)
+Fehler: Server-Zugang unzureichend geschützt. Auswirkung: vollständiger Systemzugriff.
+S hoch · W gering · E mittel → Risikoklasse: mittel. Maßnahme/Test: schlüsselbasierter, beschränkter Zugang mit Protokollierung; gezielter Test.
+3.7  Datenschutz (DSGVO)
+R-032 · Patientendaten gelangen ins System (URS-F-055)
+Fehler: Es werden doch Patientendaten erfasst. Auswirkung: unzulässige Verarbeitung.
+S hoch · W gering · E mittel → Risikoklasse: mittel. Maßnahme/Test: keine entsprechenden Datenfelder, organisatorische Regel; gezielter Test.
+R-033 · Personenbezogene Daten für Unberechtigte sichtbar (URS-F-056)
+Fehler: Eine nicht berechtigte Rolle sieht personenbezogene Daten. Auswirkung: DSGVO-Verstoß.
+S hoch · W gering · E mittel → Risikoklasse: mittel. Maßnahme/Test: Zugriff nach Rollenmodell; gezielter Test.
+R-034 · Betroffenenrechte nicht erfüllbar / Löschkonflikt (URS-F-057)
+Fehler: Auskunft/Löschung nicht möglich — oder vorzeitige Löschung trotz Aufbewahrungspflicht. Auswirkung: DSGVO-Verstoß bzw. Verletzung der Aufbewahrungspflicht.
+S mittel · W gering · E gut → Risikoklasse: mittel. Maßnahme/Test: Auskunftsfunktion und Löschlogik mit Fristprüfung; gezielter Test.
+R-035 · Zugriffe auf personenbezogene Daten nicht protokolliert (URS-F-058)
+Fehler: Lesezugriffe erscheinen nicht im Audit-Trail. Auswirkung: fehlende Nachvollziehbarkeit.
+S mittel · W gering · E gut → Risikoklasse: gering. Maßnahme/Test: Protokollierung im Audit-Trail; stichprobenartige Prüfung.
+3.8  Änderungswunsch-Kanal
+R-036 · Änderungswunsch als QM-Vorgang missverstanden / Wunsch verloren (URS-F-067/068)
+Fehler: Ein Wunsch wird fälschlich als QM-Abweichung/-Änderung behandelt oder geht unbearbeitet verloren. Auswirkung: Prozess-Vermischung bzw. verlorene Rückmeldung.
+S gering · W mittel · E gut → Risikoklasse: gering. Maßnahme/Test: klare Kennzeichnung als Software-Wunsch, Status-/Triage-Pflicht; stichprobenartige Prüfung.
+4  Zusammenfassung & Maßnahmen
+4.1  Verteilung der 36 Risiken
+Risikoklasse
+Anzahl
+Umgang
+Hoch
+11
+Maßnahme umgesetzt und Pflicht-Test
+Mittel
+19
+gezielter Test
+Gering
+6
+stichprobenartige Prüfung
+
+4.2  Schwerpunkte (die 11 hohen Risiken)
+Die Pflicht-Tests konzentrieren sich auf sechs Themen: korrekte Rechtevergabe und Funktionstrennung (R-001, R-004); Zugangsende bei Austritt und Abmeldung am gemeinsamen Tablet (R-007, R-010); Vollständigkeit und Unveränderbarkeit des Audit-Trails (R-012, R-013); Schreibschutz freigegebener Dokumente (R-017); Überwachung der Backups und erfolgreiche Wiederherstellung (R-022, R-023); Schutz vor externem Zugriff und kontrollierte Software-Freigabe (R-027, R-029).
+4.3  Verhältnis zu den Maßnahmen
+Die Maßnahmen sind keine zusätzlichen Forderungen — sie stehen bereits als Anforderungen in URS und FS/DS. Die Risikoanalyse bestätigt sie und legt fest, welche davon zwingend getestet werden müssen.
+5  Restrisiko & Akzeptanz
+5.1  Was Restrisiko bedeutet
+Restrisiko ist das Risiko, das nach Umsetzung der Maßnahmen und Bestehen der Tests verbleibt. Kein technisches System ist zu 100 % fehlerfrei; entscheidend ist, dass das verbleibende Risiko vertretbar ist.
+5.2  Bewertung des Restrisikos
+Sind die Maßnahmen umgesetzt und die hohen Risiken durch bestandene Pflicht-Tests abgesichert, sinkt das Restrisiko aller Punkte auf ein vertretbares Maß. Nach erfolgreicher Validierung verbleibt kein hohes Restrisiko.
+5.3  Bedingung
+Die Akzeptanz steht unter der Bedingung, dass die zugeordneten Tests (IQ/OQ/PQ) bestanden werden. Schlägt ein Pflicht-Test fehl, gilt das betreffende Risiko als nicht akzeptiert, bis es behoben und nachgetestet ist.
+5.4  Akzeptanz-Entscheidung
+Die Bewertung der Risiko-Akzeptanz und deren Bestätigung obliegen der Geschäftsleitung / Verantwortlichen Person per Unterschrift (Abschnitt 7). Claude liefert den Entwurf und die fachliche Einschätzung; die Akzeptanz-Entscheidung trifft der Mensch.
+6  Verknüpfung zur Validierung
+6.1  Prinzip
+Jede Maßnahme wird zu einem Testfall. Hohe Risiken werden zu Pflicht-Tests. Die Verknüpfung läuft über die Kennungen: Risiko (R-xxx) → Anforderung (URS-F) → Testfall.
+6.2  Zuordnung der Testarten
+IQ (Installationsqualifizierung) — ist alles richtig aufgesetzt? Infrastruktur-Risiken: Verschlüsselung, Firewall, getrennte Umgebungen, Backup-Einrichtung, Admin-Zugang (u. a. R-024, R-027, R-028, R-031).
+OQ (Funktionsqualifizierung) — funktionieren die Funktionen wie spezifiziert? Die meisten hohen Risiken: Rechte und Funktionstrennung, Login und Abmeldung, Audit-Trail, Schreibschutz, Software-Freigabeprozess (u. a. R-001, R-004, R-007, R-010, R-012, R-013, R-017, R-029).
+PQ (Leistungsqualifizierung) — bewährt es sich im echten Betrieb? U. a. die Wiederherstellungs-Übung (R-023) und der Benutzerwechsel am Tablet im Alltag (R-010).
+6.3  Nachverfolgbarkeit
+Die Zuordnung R-ID → URS-F → Testfall wird in der Traceability-Matrix geführt; hohe Risiken sind als Pflicht markiert. Sie fließt in den nächsten Schritt — den Validierungs-/Testplan mit den IQ/OQ/PQ-Skripten — ein.
+6.4  Ergebnis
+Diese Risikoanalyse legt damit den Prüfumfang und die Schwerpunkte der anschließenden Tests fest.
+7  Abnahme & Versionskontrolle
+7.1  Freigabe der Risikoanalyse
+Mit ihrer Unterschrift bestätigen die Verantwortlichen, dass die identifizierten Risiken und ihre Bewertung vollständig und angemessen sind und dass das Restrisiko — nach Umsetzung der Maßnahmen und Bestehen der zugeordneten Tests — akzeptiert wird.
+Funktion
+Rolle
+Name
+Datum
+Unterschrift
+Erstellt
+—
+Claude (Entwurf)
+
+
+Fachlich/technisch geprüft
+fachkundige techn. Person / Standby-Entwickler
+(noch zu benennen)
+
+
+Risiko-Akzeptanz / Freigabe
+Produktverantwortlicher / Geschäftsleitung
+Jochen Schulze
+
+
+
+7.2  Versionskontrolle
+Version
+Datum
+Autor
+Änderung
+0.1 (Entwurf)
+29.06.2026
+Jochen Schulze / Claude
+Erstentwurf, 36 Risiken (R-001–R-036)
+0.2 (Entwurf)
+30.06.2026
+Jochen Schulze / Claude
+Unterschriften auf Software-/Produkt-Governance umgestellt (QM-Pilot ist kein Bestandteil des QMS); Benennung vereinheitlicht
+
+7.3  Geltung
+Die Risikoanalyse ist ein lebendes Dokument. Bei Änderungen an Anforderungen oder Funktionen werden die betroffenen Risiken neu bewertet und eine neue Version erstellt.

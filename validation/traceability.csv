@@ -1,0 +1,4 @@
+ursId,requirement,implementation,test,wp,status
+URS-F-052,Software-Release nur über grüne CI,.github/workflows/ci.yml,src/lib/greet.test.ts,WP-00,done
+URS-F-053,Software-Release getrennt von QM-Change-Control,CLAUDE.md,CHANGELOG.md,WP-00,done
+URS-F-064,Wartbarkeit: README Struktur Git-Versionierung,README.md,src/lib/greet.test.ts,WP-00,done

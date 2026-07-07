@@ -1,0 +1,132 @@
+User Requirements Specification
+Modul „Dokumente &amp; Schulung&quot; — Stufe 2
+QM-Pilot
+Pharmazeutika 73.3 GmbH
+Version 0.1 (Entwurf) · Stand: 30.06.2026
+Erstellt von: Claude · Freigabe: Software-/Produkt-Governance (GL)
+Inhaltsverzeichnis
+1  Zweck &amp; Geltungsbereich
+1.1  Zweck
+Diese URS legt die Anforderungen an das Modul „Dokumente &amp; Schulung&quot; (Stufe 2) von QM-Pilot fest — Anzeigen freigegebener Dokumente, Lesebestätigung, Schulung und Schlagwort-Suche. Sie ist die Grundlage für Entwicklung und Validierung (IQ/OQ/PQ); jede Anforderung trägt eine eindeutige Kennung (URS-D-NNN).
+1.2  Einordnung
+Stufe 2 setzt auf dem Fundament (Stufe 0) auf und macht die im QM bereits freigegebenen Dokumente (SOPs, Vordrucke, Anlagen, Gesetzestexte) im System nutzbar. Sie löst insbesondere die digitale SOP-Schulung mit Lesebestätigung (Bezug SOP-02-003 Schulungswesen) und schafft die Grundlage für Suche und Inventarverzeichnis.
+1.3  Geltungsbereich
+Beschrieben wird, was das Modul leisten muss: Dokumente hinterlegen und anzeigen, durchsuchen, Lesebestätigungen erfassen, Schulungen zuweisen und nachweisen. Nicht Teil von Stufe 2 ist der Bearbeitungs-, Versionierungs- und Freigabe-Workflow der Dokumente (Dokumentenlenkung, Stufe 5). Freigegebene Dokumente werden hier manuell hinterlegt.
+1.4  Verbindlichkeit
+QM-Pilot ist ein eigenständiges Software-Produkt, kein Bestandteil des QMS. Diese URS ist ein Software-Entwicklungsdokument und wird unter der Software-/Produkt-Governance freigegeben (Ersteller → technische Prüfung → Produktverantwortlicher), nicht über die QM-Dokumentenlenkung.
+2  Mitgeltende Dokumente
+2.1  Projektinterne Dokumente
+Vision Document (v0.1), Technische Grundsatzentscheidungen (v0.1) sowie die Dokumente der Stufen 0 und 1 (URS, FS/DS, Risikoanalyse). Das Modul nutzt das Fundament (Benutzer, Rollen, Audit-Trail, Archivierung, Design) und — für Schulungs-Erinnerungen — die Erinnerungs-/Eskalations-Mechanik aus Stufe 1.
+2.2  Verwaltete Inhalte &amp; fachliche Quelle
+Die im QM freigegebenen Dokumente sind die verwalteten Inhalte: QM-Handbuch, 41 SOPs, 70 Vordrucke, 40 Anlagen — ergänzt um Gesetzestexte als eigene Dokumentart. Die Schulungsanforderungen leiten sich aus SOP-02-003 ab. Diese Inhalte werden verwaltet/referenziert, sind aber nicht der Validierungsmaßstab der Software.
+2.3  Regulatorische Grundlagen
+GDP-Leitlinie 2013/C 343/01 (insbesondere Kapitel 4 Dokumentation); EU-Annex 11 (sinngemäß); ALCOA+; DSGVO; GAMP 5 als Methodik. Verbindlicher Maßstab sind die gesetzlichen Vorgaben.
+3  Überblick &amp; Abgrenzung
+3.1  Inhalt der Stufe 2
+Das Modul umfasst: das Hinterlegen freigegebener Dokumente (mit Dokumentart und Metadaten), das Anzeigen/Öffnen (PDF lesen), die Schlagwort-Suche mit Gruppierung nach Dokumentart, die Lesebestätigung sowie die Schulung (Pflichtlektüre zuweisen und nachweisen, mit Schulungsregister). Jeder relevante Vorgang ist mit dem Audit-Trail gekoppelt.
+3.2  Abgrenzung (nicht Teil der Stufe 2)
+Nicht enthalten sind der Bearbeitungs-, Versionierungs- und Freigabe-Workflow der Dokumente (Dokumentenlenkung, Stufe 5) und ein In-App-Editor — Dokumente werden als freigegebene Dateien hinterlegt, nicht bearbeitet. Vordrucke werden hier nur angezeigt; ihre Ausfüllbarkeit als Online-Formulare ist Stufe 3. Reklamationen/Feststellungen bleiben Stufe 4.
+3.3  Ergebnis der Stufe 2
+Freigegebene Dokumente sind auffindbar, lesbar und mit Lesebestätigung versehen; Schulungen lassen sich zuweisen und nachweisen (Schulungsregister automatisch). Damit funktioniert die digitale SOP-Schulung, und die Grundlage für Suche und Inventarverzeichnis steht.
+4  Anforderungen
+4.1  Dokumente hinterlegen
+URS-D-001 — Das System muss das Hinterlegen freigegebener Dokumente ermöglichen, mit mindestens: Titel, Dokumentart, Dokumentnummer (z. B. „SOP-03-002&quot;), Version, Status, Freigabedatum sowie der Datei (z. B. PDF).
+URS-D-002 — Die Dokumentarten müssen konfigurierbar sein und mindestens umfassen: SOP, Vordruck, Anlage und Gesetzestext.
+URS-D-003 — Nur berechtigte Rollen (QMB, RP) dürfen Dokumente hinterlegen, aktualisieren oder als „außer Kraft&quot; kennzeichnen; übrige Rollen haben Lesezugriff (siehe 4.7).
+URS-D-004 — Eine hinterlegte Dokumentdatei darf nicht stillschweigend verändert werden; eine neue Fassung wird als neuer Eintrag hinterlegt (der vollständige Versionierungs-/Lebenszyklus folgt in Stufe 5).
+URS-D-005 — Ein Dokument muss als „außer Kraft&quot; bzw. „veraltet&quot; kennzeichenbar sein, sodass nur die jeweils gültige Fassung als aktuell angezeigt wird; veraltete Fassungen bleiben auffindbar.
+URS-D-006 — Das Hinterlegen und jede Statusänderung eines Dokuments müssen im Audit-Trail protokolliert werden.
+URS-D-007 — Beim Inkraftsetzen einer neuen Version muss ein Änderungsvermerk erfasst werden (was wurde geändert, ggf. mit Grund); er wird mit der Version gespeichert und ist in der Dokumenthistorie einsehbar.
+4.2  Dokumente anzeigen/öffnen
+URS-D-008 — Berechtigte Nutzer müssen Dokumente direkt im Browser öffnen und lesen können (Anzeige z. B. als PDF), ohne Download-Zwang.
+URS-D-009 — Es muss eine Dokumentenübersicht geben, nach Dokumentart gruppier- und filterbar; standardmäßig werden die gültigen Fassungen angezeigt, veraltete sind auf Wunsch einsehbar.
+URS-D-010 — Beim Öffnen müssen die Metadaten sichtbar sein (Dokumentnummer, Version, Status, Freigabedatum); eine veraltete Fassung wird deutlich als „außer Kraft&quot; gekennzeichnet.
+URS-D-011 — Der Zugriff folgt dem Rollenmodell: Mitarbeitende lesen die für sie relevanten Dokumente; Auditoren haben rein lesenden Zugriff auf alle Dokumente.
+URS-D-016 — In der Leseansicht müssen Verweise auf andere Dokumente (erkennbar an ihrer Nummer, z. B. „A-03-001&quot;, „SOP-05-003&quot;, „F-06-001&quot;) als anklickbare Verknüpfungen dargestellt werden — als „Verweise&quot;-Liste neben/unter der Leseansicht; ein Klick öffnet das referenzierte Dokument, sofern vorhanden.
+4.3  Schlagwort-Suche
+URS-D-012 — Das Suchfeld muss eine Schlagwortsuche über Titel, Dokumentnummer und den Volltext-Inhalt der Dokumente ermöglichen. Bei reinen Bild-PDFs wird der Text per Texterkennung/OCR durchsuchbar gemacht.
+URS-D-013 — Die Treffer müssen thematisch nach Dokumentart gruppiert dargestellt werden (SOPs, Vordrucke, Anlagen, Gesetzestexte …).
+URS-D-014 — Die Suche respektiert das Rollenmodell: Es werden nur Dokumente angezeigt, die der suchenden Person zugänglich sind.
+URS-D-015 — Aus der Trefferliste muss ein Dokument direkt geöffnet werden können (Anzeige gemäß 4.2).
+4.4  Lesebestätigung
+URS-D-017 — Ein Nutzer muss bestätigen können, ein Dokument gelesen (und verstanden) zu haben; das System hält fest: wer, wann und welche Dokumentversion.
+URS-D-018 — Die Lesebestätigung ist eine Aufzeichnung und unveränderbar (ALCOA+): nachträgliches Ändern oder Löschen ist nicht vorgesehen.
+URS-D-019 — Eine Lesebestätigung bezieht sich immer auf die konkret gelesene Version; tritt eine neue Version in Kraft, ist eine erneute Lesebestätigung erforderlich (siehe 4.5 / URS-D-024).
+URS-D-020 — Jede Lesebestätigung wird im Audit-Trail protokolliert.
+4.5  Schulung
+URS-D-021 — Es muss ein Schulungsplan definierbar sein: welche Dokumente (Pflichtlektüre) von welchen Rollen/Personen zu lesen sind.
+URS-D-022 — Die Lese-Häufigkeit (Turnus) muss konfigurierbar sein — mit globaler Vorgabe (z. B. „alle SOPs 1× jährlich&quot;) und der Möglichkeit, den Turnus für einzelne SOPs abweichend zu setzen (z. B. halbjährlich).
+URS-D-023 — Eine Lesebestätigung gilt für die Dauer des konfigurierten Turnus; nach Ablauf wird die Lektüre erneut fällig (erneute Lesebestätigung erforderlich).
+URS-D-024 — Tritt eine neue Version eines Dokuments in Kraft, muss sie von den betroffenen Personen erneut gelesen und bestätigt werden — jede neue Version ist verpflichtend zu lesen.
+URS-D-025 — Fällige und überfällige Schulungen nutzen die Erinnerungs-/Eskalations-Mechanik aus Stufe 1 (Reminder an die Person, Überfälligkeit → Information an die QMB).
+URS-D-026 — Das Festlegen und Ändern von Schulungsplan und Turnus wird im Audit-Trail protokolliert.
+URS-D-045 — Je Dokument muss konfigurierbar sein, welche Rollen und/oder Personen es lesen müssen. Nur die zugewiesenen Leser sehen es als Pflichtlektüre und erhalten Erinnerungen; nicht zugewiesene Personen sind nicht betroffen (z. B. müssen Lager-Mitarbeitende nicht alle SOPs lesen).
+4.6  Schulungsregister &amp; Reporting
+URS-D-027 — Das System muss ein Schulungsregister automatisch führen: wer hat welches Dokument wann und in welcher Version gelesen. Es muss für Inspektionen exportierbar sein.
+URS-D-028 — Für die QMB muss eine Mitarbeiter-Übersicht den Bearbeitungsstand gemäß Schulungsplan zeigen (gelesen vs. offen), inklusive visueller Kreis-/Donut-Anzeige (z. B. grün = gelesen 75 %, rot = offen 25 %).
+URS-D-029 — Es muss zusätzlich eine Dokument-Übersicht geben: wer hat ein bestimmtes Dokument noch nicht gelesen — für die gezielte Nachverfolgung.
+URS-D-030 — Diese Überwachungs-Übersichten sind den Rollen QMB, RP und GL vorbehalten; der Zugriff ist rollenbasiert beschränkt.
+URS-D-031 — Die Darstellung dient der sachlichen Schulungs-Überwachung (Compliance-Nachweis) und ist klar und neutral gehalten.
+4.7  Berechtigungen
+URS-D-032 — Dokumente hinterlegen, aktualisieren und ihren Status ändern dürfen nur QMB und RP.
+URS-D-033 — Den Schulungsplan und den Turnus festlegen dürfen nur QMB und RP.
+URS-D-034 — Lesen und Lesebestätigen können alle berechtigten Mitarbeitenden — für die ihnen zugänglichen Dokumente.
+URS-D-035 — Die Überwachungs-Übersichten sind QMB, RP und GL vorbehalten; Auditoren haben rein lesenden Zugriff auf Dokumente und Schulungsregister.
+URS-D-036 — Es gilt das Prinzip der minimalen Rechte; alle Zugriffsbeschränkungen werden serverseitig durchgesetzt (nicht nur in der Oberfläche ausgeblendet).
+4.8  Audit-Trail-Kopplung
+URS-D-037 — Alle qualitätsrelevanten Vorgänge (Dokument hinterlegen, Statusänderung, Änderungsvermerk, Lesebestätigung, Schulungsplan/Turnus festlegen, ausgelöste Schulungs-Erinnerungen/Eskalationen) müssen automatisch über den zentralen Audit-Trail des Fundaments protokolliert werden; kein Vorgang darf die Protokollierung umgehen.
+URS-D-038 — Lesebestätigungen und Schulungsregister-Einträge sind unveränderbare Aufzeichnungen und unterliegen der revisionssicheren Archivierung des Fundaments (ALCOA+).
+5  Nicht-funktionale Anforderungen
+URS-D-039 — Bedienbarkeit: Dokumente müssen schnell auffindbar und mit wenigen Schritten les- und bestätigbar sein; durchgängiges Design-System.
+URS-D-040 — Performance: Übersichten und Suche müssen beim vorhandenen Dokumentenbestand (QM-Handbuch, 41 SOPs, 70 Vordrucke, 40 Anlagen, Gesetzestexte) im Sekundenbereich reagieren.
+URS-D-041 — Datenintegrität: Lesebestätigungen und Schulungsregister gewährleisten ALCOA+ (über das Fundament).
+URS-D-042 — Aufbewahrung: Schulungsnachweise werden revisionssicher und gemäß Aufbewahrungsfrist (GDP: 5 Jahre) gespeichert und sind vom Backup umfasst.
+URS-D-043 — Wartbarkeit / Konfigurationstrennung: Dokumentarten, Turnus und Schulungsplan werden als Daten/Konfiguration geführt, nicht fest verdrahtet.
+URS-D-044 — Dateiablage: Dokumentdateien werden sicher gespeichert (Zugriffsschutz) und sind von der Datensicherung umfasst.
+6  Regulatorischer Bezug
+6.1  Einordnung
+Das Modul ist Teil des GAMP-5-Kategorie-5-Systems und wird vor dem Produktivgang eigenständig validiert (eigene Risikoanalyse, IQ/OQ/PQ) und durchläuft den Schattenbetrieb.
+6.2  Abdeckung
+Das Modul unterstützt die GDP-Anforderung an gelenkte Dokumentation und die nachweisbare Schulung (GDP-Leitlinie Kapitel 4; Schulungswesen analog SOP-02-003). Lesebestätigungen und Schulungsnachweise sind GxP-Aufzeichnungen; Nachvollziehbarkeit, Zuordnung und Unveränderbarkeit über Audit-Trail und Archivierung des Fundaments (Annex 11, ALCOA+).
+6.3  Maßstab
+Verbindlicher Prüfmaßstab sind die gesetzlichen Vorgaben; GAMP 5 und ALCOA+ dienen als anerkannte Methodik. Die QM-Dokumente sind verwaltete Inhalte, nicht der Validierungsmaßstab der Software.
+7  Annahmen &amp; offene Punkte
+7.1  Annahmen
+Das Fundament (Stufe 0) und die Erinnerungs-/Eskalations-Mechanik (Stufe 1) sind verfügbar. Die freigegebenen Dokumente liegen als Dateien (z. B. PDF) vor und werden manuell hinterlegt. Ein zeitgesteuerter Hintergrundlauf für Schulungs-Erinnerungen kann betrieben werden.
+7.2  Offene Punkte (bei FS/DS bzw. Umsetzung festzulegen)
+Die genaue Darstellung der „Verweise&quot;-Liste; die konkreten Turnus-Vorgaben; sowie der Umgang mit mehrsprachigen Dokumenten (z. B. englische Gesetzes-/Lieferantentexte). (Entschieden: Volltext-Suche im PDF-Inhalt; Pflicht-Neulesung bei jeder neuen Version.)
+8  Anforderungs-Nachverfolgung
+8.1  Prinzip
+Jede Anforderung trägt eine eindeutige Kennung (URS-D-NNN) und wird durchgängig in FS/DS, Risikoanalyse und Testskripte (IQ/OQ/PQ) weitergeführt; eine Traceability-Matrix verknüpft Anforderung → Umsetzung → Testfall.
+8.2  Umfang dieser URS
+45 Anforderungen (URS-D-001 bis URS-D-045), verteilt auf: Dokumente hinterlegen (D-001–007), Anzeigen &amp; Verweise (D-008–011, D-016), Schlagwort-Suche (D-012–015), Lesebestätigung (D-017–020), Schulung (D-021–026, D-045), Schulungsregister &amp; Reporting (D-027–031), Berechtigungen (D-032–036), Audit-Trail-Kopplung (D-037–038) sowie nicht-funktionale Anforderungen (D-039–044).
+8.3  Pflege
+Die Traceability-Matrix wird als eigenes, lebendes Dokument geführt und mit den Validierungsschritten fortgeschrieben.
+9  Abnahme &amp; Versionskontrolle
+9.1  Freigabe (Software-/Produkt-Governance)
+QM-Pilot ist ein eigenständiges Software-Produkt, kein Bestandteil des QMS. Diese URS wird unter der Software-/Produkt-Governance freigegeben (nicht über die QM-Dokumentenlenkung). Mit der Freigabe wird bestätigt, dass sie die Anforderungen an das Modul „Dokumente &amp; Schulung&quot; (Stufe 2) vollständig und zutreffend beschreibt.
+Funktion
+Rolle
+Name
+Datum
+Untersch.
+Erstellt
+—
+Claude (Entwurf)
+Fachlich/technisch geprüft
+fachkundige techn. Person / Standby-Entwickler
+(noch zu benennen)
+Freigegeben
+Produktverantwortlicher / Geschäftsleitung
+Jochen Schulze
+9.2  Versionskontrolle
+Version
+Datum
+Autor
+Änderung
+0.1 (Entwurf)
+30.06.2026
+Jochen Schulze / Claude
+Erstentwurf, Abschnitte 1–9, URS-D-001 bis URS-D-045
+9.3  Geltung
+Die URS ist ein lebendes Dokument. Änderungen nach der ersten Freigabe erfolgen über eine neue Version mit Eintrag in der Versionstabelle.

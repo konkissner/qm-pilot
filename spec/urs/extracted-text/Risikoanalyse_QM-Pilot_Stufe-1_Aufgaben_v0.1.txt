@@ -1,0 +1,254 @@
+Risikoanalyse
+QM-Pilot — Modul „Aufgaben" (Stufe 1)
+Pharmazeutika 73.3 GmbH
+Version 0.1 (Entwurf) · Stand: 30.06.2026
+Erstellt von: Claude · Risiko-Akzeptanz: Produktverantwortlicher (GL)
+
+
+Inhaltsverzeichnis
+
+
+
+
+1  Zweck & Geltungsbereich
+1.1 Zweck — Diese Risikoanalyse identifiziert und bewertet die Risiken des Aufgaben-Moduls (Stufe 1) und leitet Maßnahmen (Programmierempfehlungen) sowie den Schwerpunkt der Qualifizierungstests (IQ/OQ/PQ) ab. Risikobasierter Ansatz nach GAMP 5.
+1.2 Geltungsbereich — Bewertet werden die Funktionsbereiche der FS/DS Stufe 1 (4.1–4.8). Grundlage sind URS Stufe 1 und FS/DS; Maßstab für die Schwere sind die gesetzlichen Vorgaben und das Schutzziel.
+2  Methodik & Bewertungsmaßstab
+2.1 Vorgehen — Je kritischer Funktion: möglicher Fehler → Auswirkung → Bewertung nach Schwere (S), Wahrscheinlichkeit (W), Erkennbarkeit (E) → Risikoklasse → Programmierempfehlung und Test.
+2.2 Stufen — S: gering/mittel/hoch · W: gering/mittel/hoch · E: gut/mittel/schlecht.
+2.3 Risikoklasse — Hoch: Schwere hoch mit mittlerer/hoher Wahrscheinlichkeit oder schlechter Erkennbarkeit. Mittel: mittlere Kombinationen. Gering: geringe Schwere bei guter Erkennbarkeit.
+2.4 Umgang — Hoch → Programmierempfehlung + Pflicht-Test; Mittel → gezielter Test; Gering → Stichprobe.
+3  Risikobewertung je Funktionsbereich
+3.1  Aufgaben-Definition
+R-A-001 · Unbefugtes Anlegen/Ändern (URS-A-004)
+Fehler: Eine nicht berechtigte Rolle legt Aufgaben an oder ändert sie. Auswirkung: falsche oder fehlende Routineaufgaben.
+S mittel · W gering · E gut → gering
+Programmierempfehlung: Rechteprüfung serverseitig über Django-Permissions/Gruppen (Mixin in der View), nicht nur die Schaltfläche ausblenden.
+Test: gezielter Berechtigungstest.
+R-A-002 · Definition gelöscht statt deaktiviert (URS-A-005)
+Fehler: Eine Definition wird entfernt, die Erledigungs-Historie geht verloren. Auswirkung: Nachweise nicht mehr nachvollziehbar.
+S hoch · W gering · E gut → mittel
+Programmierempfehlung: Kein Lösch-Pfad; Verknüpfungen mit on_delete=PROTECT; nur aktiv-Flag.
+Test: Test, dass Historie bei Deaktivierung erhalten bleibt.
+R-A-003 · Fehlerhafte/unvollständige Definition (URS-A-001/002)
+Fehler: Falscher SOP-Bezug, falsche Zuständigkeit oder unklare Beschreibung. Auswirkung: Aufgabe landet falsch oder ist nicht eindeutig.
+S mittel · W mittel · E mittel → mittel
+Programmierempfehlung: Formular-Validierung mit Pflichtfeldern; SOP-Bezug als Auswahl/Referenz statt Freitext.
+Test: gezielter Test mit unvollständigen Eingaben.
+R-A-004 · Änderung nicht protokolliert (URS-A-006)
+Fehler: Eine Änderung an der Definition erscheint nicht im Audit-Trail. Auswirkung: Audit-Lücke.
+S mittel · W gering · E gut → gering
+Programmierempfehlung: Definition in die zentralen Audit-Signale aufnehmen (automatisch, kein Logging im View).
+Test: stichprobenartige Prüfung.
+3.2  Terminierung & Wiederholung
+R-A-005 · Fälligkeit wird nicht erzeugt (URS-A-008/042/043)
+Fehler: Eine wiederkehrende Aufgabe erzeugt keine nächste Fälligkeit (Fehler/Ausfall des Hintergrundlaufs). Auswirkung: eine QM-/gesetzlich relevante Tätigkeit unterbleibt — und fällt kaum auf.
+S hoch · W mittel · E schlecht → hoch
+Programmierempfehlung: Generator zieht idempotent alle fehlenden Fälligkeiten bis heute nach (nicht nur „die nächste"); Lauf-Heartbeat überwachen, Alarm bei Ausbleiben.
+Test: Pflicht-Test: Lauf aussetzen → der nächste holt lückenlos nach.
+R-A-006 · Doppelte Fälligkeit (URS-A-042)
+Fehler: Dieselbe Aufgabe wird mehrfach erzeugt. Auswirkung: Verwirrung, doppelte Erledigung.
+S mittel · W mittel · E gut → mittel
+Programmierempfehlung: Eindeutigkeits-Constraint auf (Definition, Fälligkeitsdatum); get_or_create statt create.
+Test: Mehrfachlauf erzeugt keine Dublette.
+R-A-007 · Falsche Feiertags-/Arbeitstag-Verschiebung (URS-A-045)
+Fehler: Fälligkeit wird am falschen Tag angesetzt (falscher Kalender/Bundesland, falsche Verschiebung). Auswirkung: Aufgabe zu spät oder am falschen Tag.
+S mittel · W mittel · E mittel → mittel
+Programmierempfehlung: Zentrale Funktion „vorheriger_arbeitstag()" mit konfiguriertem Kalender; Unit-Tests mit bekannten Feiertagen.
+Test: Feiertagsfälle prüfen (z. B. Fr-Feiertag → Do).
+R-A-008 · Überfälligkeit nicht erkannt (URS-A-010)
+Fehler: Eine verstrichene Fälligkeit bleibt im Status „offen". Auswirkung: keine Eskalation, Aufgabe wird übersehen.
+S hoch · W gering · E mittel → mittel
+Programmierempfehlung: Überfälligkeit abgeleitet aus „Datum < heute und nicht erledigt" statt als gespeichertem Status (immer korrekt).
+Test: gezielter Test der Statusableitung.
+3.3  Zuweisung & Gruppen-/Claim-Logik
+R-A-009 · Gleichzeitige Erledigung (Race Condition) (URS-A-012)
+Fehler: Zwei Personen quittieren dieselbe Gruppenaufgabe gleichzeitig. Auswirkung: doppelte Erledigung oder widersprüchlicher Status.
+S mittel · W mittel · E gut → mittel
+Programmierempfehlung: Atomare Statusänderung per Datenbank-Transaktion (select_for_update; Update nur wenn Status noch „offen") — die erste Erledigung gewinnt.
+Test: gezielter Test mit gleichzeitiger Erledigung.
+R-A-010 · Claim-Ausblendung fehlerhaft (URS-A-012)
+Fehler: Nach Erledigung verschwindet die Aufgabe nicht bei den anderen — oder verschwindet fälschlich, obwohl offen. Auswirkung: Mehrfachausführung oder übersehene Aufgabe.
+S mittel · W gering · E gut → mittel
+Programmierempfehlung: Anzeige filtert rein nach Status (offen) + Zuständigkeit; keine je Person kopierten To-do-Einträge.
+Test: gezielter Test der Ausblendung.
+R-A-011 · Falsche Zuweisung (URS-A-011/013)
+Fehler: Aufgabe bei falscher Person/Gruppe. Auswirkung: bleibt liegen, weil sich niemand zuständig fühlt.
+S mittel · W mittel · E mittel → mittel
+Programmierempfehlung: Zuständigkeit als strukturierte Referenz (Person/Rolle/Gruppe), Pflichtfeld; Umzuweisung nur mit Berechtigung.
+Test: gezielter Test der Zuweisung.
+R-A-012 · Zuweisung nicht protokolliert (URS-A-014)
+Fehler: Eine (Um-)Zuweisung erscheint nicht im Audit-Trail. Auswirkung: Audit-Lücke.
+S mittel · W gering · E gut → gering
+Programmierempfehlung: Zuweisungsänderungen über die zentralen Audit-Signale erfassen.
+Test: stichprobenartige Prüfung.
+3.4  Abwesenheit & Vertretung
+R-A-013 · Aufgabe ohne Zuständigen während Abwesenheit (URS-A-017)
+Fehler: Während des Urlaubs sieht weder die Person noch der Vertreter die Aufgabe. Auswirkung: bleibt unbearbeitet liegen.
+S hoch · W mittel · E mittel → hoch
+Programmierempfehlung: Eine zentrale Funktion „effektiv zuständige Person zum Datum" berechnet die Zuständigkeit dynamisch und liefert nie „niemand" — ist kein Vertreter hinterlegt, greift ein Fallback (Eskalation an QMB).
+Test: Pflicht-Test: Fälligkeit im Abwesenheitszeitraum → beim Vertreter; ohne Vertreter → Eskalation.
+R-A-014 · Keine Rückübertragung nach Rückkehr (URS-A-017)
+Fehler: Nach dem Urlaub bleiben Aufgaben beim Vertreter. Auswirkung: falsche Zuordnung.
+S mittel · W gering · E gut → gering
+Programmierempfehlung: Zuständigkeit nicht dauerhaft umschreiben, sondern je Fälligkeitsdatum dynamisch auflösen — Rückfall erfolgt automatisch.
+Test: Fälligkeit nach Abwesenheitsende → wieder bei der ursprünglichen Person.
+R-A-015 · Vertreter selbst abwesend (URS-A-016)
+Fehler: Die hinterlegte Vertretung ist im selben Zeitraum abwesend. Auswirkung: Vertretung greift ins Leere.
+S mittel · W gering · E mittel → mittel
+Programmierempfehlung: Bei der Auflösung die Abwesenheit des Vertreters mitprüfen; greift sie nicht, Fallback-Eskalation an QMB; bei der Eingabe vor Überschneidung warnen.
+Test: Vertreter im selben Zeitraum abwesend → Fallback greift.
+R-A-016 · Abwesenheits-Eintragung nicht protokolliert (URS-A-018)
+Fehler: Anlegen/Ändern einer Abwesenheit erscheint nicht im Audit-Trail. Auswirkung: Audit-Lücke.
+S mittel · W gering · E gut → gering
+Programmierempfehlung: Modell „Abwesenheit" in die zentralen Audit-Signale aufnehmen.
+Test: stichprobenartige Prüfung.
+3.5  Erledigung & Quittierung
+R-A-017 · Erledigung nachträglich verändert/gelöscht (URS-A-023)
+Fehler: Eine erfasste Erledigung wird verändert oder entfernt. Auswirkung: ALCOA+ verletzt, Nachweis manipulierbar.
+S hoch · W gering · E schlecht → hoch
+Programmierempfehlung: Erledigung append-only (wie der Audit-Eintrag — save() blockt nachträgliche Änderungen, kein Lösch-Pfad); Korrektur nur als neuer Datensatz mit Bezug.
+Test: Pflicht-Test: Änderungs- und Löschversuch müssen scheitern.
+R-A-018 · Falsche Person quittiert (URS-A-024)
+Fehler: Jemand quittiert eine Aufgabe, für die er nicht zuständig ist. Auswirkung: falsche Zuordnung.
+S mittel · W mittel · E mittel → mittel
+Programmierempfehlung: Serverseitige Prüfung, dass die quittierende Person die effektiv zuständige Person, deren Vertretung oder ein Mitglied der zuständigen Gruppe ist.
+Test: Quittierungsversuch durch unbefugte Person wird abgewiesen.
+R-A-019 · Nachweis fehlerhaft, verloren oder schädlich (URS-A-021/039)
+Fehler: Hochgeladene Datei geht verloren, ist manipuliert oder enthält Schadcode. Auswirkung: Nachweis unbrauchbar oder Sicherheitsrisiko.
+S mittel · W gering · E mittel → mittel
+Programmierempfehlung: Dateien unveränderbar mit der Erledigung verknüpfen; Typ-/Größen-Whitelist; Ablage im gesicherten, vom Backup umfassten Bereich; optional Prüfsumme.
+Test: Upload erlaubter/unerlaubter Typen; Datei nach Backup-Rücksicherung vorhanden.
+R-A-020 · Folgefälligkeit fehlt oder doppelt (URS-A-022)
+Fehler: Nach Erledigung wird die nächste Fälligkeit nicht oder doppelt erzeugt. Auswirkung: Wiederholungsreihe bricht ab oder dupliziert.
+S mittel · W gering · E mittel → mittel
+Programmierempfehlung: Folgeerzeugung in derselben Datenbank-Transaktion wie die Erledigung, abgesichert durch den Eindeutigkeits-Constraint aus R-A-006 (idempotent).
+Test: Erledigung erzeugt genau eine Folgefälligkeit; Wiederholung erzeugt keine Dublette.
+R-A-021 · Erledigung nicht protokolliert (URS-A-025)
+Fehler: Eine Erledigung erscheint nicht im Audit-Trail. Auswirkung: Audit-Lücke.
+S mittel · W gering · E gut → gering
+Programmierempfehlung: Erledigung über die zentralen Audit-Signale erfassen (automatisch).
+Test: stichprobenartige Prüfung.
+3.6  Eskalation & Erinnerung
+R-A-022 · Keine Eskalation/Erinnerung bei Überfälligkeit (URS-A-026/027)
+Fehler: Eine überfällige Aufgabe löst keine Reminder-E-Mail und keine QMB-Info aus. Auswirkung: bleibt unbemerkt liegen.
+S hoch · W mittel · E schlecht → hoch
+Programmierempfehlung: Eskalation an denselben überwachten Hintergrundlauf koppeln (vgl. R-A-005); je Fälligkeit den erreichten Eskalationsstand speichern, damit jede Stufe sicher genau einmal auslöst; Heartbeat-Alarm.
+Test: Pflicht-Test: überfällige Aufgabe → Reminder an die Person und Information an die QMB.
+R-A-023 · E-Mail-Versand schlägt fehl (URS-A-029)
+Fehler: Der E-Mail-Versand funktioniert nicht. Auswirkung: Erinnerung/Eskalation erreicht niemanden.
+S hoch · W gering · E mittel → mittel
+Programmierempfehlung: Versand-Ergebnis prüfen und protokollieren; bei Fehlschlag greift die Dashboard-Rückfallebene und ein erneuter Versuch; E-Mail-Fehler überwachen.
+Test: E-Mail-Anbindung deaktiviert → überfällige Aufgabe erscheint als deutlicher Dashboard-Hinweis.
+R-A-024 · Mehrfach-/Dauer-Eskalation (URS-A-028)
+Fehler: Dieselbe Eskalation wird bei jedem Lauf erneut versendet. Auswirkung: Alarmmüdigkeit.
+S gering · W mittel · E gut → gering
+Programmierempfehlung: Eskalationsstand und -zeitpunkt je Fälligkeit speichern; jede Stufe nur einmal auslösen.
+Test: mehrere Läufe an einem überfälligen Tag erzeugen keine Wiederhol-Mails.
+R-A-025 · Eskalation nicht protokolliert (URS-A-030)
+Fehler: Eine ausgelöste Eskalation erscheint nicht im Audit-Trail. Auswirkung: Audit-Lücke.
+S mittel · W gering · E gut → gering
+Programmierempfehlung: Beim Auslösen automatisch einen Audit-Eintrag erzeugen (was, wann, an wen).
+Test: stichprobenartige Prüfung.
+3.7  Anzeige & Feedback
+R-A-026 · Dashboard zeigt falsche Aufgaben (URS-A-031)
+Fehler: Eigene Aufgaben fehlen oder fremde werden angezeigt. Auswirkung: Aufgaben übersehen bzw. Einsicht in Fremdes.
+S mittel · W gering · E mittel → mittel
+Programmierempfehlung: Serverseitige Filterung strikt nach effektiv zuständiger Person/Gruppe; Tests je Rolle.
+Test: Anmeldung als verschiedene Rollen → jeder sieht genau seine Aufgaben.
+R-A-027 · Überfälligkeit nicht erkennbar (URS-A-034)
+Fehler: Falsche/fehlende Statusfarbe. Auswirkung: überfällige Aufgabe wird übersehen.
+S mittel · W gering · E gut → gering
+Programmierempfehlung: Statusfarbe aus dem abgeleiteten Status (R-A-008) über eine zentrale Style-Logik (Türkisgrün/Gelb/Warmrot).
+Test: überfällige Aufgabe erscheint in Warmrot.
+R-A-028 · Gesamtübersicht für Unberechtigte (URS-A-035)
+Fehler: Eine nicht berechtigte Rolle sieht alle Aufgaben. Auswirkung: Vertraulichkeit/Rechte verletzt.
+S mittel · W gering · E mittel → mittel
+Programmierempfehlung: Gesamtansicht serverseitig auf QMB/RP/GL beschränken (Permission-Check), nicht nur den Menüpunkt ausblenden.
+Test: operativer Nutzer erhält bei der Gesamtübersicht „kein Zugriff".
+R-A-029 · Feedback falsch oder demotivierend (URS-A-036)
+Fehler: Zahl falsch berechnet, oder die Rückmeldung wirkt bloßstellend/unter Druck setzend. Auswirkung: Fehlinformation oder negative Wirkung auf Mitarbeitende.
+S gering · W mittel · E gut → gering
+Programmierempfehlung: Einfache, korrekt gerundete Zählung; ausschließlich positive, ermutigende Texte ohne personenbezogene Vergleiche; Texte konfigurierbar.
+Test: Stichprobe der berechneten Zahlen und der angezeigten Texte.
+R-A-030 · Filter/Suche unvollständig (URS-A-033)
+Fehler: Filter liefert falsche oder unvollständige Treffer. Auswirkung: Aufgaben werden nicht gefunden.
+S gering · W gering · E gut → gering
+Programmierempfehlung: Serverseitige, getestete Filterlogik, konsistent mit der Audit-Trail-Suche.
+Test: Filter nach Status/Zeitraum/Person liefert die erwarteten Treffer.
+3.8  Audit-Trail-Kopplung
+R-A-031 · Ein Vorgang umgeht die Protokollierung (URS-A-038)
+Fehler: Eine Massen- oder Direktoperation erzeugt keinen Audit-Eintrag. Auswirkung: Audit-Lücke — fällt kaum auf.
+S hoch · W gering · E schlecht → hoch
+Programmierempfehlung: Alle Modul-Modelle an die zentralen Audit-Signale anbinden; Operationen, die Signale umgehen (Bulk/Direkt-SQL), vermeiden oder ausdrücklich mit-protokollieren; im Code-Review prüfen.
+Test: Pflicht-Test: jeder Vorgangstyp (Anlegen, Zuweisen, Erledigen, Eskalieren, Abwesenheit) erzeugt einen Audit-Eintrag.
+R-A-032 · Erledigungen/Nachweise nicht revisionssicher gesichert (URS-A-039)
+Fehler: Erledigungen oder Nachweise sind nicht von Archivierung/Backup umfasst. Auswirkung: Verlust von Aufzeichnungen.
+S hoch · W gering · E mittel → mittel
+Programmierempfehlung: Ablage im vom Backup umfassten Bereich, append-only; Vollständigkeit in der jährlichen Wiederherstellungs-Übung mitprüfen.
+Test: Erledigung samt Nachweis nach Backup-Rücksicherung vollständig vorhanden.
+4  Zusammenfassung & Maßnahmen
+4.1  Verteilung der 32 Risiken
+Risikoklasse
+Anzahl
+Umgang
+Hoch
+5
+Programmierempfehlung umgesetzt und Pflicht-Test
+Mittel
+16
+gezielter Test
+Gering
+11
+stichprobenartige Prüfung
+
+4.2  Schwerpunkte (die 5 hohen Risiken)
+Die Pflicht-Tests konzentrieren sich auf: die lückenlose, nachholende Erzeugung der Fälligkeiten (R-A-005); dass während Abwesenheiten immer eine zuständige Person bzw. eine Eskalation greift (R-A-013); die Unveränderbarkeit erfasster Erledigungen (R-A-017); die zuverlässige Eskalation überfälliger Aufgaben an Person und QMB (R-A-022); sowie die lückenlose Protokollierung aller Vorgänge (R-A-031).
+4.3  Verhältnis zu den Maßnahmen
+Die Maßnahmen sind die je Risiko genannten Programmierempfehlungen — sie werden in der Entwicklung umgesetzt und im Code verankert. Die Risikoanalyse legt fest, welche davon zwingend getestet werden. Viele Schutzmechanismen (Audit-Trail, Unveränderbarkeit, Backup) kommen unverändert aus dem validierten Fundament.
+5  Restrisiko & Akzeptanz
+5.1 Was Restrisiko bedeutet — Restrisiko ist das, was nach Umsetzung der Programmierempfehlungen und bestandenen Tests verbleibt. Kein System ist zu 100 % fehlerfrei; entscheidend ist, dass das verbleibende Risiko vertretbar ist.
+5.2 Bewertung — Sind die Empfehlungen umgesetzt und die hohen Risiken durch bestandene Pflicht-Tests abgesichert, sinkt das Restrisiko auf ein vertretbares Maß; nach erfolgreicher Validierung verbleibt kein hohes Restrisiko.
+5.3 Bedingung — Die Akzeptanz steht unter der Bedingung, dass die zugeordneten Tests (IQ/OQ/PQ) bestanden werden. Schlägt ein Pflicht-Test fehl, gilt das Risiko als nicht akzeptiert, bis es behoben und nachgetestet ist.
+5.4 Akzeptanz-Entscheidung — Da dies ein Software-Entwicklungsdokument ist, trifft die Risiko-Akzeptanz der Produktverantwortliche (Geschäftsleitung); Claude liefert Entwurf und Einschätzung. Die abschließende GxP-/Betreiber-Akzeptanz erfolgt getrennt bei Validierung und Freigabe für den produktiven Einsatz.
+6  Verknüpfung zur Validierung
+6.1 Prinzip — Jede Programmierempfehlung wird zu einem Testfall; hohe Risiken werden Pflicht-Tests. Verknüpfung: Risiko (R-A-xxx) → Anforderung (URS-A) → Testfall.
+6.2 Zuordnung der Testarten — IQ (Installation): Hintergrundlauf/Cron, E-Mail-Anbindung, gesicherte Dateiablage, Backup-Abdeckung (u. a. R-A-019, R-A-032). OQ (Funktion): Wiederholungs-/Feiertagslogik, atomarer Gruppen-Claim, Vertretungs-Auflösung, Unveränderbarkeit, Eskalation, Berechtigungen (u. a. R-A-005/007/009/013/017/018/022/028/031). PQ (Leistung): Lauf über mehrere Tage mit realem Routineplan, tatsächlich ankommende Erinnerungen, Nachweise nach Wiederherstellungs-Übung.
+6.3 Nachverfolgbarkeit — Zuordnung R-A-ID → URS-A → Testfall in der Traceability-Matrix; hohe Risiken als Pflicht markiert; fließt in den Validierungs-/Testplan ein.
+6.4 Ergebnis — Diese Risikoanalyse legt Prüfumfang und Schwerpunkte der Tests für das Aufgaben-Modul fest.
+7  Abnahme & Versionskontrolle
+7.1  Freigabe (Software-/Produkt-Governance)
+Diese Risikoanalyse ist ein Software-Entwicklungsdokument und wird unter der Software-/Produkt-Governance freigegeben. Mit der Freigabe werden die identifizierten Risiken, ihre Bewertung und das akzeptierte Restrisiko bestätigt.
+Funktion
+Rolle
+Name
+Datum
+Untersch.
+Erstellt
+—
+Claude (Entwurf)
+
+
+Fachlich/technisch geprüft
+fachkundige techn. Person / Standby-Entwickler
+(noch zu benennen)
+
+
+Risiko-Akzeptanz / Freigabe
+Produktverantwortlicher / Geschäftsleitung
+Jochen Schulze
+
+
+
+7.2  Versionskontrolle
+Version
+Datum
+Autor
+Änderung
+0.1 (Entwurf)
+30.06.2026
+Jochen Schulze / Claude
+Erstentwurf, 32 Risiken (R-A-001–R-A-032) mit Programmierempfehlungen
+
+7.3  Geltung
+Die Risikoanalyse ist ein lebendes Dokument. Bei Änderungen an Anforderungen oder Funktionen werden die betroffenen Risiken neu bewertet und eine neue Version erstellt.

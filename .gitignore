@@ -1,0 +1,34 @@
+# dependencies
+node_modules/
+
+# build
+dist/
+.astro/
+
+# env
+.env
+.env.local
+.env.*.local
+
+# prisma / zenstack generated
+prisma/schema.prisma
+
+# test
+coverage/
+test-results/
+playwright-report/
+blob-report/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# logs
+*.log
+npm-debug.log*

@@ -1,0 +1,147 @@
+Funktional-/Design-Spezifikation
+QM-Pilot — Modul „Dokumente &amp; Schulung&quot; (Stufe 2)
+Pharmazeutika 73.3 GmbH
+Version 0.1 (Entwurf) · Stand: 30.06.2026
+Erstellt von: Claude · Freigabe: Software-/Produkt-Governance (GL)
+Inhaltsverzeichnis
+1  Zweck &amp; Geltungsbereich
+1.1  Zweck
+Diese FS/DS beschreibt, wie die Anforderungen der URS Stufe 2 (Dokumente &amp; Schulung, URS-D-001 bis URS-D-045) in QM-Pilot technisch und funktional umgesetzt werden. Sie ist die Grundlage für Entwicklung und für die Ableitung der Qualifizierungstests (IQ/OQ/PQ).
+1.2  Verhältnis zur URS
+Die FS/DS führt keine neuen Anforderungen ein. Jede Festlegung verweist auf die zugehörige URS-D-Nummer. Zeigt sich eine Lücke, wird zuerst die URS angepasst.
+1.3  Geltungsbereich
+Die FS/DS gilt für das Modul „Dokumente &amp; Schulung&quot; (Stufe 2). Sie nutzt das Fundament (Benutzer, Rollen, Audit-Trail, Archivierung, Design) und die Erinnerungs-/Eskalations-Mechanik aus Stufe 1. Technische Basis: Django, PostgreSQL, Hosting bei Hetzner.
+1.4  Funktional- vs. Design-Anteil
+Der funktionale Teil (Abschnitt 4) beschreibt das beobachtbare Verhalten, der Design-Teil (Abschnitte 5 und 6) die technische Gestaltung (Datenmodell, Volltext-Suche/OCR).
+1.5  Verbindlichkeit
+QM-Pilot ist ein eigenständiges Software-Produkt, kein Bestandteil des QMS. Diese FS/DS wird unter der Software-/Produkt-Governance freigegeben (Ersteller → technische Prüfung → Produktverantwortlicher), nicht über die QM-Dokumentenlenkung. Änderungen an produktiver Software laufen über den Software-Versionierungs-/Freigabeprozess (URS-F-052).
+2  Mitgeltende Dokumente
+2.1  Projektinterne Dokumente
+URS Stufe 2 (v0.1) — die umzusetzenden Anforderungen (URS-D-001 bis URS-D-045). Technische Grundsatzentscheidungen (v0.1). Die Dokumente der Stufen 0 und 1 (URS, FS/DS) — Fundament und Erinnerungs-/Eskalations-Mechanik. Design-Grundlinie / Marken-Tokens.
+2.2  Verwaltete Inhalte
+Die freigegebenen QM-Dokumente (QM-Handbuch, SOPs, Vordrucke, Anlagen) und Gesetzestexte; Schulungsvorgaben analog SOP-02-003. Verwaltete Inhalte, nicht der Validierungsmaßstab der Software.
+2.3  Regulatorische Grundlagen
+GDP-Leitlinie 2013/C 343/01 (Kapitel 4); EU-Annex 11 (sinngemäß); ALCOA+; DSGVO; GAMP 5 als Methodik. Verbindlicher Maßstab sind die gesetzlichen Vorgaben.
+3  Architektur-Einordnung
+3.1  Einbettung ins Fundament
+Das Modul wird als eigene Django-App („dokumente&quot;) umgesetzt und nutzt unverändert: Anmeldung/Rollen (Stufe 0), den zentralen Audit-Trail, die revisionssichere Archivierung, das Design sowie die Erinnerungs-/Eskalations-Mechanik aus Stufe 1.
+3.2  Neue Bestandteile
+Hinzu kommen: die Datenmodelle des Moduls (Abschnitt 5), eine Leseansicht (PDF-Anzeige im Browser), die Volltext-Suche samt Textextraktion/OCR (Abschnitt 6), die sichere Dateiablage sowie die Schulungslogik (Zuweisung, Turnus, Fälligkeit).
+3.3  Schulungs-Fälligkeiten
+Pflichtlektüren erzeugen je Person/Dokument fällige „Lese-Aufgaben&quot;; deren Erinnerung und Eskalation laufen über dieselbe überwachte Hintergrund-Mechanik wie im Aufgaben-Modul (Reminder, Überfälligkeit → QMB), statt eine zweite Logik zu bauen.
+4  Funktionale Spezifikation
+4.1  Dokumente hinterlegen
+Modell (URS-D-001/004): Ein Dokument wird in zwei Ebenen geführt — „Dokument&quot; (Dokumentnummer, Dokumentart, Titel) und „Dokument-Version&quot; (Versionsbezeichnung, Datei, Freigabedatum, Status, Änderungsvermerk, extrahierter Volltext). Eine neue Fassung ist eine neue Dokument-Version; bestehende Dateien werden nicht überschrieben.
+Dokumentarten (URS-D-002): als Daten geführt (mandantenfähig), vorbelegt mit SOP, Vordruck, Anlage und Gesetzestext; erweiterbar.
+Status &amp; Außerkraftsetzung (URS-D-005): Jede Version trägt einen Status („in Kraft&quot;/„außer Kraft&quot;). Beim Inkraftsetzen einer neuen Version wird die bisherige als „außer Kraft&quot; markiert; veraltete bleiben gespeichert und auffindbar (Lebenszyklus-Automatik → Stufe 5).
+Änderungsvermerk (URS-D-007): Pflichtfeld beim Inkraftsetzen einer neuen Version; mit der Version gespeichert und in der Historie sichtbar.
+Berechtigung &amp; Protokollierung (URS-D-003/006): Hinterlegen/Aktualisieren/Statusänderung sind QMB/RP vorbehalten (serverseitig); alle Vorgänge laufen über die zentralen Audit-Signale.
+4.2  Anzeigen &amp; Verweise-Liste
+Leseansicht (URS-D-008/011): Dokumente werden im Browser angezeigt (eingebettete PDF-Ansicht); die Datei wird über eine berechtigungsgeprüfte Ansicht ausgeliefert (keine offene Datei-URL). Auditoren: rein lesend auf alle Dokumente.
+Übersicht (URS-D-009/010): Liste nach Dokumentart gruppier-/filterbar; standardmäßig „in Kraft&quot;-Versionen, veraltete auf Wunsch; Metadaten beim Öffnen sichtbar, veraltete deutlich markiert.
+Verweise-Liste (URS-D-016): Der Dokumenttext wird nach Nummern-Mustern (SOP-XX-NNN, A-XX-NNN, F-XX-NNN, R-XX-NNN) durchsucht und mit vorhandenen Dokumenten abgeglichen; Treffer erscheinen als anklickbare „Verweise&quot;-Liste neben/unter der Leseansicht (Klick im PDF-Text als spätere Ausbaustufe).
+4.3  Schlagwort-/Volltext-Suche
+Textgewinnung (URS-D-012): Beim Hinterlegen wird der Text extrahiert (Text-PDF direkt, Bild-PDF per OCR) und im Volltext-Feld gespeichert.
+Suche (URS-D-012/013): PostgreSQL-Volltextsuche über Titel, Dokumentnummer und Volltext (mit Index); Treffer nach Dokumentart gruppiert.
+Sichtbarkeit &amp; Öffnen (URS-D-014/015): nur zugängliche Dokumente in den Treffern; direktes Öffnen aus der Trefferliste (4.2).
+4.4  Lesebestätigung
+Modell (URS-D-017/019): „Lesebestätigung&quot; verweist auf die konkrete Dokument-Version, mit Person und Zeitstempel.
+Unveränderbar (URS-D-018): append-only, kein Ändern/Löschen.
+Bezug zur Schulung (URS-D-019): nach Inkraftsetzen einer neuen Version zählt die Bestätigung nicht mehr als aktuell; die erneute Pflicht-Lektüre steuert die Schulung (4.5).
+Protokollierung (URS-D-020): über die zentralen Audit-Signale.
+4.5  Schulung
+Lesepflicht je Dokument (URS-D-021/045): „Lesepflicht-Zuweisungen&quot; legen fest, welche Rollen/Personen ein Dokument lesen müssen; der Schulungsplan ergibt sich daraus.
+Turnus (URS-D-022): globaler Standard-Turnus in der Konfiguration, je Dokument überschreibbar.
+Fälligkeit (URS-D-023/024): erfüllt, wenn zur aktuellen Version eine Lesebestätigung jünger als der Turnus vorliegt; fällig bei Turnus-Ablauf oder neuer Version (Pflicht-Neulesung). Dynamisch berechnet.
+Erinnerung/Eskalation (URS-D-025): offene Lesepflichten erzeugen Schulungs-Fälligkeiten, die über dieselbe überwachte Mechanik wie das Aufgaben-Modul laufen (Reminder, Überfälligkeit → QMB).
+Protokollierung (URS-D-026): Festlegen/Ändern von Lesepflicht und Turnus über die zentralen Audit-Signale.
+4.6  Schulungsregister &amp; Reporting
+Register (URS-D-027): aus den Lesebestätigungen abgeleitet (wer/was/welche Version/wann), als CSV exportierbar.
+Mitarbeiter-Übersicht mit Kreis-Anzeige (URS-D-028): je Person erfüllt vs. offen → Prozent; serverseitig berechnete, schlanke Kreis-/Donut-Darstellung (SVG bzw. CSS), grün = gelesen, rot = offen.
+Dokument-Übersicht (URS-D-029): je Dokument, wer es noch nicht gültig gelesen hat.
+Zugriff (URS-D-030/031): QMB/RP/GL vorbehalten (serverseitig), sachlich-neutral.
+4.7  Berechtigungen
+Verwaltung (URS-D-032/033): Dokumente/Status und Schulungsplan/Turnus nur QMB/RP — serverseitige Rollenprüfung.
+Lesen (URS-D-034): alle berechtigten Mitarbeitenden für zugängliche Dokumente; Dateiauslieferung über die berechtigungsgeprüfte Ansicht.
+Überwachung (URS-D-035): Übersichten QMB/RP/GL; Auditor rein lesend.
+Grundprinzip (URS-D-036): minimale Rechte, durchgängig serverseitig durchgesetzt.
+4.8  Audit-Trail-Kopplung
+Zentrale Protokollierung (URS-D-037): Dokument, Dokument-Version, Lesebestätigung und Lesepflicht-Zuweisung werden an die zentralen Audit-Signale (Stufe 0) angebunden; kein Vorgang umgeht die Protokollierung. Schulungs-Eskalationen werden wie im Aufgaben-Modul festgehalten.
+Unveränderbare Aufzeichnungen (URS-D-038): Lesebestätigungen und Schulungsregister unterliegen der revisionssicheren Archivierung des Fundaments (ALCOA+).
+5  Datenmodell-Überblick
+5.1 Dokument — Dokumentnummer, Dokumentart, Titel.
+5.2 Dokument-Version — Versionsbezeichnung, Datei, Status, Freigabedatum, Änderungsvermerk, Volltext, hochgeladen von/am.
+5.3 Dokumentart — konfigurierbar (SOP, Vordruck, Anlage, Gesetzestext).
+5.4 Lesepflicht-Zuweisung — Dokument + Rolle/Person, optional Turnus-Override.
+5.5 Lesebestätigung — Dokument-Version + Person + Zeitstempel; unveränderbar.
+5.6 Konfiguration — globaler Standard-Turnus, je Dokument überschreibbar.
+5.7 Zusammenspiel — Ein Dokument hat mehrere Versionen (eine „in Kraft&quot;); Lesepflichten am Dokument; erfüllt = gültige Lesebestätigung zur aktuellen Version innerhalb Turnus; Register abgeleitet; alles am Audit-Trail.
+6  Volltext-Suche &amp; OCR
+6.1  Textgewinnung beim Hinterlegen
+Text-PDFs werden direkt extrahiert; reine Bild-PDFs über eine Texterkennung (OCR, deutschsprachig). Der Text landet im Volltext-Feld der Dokument-Version.
+6.2  Indizierung &amp; Suche
+PostgreSQL-Volltextsuche: Titel, Dokumentnummer und Volltext werden zu einem durchsuchbaren Vektor mit GIN-Index zusammengeführt; Schlagworte werden als Suchanfrage ausgewertet.
+6.3  Grenzen &amp; Hinweise
+OCR-Güte hängt von der Scan-Qualität ab; die Metadaten-Suche (Titel/Nummer) ist immer verlässlich verfügbar. Mehrsprachige Dokumente sind ein offener Punkt (Abschnitt 9).
+7  Nicht-funktionale Umsetzung
+Bedienbarkeit (URS-D-039): durchgängiges Design-System; schnelles Finden, Lesen, Bestätigen.
+Performance (URS-D-040): indizierte Volltextsuche (GIN) und seitenweise Listen halten Suche/Übersichten im Sekundenbereich.
+Datenintegrität (URS-D-041): Lesebestätigungen/Register append-only, ALCOA+ über das Fundament.
+Aufbewahrung (URS-D-042): Schulungsnachweise revisionssicher, 5 Jahre, im Backup.
+Wartbarkeit / Konfigurationstrennung (URS-D-043): Dokumentarten, Turnus, Schulungsplan als Daten/Konfiguration.
+Dateiablage (URS-D-044): gesicherter, vom Backup umfasster Bereich; Auslieferung nur über die berechtigungsgeprüfte Ansicht.
+8  Anforderungs-Nachverfolgung
+URS-Anforderung
+umgesetzt in FS/DS
+D-001–007 (Dokumente hinterlegen)
+4.1
+D-008–011, D-016 (Anzeigen &amp; Verweise)
+4.2
+D-012–015 (Schlagwort-/Volltext-Suche)
+4.3 / 6
+D-017–020 (Lesebestätigung)
+4.4
+D-021–026, D-045 (Schulung)
+4.5
+D-027–031 (Schulungsregister &amp; Reporting)
+4.6
+D-032–036 (Berechtigungen)
+4.7
+D-037–038 (Audit-Trail-Kopplung)
+4.8
+D-039–044 (nicht-funktional)
+5 / 6 / 7
+Die detaillierte Matrix (je einzelne URS-D-Nummer) wird als eigenes, lebendes Dokument geführt und in die Testskripte (IQ/OQ/PQ) weitergetragen.
+9  Annahmen &amp; offene Punkte
+9.1  Annahmen
+Fundament (Stufe 0) und Erinnerungs-/Eskalations-Mechanik (Stufe 1) sind verfügbar; freigegebene Dokumente liegen als Dateien vor; ein OCR-Werkzeug steht bereit; der zeitgesteuerte Hintergrundlauf kann betrieben werden.
+9.2  Offene Punkte (bei der Umsetzung festzulegen)
+Genaue Darstellung der „Verweise&quot;-Liste; konkrete Turnus-Vorgaben; Umgang mit mehrsprachigen Dokumenten (Spracherkennung OCR/Suche); erlaubte Dateitypen/-größen; konkrete Umsetzung der Kreis-Anzeige (SVG vs. CSS).
+10  Abnahme &amp; Versionskontrolle
+10.1  Freigabe (Software-/Produkt-Governance)
+Diese FS/DS ist ein Software-Entwicklungsdokument von QM-Pilot und wird unter der Software-/Produkt-Governance freigegeben (nicht über die QM-Dokumentenlenkung). Mit der Freigabe wird bestätigt, dass sie die Umsetzung der URS-Anforderungen zutreffend beschreibt.
+Funktion
+Rolle
+Name
+Datum
+Untersch.
+Erstellt
+—
+Claude (Entwurf)
+Fachlich/technisch geprüft
+fachkundige techn. Person / Standby-Entwickler
+(noch zu benennen)
+Freigegeben
+Produktverantwortlicher / Geschäftsleitung
+Jochen Schulze
+10.2  Versionskontrolle
+Version
+Datum
+Autor
+Änderung
+0.1 (Entwurf)
+30.06.2026
+Jochen Schulze / Claude
+Erstentwurf, Abschnitte 1–10
+10.3  Geltung
+Die FS/DS ist ein lebendes Dokument. Änderungen nach Freigabe erfolgen über eine neue Version; Änderungen an produktiver Software laufen über den Software-Versionierungs-/Freigabeprozess (URS-F-052).

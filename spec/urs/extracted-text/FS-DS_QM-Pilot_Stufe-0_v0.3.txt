@@ -1,0 +1,228 @@
+Funktional-/Design-Spezifikation
+QM-Pilot — Modul „Fundament" (Stufe 0)
+Pharmazeutika 73.3 GmbH
+Version 0.3 (Entwurf) · Stand: 30.06.2026
+Erstellt von: Claude · Freigabe: Jochen Schulze (GL/RP)
+
+
+Inhaltsverzeichnis
+
+
+
+
+1  Zweck & Geltungsbereich
+1.1  Zweck
+Diese Funktional-/Design-Spezifikation (FS/DS) beschreibt, wie die Anforderungen der URS Stufe 0 in der Software QM-Pilot technisch und funktional umgesetzt werden. Sie ist die Grundlage für die Entwicklung und für die Ableitung der Qualifizierungstests (IQ/OQ/PQ).
+1.2  Verhältnis zur URS
+Die FS/DS führt keine neuen Benutzeranforderungen ein. Jede Festlegung verweist auf die zugehörige URS-F-Nummer und beschreibt deren Umsetzung. Zeigt sich eine Lücke oder ein Widerspruch, wird zuerst die URS angepasst — nicht still in der FS/DS abgewichen.
+1.3  Geltungsbereich
+Die FS/DS gilt für das Modul „Fundament" (Stufe 0) von QM-Pilot. Die in Schritt 2 getroffenen Grundsatzentscheidungen sind die technische Basis: Django, PostgreSQL, Hosting bei Hetzner (DE), Login über Microsoft 365, selbst betriebenes Git.
+1.4  Funktional- vs. Design-Anteil
+Der funktionale Teil (Abschnitt 4) beschreibt das beobachtbare Verhalten, der Design-Teil (Abschnitte 5 und 6) die technische Gestaltung. Beide sind hier zusammengeführt, bleiben aber unterscheidbar.
+1.5  Verbindlichkeit
+Die FS/DS wird von der Geschäftsleitung / Verantwortlichen Person freigegeben. Änderungen nach Freigabe erfolgen über die Versionskontrolle; Änderungen an bereits produktiver Software laufen über den Software-Versionierungs-/Freigabeprozess (URS-F-052).
+2  Mitgeltende Dokumente
+Diese FS/DS setzt auf folgenden Dokumenten auf:
+URS Stufe 0 (v0.1) — die umzusetzenden Anforderungen (URS-F-001 bis URS-F-066); maßgeblich für die Nachverfolgbarkeit.
+Technische Grundsatzentscheidungen (v0.1) — die gesetzten technischen Weichen.
+Vision Document (v0.1) — übergeordneter Rahmen, Rollenmodell, Reifestufen.
+Design-Grundlinie / Marken-Tokens — Farben, Logo und deren Anwendung.
+Als verbindlicher Compliance- und Prüfmaßstab gelten die gesetzlichen Vorgaben (GDP-Leitlinie 2013/C 343/01, EU-Annex 11 sinngemäß, AMG/AMHandelsV, DSGVO); GAMP 5 und ALCOA+ dienen als anerkannte Methodik.
+3  Architektur-Überblick
+3.1  Gesamtbild
+QM-Pilot ist eine Webanwendung: Die Mitarbeitenden öffnen sie im Browser (oder auf einem Tablet), die Logik läuft zentral auf einem Server bei Hetzner in Deutschland (URS-F-044). Jede Verbindung ist verschlüsselt (TLS, URS-F-046). In der Skizze steht Türkis für die Anwendung selbst, Violett für den externen Dienst (Microsoft 365), Grau für die unterstützende Infrastruktur.
+
+3.2  Bausteine
+Der Reverse Proxy nimmt die verschlüsselten Anfragen entgegen und reicht sie an die Django-Anwendung (QM-Pilot) weiter — dort liegt die gesamte Logik. Die PostgreSQL-Datenbank speichert alle Daten und Aufzeichnungen revisionssicher. Der Login interner Nutzer läuft über Microsoft 365 (SSO inkl. 2-Faktor, URS-F-010/011); der niederschwellige Login für Externe ist Teil der Anwendung (Detail in 4.2). Der Backup-Dienst sichert täglich und mehrmals täglich die Datenbank an einen zweiten Standort (URS-F-035/036).
+3.3  Umgebungen & Code
+Es gibt eine getrennte Produktiv- und Testumgebung (URS-F-045). Der Quellcode liegt im selbst betriebenen Git-Repository in Deutschland; jede Software-Version wird dort nachvollziehbar erfasst und freigegeben (URS-F-052) — getrennt von der QM-Change-Control.
+4  Funktionale Spezifikation
+4.1  Benutzer, Rollen & Rechte
+Rollen als Gruppen (URS-F-001/002): Jede Rolle (GL, RP, QMB, stellv. RP, operative Mitarbeitende, Externe, Auditor) wird als Django-Gruppe mit fest definiertem Rechte-Bündel abgebildet; Rechte hängen an der Gruppe, nicht an der Person.
+Personalunion (URS-F-003): Eine Person kann mehreren Gruppen angehören; Rechte ergeben sich aus der Summe, jede Handlung bleibt der Person zugeordnet.
+Minimale Rechte (URS-F-004): Grundeinstellung „nichts erlaubt"; Rechte werden je Gruppe explizit vergeben.
+Benutzerverwaltung (URS-F-005): Nur eine Administrationsrolle legt Benutzer an, ändert/deaktiviert sie und weist Rollen zu — über einen geschützten Verwaltungsbereich.
+Deaktivieren statt Löschen (URS-F-006): Status „aktiv/inaktiv"; inaktive Konten können sich nicht anmelden, die Historie bleibt erhalten.
+Funktionstrennung (URS-F-007): Auditor nur lesend; erfassende/prüfende/freigebende Rolle über getrennte Gruppen trennbar.
+Eindeutige Zuordnung (URS-F-008): Jedes Konto gehört einer natürlichen Person; auch der niederschwellige Login ist personenbezogen.
+Protokollierung (URS-F-009): Anlegen/Ändern von Benutzern und Rollen wird in den Audit-Trail geschrieben.
+Konfigurationstrennung (URS-F-066): Rollenbezeichnungen und Rechte werden als Konfiguration geführt, getrennt vom Code.
+4.2  Authentifizierung & Login
+M365-Anmeldung (URS-F-010/011): Standardverfahren OpenID Connect — kurze Weiterleitung zur Microsoft-Anmeldung (2-Faktor greift automatisch), Rückkehr mit bestätigter Identität. QM-Pilot speichert kein eigenes Passwort.
+Kontoende bei Austritt (URS-F-012): Nach Deaktivierung des M365-Kontos keine Anmeldung mehr möglich; zusätzlich Konto auf „inaktiv" setzbar.
+Niederschwelliger Login (URS-F-013): Persönliche PIN auf einem gemeinsam genutzten Tablet — Kachel mit Name/Foto antippen, vierstellige PIN eingeben. Keine Zusatz-Hardware, sprachunabhängig, persönlich und eindeutig zuordenbar.
+Auditor-Konten (URS-F-014): Lokale, rein lesende Konten mit Ablaufdatum (danach automatisch inaktiv).
+Protokollierung (URS-F-015): Erfolgreiche und fehlgeschlagene Anmeldungen werden protokolliert.
+Schutz bei Fehlversuchen (URS-F-016): Nach definierter Zahl Fehlversuche vorübergehende Sperre/Verzögerung — auch beim PIN-Login.
+Automatische Abmeldung (URS-F-017): Sitzungsende nach einstellbarer Inaktivität.
+Abmelden & Benutzerwechsel (URS-F-018): Aktives Abmelden; auf dem Tablet schneller Wechsel zurück zur Kachel-Auswahl.
+4.3  Audit-Trail
+Zentrale Protokollierung (URS-F-019): Alle qualitätsrelevanten Vorgänge laufen über eine zentrale Stelle; kein Modul kann die Protokollierung umgehen.
+Inhalt (URS-F-020): wer, was, wann, alter/neuer Wert.
+Unveränderbarkeit (URS-F-021): Einträge werden nur angehängt; keine Bearbeiten-/Löschfunktion, auch nicht für Admins; zusätzlich auf Datenbankebene abgesichert.
+Verlässliche Zeitstempel (URS-F-022): synchronisierte Zeitquelle (NTP), einheitliche Speicherung, lokale Anzeige.
+Kein physisches Löschen (URS-F-023): Ungültigsetzen/Versionieren statt Löschen.
+Lesbar & exportierbar (URS-F-024): einsehbare Liste, Export/Druck (PDF/CSV).
+Durchsuchbar (URS-F-025): Filter nach Person, Zeitraum, Objekt, Vorgang.
+Aufbewahrung & Sicherung (URS-F-026/027): mindestens so lange wie der Datensatz (5 Jahre), von der Sicherung umfasst.
+4.4  Archivierung & Speicherung
+Revisionssicher (URS-F-028): Daten in PostgreSQL, abgesichert durch Audit-Trail sowie Sperr- und Versionslogik.
+Sperre nach Freigabe (URS-F-029): Freigegebene Dokumente/abgeschlossene Aufzeichnungen werden schreibgeschützt; Korrektur nur über neue Version, Original bleibt erhalten.
+Aufbewahrungsfristen (URS-F-030): Aufbewahrungs-Kategorie je Datensatz; keine Löschfunktion vor Fristablauf.
+Langfristige Lesbarkeit (URS-F-031): langlebige, offene Formate (z. B. PDF/A); les- und exportierbar über die gesamte Frist.
+Zugriff nach Rollen (URS-F-032): Lesezugriff für berechtigte Rollen sowie Auditor.
+Metadaten (URS-F-033): Version, Status, Zeitstempel, verantwortliche Person.
+Schutz (URS-F-034): Verschlüsselung im Ruhezustand (soweit angemessen) und Zugriffsschutz über das Rollenmodell.
+4.5  Backup & Wiederherstellung
+Sicherungsplan (URS-F-035): tägliches Voll-Backup plus mehrmals tägliche DB-Sicherung.
+Verschlüsselt & georedundant (URS-F-036): Sicherungen verschlüsselt, an einem zweiten Standort.
+Aufbewahrung (URS-F-037): täglich 30 Tage, wöchentlich 3 Monate.
+RPO (URS-F-038): max. 24 h, real wenige Stunden durch die DB-Sicherungen.
+RTO (URS-F-039): max. ein Arbeitstag, mit dokumentierter Wiederherstellungs-Anleitung.
+Jährliche Restore-Übung (URS-F-040): mindestens 1×/Jahr, dokumentiert (Routineplan).
+Umfang (URS-F-041): alle Produktivdaten, Audit-Trail und Konfiguration.
+Geprüfte Wiederherstellung (URS-F-042): Vollständigkeit/Richtigkeit über Prüfsummen und Testwiederherstellung.
+Überwachung (URS-F-043): Sicherungsläufe überwacht; Fehlschlag löst Meldung aus.
+4.6  Hosting, Betrieb & Sicherheit
+Hosting DE (URS-F-044): Hetzner, deutsches Rechenzentrum, AV-Vertrag.
+Getrennte Umgebungen (URS-F-045): Produktiv/Test getrennt; Test mit künstlichen/anonymisierten Daten.
+TLS (URS-F-046): gesamter Zugriff verschlüsselt über Reverse Proxy mit gültigem Zertifikat.
+Updates & Härtung (URS-F-047): regelmäßige Sicherheits-Updates, gehärtete Grundeinstellungen.
+Protokollierung (URS-F-048): sicherheitsrelevante Ereignisse werden protokolliert.
+Admin-Zugang (URS-F-049): beschränkt auf berechtigte Administratoren (schlüsselbasiert), selbst protokolliert.
+Schutz vor externem Zugriff (URS-F-050): Firewall, nur notwendige Zugänge offen.
+Verfügbarkeit & Wartung (URS-F-051): geplante Wartungsfenster zulässig; Papier-Rückfallebene.
+Software-Versionierung & Freigabe (URS-F-052/053): Entwicklung → Prüfung/Validierung in der Testumgebung → Freigabe einer im Git eingefrorenen Version → Einspielen in Produktiv mit dokumentiertem Eintrag. Getrennt von der QM-Change-Control (SOP-01-003).
+4.7  Datenschutz (DSGVO)
+Sparsame Verarbeitung & AV-Vertrag (URS-F-054): nur erforderliche personenbezogene Daten; AV-Vertrag mit Hetzner.
+Keine Patientendaten (URS-F-055): keine entsprechenden Datenfelder; technisch und organisatorisch ausgeschlossen.
+Zugriff nach Rollen (URS-F-056): personenbezogene Daten nur für Rollen sichtbar, die sie benötigen.
+Betroffenenrechte (URS-F-057): Auskunft und Löschung möglich, soweit keine Aufbewahrungspflicht entgegensteht; sonst Löschung/Anonymisierung nach Fristablauf.
+Schutz & Nachvollziehbarkeit (URS-F-058): Zugriffsschutz, Verschlüsselung; Zugriffe im Audit-Trail.
+4.8  Änderungswunsch-Kanal
+Eingabe (URS-F-067): Eine einfache Eingabemaske, über die Nutzer Änderungs-/Funktionswünsche erfassen (Titel, Beschreibung, Datum, einreichende Person). Jeder Wunsch wird über den bestehenden Audit-Trail protokolliert und ist eindeutig der einreichenden Person zugeordnet.
+Triage (URS-F-068): Eine berechtigte Rolle (Entwickler-/Administrationsseite) sieht eine Liste der Wünsche und vergibt einen Status (neu, in Prüfung, geplant, umgesetzt, abgelehnt). Der Kanal ist klar als Software-Feature-Wunsch gekennzeichnet und vom QM (Change-Control SOP-01-003, Abweichung SOP-01-004) getrennt; ein Wunsch erzeugt keinen QM-Vorgang.
+5  Design-Spezifikation (UX)
+5.1  Design-System (URS-F-059, URS-F-066)
+Grundlage ist ein wiederverwendbares Design-System in den Markenfarben. Türkisgrün ist Primärfarbe, Warmrot der Signal-Akzent, dazu zwei kräftige Sekundärfarben (Gelb, Lila) für Akzente, Kategorien, Diagramme und Status-Nuancen; Weiß und Grau als neutrale Flächen. Farben, Logo und Schrift werden als austauschbare „Theme"-Konfiguration geführt (getrennt vom Code).
+Primär
+Türkisgrün #38B098
+Akzent
+Warmrot #E03010
+Sekundär
+Gelb #FFC02E
+Sekundär
+Lila #7C4DFF
+Neutral
+Weiß / Grau
+
+5.2  Layout & Navigation
+Durchgängiges Muster: links eine ruhige Navigationsleiste (Module), oben eine Kopfzeile (Titel, Suche, Benachrichtigungen, angemeldete Person), in der Mitte der Arbeitsbereich mit Karten und Listen.
+5.3  Einheitliche Statusfarben
+Türkisgrün für „erledigt/in Ordnung", Gelb für „heute fällig", Warmrot für „überfällig/Warnung" — über alle Module gleich.
+5.4  Niederschwellige Ansicht (URS-F-060/061)
+Für die Reinigungskraft eine stark vereinfachte Oberfläche: große Kacheln, Symbole statt Text, wenige Schritte (Kachel → PIN → heutige Aufgaben → „erledigt", optional mit Foto). Deutsch als Grundsprache, bewusst symbolgetrieben.
+5.5  Lesbarkeit & Tablet-Tauglichkeit
+Ausreichende Kontraste, gut lesbare Schriftgrößen, große touch-freundliche Schaltflächen.
+5.6  Wiederverwendbarkeit
+Schaltflächen, Karten, Listen und Formulare stammen aus einer gemeinsamen Komponenten-Sammlung; jedes künftige Modul nutzt dieselben Bausteine.
+6  Datenmodell-Überblick
+Das Datenmodell sind die „Bausteine", in denen QM-Pilot seine Daten ablegt. Stufe 0 legt nur die Fundament-Bausteine an; fachliche Typen folgen in späteren Stufen.
+Benutzer: Person mit Anmelde-Identität (M365 oder PIN) und Status aktiv/inaktiv (URS-F-006/008).
+Rolle & Recht: Rollen (Gruppen) mit zugeordneten Rechten; Benutzer in einer oder mehreren Rollen (URS-F-001/002/003).
+Audit-Eintrag: unveränderbarer Protokollsatz (wer, was, wann, alt/neu), automatisch erzeugt (URS-F-019/020).
+Verwaltetes Objekt (Basis): gemeinsame Grundlage für später verwaltete Dokumente/Aufzeichnungen mit Version, Status, Aufbewahrungs-Kategorie, verantwortlicher Person, Zeitstempel (URS-F-029/030/033).
+Theme-/Mandanten-Konfiguration: firmenspezifische Einstellungen (Logo, Farben, Rollenbezeichnungen), getrennt vom Code (URS-F-066).
+Zusammenspiel: Benutzer sind mit Rollen verknüpft; jede Handlung an einem verwalteten Objekt erzeugt einen Audit-Eintrag; verwaltete Objekte tragen stets Version und Metadaten.
+7  Nicht-funktionale Umsetzung
+Performance (URS-F-062): kleiner Server genügt bei überschaubarer Nutzerzahl; durch gute Abfragen/Indizes Reaktion in wenigen Sekunden.
+Verfügbarkeit (URS-F-063): geplante Wartungsfenster zulässig, Papier-Rückfallebene (siehe 4.6).
+Wartbarkeit & Wissensbruch-Vorsorge (URS-F-064): übliche Django-Struktur, dokumentierter Code im Git; Standby-Entwickler kann übernehmen; technische Entscheidungen verständlich festgehalten.
+Konfigurationstrennung (URS-F-066): Firmenspezifika in getrennten Konfigurations-/Theme-Bereichen.
+Datenintegrität (URS-F-065): ALCOA+ durch Transaktionen, Audit-Trail, Versionierung, Eingabeprüfungen.
+Bedienbarkeit (URS-F-059/060/061): über Design-System und niederschwellige Ansicht (Abschnitt 5).
+8  Anforderungs-Nachverfolgung
+Jede URS-Anforderung wird durch einen Abschnitt dieser FS/DS umgesetzt:
+URS-Anforderung
+umgesetzt in FS/DS
+F-001–009 (Benutzer, Rollen, Rechte)
+4.1
+F-010–018 (Authentifizierung & Login)
+4.2
+F-019–027 (Audit-Trail)
+4.3
+F-028–034 (Archivierung & Speicherung)
+4.4
+F-035–043 (Backup & Wiederherstellung)
+4.5
+F-044–051 (Hosting, Betrieb, Sicherheit)
+4.6
+F-052–053 (Software-Versionierung & Freigabe)
+4.6.9
+F-054–058 (Datenschutz)
+4.7
+F-059–061 (Bedienbarkeit, niederschwellig, Sprache)
+5 / 7.6
+F-062 (Performance)
+7.1
+F-063 (Verfügbarkeit)
+4.6.8 / 7.2
+F-064 (Wartbarkeit)
+7.3
+F-065 (Datenintegrität)
+4.3 / 4.4 / 7.5
+F-066 (Konfigurationstrennung)
+4.1 / 5.1 / 6.5 / 7.4
+F-067–068 (Änderungswunsch-Kanal)
+4.8
+
+Die detaillierte Matrix (je einzelne URS-F-Nummer) wird als eigenes, lebendes Dokument geführt und in die Testskripte (IQ/OQ/PQ) weitergetragen.
+9  Annahmen & offene Punkte
+9.1  Annahmen
+In Microsoft 365 (Entra ID) kann eine App-Registrierung für QM-Pilot angelegt werden. Eine Testumgebung steht zur Verfügung. Für die niederschwellige Ansicht ist ein Tablet vorhanden.
+9.2  Offene Punkte (bei der Umsetzung festzulegen)
+Konkrete Hetzner-Server-Größe; genaue Werte für Sitzungs-Timeout und Fehlversuch-Sperre; exakte Frequenz der DB-Sicherungen; konkreter Webfont passend zur Marke. Diese Punkte berühren die Anforderungen nicht.
+10  Abnahme & Versionskontrolle
+10.1  Freigabe der FS/DS
+Mit ihrer Unterschrift bestätigen die Verantwortlichen, dass diese FS/DS die Umsetzung der URS-Anforderungen für QM-Pilot (Stufe 0) zutreffend beschreibt und die Grundlage für Entwicklung, Risikoanalyse und Tests (IQ/OQ/PQ) bildet.
+Funktion
+Rolle
+Name
+Datum
+Unterschrift
+Erstellt
+—
+Claude (Entwurf)
+
+
+Fachlich/technisch geprüft
+fachkundige techn. Person / Standby-Entwickler
+(noch zu benennen)
+
+
+Freigegeben
+Produktverantwortlicher / Geschäftsleitung
+Jochen Schulze
+
+
+
+10.2  Versionskontrolle
+Version
+Datum
+Autor
+Änderung
+0.1 (Entwurf)
+29.06.2026
+Jochen Schulze / Claude
+Erstentwurf, Abschnitte 1–10
+0.2 (Entwurf)
+29.06.2026
+Jochen Schulze / Claude
+Abschnitt 4.8 Änderungswunsch-Kanal ergänzt; Traceability aktualisiert
+0.3 (Entwurf)
+30.06.2026
+Jochen Schulze / Claude
+Unterschriften auf Software-/Produkt-Governance umgestellt (QM-Pilot ist kein Bestandteil des QMS); Benennung vereinheitlicht
+
+10.3  Geltung
+Die FS/DS ist ein lebendes Dokument. Änderungen nach der ersten Freigabe erfolgen über eine neue Version; Änderungen an produktiver Software laufen über den Software-Versionierungs-/Freigabeprozess (URS-F-052).
