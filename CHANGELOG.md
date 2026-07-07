@@ -13,3 +13,13 @@ Alle Releases sind Git-Tags auf Commits mit grüner CI (URS-F-052). Software-Ver
 - GitHub Actions CI (lint, test, build, e2e)
 - Vollständiger `spec/`-Ordner laut Kopier-Manifest
 - Traceability-Gerüst unter `validation/`
+
+## Unreleased — WP-05 Hetzner Deployment
+
+**URS:** URS-F-022, URS-F-034…043, URS-F-044…052
+
+- Docker Compose stack (Caddy, app, worker, Postgres 17, pgBackRest)
+- `SchedulerRun` heartbeat model + `/api/health` endpoint
+- Hetzner Object Storage client (`src/lib/storage.ts`) + auth-gated `/api/files/[id]`
+- Deploy pipeline (`.github/workflows/deploy.yml`), hardening docs, restore runbook
+- `deploy/verify-backup.sh` + `deploy/check-hardening.sh`

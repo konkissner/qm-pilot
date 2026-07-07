@@ -244,3 +244,31 @@ model AuditorInvite {
     @@allow('read', auth().tenantId == tenantId)
     @@allow('create,update', auth().tenantId == tenantId && auth().status == active)
 }
+
+enum SchedulerRunKind {
+    workerTick
+    backupFull
+    backupCheck
+    walArchiveCheck
+}
+
+enum SchedulerRunStatus {
+    ok
+    failed
+}
+
+/// Platform-wide scheduler/backup heartbeat log (no tenantId).
+/// Server-only access — no ZenStack client mutations.
+model SchedulerRun {
+    id         String             @id @default(cuid())
+    kind       SchedulerRunKind
+    startedAt  DateTime           @default(now()) @db.Timestamptz()
+    finishedAt DateTime?          @db.Timestamptz()
+    status     SchedulerRunStatus
+    detail     Json?
+
+    @@index([kind, startedAt(sort: Desc)])
+    @@index([status, startedAt(sort: Desc)])
+
+    @@deny('all', true)
+}

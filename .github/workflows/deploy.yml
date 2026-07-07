@@ -1,0 +1,167 @@
+name: Deploy
+
+on:
+  push:
+    branches: [main]
+    tags: ['v*']
+
+concurrency:
+  group: deploy-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  ci-gate:
+    name: Require green CI
+    runs-on: ubuntu-latest
+    outputs:
+      ci_ok: ${{ steps.check.outputs.ci_ok }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify CI status for commit
+        id: check
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          SHA="${{ github.sha }}"
+          CONCLUSION=$(gh api "repos/${{ github.repository }}/commits/${SHA}/check-runs" \
+            --jq '[.check_runs[] | select(.name != "Deploy") | .conclusion] | if length == 0 then "failure" else (if all(. == "success" or . == "skipped") then "success" else "failure" end) end')
+          echo "CI conclusion aggregate: $CONCLUSION"
+          if [ "$CONCLUSION" = "success" ]; then
+            echo "ci_ok=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "ci_ok=false" >> "$GITHUB_OUTPUT"
+            echo "::error::CI not green for $SHA — deploy blocked (R-029)"
+            exit 1
+          fi
+
+  build-image:
+    needs: ci-gate
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    outputs:
+      image: ${{ steps.meta.outputs.tags }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: docker/setup-buildx-action@v3
+      - name: Log in to GHCR
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: ghcr.io/${{ github.repository }}
+          tags: |
+            type=ref,event=branch
+            type=semver,pattern={{version}}
+            type=semver,pattern={{major}}.{{minor}}
+            type=sha
+      - uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: deploy/Dockerfile
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+  deploy-test:
+    needs: build-image
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    runs-on: ubuntu-latest
+    environment: test
+    steps:
+      - uses: actions/checkout@v4
+      - name: Deploy to test VM
+        env:
+          SSH_HOST: ${{ secrets.TEST_SSH_HOST }}
+          SSH_USER: ${{ secrets.TEST_SSH_USER }}
+          SSH_KEY: ${{ secrets.TEST_SSH_KEY }}
+          IMAGE: ghcr.io/${{ github.repository }}:main
+        run: |
+          install -m 600 /dev/stdin <<<"$SSH_KEY" key
+          ssh -i key -o StrictHostKeyChecking=accept-new "$SSH_USER@$SSH_HOST" <<EOF
+            set -e
+            cd /opt/qm-pilot/deploy
+            export APP_IMAGE="$IMAGE"
+            docker compose -f docker-compose.yml -f docker-compose.test.yml pull
+            docker compose -f docker-compose.yml -f docker-compose.test.yml up -d
+            docker compose exec -T app npx prisma migrate deploy
+          EOF
+      - name: Health gate (test)
+        env:
+          HEALTH_URL: ${{ secrets.TEST_HEALTH_URL }}
+        run: |
+          for i in $(seq 1 30); do
+            STATUS=$(curl -sf "$HEALTH_URL" | jq -r .status || echo down)
+            if [ "$STATUS" = "ok" ] || [ "$STATUS" = "degraded" ]; then
+              echo "Health: $STATUS"
+              exit 0
+            fi
+            sleep 10
+          done
+          echo "::error::Health gate failed — old containers remain"
+          exit 1
+      - name: E2E smoke (test)
+        env:
+          BASE_URL: ${{ secrets.TEST_BASE_URL }}
+          HEALTH_URL: ${{ secrets.TEST_HEALTH_URL }}
+        run: |
+          curl -sf "$BASE_URL" >/dev/null
+          curl -sf "$HEALTH_URL" | jq -e '.components.database == "ok"'
+
+  deploy-production:
+    needs: build-image
+    if: startsWith(github.ref, 'refs/tags/v')
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+      - uses: actions/checkout@v4
+      - name: Refuse untagged / non-tag deploy
+        run: |
+          if [[ ! "${{ github.ref }}" =~ ^refs/tags/v ]]; then
+            echo "::error::Production deploy requires v* tag (URS-F-052)"
+            exit 1
+          fi
+      - name: Deploy to production VM
+        env:
+          SSH_HOST: ${{ secrets.PROD_SSH_HOST }}
+          SSH_USER: ${{ secrets.PROD_SSH_USER }}
+          SSH_KEY: ${{ secrets.PROD_SSH_KEY }}
+          IMAGE: ghcr.io/${{ github.repository }}:${{ github.ref_name }}
+        run: |
+          install -m 600 /dev/stdin <<<"$SSH_KEY" key
+          ssh -i key -o StrictHostKeyChecking=accept-new "$SSH_USER@$SSH_HOST" <<EOF
+            set -e
+            cd /opt/qm-pilot/deploy
+            export APP_IMAGE="$IMAGE"
+            docker compose pull
+            docker compose up -d
+            docker compose exec -T app npx prisma migrate deploy
+          EOF
+      - name: Health gate (production)
+        env:
+          HEALTH_URL: ${{ secrets.PROD_HEALTH_URL }}
+        run: |
+          for i in $(seq 1 30); do
+            STATUS=$(curl -sf "$HEALTH_URL" | jq -r .status || echo down)
+            if [ "$STATUS" = "ok" ] || [ "$STATUS" = "degraded" ]; then
+              echo "Health: $STATUS"
+              exit 0
+            fi
+            sleep 10
+          done
+          echo "::error::Health gate failed — rollback: keep previous image tag"
+          exit 1
+      - name: Append deploy log entry
+        run: |
+          echo "| ${{ github.ref_name }} | $(date -u +%Y-%m-%d) | ${{ github.actor }} | ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }} | pass | auto |" >> docs/deploy-log.md
+      - uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "docs: deploy log ${{ github.ref_name }}"
+          file_pattern: docs/deploy-log.md

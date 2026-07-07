@@ -1,0 +1,140 @@
+# QM-Pilot production stack — one VM per environment (prod / test).
+# Secrets via deploy/.env (not committed). See env.prod.example / env.test.example.
+
+name: qm-pilot
+
+services:
+  caddy:
+    image: caddy:2-alpine
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    environment:
+      ACME_EMAIL: ${ACME_EMAIL}
+      APP_DOMAIN: ${APP_DOMAIN}
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+    depends_on:
+      app:
+        condition: service_healthy
+    networks:
+      - qm_net
+
+  app:
+    image: ${APP_IMAGE:-ghcr.io/qm-pilot/qm-pilot:latest}
+    build:
+      context: ..
+      dockerfile: deploy/Dockerfile
+    restart: unless-stopped
+    env_file:
+      - .env
+    environment:
+      NODE_ENV: production
+      TZ: UTC
+      HOST: 0.0.0.0
+      PORT: "4321"
+    expose:
+      - "4321"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://127.0.0.1:4321/api/health"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 60s
+    networks:
+      - qm_net
+    deploy:
+      replicas: ${APP_REPLICAS:-1}
+
+  worker:
+    image: ${APP_IMAGE:-ghcr.io/qm-pilot/qm-pilot:latest}
+    restart: unless-stopped
+    command: ["node", "./dist/worker.mjs"]
+    env_file:
+      - .env
+    environment:
+      NODE_ENV: production
+      TZ: UTC
+    depends_on:
+      postgres:
+        condition: service_healthy
+      app:
+        condition: service_started
+    healthcheck:
+      test: ["CMD-SHELL", "node -e \"const m=Date.now()-Number(process.env.WORKER_LAST_TICK_MS||0); process.exit(m<300000?0:1)\""]
+      interval: 60s
+      timeout: 10s
+      retries: 3
+      start_period: 120s
+    networks:
+      - qm_net
+
+  postgres:
+    image: postgres:17-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${POSTGRES_SUPERUSER:-postgres}
+      POSTGRES_PASSWORD: ${POSTGRES_SUPERUSER_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB:-qmpilot}
+      QMPILOT_APP_PASSWORD: ${QMPILOT_APP_PASSWORD}
+      QMPILOT_MIGRATOR_PASSWORD: ${QMPILOT_MIGRATOR_PASSWORD}
+      PGBACKREST_CIPHER_PASS: ${PGBACKREST_CIPHER_PASS}
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./postgres/init:/docker-entrypoint-initdb.d:ro
+      - ./postgres/postgresql.conf:/etc/postgresql/postgresql.conf:ro
+      - pgbackrest_spool:/var/spool/pgbackrest
+      - pgbackrest_log:/var/log/pgbackrest
+    command: ["postgres", "-c", "config_file=/etc/postgresql/postgresql.conf"]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_SUPERUSER:-postgres} -d ${POSTGRES_DB:-qmpilot}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - qm_net
+
+  pgbackrest:
+    image: woblerr/pgbackrest:latest
+    restart: unless-stopped
+    env_file:
+      - .env
+    environment:
+      TZ: UTC
+      PGBACKREST_STANZA: qmpilot
+    volumes:
+      - pgdata:/var/lib/postgresql/data:ro
+      - ./pgbackrest/pgbackrest.conf:/etc/pgbackrest/pgbackrest.conf:ro
+      - ./pgbackrest/backup-wrapper.sh:/usr/local/bin/backup-wrapper.sh:ro
+      - pgbackrest_spool:/var/spool/pgbackrest
+      - pgbackrest_log:/var/log/pgbackrest
+      - pgbackrest_repo:/var/lib/pgbackrest
+    depends_on:
+      postgres:
+        condition: service_healthy
+    entrypoint: ["/bin/sh", "-c"]
+    command:
+      - |
+        echo "0 2 * * * /usr/local/bin/backup-wrapper.sh full >> /var/log/pgbackrest/cron.log 2>&1" > /etc/crontabs/root
+        echo "0 3 * * 0 /usr/local/bin/backup-wrapper.sh full >> /var/log/pgbackrest/cron.log 2>&1" >> /etc/crontabs/root
+        crond -f -l 2
+    networks:
+      - qm_net
+
+volumes:
+  pgdata:
+  caddy_data:
+  caddy_config:
+  pgbackrest_spool:
+  pgbackrest_log:
+  pgbackrest_repo:
+
+networks:
+  qm_net:
+    driver: bridge
