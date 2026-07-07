@@ -304,12 +304,14 @@ model AuthVerification {
 
 /// Better Auth TOTP — server-only
 model TwoFactor {
-    id          String  @id @default(cuid())
-    userId      String  @unique
-    user        User    @relation(fields: [userId], references: [id], onDelete: Cascade)
-    secret      String
-    backupCodes String
-    verified    Boolean @default(false)
+    id                      String    @id @default(cuid())
+    userId                  String    @unique
+    user                    User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+    secret                  String
+    backupCodes             String
+    verified                Boolean   @default(false)
+    failedVerificationCount Int       @default(0)
+    lockedUntil             DateTime?
 
     @@deny('all', true)
 }
