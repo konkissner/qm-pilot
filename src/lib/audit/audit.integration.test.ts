@@ -55,7 +55,6 @@ describe.runIf(run)('AuditEvent DB hardening (R-013)', () => {
   });
 
   afterAll(async () => {
-    await admin.tenant.delete({ where: { id: tenantId } });
     await admin.$disconnect();
     await appDb.$disconnect();
   });
@@ -119,10 +118,7 @@ describe.runIf(run)('audited user service completeness (R-012)', () => {
     otherTenantId = other.id;
   });
 
-  afterAll(async () => {
-    await db.tenant.deleteMany({ where: { id: { in: [tenantId, otherTenantId] } } });
-    await db.$disconnect();
-  });
+  afterAll(async () => { await db.$disconnect(); });
 
   const actor = (): { id: string; tenantId: string; roleKeys: RoleKey[] } => ({
     id: glId,
@@ -250,7 +246,7 @@ describe.runIf(run)('immutability and retention triggers (R-017, R-018)', () => 
     );
     const id2 = `${probeId}-new2`;
     await db.$executeRawUnsafe(`INSERT INTO "_ImmutabilityProbe" (id, label) VALUES ($1, 'v2')`, id2);
-    await db.$executeRawUnsafe(`DELETE FROM "_ImmutabilityProbe" WHERE id IN ($1, $2)`, id, id2);
+    await db.$executeRawUnsafe(`DELETE FROM "_ImmutabilityProbe" WHERE id = $1`, id2);
   });
 });
 
@@ -310,10 +306,7 @@ describe.runIf(run)('ZenStack audit read policies', () => {
     });
   });
 
-  afterAll(async () => {
-    await db.tenant.deleteMany({ where: { id: { in: [tenantA, tenantB] } } });
-    await db.$disconnect();
-  });
+  afterAll(async () => { await db.$disconnect(); });
 
   it('auditor can read audit trail in tenant', async () => {
     expect(canViewAuditTrail({ roleKeys: ['auditor'] })).toBe(true);

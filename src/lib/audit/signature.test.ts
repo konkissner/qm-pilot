@@ -38,7 +38,6 @@ describe('createSignature with fake verifier', () => {
     });
     expect(failed).not.toBeNull();
     expect(await db.signature.count({ where: { tenantId: tenant.id } })).toBe(0);
-    await db.tenant.delete({ where: { id: tenant.id } });
     await db.$disconnect();
   });
 
@@ -72,7 +71,6 @@ describe('createSignature with fake verifier', () => {
     expect(audit).not.toBeNull();
 
     await expect(db.signature.update({ where: { id: sig.id }, data: { comment: 'x' } })).rejects.toThrow();
-    await db.tenant.delete({ where: { id: tenant.id } });
     await db.$disconnect();
   });
 });

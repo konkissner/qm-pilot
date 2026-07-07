@@ -22,5 +22,9 @@ export default defineConfig({
     url: 'http://localhost:4321',
     reuseExistingServer: !process.env.CI,
     timeout: 120_000,
+    env: {
+      ALLOW_DEV_API: 'true',
+      DATABASE_URL: process.env.DATABASE_URL ?? '',
+    },
   },
 });

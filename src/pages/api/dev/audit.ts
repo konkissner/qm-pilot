@@ -3,8 +3,10 @@ import { prisma } from '../../../lib/db';
 import { queryAuditEvents } from '../../../lib/audit/query';
 import type { RoleKey } from '../../../lib/permissions';
 
+const devApiEnabled = import.meta.env.DEV || process.env.ALLOW_DEV_API === 'true';
+
 export const GET: APIRoute = async ({ url }) => {
-  if (!import.meta.env.DEV) {
+  if (!devApiEnabled) {
     return new Response(JSON.stringify({ error: 'Nur in DEV verfügbar.' }), {
       status: 404,
       headers: { 'Content-Type': 'application/json' },

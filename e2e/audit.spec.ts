@@ -48,7 +48,6 @@ test.describe('DEV audit endpoint', () => {
     const body = await response.json();
     expect(body.items.some((item: { action: string }) => item.action === 'e2e.test')).toBe(true);
 
-    await db.tenant.delete({ where: { id: tenant.id } });
     await db.$disconnect();
   });
 });
