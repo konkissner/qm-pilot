@@ -79,7 +79,6 @@ describe.runIf(run)('access revoked on retire (R-007)', () => {
   });
 
   afterAll(async () => {
-    await prisma.tenant.deleteMany({ where: { id: tenantId } });
     await prisma.$disconnect();
   });
 
@@ -134,7 +133,6 @@ describe.runIf(run)('kiosk PIN login blocked for retired user', () => {
   });
 
   afterAll(async () => {
-    await prisma.tenant.deleteMany({ where: { id: tenantId } });
     await prisma.$disconnect();
   });
 

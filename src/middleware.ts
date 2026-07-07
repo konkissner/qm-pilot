@@ -11,7 +11,7 @@ export const onRequest = defineMiddleware(async (context, next) => {
   const { url, request, cookies, redirect } = context;
   const pathname = url.pathname;
 
-  if (isPublicPath(pathname) || (import.meta.env.DEV && pathname.startsWith('/api/dev'))) {
+  if (isPublicPath(pathname) || ((import.meta.env.DEV || process.env.ALLOW_DEV_API === 'true') && pathname.startsWith('/api/dev'))) {
     return next();
   }
 

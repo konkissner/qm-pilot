@@ -18,13 +18,13 @@ export default function LoginForm({ ssoEnabled }: { ssoEnabled: boolean }) {
       body: JSON.stringify({ email, password }),
     });
     setLoading(false);
-    if (res.ok) {
-      window.location.href = '/';
+    const data = (await res.json().catch(() => ({}))) as { twoFactorRedirect?: boolean; twoFactor?: boolean };
+    if (data.twoFactorRedirect || data.twoFactor) {
+      setStep('totp');
       return;
     }
-    const data = (await res.json().catch(() => ({}))) as { message?: string; twoFactorRedirect?: boolean };
-    if (data.twoFactorRedirect || res.status === 403) {
-      setStep('totp');
+    if (res.ok) {
+      window.location.href = '/';
       return;
     }
     setError('E-Mail oder Passwort falsch.');

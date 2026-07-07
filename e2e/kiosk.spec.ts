@@ -12,13 +12,11 @@ test.describe('PIN-Kiosk', () => {
       data: { persona: 'admin' },
     });
     expect(impersonate.ok()).toBeTruthy();
-    const cookies = await impersonate.headersArray();
-    for (const h of cookies) {
-      if (h.name.toLowerCase() === 'set-cookie') {
-        const [pair] = h.value.split(';');
-        const [name, value] = pair.split('=');
-        await context.addCookies([{ name, value, domain: 'localhost', path: '/' }]);
-      }
+    const setCookie = impersonate.headers()['set-cookie'];
+    if (setCookie) {
+      const [pair] = setCookie.split(';');
+      const [name, value] = pair.split('=');
+      await context.addCookies([{ name, value, domain: 'localhost', path: '/' }]);
     }
 
     await page.goto('/kiosk/register');

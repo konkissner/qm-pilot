@@ -47,7 +47,7 @@ describe.runIf(!!process.env.DATABASE_URL)('PIN state machine', () => {
     await prisma.$disconnect();
   });
 
-  it('locks after 5 failures and resets on success', async () => {
+  it('locks after 5 failures', async () => {
     for (let i = 1; i <= 4; i++) {
       const r = await verifyPinCredential(prisma, userId, '0000');
       expect(r.ok).toBe(false);
@@ -56,7 +56,13 @@ describe.runIf(!!process.env.DATABASE_URL)('PIN state machine', () => {
     const locked = await verifyPinCredential(prisma, userId, '0000');
     expect(locked.locked).toBe(true);
     expect(locked.pinLockedUntil).not.toBeNull();
+  });
 
+  it('resets counters on successful PIN', async () => {
+    await prisma.user.update({
+      where: { id: userId },
+      data: { pinFailedAttempts: 2, pinLockedUntil: null },
+    });
     const ok = await verifyPinCredential(prisma, userId, '4711');
     expect(ok.ok).toBe(true);
     const user = await prisma.user.findUniqueOrThrow({ where: { id: userId } });

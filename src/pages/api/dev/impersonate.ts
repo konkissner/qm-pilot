@@ -4,7 +4,8 @@ import { getAuthForTenant, auditLoginSuccess } from '../../../lib/auth/config';
 import { DEV_PERSONA_LOOKUP, type DevPersonaKey } from '../../../lib/dev-personas';
 
 export const POST: APIRoute = async ({ request }) => {
-  if (!import.meta.env.DEV) {
+  const devApiEnabled = import.meta.env.DEV || process.env.ALLOW_DEV_API === 'true';
+  if (!devApiEnabled) {
     return new Response(JSON.stringify({ error: 'Nur in DEV verfügbar.' }), { status: 404 });
   }
 
