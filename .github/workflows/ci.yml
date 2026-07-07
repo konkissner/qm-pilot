@@ -60,6 +60,20 @@ jobs:
 
   e2e:
     runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:17
+        env:
+          POSTGRES_USER: qmpilot
+          POSTGRES_PASSWORD: qmpilot
+          POSTGRES_DB: qmpilot
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
     env:
       DATABASE_URL: postgresql://qmpilot:qmpilot@localhost:5432/qmpilot?schema=public
     steps:

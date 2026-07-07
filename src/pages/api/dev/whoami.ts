@@ -1,5 +1,6 @@
 import type { APIRoute } from 'astro';
 import { prisma } from '../../../lib/db';
+import { DEV_PERSONA_LOOKUP, type DevPersonaKey } from '../../../lib/dev-personas';
 import {
   auditorDefaultVisibleModules,
   getEffectivePermissions,
@@ -10,8 +11,6 @@ import {
   type RoleKey,
 } from '../../../lib/permissions';
 
-const PERSONAS = { lena: 'l.frei@pharmazeutika.net', admin: 'it@pharmazeutika.net' } as const;
-
 export const GET: APIRoute = async ({ url }) => {
   if (!import.meta.env.DEV) {
     return new Response(JSON.stringify({ error: 'Nur in DEV verfügbar.' }), {
@@ -20,24 +19,19 @@ export const GET: APIRoute = async ({ url }) => {
     });
   }
 
-  const persona = url.searchParams.get('persona');
-  if (persona !== 'lena' && persona !== 'ext' && persona !== 'admin') {
+  const persona = url.searchParams.get('persona') as DevPersonaKey | null;
+  if (!persona || !(persona in DEV_PERSONA_LOOKUP)) {
     return new Response(JSON.stringify({ error: 'Query-Parameter persona erforderlich (lena | ext | admin).' }), {
       status: 400,
       headers: { 'Content-Type': 'application/json' },
     });
   }
 
-  const user =
-    persona === 'ext'
-      ? await prisma.user.findFirst({
-          where: { firstName: 'Ana', lastName: 'Ilic', email: null },
-          include: { roles: true },
-        })
-      : await prisma.user.findFirst({
-          where: { email: PERSONAS[persona] },
-          include: { roles: true },
-        });
+  const lookup = DEV_PERSONA_LOOKUP[persona];
+  const user = await prisma.user.findFirst({
+    where: lookup,
+    include: { roles: true },
+  });
 
   if (!user) {
     return new Response(JSON.stringify({ error: 'Seed-Benutzer nicht gefunden. Bitte npm run db:seed ausführen.' }), {

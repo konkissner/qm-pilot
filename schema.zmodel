@@ -101,7 +101,6 @@ model TenantConfig {
 
     @@deny('all', auth() == null)
     @@allow('read', auth().tenantId == tenantId)
-    @@allow('update', auth().tenantId == tenantId && auth().status == active)
 }
 
 model Role {
