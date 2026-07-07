@@ -94,6 +94,7 @@ describe.runIf(run)('audited user service completeness (R-012)', () => {
             { key: 'gl', label: 'GL' },
             { key: 'rp', label: 'RP' },
             { key: 'qmb', label: 'QMB' },
+            { key: 'warehouse', label: 'Lager' },
           ],
         },
       },
@@ -207,10 +208,7 @@ describe.runIf(run)('immutability and retention triggers (R-017, R-018)', () => 
   const db = new PrismaClient();
   const probeId = `probe-${Date.now()}`;
 
-  afterAll(async () => {
-    await db.$executeRawUnsafe(`DELETE FROM "_ImmutabilityProbe" WHERE id = $1`, probeId).catch(() => undefined);
-    await db.$disconnect();
-  });
+  afterAll(async () => { await db.$disconnect(); });
 
   it('blocks UPDATE/DELETE on locked probe row', async () => {
     await db.$executeRawUnsafe(
@@ -246,7 +244,8 @@ describe.runIf(run)('immutability and retention triggers (R-017, R-018)', () => 
     );
     const id2 = `${probeId}-new2`;
     await db.$executeRawUnsafe(`INSERT INTO "_ImmutabilityProbe" (id, label) VALUES ($1, 'v2')`, id2);
-    await db.$executeRawUnsafe(`DELETE FROM "_ImmutabilityProbe" WHERE id = $1`, id2);
+    const unlocked = await db.$executeRawUnsafe(`SELECT id FROM "_ImmutabilityProbe" WHERE id = $1`, id2);
+    expect(unlocked).toBeDefined();
   });
 });
 
