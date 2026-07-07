@@ -15,6 +15,7 @@
     "worker": "tsx src/worker.ts",
     "db:generate": "zenstack generate",
     "db:migrate": "prisma migrate dev",
+    "db:seed": "tsx scripts/seed.ts",
     "postinstall": "zenstack generate"
   },
   "dependencies": {

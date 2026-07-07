@@ -2,3 +2,15 @@ ursId,requirement,implementation,test,wp,status
 URS-F-052,Software-Release nur über grüne CI,.github/workflows/ci.yml,src/lib/greet.test.ts,WP-00,done
 URS-F-053,Software-Release getrennt von QM-Change-Control,CLAUDE.md,CHANGELOG.md,WP-00,done
 URS-F-064,Wartbarkeit: README Struktur Git-Versionierung,README.md,src/lib/greet.test.ts,WP-00,done
+URS-F-001,Rechte hängen an Rollen nicht Personen,schema.zmodel Role/RoleRight,src/lib/permissions.test.ts,WP-01,done
+URS-F-002,Systemrollen mit deutschsprachigen Labels,schema.zmodel Role + ROLE_LABELS,src/lib/permissions.test.ts,WP-01,done
+URS-F-003,Mehrfachrollen Rechte-Vereinigungsmenge,src/lib/permissions.ts getEffectivePermissions,src/lib/permissions.test.ts,WP-01,done
+URS-F-004,Prinzip minimaler Rechte Default deny,src/lib/permissions.ts ROLE_DEFAULTS,src/lib/permissions.test.ts,WP-01,done
+URS-F-005,Benutzerverwaltung nur mit manageUsers,src/lib/services/users.ts,src/lib/tenant-policy.test.ts,WP-01,done
+URS-F-006,Kein DELETE auf User — Deaktivierung,schema.zmodel User.status/retiredAt,src/lib/tenant-policy.test.ts,WP-01,done
+URS-F-007,Funktionstrennung Auditor read-only + Admin ohne QM,src/lib/permissions.ts isReadOnly/admin guard,src/lib/permissions.test.ts,WP-01,done
+URS-F-008,Natürliche Person pro Konto keine Sammelkonten,schema.zmodel User firstName/lastName Pflicht,scripts/seed.ts,WP-01,done
+URS-F-009,Rechteänderungen auditpflichtig (Hook-Punkte),src/lib/services/users.ts AUDIT(WP-02),src/lib/tenant-policy.test.ts,WP-01,done
+URS-F-014,AuditorInvite Modell Sichtbereich,schema.zmodel AuditorInvite,src/lib/permissions.test.ts,WP-01,done
+URS-F-056,DSGVO personenbezogene Felder tenant-isoliert,schema.zmodel ZenStack @@allow Policies,src/lib/tenant-policy.test.ts,WP-01,done
+URS-F-066,TenantConfig statt Hardcoding,schema.zmodel TenantConfig + scripts/seed.ts,src/lib/prisma-schema.test.ts,WP-01,done
