@@ -304,7 +304,7 @@ model AuthVerification {
 
 /// Better Auth TOTP — server-only
 model TwoFactor {
-    id          String  @id
+    id          String  @id @default(cuid())
     userId      String  @unique
     user        User    @relation(fields: [userId], references: [id], onDelete: Cascade)
     secret      String

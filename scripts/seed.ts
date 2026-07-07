@@ -1,5 +1,5 @@
 import { randomUUID } from 'node:crypto';
-import { writeFileSync } from 'node:fs';
+import { writeFileSync, existsSync, readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { PrismaClient } from '@prisma/client';
 import { hashPassword } from 'better-auth/crypto';
@@ -119,8 +119,12 @@ async function ensureCredentialAccount(userId: string, email: string, passwordHa
 }
 
 async function ensureTotp(userId: string, email: string) {
+  const secretFile = resolve(process.cwd(), 'e2e/.totp-secret');
   const existing = await prisma.twoFactor.findUnique({ where: { userId } });
-  if (existing?.verified && LENA_TOTP_SECRET) return;
+  if (existing?.verified && existsSync(secretFile)) {
+    LENA_TOTP_SECRET = readFileSync(secretFile, 'utf8').trim();
+    return;
+  }
 
   if (existing) {
     await prisma.twoFactor.delete({ where: { userId } });
