@@ -1,0 +1,150 @@
+User Requirements Specification
+Modul „Aufgaben" — Stufe 1
+QM-Pilot
+Pharmazeutika 73.3 GmbH
+Version 0.2 (Entwurf) · Stand: 30.06.2026
+Erstellt von: Claude · Freigabe: Jochen Schulze (GL/RP)
+
+
+Inhaltsverzeichnis
+
+
+
+
+1  Zweck & Geltungsbereich
+1.1  Zweck
+Diese URS legt die Anforderungen an das Aufgaben-Modul (Stufe 1) von QM-Pilot aus Sicht der Anwender fest. Sie ist die Grundlage für die Entwicklung und der Bezugspunkt für die spätere Validierung (IQ/OQ/PQ). Jede Anforderung ist prüfbar formuliert und trägt eine eindeutige Kennung (URS-A-NNN).
+1.2  Einordnung
+Stufe 1 setzt auf dem validierten Fundament (Stufe 0) auf und nutzt dessen Benutzer, Rollen und Audit-Trail. Sie adressiert den aktuellen Hauptschmerz — die Verwaltung wiederkehrender Aufgaben aus dem Routineplan (191 Aufgaben), die das Altsystem eqms.de nicht abbilden kann — und liefert den ersten sichtbaren Alltagsnutzen.
+1.3  Geltungsbereich
+Die URS beschreibt, was das Aufgaben-Modul leisten muss: das Definieren, Terminieren, Zuweisen, Erledigen/Quittieren, Eskalieren und Anzeigen von Aufgaben. Die technische Umsetzung (auf Basis von Django/PostgreSQL gemäß den Grundsatzentscheidungen) wird in der nachgelagerten FS/DS beschrieben. Datenmigration aus eqms.de erfolgt manuell (kein Schnittstellen-Scope).
+1.4  Verbindlichkeit
+Die URS wird von der Geschäftsleitung / Verantwortlichen Person freigegeben. Änderungen nach Freigabe erfolgen nachvollziehbar über die Versionskontrolle dieses Dokuments.
+2  Mitgeltende Dokumente
+2.1  Projektinterne Dokumente
+Vision Document (v0.1), Technische Grundsatzentscheidungen (v0.1) sowie die Stufe-0-Dokumente URS (v0.2), FS/DS (v0.2) und Risikoanalyse (v0.1). Das Aufgaben-Modul nutzt das dort beschriebene Fundament (Benutzer, Rollen, Audit-Trail).
+2.2  Fachliche Quelle
+Maßgebliche fachliche Quelle ist der Routineplan mit den 191 wiederkehrenden Aufgaben aus dem QM-Projekt; die einzelnen Aufgaben leiten sich aus den jeweiligen SOPs ab (z. B. Temperatur-Tagescheck aus SOP-03-002). Diese Dokumente werden referenziert und liefern die Aufgabeninhalte — sie sind nicht der Validierungsmaßstab der Software.
+2.3  Regulatorische Grundlagen
+GDP-Leitlinie 2013/C 343/01 (insb. Kapitel 1 Qualitätsmanagement und Kapitel 4 Dokumentation); EU-Annex 11 (sinngemäß); ALCOA+; GAMP 5 als Methodik. Verbindlicher Maßstab sind die gesetzlichen Vorgaben.
+3  Überblick & Abgrenzung
+3.1  Inhalt der Stufe 1
+Das Aufgaben-Modul umfasst: das Definieren von Aufgaben (wiederkehrend und einmalig), ihre Terminierung und Wiederholung, die Zuweisung an Rollen oder Personen, das Erledigen und Quittieren (mit Zeitstempel und Person, optional Foto/Datei), die Eskalation bzw. Erinnerung bei Überfälligkeit sowie die Anzeige im Dashboard und in der niederschwelligen Reinigungs-Ansicht. Jeder dieser Vorgänge ist mit dem Audit-Trail des Fundaments gekoppelt.
+3.2  Abgrenzung (nicht Teil der Stufe 1)
+Späteren Stufen vorbehalten bleiben: Dokumentenanzeige und Lesebestätigung (Stufe 2), Online-Vordrucke (Stufe 3), Feststellungen/CAPA (Stufe 4), Dokumentenlenkung (Stufe 5) sowie Reporting (Stufe 6). Schnittstellen (z. B. Testo Saveris) sind nicht Teil dieser Stufe. Der E-Mail-Versand für Erinnerungen nutzt die im Fundament vorgesehene E-Mail-Anbindung; ist diese noch nicht konfiguriert, erfolgt die Eskalation zunächst nur als Hinweis in der Anwendung.
+3.3  Ergebnis der Stufe 1
+Am Ende steht ein nutzbares Aufgaben-Modul: Die wiederkehrenden Aufgaben des Routineplans sind definiert, zugewiesen und terminiert, lassen sich erledigen und quittieren (lückenlos protokolliert) und sind im Dashboard sowie in der Reinigungs-Ansicht sichtbar — der erste echte Alltagsnutzen, der eqms.de in diesem Bereich ablösen kann.
+4  Anforderungen
+4.1  Aufgaben-Definition
+URS-A-001 — Das System muss das Anlegen von Aufgaben mit mindestens folgenden Angaben ermöglichen: Titel, Beschreibung, Zuständigkeit (Rolle und/oder Person), Art (einmalig oder wiederkehrend) sowie optional einem Bezug zum Quelldokument (SOP/Vordruck).
+URS-A-002 — Jede Aufgabe muss auf ihr Quelldokument verweisen können (z. B. „SOP-03-002"), damit nachvollziehbar bleibt, woraus sie sich ableitet.
+URS-A-003 — Aufgaben müssen sowohl einmalig als auch wiederkehrend definierbar sein (Terminierung siehe 4.2).
+URS-A-004 — Nur berechtigte Rollen (z. B. QMB, RP) dürfen Aufgaben-Definitionen anlegen, ändern oder deaktivieren; operative Mitarbeitende erledigen Aufgaben, definieren sie aber nicht.
+URS-A-005 — Aufgaben-Definitionen müssen deaktiviert (nicht gelöscht) werden können; bereits erfasste Erledigungen bleiben dabei erhalten.
+URS-A-006 — Das Anlegen und jede Änderung einer Aufgaben-Definition müssen im Audit-Trail protokolliert werden.
+4.2  Terminierung & Wiederholung
+URS-A-007 — Für wiederkehrende Aufgaben muss das System mindestens die Frequenzen täglich, wöchentlich, monatlich, quartalsweise und jährlich unterstützen.
+URS-A-008 — Jede (Einzel-)Fälligkeit hat ein Fälligkeitsdatum; bei wiederkehrenden Aufgaben erzeugt das System die jeweils nächste Fälligkeit automatisch nach Plan.
+URS-A-009 — Die Terminierung muss eine nähere Festlegung erlauben (z. B. wöchentlich an einem bestimmten Wochentag, jährlich in einem bestimmten Quartal/Monat).
+URS-A-010 — Eine Aufgabe gilt als überfällig, wenn ihr Fälligkeitsdatum ohne Erledigung verstrichen ist; dieser Zustand muss im System erkennbar sein (Grundlage für Anzeige und Eskalation).
+URS-A-045 — Fällt eine berechnete Fälligkeit auf einen arbeitsfreien Tag (gesetzlicher Feiertag oder festgelegter Nicht-Arbeitstag), muss sie automatisch auf den vorherigen Arbeitstag vorgezogen werden (Beispiel: Fälligkeit an einem Freitag-Feiertag → Donnerstag). Der maßgebliche Feiertagskalender (Bundesland) und die Arbeitstage müssen je Mandant konfigurierbar sein (Standard: Baden-Württemberg, Montag–Freitag).
+4.3  Zuweisung
+URS-A-011 — Eine Aufgabe muss zugewiesen werden können an: eine einzelne Person, eine Rolle oder eine Gruppe von Personen.
+URS-A-012 — Bei Zuweisung an eine Gruppe erscheint die Aufgabe bei allen Gruppenmitgliedern; sobald eine Person sie erledigt, gilt sie als erledigt und verschwindet bei allen anderen aus der To-do-Liste. Festgehalten wird, wer sie tatsächlich erledigt hat.
+URS-A-013 — Berechtigte Rollen (z. B. QMB, RP) müssen Aufgaben (um-)zuweisen können.
+URS-A-014 — Jede Zuweisung und Umverteilung muss im Audit-Trail protokolliert werden (wer hat wem wann zugewiesen).
+4.4  Abwesenheit & Vertretung
+URS-A-015 — Für jede Person müssen Abwesenheiten (z. B. Urlaub, Krankheit) mit Zeitraum (von–bis) erfasst werden können; mehrere Zeiträume im Voraus, sodass z. B. der Jahresurlaub bereits am Jahresanfang eingetragen werden kann.
+URS-A-016 — Zu einer Abwesenheit muss eine Vertretung (Vertreter-Person) hinterlegt werden können.
+URS-A-017 — Während des Abwesenheitszeitraums müssen die der abwesenden Person zugewiesenen Aufgaben automatisch der Vertretung zugewiesen/angezeigt werden; nach Rückkehr fallen sie wieder an die ursprüngliche Person zurück.
+URS-A-018 — Berechtigte Rollen (z. B. QMB, RP) müssen Abwesenheiten und Vertretungen anlegen und ändern können; jede solche Eintragung wird im Audit-Trail protokolliert.
+URS-A-019 — Das Dashboard muss freundliche Hinweise anzeigen: am Tag vor Urlaubsbeginn sinngemäß „Ab morgen hast du Urlaub, viel Spaß!" und bei Rückkehr sinngemäß „Willkommen zurück, ich hoffe, du hattest eine schöne Zeit." (Texte konfigurierbar.)
+4.5  Erledigung & Quittierung
+URS-A-020 — Eine zugewiesene Aufgabe muss als erledigt quittiert werden können; das System hält fest, wer sie wann erledigt hat (Zeitstempel, Person).
+URS-A-021 — Bei der Erledigung müssen optional ein Kommentar, ein Foto-Nachweis sowie weitere Dateien (z. B. PDF, Dokumente) hochgeladen und der Erledigung zugeordnet werden können. Hochgeladene Nachweise sind Teil der Aufzeichnung und werden mit ihr revisionssicher gespeichert (vgl. URS-A-023).
+URS-A-022 — Mit der Erledigung einer wiederkehrenden Aufgabe erzeugt das System die nächste Fälligkeit gemäß Plan (siehe 4.2).
+URS-A-023 — Eine erfasste Erledigung ist eine Aufzeichnung und darf nachträglich nicht verändert oder gelöscht werden; eine Korrektur erfolgt nachvollziehbar als neuer Vorgang, nicht durch Überschreiben (ALCOA+).
+URS-A-024 — Quittieren darf nur die zuständige Person, Rolle oder deren Vertretung; die Erledigung bleibt eindeutig einer Person zuordenbar (bei Gruppenaufgaben wird das erledigende Mitglied festgehalten).
+URS-A-025 — Jede Erledigung wird im Audit-Trail protokolliert.
+4.6  Eskalation & Erinnerung
+URS-A-026 — Das System muss die zuständige Person an fällige Aufgaben erinnern (z. B. am Fälligkeitstag), per Reminder-E-Mail.
+URS-A-027 — Wird eine Aufgabe überfällig, muss eine Reminder-E-Mail an die zuständige Person gehen und die QMB darüber informiert werden.
+URS-A-028 — Eine gestufte Eskalation muss möglich sein (z. B. überfällig → QMB; länger überfällig → zusätzlich RP); die Schwellen sind konfigurierbar.
+URS-A-029 — Ist die E-Mail-Anbindung noch nicht konfiguriert, müssen Erinnerung und Eskalation mindestens als deutlicher Hinweis in der Anwendung erscheinen (Dashboard).
+URS-A-030 — Ausgelöste Eskalationen werden im Audit-Trail festgehalten (was wurde wann an wen eskaliert).
+4.7  Anzeige
+URS-A-031 — Das Dashboard muss der angemeldeten Person ihre Aufgaben anzeigen — mit Kennzahlen auf einen Blick (heute fällig, offen, überfällig) und einer Liste mit Status.
+URS-A-032 — In der niederschwelligen Reinigungs-Ansicht müssen die Aufgaben als große Kacheln erscheinen, spracharm, mit einfacher „erledigt"-Bestätigung (optional Foto/Datei gemäß 4.5).
+URS-A-033 — Die Aufgabenliste muss filter- und durchsuchbar sein (z. B. nach Status, Zeitraum, Person/Rolle, SOP-Bezug).
+URS-A-034 — Der Status muss über die einheitlichen Marken-Statusfarben erkennbar sein: erledigt (Türkisgrün), heute fällig (Gelb), überfällig (Warmrot).
+URS-A-035 — Berechtigte Rollen (QMB, RP, GL) müssen eine Gesamtübersicht aller Aufgaben sehen können (nicht nur die eigenen).
+URS-A-036 — Das Dashboard muss der Person ein positives, motivierendes Feedback zu ihren erledigten Aufgaben anzeigen (z. B. „Letzten Monat hast du 30 Aufgaben erledigt — super!"), gern mit einer einfachen Tendenz. Die Darstellung ist bewusst ermutigend gehalten und vermeidet Druck oder bloßstellende Vergleiche.
+URS-A-037 — Die Person muss eine Liste ihrer im gewählten Zeitraum erledigten Aufgaben einsehen können. (Umfassendere Auswertungen und Team-Statistiken sind der Reporting-Stufe 6 vorbehalten.)
+4.8  Audit-Trail-Kopplung
+URS-A-038 — Alle qualitätsrelevanten Vorgänge des Aufgaben-Moduls (Anlegen/Ändern/Deaktivieren von Aufgaben-Definitionen, Zuweisungen, Erledigungen, Eskalationen sowie Abwesenheits-/Vertretungs-Eintragungen) müssen automatisch über den zentralen Audit-Trail des Fundaments (Stufe 0) protokolliert werden; kein Vorgang darf die Protokollierung umgehen.
+URS-A-039 — Erledigungen samt hochgeladener Nachweise (Foto/Dateien) sind Aufzeichnungen und unterliegen der revisionssicheren, unveränderbaren Archivierung des Fundaments (ALCOA+).
+5  Nicht-funktionale Anforderungen
+URS-A-040 — Bedienbarkeit: Eine Aufgabe muss sich in wenigen Schritten erledigen lassen; die Oberfläche folgt der Design-Grundlinie und ist für die Reinigungs-Ansicht bewusst niederschwellig.
+URS-A-041 — Performance: Dashboard und Aufgabenlisten müssen auch beim vollen Routineplan (191 wiederkehrende Aufgaben plus Erledigungen) innerhalb weniger Sekunden reagieren.
+URS-A-042 — Verlässlichkeit der Wiederholung: Die automatische Erzeugung der nächsten Fälligkeiten muss zuverlässig erfolgen — keine ausgelassenen oder doppelten Fälligkeiten.
+URS-A-043 — Geplante Verarbeitung: Für Fälligkeitsprüfung, Erinnerungen und Eskalation muss ein regelmäßiger, überwachter Hintergrundlauf vorhanden sein; fällt er aus, darf keine Fälligkeit dauerhaft unbemerkt bleiben.
+URS-A-044 — Datenintegrität & Wartbarkeit: Es gelten die Vorgaben des Fundaments (ALCOA+, dokumentierter Code im Git, Trennung firmenspezifischer Konfiguration); Aufgaben-Definitionen werden als Daten/Konfiguration geführt, nicht fest verdrahtet.
+6  Regulatorischer Bezug
+6.1  Einordnung
+Das Aufgaben-Modul ist Teil des GAMP-5-Kategorie-5-Systems und wird vor dem Produktivgang eigenständig validiert (eigene Risikoanalyse, IQ/OQ/PQ). Es geht erst produktiv, wenn es validiert ist und seinen Schattenbetrieb bestanden hat.
+6.2  Abdeckung GDP / Annex 11
+Das Modul unterstützt die GDP-Anforderung an die geregelte Durchführung und Dokumentation wiederkehrender Tätigkeiten (GDP-Leitlinie Kapitel 1 und 4). Nachvollziehbarkeit, eindeutige Zuordnung und Unveränderbarkeit der Erledigungen werden über den Audit-Trail und die Archivierung des Fundaments sichergestellt (Annex 11, ALCOA+).
+6.3  Maßstab
+Verbindlicher Prüfmaßstab sind die gesetzlichen Vorgaben; GAMP 5 und ALCOA+ dienen als anerkannte Methodik. Die SOPs/der Routineplan liefern die fachlichen Inhalte, sind aber nicht der Validierungsmaßstab der Software.
+7  Annahmen & offene Punkte
+7.1  Annahmen
+Das Fundament (Stufe 0) ist verfügbar und validiert (Benutzer, Rollen, Audit-Trail). Der Routineplan mit den 191 Aufgaben liegt als fachliche Quelle vor und wird manuell in QM-Pilot übernommen. Für Erinnerungen wird die E-Mail-Anbindung verfügbar gemacht (sonst greift der In-App-Hinweis). Ein regelmäßiger Hintergrundlauf für Fälligkeiten/Erinnerungen kann betrieben werden.
+7.2  Offene Punkte (bei FS/DS bzw. Umsetzung festzulegen)
+Die genauen Eskalationsschwellen (ab wann QMB, ab wann zusätzlich RP); Details der Vertretungslogik (z. B. ganze vs. halbe Tage, Umgang mit Gruppenaufgaben während Abwesenheit); die konkreten Texte der Motivations-Nachrichten; sowie erlaubte Dateitypen und -größen für hochgeladene Nachweise.
+8  Anforderungs-Nachverfolgung
+8.1  Prinzip
+Jede Anforderung trägt eine eindeutige Kennung (URS-A-NNN) und wird durchgängig weitergeführt: in die FS/DS, die modulbezogene Risikoanalyse und die Testskripte (IQ/OQ/PQ). Eine Traceability-Matrix verknüpft Anforderung → Umsetzung → Testfall.
+8.2  Umfang dieser URS
+45 Anforderungen (URS-A-001 bis URS-A-045), verteilt auf: Aufgaben-Definition (A-001–006), Terminierung (A-007–010 und A-045), Zuweisung (A-011–014), Abwesenheit & Vertretung (A-015–019), Erledigung & Quittierung (A-020–025), Eskalation & Erinnerung (A-026–030), Anzeige (A-031–037), Audit-Trail-Kopplung (A-038–039) sowie nicht-funktionale Anforderungen (A-040–044). Die Terminierungs-Anforderung zum Vorziehen auf Arbeitstage trägt die Nummer A-045.
+8.3  Pflege
+Die Traceability-Matrix wird als eigenes, lebendes Dokument geführt und mit den Validierungsschritten fortgeschrieben.
+9  Abnahme & Versionskontrolle
+9.1  Freigabe der URS
+Mit ihrer Unterschrift bestätigen die Verantwortlichen, dass diese URS die Anforderungen an das Aufgaben-Modul (Stufe 1) vollständig und zutreffend beschreibt und die Grundlage für FS/DS, Risikoanalyse und Validierung bildet.
+Funktion
+Rolle
+Name
+Datum
+Unterschrift
+Erstellt
+—
+Claude (Entwurf)
+
+
+Fachlich/technisch geprüft
+fachkundige techn. Person / Standby-Entwickler
+(noch zu benennen)
+
+
+Freigegeben
+Produktverantwortlicher / Geschäftsleitung
+Jochen Schulze
+
+
+
+9.2  Versionskontrolle
+Version
+Datum
+Autor
+Änderung
+0.1 (Entwurf)
+30.06.2026
+Jochen Schulze / Claude
+Erstentwurf, Abschnitte 1–9, URS-A-001 bis URS-A-044
+0.2 (Entwurf)
+30.06.2026
+Jochen Schulze / Claude
+URS-A-045 ergänzt (Vorziehen von Fälligkeiten auf Arbeitstage, Feiertagskalender/Arbeitstage je Mandant konfigurierbar); Unterschriften auf Software-/Produkt-Governance umgestellt
+
+9.3  Geltung
+Die URS ist ein lebendes Dokument. Änderungen nach der ersten Freigabe erfolgen über eine neue Version mit Eintrag in der Versionstabelle.

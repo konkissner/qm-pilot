@@ -1,0 +1,1721 @@
+[
+ {
+  "Nr": "1",
+  "Frequenz": "täglich",
+  "Taetigkeit": "Sicht-/Sauberkeitskontrolle Lagerzonen",
+  "Verantwortlich": "Lagerverantw.",
+  "Nachweis": "F-03-003 Lager-Tagescheck",
+  "SOP_Quelle": "SOP-03-001",
+  "Bemerkung": ""
+ },
+ {
+  "Nr": "2",
+  "Frequenz": "täglich",
+  "Taetigkeit": "Tägliche Sichtkontrolle Temperatur",
+  "Verantwortlich": "Lagerverantw.",
+  "Nachweis": "F-03-008",
+  "SOP_Quelle": "SOP-03-002",
+  "Bemerkung": ""
+ },
+ {
+  "Nr": "3",
+  "Frequenz": "täglich",
+  "Taetigkeit": "Tägliche Reinigung Lager/Büro/Sozial (Haase)",
+  "Verantwortlich": "Firma Haase",
+  "Nachweis": "F-03-014",
+  "SOP_Quelle": "SOP-03-004",
+  "Bemerkung": ""
+ },
+ {
+  "Nr": "4",
+  "Frequenz": "täglich",
+  "Taetigkeit": "Sichtkontrolle UV-Lampe",
+  "Verantwortlich": "Lagerverantw.",
+  "Nachweis": "F-03-003",
+  "SOP_Quelle": "SOP-03-005",
+  "Bemerkung": ""
+ },
+ {
+  "Nr": "5",
+  "Frequenz": "täglich",
+  "Taetigkeit": "Lager-Tagescheck (Sauberkeit/FEFO)",
+  "Verantwortlich": "Lagerverantw.",
+  "Nachweis": "F-03-003",
+  "SOP_Quelle": "SOP-05-004",
+  "Bemerkung": ""
+ },
+ {
+  "Nr": "6",
+  "Frequenz": "wöchentlich",
+  "Taetigkeit": "Status-Review offene Abweichungen/CAPAs",
+  "Verantwortlich": "QMB",
+  "Nachweis": "eQMS-Modul „Feststellungen\"",
+  "SOP_Quelle": "SOP-01-004",
+  "Bemerkung": ""
+ },
+ {
+  "Nr": "7",
+  "Frequenz": "wöchentlich",
+  "Taetigkeit": "Vollständigkeitscheck Beschriftung",
+  "Verantwortlich": "Lagerverantw.",
+  "Nachweis": "F-03-003",
+  "SOP_Quelle": "SOP-03-001",
+  "Bemerkung": ""
+ },
+ {
+  "Nr": "8",
+  "Frequenz": "wöchentlich",
+  "Taetigkeit": "Wöchentlicher Saveris-Report",
+  "Verantwortlich": "QMB",
+  "Nachweis": "Saveris-Export",
+  "SOP_Quelle": "SOP-03-002",
+  "Bemerkung": ""
+ },
+ {
+  "Nr": "9",
+  "Frequenz": "wöchentlich",
+  "Taetigkeit": "Wöchentliche Tiefenreinigung",
+  "Verantwortlich": "Firma Haase",
+  "Nachweis": "F-03-015",
+  "SOP_Quelle": "SOP-03-004",
+  "Bemerkung": ""
+ },
+ {
+  "Nr": "10",
+  "Frequenz": "wöchentlich",
+  "Taetigkeit": "Verfalldatum-Bericht SAP B1",
+  "Verantwortlich": "Lagerverantw.+QMB",
+  "Nachweis": "SAP-Export",
+  "SOP_Quelle": "SOP-05-004",
+  "Bemerkung": ""
+ },
+ {
+  "Nr": "11",
+  "Frequenz": "wöchentlich",
+  "Taetigkeit": "Stichprobe Versandprozess",
+  "Verantwortlich": "QMB",
+  "Nachweis": "Auditnotiz",
+  "SOP_Quelle": "SOP-05-005",
+  "Bemerkung": ""
+ },
+ {
+  "Nr": "13",
+  "Frequenz": "wöchentlich",
+  "Taetigkeit": "Vollständigkeit Sperrlager-Logbuch",
+  "Verantwortlich": "QMB",
+  "Nachweis": "F-05-015",
+  "SOP_Quelle": "SOP-05-008",
+  "Bemerkung": ""
+ },
+ {
+  "Nr": "14",
+  "Frequenz": "monatlich",
+  "Taetigkeit": "KPI-Auswertung",
+  "Verantwortlich": "QMB",
+  "Nachweis": "KPI-Bericht",
+  "SOP_Quelle": "SOP-01-001",
+  "Bemerkung": ""
+ },
+ {
+  "Nr": "15",
+  "Frequenz": "monatlich",
+  "Taetigkeit": "Wirksamkeitskontrollen offener Changes",
+  "Verantwortlich": "QMB",
+  "Nachweis": "Tracker",
+  "SOP_Quelle": "SOP-01-003",
+  "Bemerkung": ""
+ },
+ {
+  "Nr": "16",
+  "Frequenz": "monatlich",
+  "Taetigkeit": "Maßnahmenverfolgung",
+  "Verantwortlich": "QMB",
+  "Nachweis": "eQMS-Modul „Feststellungen\"",
+  "SOP_Quelle": "SOP-01-005",
+  "Bemerkung": ""
+ },
+ {
+  "Nr": "17",
+  "Frequenz": "monatlich",
+  "Taetigkeit": "Bereitstellung Hygiene-Material prüfen",
+  "Verantwortlich": "Lagerverantw.",
+  "Nachweis": "Bestandsliste",
+  "SOP_Quelle": "SOP-02-004",
+  "Bemerkung": ""
+ },
+ {
+  "Nr": "18",
+  "Frequenz": "monatlich",
+  "Taetigkeit": "Monatliche Auswertung MKT",
+  "Verantwortlich": "QMB",
+  "Nachweis": "KPI-Report",
+  "SOP_Quelle": "SOP-03-002",
+  "Bemerkung": ""
+ },
+ {
+  "Nr": "19",
+  "Frequenz": "monatlich",
+  "Taetigkeit": "Test Voralarm",
+  "Verantwortlich": "QMB",
+  "Nachweis": "Testprotokoll",
+  "SOP_Quelle": "SOP-03-002",
+  "Bemerkung": ""
+ },
+ {
+  "Nr": "20",
+  "Frequenz": "monatlich",
+  "Taetigkeit": "Voralarm-Funktionstest Saveris",
+  "Verantwortlich": "QMB",
+  "Nachweis": "F-03-013",
+  "SOP_Quelle": "SOP-03-003",
+  "Bemerkung": ""
+ },
+ {
+  "Nr": "21",
+  "Frequenz": "monatlich",
+  "Taetigkeit": "Kühlschrankreinigung",
+  "Verantwortlich": "Lager-MA",
+  "Nachweis": "F-03-015",
+  "SOP_Quelle": "SOP-03-004",
+  "Bemerkung": ""
+ },
+ {
+  "Nr": "22",
+  "Frequenz": "monatlich",
+  "Taetigkeit": "Stichprobenaudit Reinigung",
+  "Verantwortlich": "QMB",
+  "Nachweis": "Auditnotiz",
+  "SOP_Quelle": "SOP-03-004",
+  "Bemerkung": ""
+ },
+ {
+  "Nr": "23",
+  "Frequenz": "monatlich",
+  "Taetigkeit": "Begehung Preventa",
+  "Verantwortlich": "Preventa+Lagerverantw.",
+  "Nachweis": "Preventa-Bericht (Auftragnehmer)",
+  "SOP_Quelle": "SOP-03-005",
+  "Bemerkung": ""
+ },
+ {
+  "Nr": "24",
+  "Frequenz": "monatlich",
+  "Taetigkeit": "Reinigung UV-Lampe Auffangschale",
+  "Verantwortlich": "Lager-MA",
+  "Nachweis": "F-03-017",
+  "SOP_Quelle": "SOP-03-005",
+  "Bemerkung": ""
+ },
+ {
+  "Nr": "25",
+  "Frequenz": "monatlich",
+  "Taetigkeit": "Backup-Statusprüfung",
+  "Verantwortlich": "QMB+IT",
+  "Nachweis": "IT-Backup-Log",
+  "SOP_Quelle": "SOP-03-006",
+  "Bemerkung": ""
+ },
+ {
+  "Nr": "26",
+  "Frequenz": "monatlich",
+  "Taetigkeit": "Statistik NMVS-Verifizierungen und Verdachtsmeldungen",
+  "Verantwortlich": "QMB",
+  "Nachweis": "Report",
+  "SOP_Quelle": "SOP-05-006",
+  "Bemerkung": ""
+ },
+ {
+  "Nr": "27",
+  "Frequenz": "monatlich",
+  "Taetigkeit": "Statistik §73(3)-Anfragen vs. Genehmigungen",
+  "Verantwortlich": "QMB",
+  "Nachweis": "KPI-Report",
+  "SOP_Quelle": "SOP-05-007",
+  "Bemerkung": ""
+ },
+ {
+  "Nr": "28",
+  "Frequenz": "monatlich",
+  "Taetigkeit": "Trendanalyse NMVS-Verdachtsantworten",
+  "Verantwortlich": "QMB",
+  "Nachweis": "Bericht",
+  "SOP_Quelle": "SOP-06-003",
+  "Bemerkung": ""
+ },
+ {
+  "Nr": "29",
+  "Frequenz": "monatlich",
+  "Taetigkeit": "Trendanalyse Notfalllieferungen",
+  "Verantwortlich": "QMB",
+  "Nachweis": "Bericht",
+  "SOP_Quelle": "SOP-09-006",
+  "Bemerkung": ""
+ },
+ {
+  "Nr": "30",
+  "Frequenz": "quartalsweise",
+  "Taetigkeit": "Review aller offenen Risikoanalysen",
+  "Verantwortlich": "QMB",
+  "Nachweis": "Tracker",
+  "SOP_Quelle": "SOP-01-002",
+  "Bemerkung": ""
+ },
+ {
+  "Nr": "31",
+  "Frequenz": "quartalsweise",
+  "Taetigkeit": "Review Feststellungen-Liste (eQMS)",
+  "Verantwortlich": "QMB",
+  "Nachweis": "eQMS-Modul „Feststellungen\"",
+  "SOP_Quelle": "SOP-01-003",
+  "Bemerkung": ""
+ },
+ {
+  "Nr": "32",
+  "Frequenz": "quartalsweise",
+  "Taetigkeit": "Trendanalyse Abweichungen",
+  "Verantwortlich": "QMB",
+  "Nachweis": "Trendbericht",
+  "SOP_Quelle": "SOP-01-004",
+  "Bemerkung": ""
+ },
+ {
+  "Nr": "33",
+  "Frequenz": "quartalsweise",
+  "Taetigkeit": "Aktualisierung Trainingsmatrix",
+  "Verantwortlich": "QMB",
+  "Nachweis": "F-02-005",
+  "SOP_Quelle": "SOP-02-003",
+  "Bemerkung": ""
+ },
+ {
+  "Nr": "34",
+  "Frequenz": "quartalsweise",
+  "Taetigkeit": "Hygiene-Selbstcheck (Stichprobe)",
+  "Verantwortlich": "QMB",
+  "Nachweis": "F-02-008",
+  "SOP_Quelle": "SOP-02-004",
+  "Bemerkung": ""
+ },
+ {
+  "Nr": "35",
+  "Frequenz": "quartalsweise",
+  "Taetigkeit": "Hohe Flächen/Lüftungsgitter (Haase)",
+  "Verantwortlich": "Firma Haase",
+  "Nachweis": "F-03-015",
+  "SOP_Quelle": "SOP-03-004",
+  "Bemerkung": ""
+ },
+ {
+  "Nr": "36",
+  "Frequenz": "quartalsweise",
+  "Taetigkeit": "Trendanalyse Schädlinge",
+  "Verantwortlich": "QMB",
+  "Nachweis": "Trendbericht",
+  "SOP_Quelle": "SOP-03-005",
+  "Bemerkung": ""
+ },
+ {
+  "Nr": "37",
+  "Frequenz": "quartalsweise",
+  "Taetigkeit": "Bereinigung lokaler Ablagen (alte Versionen)",
+  "Verantwortlich": "QMB",
+  "Nachweis": "Audit-Notiz",
+  "SOP_Quelle": "SOP-04-001",
+  "Bemerkung": ""
+ },
+ {
+  "Nr": "38",
+  "Frequenz": "quartalsweise",
+  "Taetigkeit": "Account-Review (aktive User)",
+  "Verantwortlich": "IT+QMB",
+  "Nachweis": "Berechtigungsmatrix",
+  "SOP_Quelle": "SOP-04-002",
+  "Bemerkung": ""
+ },
+ {
+  "Nr": "39",
+  "Frequenz": "quartalsweise",
+  "Taetigkeit": "Stichprobe Papierkorrekturen",
+  "Verantwortlich": "QMB",
+  "Nachweis": "Audit-Notiz",
+  "SOP_Quelle": "SOP-04-002",
+  "Bemerkung": ""
+ },
+ {
+  "Nr": "41",
+  "Frequenz": "quartalsweise",
+  "Taetigkeit": "Stichprobe Erlaubnis-Aktualität",
+  "Verantwortlich": "QMB",
+  "Nachweis": "Audit-Notiz",
+  "SOP_Quelle": "SOP-05-002",
+  "Bemerkung": ""
+ },
+ {
+  "Nr": "42",
+  "Frequenz": "quartalsweise",
+  "Taetigkeit": "Stichprobe-Audit Wareneingangsablauf",
+  "Verantwortlich": "QMB",
+  "Nachweis": "Auditnotiz",
+  "SOP_Quelle": "SOP-05-003",
+  "Bemerkung": ""
+ },
+ {
+  "Nr": "43",
+  "Frequenz": "quartalsweise",
+  "Taetigkeit": "Rollierende Inventur ausgewählter Artikel",
+  "Verantwortlich": "Lagerverantw.+QMB",
+  "Nachweis": "—",
+  "SOP_Quelle": "SOP-05-004",
+  "Bemerkung": ""
+ },
+ {
+  "Nr": "44",
+  "Frequenz": "quartalsweise",
+  "Taetigkeit": "Review Resthaltbarkeit-Ausnahmen",
+  "Verantwortlich": "RP",
+  "Nachweis": "F-05-011 Auswertung",
+  "SOP_Quelle": "SOP-05-005",
+  "Bemerkung": ""
+ },
+ {
+  "Nr": "45",
+  "Frequenz": "quartalsweise",
+  "Taetigkeit": "Berechtigungsreview NMVS",
+  "Verantwortlich": "QMB+RP",
+  "Nachweis": "Protokollvermerk",
+  "SOP_Quelle": "SOP-05-006",
+  "Bemerkung": ""
+ },
+ {
+  "Nr": "46",
+  "Frequenz": "quartalsweise",
+  "Taetigkeit": "Stichprobe Akte vollständig (Anfrage→Versand)",
+  "Verantwortlich": "QMB",
+  "Nachweis": "Audit-Notiz",
+  "SOP_Quelle": "SOP-05-007",
+  "Bemerkung": ""
+ },
+ {
+  "Nr": "47",
+  "Frequenz": "quartalsweise",
+  "Taetigkeit": "Vernichtungsaktion (intern, turnusmäßig)",
+  "Verantwortlich": "Lager-MA + QMB",
+  "Nachweis": "F-05-016",
+  "SOP_Quelle": "SOP-05-008",
+  "Bemerkung": "oder bei Tonne voll"
+ },
+ {
+  "Nr": "49",
+  "Frequenz": "quartalsweise",
+  "Taetigkeit": "Trendanalyse Reklamationen",
+  "Verantwortlich": "QMB",
+  "Nachweis": "Trendbericht",
+  "SOP_Quelle": "SOP-06-001",
+  "Bemerkung": ""
+ },
+ {
+  "Nr": "50",
+  "Frequenz": "quartalsweise",
+  "Taetigkeit": "Stichprobe Wiedereinlagerungs-Freigaben",
+  "Verantwortlich": "QMB",
+  "Nachweis": "Audit-Notiz",
+  "SOP_Quelle": "SOP-06-002",
+  "Bemerkung": ""
+ },
+ {
+  "Nr": "51",
+  "Frequenz": "quartalsweise",
+  "Taetigkeit": "Trendanalyse Retouren-Quote",
+  "Verantwortlich": "QMB",
+  "Nachweis": "Trendbericht",
+  "SOP_Quelle": "SOP-06-002",
+  "Bemerkung": ""
+ },
+ {
+  "Nr": "52",
+  "Frequenz": "quartalsweise",
+  "Taetigkeit": "Pflege Kunden-Kontaktliste (Anschreiben/Fax/E-Mail)",
+  "Verantwortlich": "Vertrieb",
+  "Nachweis": "SAP B1",
+  "SOP_Quelle": "SOP-06-004",
+  "Bemerkung": ""
+ },
+ {
+  "Nr": "53",
+  "Frequenz": "quartalsweise",
+  "Taetigkeit": "Statusbericht offene Audit-CAPAs",
+  "Verantwortlich": "QMB",
+  "Nachweis": "F-08-003",
+  "SOP_Quelle": "SOP-08-001",
+  "Bemerkung": ""
+ },
+ {
+  "Nr": "54",
+  "Frequenz": "quartalsweise",
+  "Taetigkeit": "Stichprobe Versandauftrag-Information",
+  "Verantwortlich": "QMB",
+  "Nachweis": "Audit-Notiz",
+  "SOP_Quelle": "SOP-09-001",
+  "Bemerkung": ""
+ },
+ {
+  "Nr": "55",
+  "Frequenz": "quartalsweise",
+  "Taetigkeit": "Stichprobe Pack-Checkliste",
+  "Verantwortlich": "QMB",
+  "Nachweis": "Audit-Notiz",
+  "SOP_Quelle": "SOP-09-002",
+  "Bemerkung": ""
+ },
+ {
+  "Nr": "56",
+  "Frequenz": "quartalsweise",
+  "Taetigkeit": "KPI-Auswertung Spediteure",
+  "Verantwortlich": "QMB",
+  "Nachweis": "KPI-Bericht",
+  "SOP_Quelle": "SOP-09-003",
+  "Bemerkung": ""
+ },
+ {
+  "Nr": "57",
+  "Frequenz": "quartalsweise",
+  "Taetigkeit": "Trendanalyse Excursionen",
+  "Verantwortlich": "QMB",
+  "Nachweis": "Trendbericht",
+  "SOP_Quelle": "SOP-09-004",
+  "Bemerkung": ""
+ },
+ {
+  "Nr": "58",
+  "Frequenz": "halbjährlich",
+  "Taetigkeit": "Schlüsselbestand-Inventur",
+  "Verantwortlich": "RP",
+  "Nachweis": "F-03-001",
+  "SOP_Quelle": "SOP-03-001",
+  "Bemerkung": ""
+ },
+ {
+  "Nr": "59",
+  "Frequenz": "halbjährlich",
+  "Taetigkeit": "Wartung Klimaanlage",
+  "Verantwortlich": "externer Dienstleister",
+  "Nachweis": "Wartungsbericht",
+  "SOP_Quelle": "SOP-03-002",
+  "Bemerkung": ""
+ },
+ {
+  "Nr": "60",
+  "Frequenz": "halbjährlich",
+  "Taetigkeit": "Wartung Klimaanlage",
+  "Verantwortlich": "externer Dienstleister",
+  "Nachweis": "Wartungsbericht",
+  "SOP_Quelle": "SOP-03-003",
+  "Bemerkung": ""
+ },
+ {
+  "Nr": "61",
+  "Frequenz": "halbjährlich",
+  "Taetigkeit": "Klimafilter-Reinigung",
+  "Verantwortlich": "externer Klima-Service",
+  "Nachweis": "Wartungsbericht",
+  "SOP_Quelle": "SOP-03-004",
+  "Bemerkung": ""
+ },
+ {
+  "Nr": "62",
+  "Frequenz": "halbjährlich",
+  "Taetigkeit": "Datenqualitätsanalyse Stammdaten",
+  "Verantwortlich": "QMB",
+  "Nachweis": "Datenqualitätsbericht",
+  "SOP_Quelle": "SOP-04-003",
+  "Bemerkung": ""
+ },
+ {
+  "Nr": "63",
+  "Frequenz": "halbjährlich",
+  "Taetigkeit": "Stichprobe Stammdatenqualität",
+  "Verantwortlich": "QMB",
+  "Nachweis": "Datenqualitätsbericht",
+  "SOP_Quelle": "SOP-05-001",
+  "Bemerkung": ""
+ },
+ {
+  "Nr": "64",
+  "Frequenz": "halbjährlich",
+  "Taetigkeit": "Pflege Notfall-Kontaktliste",
+  "Verantwortlich": "QMB",
+  "Nachweis": "A-06-003",
+  "SOP_Quelle": "SOP-06-003",
+  "Bemerkung": ""
+ },
+ {
+  "Nr": "66",
+  "Frequenz": "halbjährlich",
+  "Taetigkeit": "Pflege Behörden-Kontaktliste",
+  "Verantwortlich": "QMB",
+  "Nachweis": "A-06-007",
+  "SOP_Quelle": "SOP-06-005",
+  "Bemerkung": ""
+ },
+ {
+  "Nr": "69",
+  "Frequenz": "halbjährlich",
+  "Taetigkeit": "Tiefkühler-Wartung",
+  "Verantwortlich": "externer Service",
+  "Nachweis": "Wartungsbericht",
+  "SOP_Quelle": "SOP-09-002",
+  "Bemerkung": ""
+ },
+ {
+  "Nr": "70",
+  "Frequenz": "jährlich",
+  "Taetigkeit": "Verifikationsstudie Box",
+  "Verantwortlich": "QMB",
+  "Nachweis": "Kurzbericht",
+  "SOP_Quelle": "SOP-09-005",
+  "Bemerkung": ""
+ },
+ {
+  "Nr": "71",
+  "Frequenz": "halbjährlich",
+  "Taetigkeit": "Pflege Notfall-Kontaktliste",
+  "Verantwortlich": "QMB",
+  "Nachweis": "A-09-007",
+  "SOP_Quelle": "SOP-09-006",
+  "Bemerkung": ""
+ },
+ {
+  "Nr": "72",
+  "Frequenz": "jährlich",
+  "Taetigkeit": "Management Review",
+  "Verantwortlich": "GL",
+  "Nachweis": "Protokoll (SOP-01-005)",
+  "SOP_Quelle": "SOP-01-001",
+  "Bemerkung": ""
+ },
+ {
+  "Nr": "73",
+  "Frequenz": "jährlich",
+  "Taetigkeit": "Selbstinspektion",
+  "Verantwortlich": "RP",
+  "Nachweis": "Auditbericht (SOP-08-001)",
+  "SOP_Quelle": "SOP-01-001",
+  "Bemerkung": ""
+ },
+ {
+  "Nr": "74",
+  "Frequenz": "jährlich",
+  "Taetigkeit": "Berichterstattung Risikolage an GL",
+  "Verantwortlich": "RP",
+  "Nachweis": "Mgmt-Review-Protokoll",
+  "SOP_Quelle": "SOP-01-002",
+  "Bemerkung": "im Mgmt Review"
+ },
+ {
+  "Nr": "75",
+  "Frequenz": "jährlich",
+  "Taetigkeit": "Berichtswesen an GL",
+  "Verantwortlich": "RP",
+  "Nachweis": "Mgmt-Review-Protokoll",
+  "SOP_Quelle": "SOP-01-004",
+  "Bemerkung": "im Mgmt Review"
+ },
+ {
+  "Nr": "76",
+  "Frequenz": "jährlich",
+  "Taetigkeit": "Reguläres Management Review",
+  "Verantwortlich": "GL+RP+QMB",
+  "Nachweis": "Protokoll F-01-005",
+  "SOP_Quelle": "SOP-01-005",
+  "Bemerkung": "Q1 jedes Jahres"
+ },
+ {
+  "Nr": "77",
+  "Frequenz": "jährlich",
+  "Taetigkeit": "Lieferantenbewertung Scorecard",
+  "Verantwortlich": "QMB",
+  "Nachweis": "Bewertung",
+  "SOP_Quelle": "SOP-01-006",
+  "Bemerkung": ""
+ },
+ {
+  "Nr": "78",
+  "Frequenz": "jährlich",
+  "Taetigkeit": "Re-Audit kritischer Auftragnehmer",
+  "Verantwortlich": "RP+QMB",
+  "Nachweis": "Auditbericht",
+  "SOP_Quelle": "SOP-01-006",
+  "Bemerkung": ""
+ },
+ {
+  "Nr": "79",
+  "Frequenz": "jährlich",
+  "Taetigkeit": "Bestätigung Funktionsfähigkeit RP/Stellvertretung",
+  "Verantwortlich": "GL",
+  "Nachweis": "Mgmt-Review-Protokoll",
+  "SOP_Quelle": "SOP-02-001",
+  "Bemerkung": ""
+ },
+ {
+  "Nr": "80",
+  "Frequenz": "jährlich",
+  "Taetigkeit": "Aktualisierung Organigramm",
+  "Verantwortlich": "QMB",
+  "Nachweis": "A-02-001",
+  "SOP_Quelle": "SOP-02-002",
+  "Bemerkung": ""
+ },
+ {
+  "Nr": "81",
+  "Frequenz": "jährlich",
+  "Taetigkeit": "Vollständigkeitscheck Personalstammblätter",
+  "Verantwortlich": "QMB",
+  "Nachweis": "Audit-Stichprobe",
+  "SOP_Quelle": "SOP-02-002",
+  "Bemerkung": ""
+ },
+ {
+  "Nr": "82",
+  "Frequenz": "jährlich",
+  "Taetigkeit": "Auffrischung GDP Basic",
+  "Verantwortlich": "QMB",
+  "Nachweis": "F-02-001",
+  "SOP_Quelle": "SOP-02-003",
+  "Bemerkung": ""
+ },
+ {
+  "Nr": "83",
+  "Frequenz": "jährlich",
+  "Taetigkeit": "Erstellung Jahresschulungsplan",
+  "Verantwortlich": "QMB",
+  "Nachweis": "A-02-002",
+  "SOP_Quelle": "SOP-02-003",
+  "Bemerkung": "bis 31.12. für Folgejahr"
+ },
+ {
+  "Nr": "84",
+  "Frequenz": "jährlich",
+  "Taetigkeit": "Wirksamkeitsbewertung Schulung",
+  "Verantwortlich": "QMB",
+  "Nachweis": "Schulungsreport",
+  "SOP_Quelle": "SOP-02-003",
+  "Bemerkung": "im Mgmt Review"
+ },
+ {
+  "Nr": "85",
+  "Frequenz": "jährlich",
+  "Taetigkeit": "Hygieneschulung",
+  "Verantwortlich": "QMB",
+  "Nachweis": "F-02-001",
+  "SOP_Quelle": "SOP-02-004",
+  "Bemerkung": ""
+ },
+ {
+  "Nr": "86",
+  "Frequenz": "jährlich",
+  "Taetigkeit": "Auswertung Hinweise/Verstöße",
+  "Verantwortlich": "QMB+RP",
+  "Nachweis": "Mgmt-Review-Protokoll",
+  "SOP_Quelle": "SOP-02-005",
+  "Bemerkung": ""
+ },
+ {
+  "Nr": "87",
+  "Frequenz": "jährlich",
+  "Taetigkeit": "Erinnerung Verhaltensregeln",
+  "Verantwortlich": "QMB",
+  "Nachweis": "F-02-001",
+  "SOP_Quelle": "SOP-02-005",
+  "Bemerkung": "im Rahmen GDP Basic"
+ },
+ {
+  "Nr": "88",
+  "Frequenz": "jährlich",
+  "Taetigkeit": "Aktualisierung Lagerzonenplan A-03-003",
+  "Verantwortlich": "QMB",
+  "Nachweis": "Versionierung",
+  "SOP_Quelle": "SOP-03-001",
+  "Bemerkung": "+ anlassbezogen"
+ },
+ {
+  "Nr": "89",
+  "Frequenz": "jährlich",
+  "Taetigkeit": "Re-Verifikation elektronische Trennung SAP",
+  "Verantwortlich": "QMB",
+  "Nachweis": "Auditbericht",
+  "SOP_Quelle": "SOP-03-001",
+  "Bemerkung": ""
+ },
+ {
+  "Nr": "90",
+  "Frequenz": "jährlich",
+  "Taetigkeit": "Test Einbruchmeldeanlage",
+  "Verantwortlich": "RP+Dienstleister",
+  "Nachweis": "Prüfprotokoll",
+  "SOP_Quelle": "SOP-03-001",
+  "Bemerkung": ""
+ },
+ {
+  "Nr": "91",
+  "Frequenz": "jährlich",
+  "Taetigkeit": "Kalibrierung aller Logger (Testo, mehrpunktig)",
+  "Verantwortlich": "QMB+Testo",
+  "Nachweis": "Kalibrierzertifikate",
+  "SOP_Quelle": "SOP-03-002",
+  "Bemerkung": ""
+ },
+ {
+  "Nr": "92",
+  "Frequenz": "jährlich",
+  "Taetigkeit": "Test Hauptalarm + Eskalation",
+  "Verantwortlich": "QMB+RP",
+  "Nachweis": "Testprotokoll",
+  "SOP_Quelle": "SOP-03-002",
+  "Bemerkung": ""
+ },
+ {
+  "Nr": "93",
+  "Frequenz": "jährlich",
+  "Taetigkeit": "Hauptalarm-/Eskalationstest Saveris",
+  "Verantwortlich": "QMB+RP",
+  "Nachweis": "F-03-013",
+  "SOP_Quelle": "SOP-03-003",
+  "Bemerkung": ""
+ },
+ {
+  "Nr": "94",
+  "Frequenz": "jährlich",
+  "Taetigkeit": "Kalibrierung Testo-Logger (mehrpunktig)",
+  "Verantwortlich": "Testo",
+  "Nachweis": "Zertifikate",
+  "SOP_Quelle": "SOP-03-003",
+  "Bemerkung": ""
+ },
+ {
+  "Nr": "95",
+  "Frequenz": "jährlich",
+  "Taetigkeit": "Test Einbruchmelde- und Brandanlage",
+  "Verantwortlich": "externer Dienstleister",
+  "Nachweis": "Prüfprotokoll",
+  "SOP_Quelle": "SOP-03-003",
+  "Bemerkung": ""
+ },
+ {
+  "Nr": "96",
+  "Frequenz": "jährlich",
+  "Taetigkeit": "Wartung Kühlschrank/-zelle",
+  "Verantwortlich": "externer Dienstleister",
+  "Nachweis": "Wartungsbericht",
+  "SOP_Quelle": "SOP-03-003",
+  "Bemerkung": ""
+ },
+ {
+  "Nr": "97",
+  "Frequenz": "jährlich",
+  "Taetigkeit": "Review Reinigungsplan/-mittelliste",
+  "Verantwortlich": "QMB+RP",
+  "Nachweis": "A-03-002 / A-03-007",
+  "SOP_Quelle": "SOP-03-004",
+  "Bemerkung": ""
+ },
+ {
+  "Nr": "98",
+  "Frequenz": "jährlich",
+  "Taetigkeit": "Aktualisierung Köderstationsplan A-03-008",
+  "Verantwortlich": "QMB",
+  "Nachweis": "Versionierung",
+  "SOP_Quelle": "SOP-03-005",
+  "Bemerkung": "+ anlassbezogen"
+ },
+ {
+  "Nr": "99",
+  "Frequenz": "jährlich",
+  "Taetigkeit": "Bericht Schädlinge ans Mgmt Review",
+  "Verantwortlich": "QMB",
+  "Nachweis": "Mgmt-Review-Protokoll",
+  "SOP_Quelle": "SOP-03-005",
+  "Bemerkung": ""
+ },
+ {
+  "Nr": "100",
+  "Frequenz": "jährlich",
+  "Taetigkeit": "Lampentausch UV",
+  "Verantwortlich": "QMB+Beschaffung",
+  "Nachweis": "F-03-017",
+  "SOP_Quelle": "SOP-03-005",
+  "Bemerkung": ""
+ },
+ {
+  "Nr": "101",
+  "Frequenz": "jährlich",
+  "Taetigkeit": "Re-Audit Preventa",
+  "Verantwortlich": "RP+QMB",
+  "Nachweis": "Auditbericht",
+  "SOP_Quelle": "SOP-03-005",
+  "Bemerkung": "kritischer Auftragnehmer"
+ },
+ {
+  "Nr": "102",
+  "Frequenz": "jährlich",
+  "Taetigkeit": "Audit-Trail-Review SAP B1 / Saveris",
+  "Verantwortlich": "QMB",
+  "Nachweis": "Audit-Trail-Bericht",
+  "SOP_Quelle": "SOP-03-006",
+  "Bemerkung": ""
+ },
+ {
+  "Nr": "103",
+  "Frequenz": "jährlich",
+  "Taetigkeit": "Disaster-Recovery-Test (Restore)",
+  "Verantwortlich": "QMB+IT",
+  "Nachweis": "F-03-022",
+  "SOP_Quelle": "SOP-03-006",
+  "Bemerkung": ""
+ },
+ {
+  "Nr": "104",
+  "Frequenz": "jährlich",
+  "Taetigkeit": "Periodic Review je GxP-System",
+  "Verantwortlich": "QMB+RP",
+  "Nachweis": "Periodic-Review-Report",
+  "SOP_Quelle": "SOP-03-006",
+  "Bemerkung": ""
+ },
+ {
+  "Nr": "105",
+  "Frequenz": "jährlich",
+  "Taetigkeit": "Vernichtung abgelaufener Aufzeichnungen",
+  "Verantwortlich": "QMB",
+  "Nachweis": "Vernichtungsprotokoll",
+  "SOP_Quelle": "SOP-04-001",
+  "Bemerkung": ""
+ },
+ {
+  "Nr": "106",
+  "Frequenz": "jährlich",
+  "Taetigkeit": "Audit-Trail-Review SAP B1",
+  "Verantwortlich": "QMB",
+  "Nachweis": "Bericht",
+  "SOP_Quelle": "SOP-04-002",
+  "Bemerkung": ""
+ },
+ {
+  "Nr": "107",
+  "Frequenz": "jährlich",
+  "Taetigkeit": "Audit-Trail-Review Saveris",
+  "Verantwortlich": "QMB",
+  "Nachweis": "Bericht",
+  "SOP_Quelle": "SOP-04-002",
+  "Bemerkung": ""
+ },
+ {
+  "Nr": "108",
+  "Frequenz": "jährlich",
+  "Taetigkeit": "Auditplan erstellen",
+  "Verantwortlich": "RP+QMB",
+  "Nachweis": "A-05-002",
+  "SOP_Quelle": "SOP-05-001",
+  "Bemerkung": ""
+ },
+ {
+  "Nr": "109",
+  "Frequenz": "jährlich",
+  "Taetigkeit": "Re-Bewertung Lieferanten Klasse Hoch",
+  "Verantwortlich": "QMB",
+  "Nachweis": "F-05-002",
+  "SOP_Quelle": "SOP-05-001",
+  "Bemerkung": ""
+ },
+ {
+  "Nr": "110",
+  "Frequenz": "jährlich",
+  "Taetigkeit": "Re-Validierung Status-Workflow",
+  "Verantwortlich": "QMB",
+  "Nachweis": "Auditbericht",
+  "SOP_Quelle": "SOP-05-002",
+  "Bemerkung": "Selbstinspektion"
+ },
+ {
+  "Nr": "112",
+  "Frequenz": "jährlich",
+  "Taetigkeit": "Schulung Wareneingangs-MA",
+  "Verantwortlich": "QMB",
+  "Nachweis": "F-02-001",
+  "SOP_Quelle": "SOP-05-003",
+  "Bemerkung": ""
+ },
+ {
+  "Nr": "113",
+  "Frequenz": "jährlich",
+  "Taetigkeit": "Vollinventur",
+  "Verantwortlich": "RP+QMB+Lager",
+  "Nachweis": "—",
+  "SOP_Quelle": "SOP-05-004",
+  "Bemerkung": ""
+ },
+ {
+  "Nr": "114",
+  "Frequenz": "jährlich",
+  "Taetigkeit": "Audit-Trail-Review COBI.WMS",
+  "Verantwortlich": "QMB",
+  "Nachweis": "Bericht",
+  "SOP_Quelle": "SOP-05-005",
+  "Bemerkung": ""
+ },
+ {
+  "Nr": "115",
+  "Frequenz": "jährlich",
+  "Taetigkeit": "Schulung Versand-MA",
+  "Verantwortlich": "QMB",
+  "Nachweis": "F-02-001",
+  "SOP_Quelle": "SOP-05-005",
+  "Bemerkung": ""
+ },
+ {
+  "Nr": "116",
+  "Frequenz": "jährlich",
+  "Taetigkeit": "Update Versandverpackungs-Matrix",
+  "Verantwortlich": "QMB+Versand",
+  "Nachweis": "A-09-001",
+  "SOP_Quelle": "SOP-05-005",
+  "Bemerkung": ""
+ },
+ {
+  "Nr": "117",
+  "Frequenz": "jährlich",
+  "Taetigkeit": "Schulung FMD/securPharm",
+  "Verantwortlich": "QMB",
+  "Nachweis": "F-02-001",
+  "SOP_Quelle": "SOP-05-006",
+  "Bemerkung": ""
+ },
+ {
+  "Nr": "120",
+  "Frequenz": "jährlich",
+  "Taetigkeit": "Re-Audit externer Vernichter (sofern beauftragt)",
+  "Verantwortlich": "QMB+RP",
+  "Nachweis": "Auditbericht",
+  "SOP_Quelle": "SOP-05-008",
+  "Bemerkung": ""
+ },
+ {
+  "Nr": "121",
+  "Frequenz": "jährlich",
+  "Taetigkeit": "Schulung interne Vernichtung",
+  "Verantwortlich": "QMB",
+  "Nachweis": "F-02-001",
+  "SOP_Quelle": "SOP-05-008",
+  "Bemerkung": ""
+ },
+ {
+  "Nr": "123",
+  "Frequenz": "jährlich",
+  "Taetigkeit": "Auswertung Reklamationen im Mgmt Review",
+  "Verantwortlich": "QMB",
+  "Nachweis": "Mgmt-Review-Protokoll",
+  "SOP_Quelle": "SOP-06-001",
+  "Bemerkung": ""
+ },
+ {
+  "Nr": "124",
+  "Frequenz": "jährlich",
+  "Taetigkeit": "Schulung Vertrieb Reklamationsannahme",
+  "Verantwortlich": "QMB",
+  "Nachweis": "F-02-001",
+  "SOP_Quelle": "SOP-06-001",
+  "Bemerkung": ""
+ },
+ {
+  "Nr": "125",
+  "Frequenz": "jährlich",
+  "Taetigkeit": "Schulung Retouren-Bewertung",
+  "Verantwortlich": "QMB",
+  "Nachweis": "F-02-001",
+  "SOP_Quelle": "SOP-06-002",
+  "Bemerkung": ""
+ },
+ {
+  "Nr": "126",
+  "Frequenz": "jährlich",
+  "Taetigkeit": "Schulung Fälschungserkennung",
+  "Verantwortlich": "QMB",
+  "Nachweis": "F-02-001",
+  "SOP_Quelle": "SOP-06-003",
+  "Bemerkung": ""
+ },
+ {
+  "Nr": "127",
+  "Frequenz": "jährlich",
+  "Taetigkeit": "Test Notfall-Erreichbarkeit RP/QMB",
+  "Verantwortlich": "GL",
+  "Nachweis": "Testprotokoll",
+  "SOP_Quelle": "SOP-06-003",
+  "Bemerkung": ""
+ },
+ {
+  "Nr": "128",
+  "Frequenz": "jährlich",
+  "Taetigkeit": "Auswertung Mock Recall im Mgmt Review",
+  "Verantwortlich": "QMB",
+  "Nachweis": "Mgmt-Review-Protokoll",
+  "SOP_Quelle": "SOP-06-004",
+  "Bemerkung": ""
+ },
+ {
+  "Nr": "129",
+  "Frequenz": "jährlich",
+  "Taetigkeit": "Mock Recall",
+  "Verantwortlich": "RP+QMB+Vertrieb",
+  "Nachweis": "F-06-008",
+  "SOP_Quelle": "SOP-06-004",
+  "Bemerkung": "Q4 jedes Jahres, 24-h-Ziel"
+ },
+ {
+  "Nr": "130",
+  "Frequenz": "jährlich",
+  "Taetigkeit": "Schulung Rückrufverfahren",
+  "Verantwortlich": "QMB",
+  "Nachweis": "F-02-001",
+  "SOP_Quelle": "SOP-06-004",
+  "Bemerkung": ""
+ },
+ {
+  "Nr": "131",
+  "Frequenz": "jährlich",
+  "Taetigkeit": "Bewertung Meldewege im Mgmt Review",
+  "Verantwortlich": "QMB",
+  "Nachweis": "Mgmt-Review-Protokoll",
+  "SOP_Quelle": "SOP-06-005",
+  "Bemerkung": ""
+ },
+ {
+  "Nr": "132",
+  "Frequenz": "jährlich",
+  "Taetigkeit": "Fortbildung Arzneimittelsicherheit / Behördenmeldungen",
+  "Verantwortlich": "RP+QMB",
+  "Nachweis": "R-02-001",
+  "SOP_Quelle": "SOP-06-005",
+  "Bemerkung": ""
+ },
+ {
+  "Nr": "133",
+  "Frequenz": "jährlich",
+  "Taetigkeit": "Auditplanung Folgejahr",
+  "Verantwortlich": "RP+QMB",
+  "Nachweis": "F-07-002",
+  "SOP_Quelle": "SOP-07-001",
+  "Bemerkung": "Q4"
+ },
+ {
+  "Nr": "134",
+  "Frequenz": "jährlich",
+  "Taetigkeit": "Audits Klasse Hoch",
+  "Verantwortlich": "QMB+RP",
+  "Nachweis": "F-07-003",
+  "SOP_Quelle": "SOP-07-001",
+  "Bemerkung": ""
+ },
+ {
+  "Nr": "135",
+  "Frequenz": "jährlich",
+  "Taetigkeit": "Auswertung Auftragnehmer im Mgmt Review",
+  "Verantwortlich": "QMB",
+  "Nachweis": "Mgmt-Review-Protokoll",
+  "SOP_Quelle": "SOP-07-001",
+  "Bemerkung": ""
+ },
+ {
+  "Nr": "136",
+  "Frequenz": "jährlich",
+  "Taetigkeit": "Lieferantenbewertung Scorecard",
+  "Verantwortlich": "QMB",
+  "Nachweis": "F-05-002",
+  "SOP_Quelle": "SOP-07-001",
+  "Bemerkung": ""
+ },
+ {
+  "Nr": "137",
+  "Frequenz": "jährlich",
+  "Taetigkeit": "Aktualisierung Audit-Checklisten",
+  "Verantwortlich": "QMB",
+  "Nachweis": "A-08-001",
+  "SOP_Quelle": "SOP-08-001",
+  "Bemerkung": ""
+ },
+ {
+  "Nr": "138",
+  "Frequenz": "jährlich",
+  "Taetigkeit": "Auswertung Audit-Lage im Mgmt Review",
+  "Verantwortlich": "QMB",
+  "Nachweis": "Mgmt-Review-Protokoll",
+  "SOP_Quelle": "SOP-08-001",
+  "Bemerkung": ""
+ },
+ {
+  "Nr": "139",
+  "Frequenz": "jährlich",
+  "Taetigkeit": "Erstellung Audit-Jahresprogramm",
+  "Verantwortlich": "QMB",
+  "Nachweis": "F-08-001",
+  "SOP_Quelle": "SOP-08-001",
+  "Bemerkung": "bis 31.12."
+ },
+ {
+  "Nr": "140",
+  "Frequenz": "jährlich",
+  "Taetigkeit": "Mindestens 1 Vollaudit",
+  "Verantwortlich": "RP+QMB (oder extern)",
+  "Nachweis": "F-08-002",
+  "SOP_Quelle": "SOP-08-001",
+  "Bemerkung": ""
+ },
+ {
+  "Nr": "141",
+  "Frequenz": "jährlich",
+  "Taetigkeit": "Aktualisierung Versandverpackungs-Matrix",
+  "Verantwortlich": "QMB+Versand",
+  "Nachweis": "A-09-001",
+  "SOP_Quelle": "SOP-09-001",
+  "Bemerkung": "+ bei Saisonwechsel"
+ },
+ {
+  "Nr": "142",
+  "Frequenz": "jährlich",
+  "Taetigkeit": "Routen-Risikobewertung",
+  "Verantwortlich": "QMB+RP",
+  "Nachweis": "A-09-002",
+  "SOP_Quelle": "SOP-09-001",
+  "Bemerkung": "+ bei Routenänderung"
+ },
+ {
+  "Nr": "143",
+  "Frequenz": "jährlich",
+  "Taetigkeit": "Schulung Pack-Verfahren",
+  "Verantwortlich": "QMB",
+  "Nachweis": "F-02-001",
+  "SOP_Quelle": "SOP-09-002",
+  "Bemerkung": "+ bei neuen MA"
+ },
+ {
+  "Nr": "144",
+  "Frequenz": "jährlich",
+  "Taetigkeit": "Audit Spediteure",
+  "Verantwortlich": "QMB+RP",
+  "Nachweis": "F-07-003",
+  "SOP_Quelle": "SOP-09-003",
+  "Bemerkung": ""
+ },
+ {
+  "Nr": "145",
+  "Frequenz": "jährlich",
+  "Taetigkeit": "Spediteur-Scorecard",
+  "Verantwortlich": "QMB",
+  "Nachweis": "F-09-005",
+  "SOP_Quelle": "SOP-09-003",
+  "Bemerkung": ""
+ },
+ {
+  "Nr": "146",
+  "Frequenz": "jährlich",
+  "Taetigkeit": "Kalibrierung Transport-Logger (mehrpunktig)",
+  "Verantwortlich": "QMB+Hersteller",
+  "Nachweis": "Zertifikate",
+  "SOP_Quelle": "SOP-09-004",
+  "Bemerkung": ""
+ },
+ {
+  "Nr": "147",
+  "Frequenz": "jährlich",
+  "Taetigkeit": "Schulung Notfallworkflow",
+  "Verantwortlich": "QMB",
+  "Nachweis": "F-02-001",
+  "SOP_Quelle": "SOP-09-006",
+  "Bemerkung": ""
+ },
+ {
+  "Nr": "148",
+  "Frequenz": "jährlich",
+  "Taetigkeit": "Test Notfall-Erreichbarkeit",
+  "Verantwortlich": "QMB+GL",
+  "Nachweis": "Testprotokoll",
+  "SOP_Quelle": "SOP-09-006",
+  "Bemerkung": ""
+ },
+ {
+  "Nr": "149",
+  "Frequenz": "jährlich",
+  "Taetigkeit": "Update Aushang Notfall-Workflow",
+  "Verantwortlich": "QMB",
+  "Nachweis": "A-09-008",
+  "SOP_Quelle": "SOP-09-006",
+  "Bemerkung": ""
+ },
+ {
+  "Nr": "150",
+  "Frequenz": "alle 2 Jahre",
+  "Taetigkeit": "Aktualisierung Prozess-FMEA",
+  "Verantwortlich": "RP + QMB",
+  "Nachweis": "R-01-001 Risikoregister",
+  "SOP_Quelle": "SOP-01-001",
+  "Bemerkung": "+ anlassbezogen"
+ },
+ {
+  "Nr": "151",
+  "Frequenz": "alle 2 Jahre",
+  "Taetigkeit": "Aktualisierung Prozess-FMEA",
+  "Verantwortlich": "RP + QMB",
+  "Nachweis": "R-01-001",
+  "SOP_Quelle": "SOP-01-002",
+  "Bemerkung": ""
+ },
+ {
+  "Nr": "152",
+  "Frequenz": "alle 2 Jahre",
+  "Taetigkeit": "Review Stellenbeschreibungen",
+  "Verantwortlich": "QMB+RP",
+  "Nachweis": "Versionsstand",
+  "SOP_Quelle": "SOP-02-002",
+  "Bemerkung": "+ anlassbezogen"
+ },
+ {
+  "Nr": "153",
+  "Frequenz": "alle 2 Jahre",
+  "Taetigkeit": "Schulung ALCOA+",
+  "Verantwortlich": "QMB",
+  "Nachweis": "F-02-001",
+  "SOP_Quelle": "SOP-04-002",
+  "Bemerkung": ""
+ },
+ {
+  "Nr": "154",
+  "Frequenz": "alle 2 Jahre",
+  "Taetigkeit": "Re-Bewertung Lieferanten Klasse Mittel",
+  "Verantwortlich": "QMB",
+  "Nachweis": "F-05-002",
+  "SOP_Quelle": "SOP-05-001",
+  "Bemerkung": ""
+ },
+ {
+  "Nr": "155",
+  "Frequenz": "alle 2 Jahre",
+  "Taetigkeit": "Schulung §73(3)-Workflow",
+  "Verantwortlich": "QMB",
+  "Nachweis": "F-02-001",
+  "SOP_Quelle": "SOP-05-007",
+  "Bemerkung": ""
+ },
+ {
+  "Nr": "156",
+  "Frequenz": "alle 2 Jahre",
+  "Taetigkeit": "Audits Klasse Mittel",
+  "Verantwortlich": "QMB",
+  "Nachweis": "F-07-003",
+  "SOP_Quelle": "SOP-07-001",
+  "Bemerkung": ""
+ },
+ {
+  "Nr": "157",
+  "Frequenz": "alle 2 Jahre",
+  "Taetigkeit": "Externe Selbstinspektion (empfohlen)",
+  "Verantwortlich": "externer Auditor",
+  "Nachweis": "F-08-002",
+  "SOP_Quelle": "SOP-08-001",
+  "Bemerkung": ""
+ },
+ {
+  "Nr": "158",
+  "Frequenz": "alle 3 Jahre",
+  "Taetigkeit": "Überprüfung Qualitätspolitik & -ziele",
+  "Verantwortlich": "GL + RP",
+  "Nachweis": "Mgmt-Review-Protokoll",
+  "SOP_Quelle": "SOP-01-001",
+  "Bemerkung": ""
+ },
+ {
+  "Nr": "159",
+  "Frequenz": "alle 3 Jahre",
+  "Taetigkeit": "Review VAVs",
+  "Verantwortlich": "RP",
+  "Nachweis": "VAV-Update",
+  "SOP_Quelle": "SOP-01-006",
+  "Bemerkung": ""
+ },
+ {
+  "Nr": "160",
+  "Frequenz": "alle 3 Jahre",
+  "Taetigkeit": "Review Aufgabenkatalog RP",
+  "Verantwortlich": "RP+QMB",
+  "Nachweis": "F-02-002 Stellenbeschreibung",
+  "SOP_Quelle": "SOP-02-001",
+  "Bemerkung": ""
+ },
+ {
+  "Nr": "161",
+  "Frequenz": "alle 3 Jahre",
+  "Taetigkeit": "Re-Mapping Kühlbereich (Vollbeladung)",
+  "Verantwortlich": "QMB+RP",
+  "Nachweis": "F-03-006",
+  "SOP_Quelle": "SOP-03-002",
+  "Bemerkung": "+ anlassbezogen"
+ },
+ {
+  "Nr": "162",
+  "Frequenz": "alle 3 Jahre",
+  "Taetigkeit": "Re-Qualifizierung kritischer Geräte",
+  "Verantwortlich": "QMB+RP",
+  "Nachweis": "F-03-012",
+  "SOP_Quelle": "SOP-03-003",
+  "Bemerkung": "+ nach Reparatur"
+ },
+ {
+  "Nr": "163",
+  "Frequenz": "alle 3 Jahre",
+  "Taetigkeit": "Audit Firma Haase (Klasse Niedrig)",
+  "Verantwortlich": "QMB",
+  "Nachweis": "F-07-003",
+  "SOP_Quelle": "SOP-03-004",
+  "Bemerkung": ""
+ },
+ {
+  "Nr": "164",
+  "Frequenz": "alle 3 Jahre",
+  "Taetigkeit": "Routine-Review jeder SOP",
+  "Verantwortlich": "QMB+RP",
+  "Nachweis": "Versionsstand",
+  "SOP_Quelle": "SOP-04-001",
+  "Bemerkung": ""
+ },
+ {
+  "Nr": "165",
+  "Frequenz": "alle 3 Jahre",
+  "Taetigkeit": "Re-Bewertung Lieferanten Klasse Niedrig",
+  "Verantwortlich": "QMB",
+  "Nachweis": "F-05-002",
+  "SOP_Quelle": "SOP-05-001",
+  "Bemerkung": ""
+ },
+ {
+  "Nr": "166",
+  "Frequenz": "alle 3 Jahre",
+  "Taetigkeit": "Audits Klasse Niedrig",
+  "Verantwortlich": "QMB",
+  "Nachweis": "F-07-003",
+  "SOP_Quelle": "SOP-07-001",
+  "Bemerkung": ""
+ },
+ {
+  "Nr": "167",
+  "Frequenz": "alle 3 Jahre",
+  "Taetigkeit": "Pflege Quality Agreement Transport",
+  "Verantwortlich": "RP+QMB",
+  "Nachweis": "A-09-005",
+  "SOP_Quelle": "SOP-09-003",
+  "Bemerkung": "+ anlassbezogen"
+ },
+ {
+  "Nr": "168",
+  "Frequenz": "alle 3 Jahre",
+  "Taetigkeit": "Routine-Re-Validierung Box",
+  "Verantwortlich": "QMB+RP",
+  "Nachweis": "F-09-011",
+  "SOP_Quelle": "SOP-09-005",
+  "Bemerkung": ""
+ },
+ {
+  "Nr": "169",
+  "Frequenz": "anlassbezogen",
+  "Taetigkeit": "Wirksamkeitsprüfung CAPAs",
+  "Verantwortlich": "QMB + Prozessverantw.",
+  "Nachweis": "F-01-004",
+  "SOP_Quelle": "SOP-01-004",
+  "Bemerkung": "30/90/180 Tage nach Umsetzung"
+ },
+ {
+  "Nr": "170",
+  "Frequenz": "anlassbezogen",
+  "Taetigkeit": "Außerordentliches Review",
+  "Verantwortlich": "GL+RP",
+  "Nachweis": "Protokoll F-01-005",
+  "SOP_Quelle": "SOP-01-005",
+  "Bemerkung": ""
+ },
+ {
+  "Nr": "171",
+  "Frequenz": "anlassbezogen",
+  "Taetigkeit": "Datenpaket vorbereiten",
+  "Verantwortlich": "QMB",
+  "Nachweis": "Datenpaket",
+  "SOP_Quelle": "SOP-01-005",
+  "Bemerkung": "2 Wochen vor MR"
+ },
+ {
+  "Nr": "172",
+  "Frequenz": "anlassbezogen",
+  "Taetigkeit": "Anzeige Wechsel RP an Regierungspräsidium",
+  "Verantwortlich": "GL",
+  "Nachweis": "Behördenschreiben",
+  "SOP_Quelle": "SOP-02-001",
+  "Bemerkung": ""
+ },
+ {
+  "Nr": "173",
+  "Frequenz": "anlassbezogen",
+  "Taetigkeit": "Selbsterklärung Gesundheit",
+  "Verantwortlich": "HR/QMB",
+  "Nachweis": "F-02-009",
+  "SOP_Quelle": "SOP-02-004",
+  "Bemerkung": "Eintritt + nach Krankheit > 5 Tage"
+ },
+ {
+  "Nr": "174",
+  "Frequenz": "anlassbezogen",
+  "Taetigkeit": "Mapping CRT mit Vollbeladung (CAPA)",
+  "Verantwortlich": "QMB+RP",
+  "Nachweis": "F-03-006",
+  "SOP_Quelle": "SOP-03-002",
+  "Bemerkung": "einmalig bis Q3/2026, dann alle 3 Jahre"
+ },
+ {
+  "Nr": "175",
+  "Frequenz": "anlassbezogen",
+  "Taetigkeit": "Re-Validierung nach Major-Change",
+  "Verantwortlich": "QMB+RP",
+  "Nachweis": "Validierungsbericht",
+  "SOP_Quelle": "SOP-03-006",
+  "Bemerkung": ""
+ },
+ {
+  "Nr": "176",
+  "Frequenz": "anlassbezogen",
+  "Taetigkeit": "Lesebestätigungen einfordern",
+  "Verantwortlich": "QMB",
+  "Nachweis": "eQMS-Tracker",
+  "SOP_Quelle": "SOP-04-001",
+  "Bemerkung": "nach jeder Freigabe"
+ },
+ {
+  "Nr": "177",
+  "Frequenz": "anlassbezogen",
+  "Taetigkeit": "Update ISO-3166 Länder-Code",
+  "Verantwortlich": "QMB",
+  "Nachweis": "A-04-001",
+  "SOP_Quelle": "SOP-04-003",
+  "Bemerkung": ""
+ },
+ {
+  "Nr": "178",
+  "Frequenz": "anlassbezogen",
+  "Taetigkeit": "Wiedervorlage Erlaubnis-Abläufe",
+  "Verantwortlich": "QMB",
+  "Nachweis": "Mail/Tracker",
+  "SOP_Quelle": "SOP-04-003",
+  "Bemerkung": "60 Tage vor Ablauf"
+ },
+ {
+  "Nr": "179",
+  "Frequenz": "anlassbezogen",
+  "Taetigkeit": "Wiedervorlage Erlaubnis-Abläufe",
+  "Verantwortlich": "QMB",
+  "Nachweis": "SAP B1",
+  "SOP_Quelle": "SOP-05-001",
+  "Bemerkung": "60 Tage vor Ablauf"
+ },
+ {
+  "Nr": "180",
+  "Frequenz": "anlassbezogen",
+  "Taetigkeit": "Wiedervorlage Erlaubnis-Abläufe Kunden",
+  "Verantwortlich": "QMB",
+  "Nachweis": "SAP B1",
+  "SOP_Quelle": "SOP-05-002",
+  "Bemerkung": "60 Tage vor Ablauf"
+ },
+ {
+  "Nr": "182",
+  "Frequenz": "anlassbezogen",
+  "Taetigkeit": "Re-Audit nach Vertragsänderung",
+  "Verantwortlich": "RP+QMB",
+  "Nachweis": "F-07-003",
+  "SOP_Quelle": "SOP-07-001",
+  "Bemerkung": ""
+ },
+ {
+  "Nr": "183",
+  "Frequenz": "anlassbezogen",
+  "Taetigkeit": "Erstvalidierung neuer Box-Konfiguration",
+  "Verantwortlich": "QMB+RP",
+  "Nachweis": "F-09-011",
+  "SOP_Quelle": "SOP-09-005",
+  "Bemerkung": "vor Inbetriebnahme"
+ },
+ {
+  "Nr": "184",
+  "Frequenz": "laufend",
+  "Taetigkeit": "Pflege Auftragnehmerliste",
+  "Verantwortlich": "QMB",
+  "Nachweis": "A-07-001 Auftragnehmerliste",
+  "SOP_Quelle": "SOP-01-006",
+  "Bemerkung": ""
+ },
+ {
+  "Nr": "185",
+  "Frequenz": "laufend",
+  "Taetigkeit": "Fortbildung RP",
+  "Verantwortlich": "RP",
+  "Nachweis": "R-02-001 Fortbildungsregister",
+  "SOP_Quelle": "SOP-02-001",
+  "Bemerkung": "≥ 16 h/Jahr"
+ },
+ {
+  "Nr": "186",
+  "Frequenz": "laufend",
+  "Taetigkeit": "GDP-Fortbildung RP",
+  "Verantwortlich": "RP",
+  "Nachweis": "R-02-001",
+  "SOP_Quelle": "SOP-02-003",
+  "Bemerkung": "≥ 16 h/Jahr"
+ },
+ {
+  "Nr": "187",
+  "Frequenz": "laufend",
+  "Taetigkeit": "Pflege Geräteliste F-03-009",
+  "Verantwortlich": "QMB",
+  "Nachweis": "F-03-009",
+  "SOP_Quelle": "SOP-03-003",
+  "Bemerkung": ""
+ },
+ {
+  "Nr": "188",
+  "Frequenz": "laufend",
+  "Taetigkeit": "Pflege IT-Systeminventar",
+  "Verantwortlich": "QMB",
+  "Nachweis": "F-03-018",
+  "SOP_Quelle": "SOP-03-006",
+  "Bemerkung": ""
+ },
+ {
+  "Nr": "189",
+  "Frequenz": "laufend",
+  "Taetigkeit": "Verteilerliste pflegen",
+  "Verantwortlich": "QMB",
+  "Nachweis": "eQMS-Verteilerliste",
+  "SOP_Quelle": "SOP-04-001",
+  "Bemerkung": ""
+ },
+ {
+  "Nr": "190",
+  "Frequenz": "laufend",
+  "Taetigkeit": "Statusänderung „Verfall droht\" RL < 6 Monate",
+  "Verantwortlich": "QMB",
+  "Nachweis": "SAP B1",
+  "SOP_Quelle": "SOP-05-004",
+  "Bemerkung": ""
+ },
+ {
+  "Nr": "191",
+  "Frequenz": "laufend",
+  "Taetigkeit": "Bewertung Mengenschwelle für externe Vernichtung",
+  "Verantwortlich": "RP",
+  "Nachweis": "F-05-015",
+  "SOP_Quelle": "SOP-05-008",
+  "Bemerkung": ""
+ },
+ {
+  "Nr": "192",
+  "Frequenz": "laufend",
+  "Taetigkeit": "Reklamationsübersicht aktualisieren",
+  "Verantwortlich": "QMB",
+  "Nachweis": "A-06-001",
+  "SOP_Quelle": "SOP-06-001",
+  "Bemerkung": ""
+ },
+ {
+  "Nr": "193",
+  "Frequenz": "laufend",
+  "Taetigkeit": "Retouren-Logbuch aktualisieren",
+  "Verantwortlich": "QMB",
+  "Nachweis": "A-06-002",
+  "SOP_Quelle": "SOP-06-002",
+  "Bemerkung": ""
+ },
+ {
+  "Nr": "194",
+  "Frequenz": "laufend",
+  "Taetigkeit": "CAPA-Tracker Auditbefunde",
+  "Verantwortlich": "QMB",
+  "Nachweis": "F-07-004",
+  "SOP_Quelle": "SOP-07-001",
+  "Bemerkung": ""
+ },
+ {
+  "Nr": "195",
+  "Frequenz": "laufend",
+  "Taetigkeit": "Pflege Auftragnehmerliste",
+  "Verantwortlich": "QMB",
+  "Nachweis": "A-07-001",
+  "SOP_Quelle": "SOP-07-001",
+  "Bemerkung": ""
+ },
+ {
+  "Nr": "196",
+  "Frequenz": "laufend",
+  "Taetigkeit": "Selbstinspektionen gemäß Plan",
+  "Verantwortlich": "Auditoren (intern/extern)",
+  "Nachweis": "F-08-002",
+  "SOP_Quelle": "SOP-08-001",
+  "Bemerkung": ""
+ },
+ {
+  "Nr": "197",
+  "Frequenz": "laufend",
+  "Taetigkeit": "Sichtprüfung Akkus auf Beschädigung",
+  "Verantwortlich": "Lager-MA",
+  "Nachweis": "Sicht/Foto-Beleg bei Beschädigung",
+  "SOP_Quelle": "SOP-09-002",
+  "Bemerkung": ""
+ },
+ {
+  "Nr": "198",
+  "Frequenz": "laufend",
+  "Taetigkeit": "Pflege Spediteurliste",
+  "Verantwortlich": "QMB",
+  "Nachweis": "A-09-004",
+  "SOP_Quelle": "SOP-09-003",
+  "Bemerkung": ""
+ },
+ {
+  "Nr": "199",
+  "Frequenz": "laufend",
+  "Taetigkeit": "Auswertung Logger pro Sendung",
+  "Verantwortlich": "QMB",
+  "Nachweis": "F-09-007",
+  "SOP_Quelle": "SOP-09-004",
+  "Bemerkung": ""
+ },
+ {
+  "Nr": "200",
+  "Frequenz": "laufend",
+  "Taetigkeit": "Pflege Logger-Inventar",
+  "Verantwortlich": "QMB",
+  "Nachweis": "F-09-006",
+  "SOP_Quelle": "SOP-09-004",
+  "Bemerkung": ""
+ },
+ {
+  "Nr": "201",
+  "Frequenz": "laufend",
+  "Taetigkeit": "Aktualisierung Box-/Konfigurationsmatrix",
+  "Verantwortlich": "QMB",
+  "Nachweis": "A-09-006",
+  "SOP_Quelle": "SOP-09-005",
+  "Bemerkung": ""
+ },
+ {
+  "Nr": "202",
+  "Frequenz": "quartalsweise",
+  "Taetigkeit": "Loggertest Transport",
+  "Verantwortlich": "QMB / Lager-MA",
+  "Nachweis": "F-09-007",
+  "SOP_Quelle": "SOP-09-002",
+  "Bemerkung": "1×/Quartal statt Pflicht in jeder Sendung"
+ }
+]

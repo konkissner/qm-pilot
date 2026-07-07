@@ -1,0 +1,180 @@
+User Requirements Specification
+Modul „Fundament" — Stufe 0
+QM-Pilot
+Pharmazeutika 73.3 GmbH
+Version 0.3 (Entwurf) · Stand: 30.06.2026
+Erstellt von: Claude · Freigabe: Jochen Schulze (GL/RP)
+
+
+Inhaltsverzeichnis
+
+
+
+
+1  Zweck & Geltungsbereich der URS
+1.1  Zweck
+Diese User Requirements Specification (URS) legt die Anforderungen an das Modul „Fundament" (Stufe 0) von QM-Pilot aus Sicht der Anwender und des Betriebs fest. Sie ist die verbindliche Grundlage für die Entwicklung und zugleich der Bezugspunkt für die spätere Validierung: Jede Anforderung wird so formuliert, dass sie in den Qualifizierungstests (IQ/OQ/PQ) eindeutig überprüfbar ist.
+1.2  Einordnung des Moduls
+Stufe 0 ist das technische und sicherheitstechnische Rückgrat des QM-Pilot (Login, Rollen/Rechte, Audit-Trail, sichere Archivierung, Datensicherung, Hosting). Es ist die Voraussetzung für alle weiteren Module und muss vollständig validiert sein, bevor Stufe 1 (Aufgaben-Modul) beginnt.
+1.3  Geltungsbereich
+Die URS beschreibt, was das Fundament leisten muss — nicht, wie es technisch umgesetzt wird. Die technische Umsetzung (z. B. konkrete Konfiguration auf Basis von Django, PostgreSQL und Hetzner) wird in der nachgelagerten Funktional- und Design-Spezifikation beschrieben. Die in Schritt 2 getroffenen Grundsatzentscheidungen sind dabei gesetzt und werden hier vorausgesetzt.
+1.4  Verbindlichkeit
+Die URS wird von der Geschäftsleitung / Verantwortlichen Person freigegeben. Nach Freigabe erfolgen Änderungen nachvollziehbar über die Versionskontrolle dieses Dokuments.
+2  Mitgeltende Dokumente & Referenzen
+2.1  Projektinterne Dokumente
+Vision Document QM-Pilot (v0.1) und Technische Grundsatzentscheidungen (v0.1). Beide bilden den Rahmen, auf dem diese URS aufsetzt.
+2.2  Bezug zum QM-System (verwaltete Inhalte)
+Das QM-Pilot ist ein eigenständiges Produkt, das das QM-System der Pharmazeutika 73.3 verwaltet — es ist diesem nicht untergeordnet. Die QM-Dokumente sind die vom System verwalteten Inhalte und zugleich eine Quelle funktionaler Anforderungen (welche Aufgaben, Vordrucke und Abläufe abzubilden sind). In diesem Sinne werden einzelne QM-Dokumente referenziert — etwa zur Ableitung von Routineaufgaben oder Formularinhalten —, ohne dass sie den Validierungs- oder Compliance-Maßstab der Software bilden. Dieser Maßstab ergibt sich aus den gesetzlichen Vorgaben (Abschnitt 6).
+2.3  Regulatorische Grundlagen
+GDP-Leitlinie 2013/C 343/01; GAMP 5 (2nd ed.); EU-Annex 11 (sinngemäß); ALCOA+ (Datenintegrität); DSGVO; AMG / AMHandelsV (insbesondere § 22 zu Aufbewahrungsfristen).
+3  Überblick & Abgrenzung Stufe 0
+3.1  Inhalt der Stufe 0
+Das Fundament umfasst die systemweiten Grundfunktionen, auf denen alle späteren Module aufsetzen: Benutzer-, Rollen- und Rechteverwaltung; Authentifizierung und Login; den systemweiten Audit-Trail; die sichere, revisionssichere Archivierung und Speicherung; Datensicherung, Backup und Wiederherstellung; Hosting, Betrieb und Sicherheit. Hinzu kommt die gestalterische Grundlinie (Design-System mit Orientierung an pharmazeutika.net), damit alle folgenden Module einheitlich aussehen.
+3.2  Abgrenzung (nicht Teil der Stufe 0)
+Bewusst späteren Stufen vorbehalten sind alle Fachmodule: Aufgaben (Stufe 1), Dokumentenanzeige und Lesebestätigung (Stufe 2), Online-Vordrucke (Stufe 3), Feststellungen/CAPA/Change Control (Stufe 4), Dokumentenlenkungs-Workflow (Stufe 5), Reporting (Stufe 6) sowie Lieferanten, Audits, Reklamationen und Rückrufe (Stufe 7). Ebenfalls nicht in Stufe 0: die Schnittstellen (SAP Business One, Testo Saveris), die Foto-Dokumentation und die manuelle Datenübernahme aus eqms.de.
+3.3  Ergebnis der Stufe 0
+Am Ende steht ein validiertes Fundament: ein nutzbarer, sicherer Login mit Rollenmodell, ein lückenloser Audit-Trail, eine sicher gehostete Umgebung mit funktionierender Datensicherung sowie eine abgenommene Design-Grundlinie — bereit für den Aufbau des ersten Fachmoduls (Stufe 1).
+4  Benutzeranforderungen
+4.1  Benutzer, Rollen & Rechte
+URS-F-001 — Das System muss eine rollenbasierte Zugriffssteuerung bieten: Rechte hängen an Rollen, nicht an einzelnen Personen.
+URS-F-002 — Das System muss mindestens die folgenden Rollen unterstützen: Geschäftsleitung (GL), Verantwortliche Person (RP), QMB, stellvertretende RP, operative Mitarbeitende (Lager, Backoffice), Externe mit eingeschränktem Zugang (z. B. Reinigungskraft) sowie Auditor.
+URS-F-003 — Eine Person muss mehrere Rollen gleichzeitig innehaben können (Personalunion); die Rechte ergeben sich aus der Summe der Rollen, jede Handlung bleibt aber eindeutig der Person zugeordnet.
+URS-F-004 — Das System muss dem Prinzip der minimalen Rechte folgen: Jede Rolle erhält nur die für ihre Aufgabe erforderlichen Zugriffe.
+URS-F-005 — Nur eine berechtigte Administrationsrolle darf Benutzer anlegen, ändern, deaktivieren und Rollen zuweisen.
+URS-F-006 — Benutzerkonten müssen deaktiviert (nicht gelöscht) werden können; deaktivierte Konten können sich nicht mehr anmelden, ihre Historie im Audit-Trail bleibt erhalten.
+URS-F-007 — Das System muss eine Funktionstrennung unterstützen (z. B. Auditor ausschließlich lesend; prüfende/freigebende Rolle trennbar von der erfassenden Rolle).
+URS-F-008 — Jedes Benutzerkonto muss eindeutig einer identifizierbaren natürlichen Person zugeordnet sein; geteilte Sammelkonten sind für zuordnungspflichtige Handlungen unzulässig.
+URS-F-009 — Das Anlegen und jede Änderung von Benutzern und Rollen-/Rechtezuweisungen müssen im Audit-Trail aufgezeichnet werden (siehe 4.3).
+4.2  Authentifizierung & Login
+URS-F-010 — Interne Mitarbeitende müssen sich über Microsoft 365 anmelden (Single Sign-on); ein separates QM-Pilot-Passwort entfällt.
+URS-F-011 — Für interne Anmeldungen muss eine 2-Faktor-Authentifizierung wirksam sein (bereitgestellt über Microsoft 365).
+URS-F-012 — Wird das M365-Konto einer Person deaktiviert (z. B. bei Austritt), muss der QM-Pilot-Zugang dieser Person entsprechend enden.
+URS-F-013 — Externe ohne M365-Konto (insbesondere die Reinigungskraft) müssen sich über einen separaten, bewusst einfachen, aber persönlichen Login anmelden können (Methode wie PIN, Badge oder QR-Code; Festlegung in der Design-/Funktionalspezifikation). Der Zugang ist auf die zugewiesenen Aufgaben beschränkt und bleibt eindeutig der Person zuordenbar; geteilte Logins sind unzulässig.
+URS-F-014 — Auditoren müssen über ein zeitlich befristetes, rein lesendes Konto angemeldet werden können.
+URS-F-015 — Erfolgreiche und fehlgeschlagene Anmeldeversuche müssen im Audit-Trail aufgezeichnet werden.
+URS-F-016 — Nach einer definierten Zahl fehlgeschlagener Anmeldeversuche muss der Zugang geschützt werden (z. B. vorübergehende Sperre oder Verzögerung) — auch beim einfachen Login.
+URS-F-017 — Das System muss eine Sitzung nach einer definierten Zeit ohne Aktivität automatisch beenden; danach ist eine erneute Anmeldung erforderlich.
+URS-F-018 — Nutzer müssen sich aktiv abmelden können; auf gemeinsam genutzten Geräten (z. B. Reinigungs-Tablet) muss ein schneller Benutzerwechsel/Abmelden möglich sein.
+Hinweis: Die elektronische Unterschrift (4-Augen-Freigabe) baut auf dieser eindeutigen Anmelde-Identität auf, wird selbst aber als eigene Anforderung im jeweiligen Fachmodul beschrieben — nicht in Stufe 0.
+4.3  Audit-Trail
+URS-F-019 — Das System muss einen lückenlosen, systemweiten Audit-Trail über alle qualitätsrelevanten Handlungen führen (u. a. Erstellen, Ändern, Lösch-/Ungültig-Vorgänge, Freigaben, Lese-/Erledigungsbestätigungen, An-/Abmeldungen).
+URS-F-020 — Jeder Audit-Trail-Eintrag muss erfassen: wer (Person), was (Handlung), wann (Zeitstempel) und bei Änderungen den alten und den neuen Wert.
+URS-F-021 — Der Audit-Trail muss unveränderbar sein: Einträge können von niemandem — auch nicht von einer Administrationsrolle — nachträglich geändert oder gelöscht werden.
+URS-F-022 — Zeitstempel müssen verlässlich sein und auf einer einheitlichen, synchronisierten Zeitquelle mit konsistenter Zeitzone beruhen.
+URS-F-023 — Datensätze dürfen nicht physisch gelöscht werden; stattdessen bleibt das Original durch Ungültigsetzen/Versionierung erhalten (ALCOA+: original, dauerhaft).
+URS-F-024 — Der Audit-Trail muss für Menschen lesbar sein und sich für Inspektionen exportieren bzw. ausdrucken lassen.
+URS-F-025 — Der Audit-Trail muss durchsuch- und filterbar sein (z. B. nach Person, Zeitraum, Objekt, Handlung).
+URS-F-026 — Audit-Trail-Einträge müssen mindestens so lange aufbewahrt werden wie der zugehörige Datensatz (GDP: 5 Jahre nach § 22 AMHandelsV).
+URS-F-027 — Der Audit-Trail muss von Datensicherung und Archivierung mit umfasst sein (siehe 4.4 und 4.5).
+4.4  Sichere, revisionssichere Archivierung & Speicherung
+URS-F-028 — Das System muss alle QM-relevanten Daten und Aufzeichnungen revisionssicher speichern (geschützt gegen nachträgliche Veränderung).
+URS-F-029 — Freigegebene Dokumente und abgeschlossene Aufzeichnungen dürfen nicht mehr verändert werden; Korrekturen erfolgen ausschließlich über eine neue Version unter Erhalt des Originals (ALCOA+).
+URS-F-030 — Das System muss die Aufbewahrungsfristen einhalten (GDP-Aufzeichnungen 5 Jahre nach § 22 AMHandelsV; kaufmännische Unterlagen nach HGB/AO) und eine Löschung vor Fristablauf verhindern.
+URS-F-031 — Archivierte Daten müssen über die gesamte Aufbewahrungsfrist lesbar und abrufbar bleiben (ALCOA+: dauerhaft, verfügbar), einschließlich einer Vorkehrung für die langfristige Lesbarkeit der Formate.
+URS-F-032 — Der Zugriff auf archivierte Daten muss dem Rollen- und Rechtemodell folgen (Lesezugriff für berechtigte Rollen sowie Auditor).
+URS-F-033 — Dokumente und Aufzeichnungen müssen Metadaten tragen (Version, Status, Zeitstempel, verantwortliche Person), damit sie auffindbar und nachvollziehbar sind.
+URS-F-034 — Gespeicherte Daten müssen angemessen vor unbefugtem Zugriff geschützt sein (u. a. Verschlüsselung der Daten im Ruhezustand, soweit angemessen).
+4.5  Datensicherung, Backup & Wiederherstellung
+URS-F-035 — Das System muss täglich ein Voll-Backup sowie mehrmals täglich eine Sicherung der Datenbank erstellen.
+URS-F-036 — Backups müssen verschlüsselt und georedundant (an einem zweiten Standort) gespeichert werden.
+URS-F-037 — Die Aufbewahrung der Backups muss gestaffelt erfolgen (täglich für 30 Tage, wöchentlich für 3 Monate).
+URS-F-038 — Der maximal tolerierbare Datenverlust (RPO) darf 24 Stunden nicht überschreiten; bei den prüfrelevanten Daten ist durch die häufigeren Datenbank-Sicherungen ein deutlich kleinerer Wert anzustreben.
+URS-F-039 — Die maximal tolerierbare Wiederanlaufzeit (RTO) darf einen Arbeitstag nicht überschreiten.
+URS-F-040 — Eine vollständige, dokumentierte Wiederherstellungs-Übung muss mindestens einmal jährlich durchgeführt werden (als wiederkehrende Aufgabe im Routineplan).
+URS-F-041 — Backups müssen alle Produktivdaten, den Audit-Trail und die Systemkonfiguration umfassen.
+URS-F-042 — Eine Wiederherstellung muss die Daten vollständig und korrekt reproduzieren; die Integrität der wiederhergestellten Daten muss überprüfbar sein.
+URS-F-043 — Die Ausführung der Backups muss überwacht werden; Fehlschläge müssen gemeldet werden.
+4.6  Hosting, Betrieb & Sicherheit
+URS-F-044 — Das System muss bei einem deutschen Anbieter mit Auftragsverarbeitungsvertrag und Datenstandort Deutschland betrieben werden (Hetzner Cloud gemäß Grundsatzentscheidung).
+URS-F-045 — Es müssen eine getrennte Produktiv- und Testumgebung bestehen; Tests und Entwicklung dürfen die Produktivdaten nicht beeinflussen.
+URS-F-046 — Jeder Zugriff auf das System muss verschlüsselt übertragen werden (TLS).
+URS-F-047 — Die Systeme müssen regelmäßig aktualisiert (Sicherheits-Patches) und gehärtet werden.
+URS-F-048 — Sicherheitsrelevante Ereignisse (z. B. administrative Zugriffe, Konfigurationsänderungen) müssen protokolliert werden.
+URS-F-049 — Der Zugriff auf Server und Infrastruktur muss auf berechtigte Administratoren beschränkt und selbst nachvollziehbar protokolliert sein.
+URS-F-050 — Das System muss vor unbefugtem externem Zugriff geschützt sein (u. a. Firewall, Beschränkung offener Zugänge).
+URS-F-051 — Die Verfügbarkeit muss dem Geschäftsbedarf entsprechen; geplante Wartungsfenster sind zulässig, und ein kurzzeitiger Ausfall ist über die Papier-/Übergangsprozesse abgedeckt (im Rahmen der RTO).
+URS-F-052 — Änderungen an der produktiven QM-Pilot-Software gelten als Versionsänderung und werden über einen eigenen, dokumentierten Software-Versionierungs- und Freigabeprozess gesteuert: Jede neue Version wird im Git-Repository nachvollziehbar erfasst, vor dem Produktiveinsatz geprüft/validiert und als freigegebene Version eingefroren („gelockt").
+URS-F-053 — Die QM-Change-Control (SOP-01-003) betrifft ausschließlich die Pharmazeutika-internen QM-/Betriebsprozesse und ist von den Software-Versionsänderungen getrennt; beide Prozesse werden nicht vermischt.
+4.7  Datenschutz (DSGVO)
+URS-F-054 — Das System muss personenbezogene Daten (Mitarbeiter-Logins, Schulungs- und Erledigungsnachweise) DSGVO-konform verarbeiten; mit dem Hoster muss ein Auftragsverarbeitungsvertrag bestehen.
+URS-F-055 — Das System darf keine Patientendaten verarbeiten oder speichern.
+URS-F-056 — Der Zugriff auf personenbezogene Daten muss dem Rollen- und Rechtemodell folgen (Prinzip der minimalen Rechte) und auf das erforderliche Maß beschränkt sein.
+URS-F-057 — Das System muss eine Auskunft über die zu einer Person gespeicherten Daten ermöglichen (Betroffenenrechte) und eine Löschung personenbezogener Daten unterstützen — soweit dem keine gesetzliche Aufbewahrungspflicht entgegensteht (Vorrang der GxP-/handelsrechtlichen Fristen).
+URS-F-058 — Personenbezogene Daten müssen vor unbefugtem Zugriff geschützt sein (Zugriffsschutz, Verschlüsselung gemäß 4.4/4.6); Zugriffe darauf sind im Audit-Trail nachvollziehbar.
+4.8  Änderungswunsch-Kanal
+URS-F-067 — QM-Pilot muss einen Kanal bieten, über den Nutzer Änderungs-/Funktionswünsche erfassen können (Titel, Beschreibung, Datum, einreichende Person). Jeder Wunsch ist eindeutig der Person zuordenbar und wird im Audit-Trail festgehalten.
+URS-F-068 — Eine berechtigte Rolle (Entwickler-/Administrationsseite) muss die Wünsche einsehen, mit einem Status versehen (z. B. neu, in Prüfung, geplant, umgesetzt, abgelehnt) und triagieren können. Der Kanal ist ein Software-Feature-Wunsch-Kanal und ausdrücklich getrennt von QM-Change-Control (SOP-01-003) und QM-Abweichung (SOP-01-004).
+5  Nicht-funktionale Anforderungen
+URS-F-059 — Benutzerfreundlichkeit: Die Oberfläche muss intuitiv und für die tägliche Nutzung angenehm sein; sie folgt der gestalterischen Grundlinie mit Orientierung an pharmazeutika.net und ist über alle Module einheitlich.
+URS-F-060 — Niederschwelligkeit: Für Nutzer mit geringen Deutschkenntnissen (insb. Reinigungskraft) muss eine stark vereinfachte, möglichst sprachunabhängige Bedienung (Symbole, wenige Schritte) möglich sein.
+URS-F-061 — Sprache: Die Bedienoberfläche ist deutsch (Führungssprache); einfache mehrsprachige bzw. symbolbasierte Elemente für niederschwellige Nutzer sind zulässig.
+URS-F-062 — Performance: Übliche Aktionen müssen unter normaler Last innerhalb weniger Sekunden reagieren.
+URS-F-063 — Verfügbarkeit: Die Verfügbarkeit richtet sich am Geschäftsbedarf und an der RTO aus; geplante Wartungsfenster sind zulässig.
+URS-F-064 — Wartbarkeit / Wissensbruch-Vorsorge: Der Code muss dokumentiert, im Git-Repository versioniert und so gestaltet sein, dass ein Standby-Entwickler ihn übernehmen kann; technische Entscheidungen müssen für die Geschäftsleitung nachvollziehbar erklärt sein.
+URS-F-065 — Datenintegrität: Das System muss die Datenintegrität nach ALCOA+ durchgängig gewährleisten (vgl. 4.3, 4.4).
+URS-F-066 — Produktfähigkeit / Konfigurationstrennung: Firmenspezifische Konfiguration (z. B. Logo, Rollenbezeichnungen, Stammdaten) muss vom generischen Code getrennt gehalten werden; Pharmazeutika-Spezifika werden nicht fest verdrahtet, damit eine spätere Mehrmandanten-/Produktnutzung offenbleibt.
+6  Regulatorischer Bezug
+6.1  GAMP-5-Einordnung
+Das QM-Pilot wird als individuell entwickelte Software voraussichtlich der GAMP-5-Kategorie 5 zugeordnet (höchste Validierungsstufe). Stufe 0 wird vollständig validiert, bevor Stufe 1 beginnt.
+6.2  Abdeckung von Annex 11 / GDP
+Die Anforderungen dieser URS adressieren die für computergestützte Systeme zentralen Punkte aus EU-Annex 11 und der GDP-Leitlinie: Zugriffssteuerung und Rollen (4.1), Authentifizierung (4.2), Audit-Trail (4.3), Datenintegrität und revisionssichere Aufbewahrung (4.3/4.4), Datensicherung und Wiederherstellung (4.5) sowie Betrieb und Sicherheit (4.6).
+6.3  Validierung nach gesetzlichen Vorgaben
+Die Validierung des QM-Pilot richtet sich nach den geltenden gesetzlichen und regulatorischen Vorgaben — AMG, AMHandelsV, GDP-Leitlinie 2013/C 343/01 (die die Validierung computergestützter Systeme verlangt), EU-Annex 11 (sinngemäß) und DSGVO — und nicht nach den internen SOPs der Pharmazeutika 73.3. GAMP 5 und ALCOA+ dienen als anerkannte Methodik bzw. Stand der Technik, um diese Vorgaben nachweisbar zu erfüllen. Aus dieser URS werden Funktional-/Design-Spezifikation, Risikoanalyse und die Testskripte (IQ/OQ/PQ) abgeleitet; den Abschluss bildet ein Validierungsbericht.
+6.4  Datenintegrität
+Die durchgängige Datenintegrität richtet sich nach den gesetzlichen Anforderungen und dem ALCOA+-Prinzip.
+7  Annahmen & Einschränkungen
+7.1  Annahmen
+Microsoft 365 ist betrieblich im Einsatz und stellt Login und 2-Faktor für interne Nutzer bereit. Vorhandene Hardware (Drucker, ein Tablet/Gerät für den niederschwelligen Zugang) ist nutzbar. Die in Schritt 2 getroffenen Grundsatzentscheidungen (Django, PostgreSQL, Hetzner, selbst betriebenes Git, Backup-Ziele) sind gesetzt. Vor dem ersten Produktiveinsatz wird ein Standby-Entwickler benannt. Es wird von den derzeit geltenden gesetzlichen Vorgaben ausgegangen.
+7.2  Einschränkungen
+Stufe 0 liefert kein Fachmodul für Endanwender, sondern ausschließlich das Fundament; ein sichtbarer Alltagsnutzen entsteht erst ab Stufe 1. Die genaue Methode des niederschwelligen Logins und die konkrete Hetzner-Server-Größe werden erst in der Funktional-/Design-Spezifikation festgelegt. Konten für externe Auditoren werden anlassbezogen und befristet vergeben. Ändern sich die gesetzlichen Vorgaben, sind die betroffenen Anforderungen erneut zu prüfen.
+8  Anforderungs-Nachverfolgung
+8.1  Prinzip
+Jede Anforderung trägt eine eindeutige Kennung (URS-F-NNN). Diese Kennung wird durchgängig weitergeführt: in die Funktional-/Design-Spezifikation, in die Risikoanalyse und in die Testskripte (IQ/OQ/PQ). Eine Nachverfolgbarkeits-Matrix verknüpft jede Anforderung mit ihrem Umsetzungs-Element und mit dem zugehörigen Testfall, sodass lückenlos belegbar ist, dass jede Anforderung umgesetzt und geprüft wurde.
+8.2  Umfang dieser URS
+Diese URS umfasst 68 Anforderungen (URS-F-001 bis URS-F-068), verteilt auf: Benutzer/Rollen/Rechte (F-001–009), Authentifizierung (F-010–018), Audit-Trail (F-019–027), Archivierung (F-028–034), Backup/Wiederherstellung (F-035–043), Hosting/Betrieb/Sicherheit (F-044–053), Datenschutz (F-054–058), nicht-funktionale Anforderungen (F-059–066) sowie Änderungswunsch-Kanal (F-067–068).
+8.3  Pflege
+Die Traceability-Matrix wird als eigenes Dokument geführt und mit den Validierungsschritten fortgeschrieben.
+9  Abnahme & Versionskontrolle
+9.1  Freigabe der URS
+Mit ihrer Unterschrift bestätigen die Verantwortlichen, dass diese URS die Anforderungen an das Fundament (Stufe 0) vollständig und zutreffend beschreibt und die Grundlage für die nachfolgende Funktional-/Design-Spezifikation und die Validierung bildet.
+Funktion
+Rolle
+Name
+Datum
+Unterschrift
+Erstellt
+—
+Claude (Entwurf)
+
+
+Fachlich/technisch geprüft
+fachkundige techn. Person / Standby-Entwickler
+(noch zu benennen)
+
+
+Freigegeben
+Produktverantwortlicher / Geschäftsleitung
+Jochen Schulze
+
+
+
+9.2  Versionskontrolle
+Version
+Datum
+Autor
+Änderung
+0.1 (Entwurf)
+29.06.2026
+Jochen Schulze / Claude
+Erstentwurf, Abschnitte 1–9, URS-F-001 bis URS-F-066
+0.2 (Entwurf)
+29.06.2026
+Jochen Schulze / Claude
+Name „QM-Pilot" übernommen; Abschnitt 4.8 Änderungswunsch-Kanal (URS-F-067/068) ergänzt
+0.3 (Entwurf)
+30.06.2026
+Jochen Schulze / Claude
+Unterschriften auf Software-/Produkt-Governance umgestellt (QM-Pilot ist kein Bestandteil des QMS); Benennung vereinheitlicht
+
+9.3  Geltung
+Die URS ist ein lebendes Dokument. Änderungen nach der ersten Freigabe erfolgen nachvollziehbar über eine neue Version mit Eintrag in der Versionstabelle.

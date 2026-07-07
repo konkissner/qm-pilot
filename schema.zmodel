@@ -1,0 +1,18 @@
+// QM-Pilot — Data Model (placeholder for WP-00)
+// All identifiers in English camelCase.
+
+datasource db {
+    provider = "postgresql"
+    url      = env("DATABASE_URL")
+}
+
+generator client {
+    provider = "prisma-client-js"
+}
+
+model SystemInfo {
+    id        String   @id @default(cuid())
+    key       String   @unique
+    value     String
+    createdAt DateTime @default(now())
+}
