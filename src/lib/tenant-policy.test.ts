@@ -30,7 +30,7 @@ describe.runIf(run)('users service', () => {
     const target = await prisma.user.create({ data: { tenantId, email: `t-${Date.now()}@example.com`, firstName: 'T', lastName: 'U' } });
     glId = gl.id; qmbId = qmb.id; targetId = target.id;
   });
-  afterAll(async () => { await prisma.tenant.delete({ where: { id: tenantId } }); await prisma.$disconnect(); });
+  afterAll(async () => { await prisma.$disconnect(); });
   it('retire not delete', async () => { await retireUser(prisma, { id: glId, tenantId, roleKeys: ['gl'] }, targetId); const u = await prisma.user.findUniqueOrThrow({ where: { id: targetId } }); expect(u.status).toBe('retired'); expect(u.retiredAt).not.toBeNull(); });
   it('reject rp by QMB', async () => { const t = await prisma.user.create({ data: { tenantId, email: `f-${Date.now()}@example.com`, firstName: 'F', lastName: 'U' } }); await expect(assignRole(prisma, { id: qmbId, tenantId, roleKeys: ['qmb'] }, t.id, 'rp')).rejects.toBeInstanceOf(UserServiceForbiddenError); });
   it('allow rp by GL', async () => { const t = await prisma.user.create({ data: { tenantId, email: `g-${Date.now()}@example.com`, firstName: 'G', lastName: 'U' } }); await assignRole(prisma, { id: glId, tenantId, roleKeys: ['gl'] }, t.id, 'rp'); const u = await prisma.user.findUniqueOrThrow({ where: { id: t.id }, include: { roles: true } }); expect(u.roles.some((r) => r.id === rpRoleId)).toBe(true); });
