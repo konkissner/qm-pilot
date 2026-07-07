@@ -1,0 +1,13 @@
+# Test-environment overrides — publish nothing extra; smaller footprint optional.
+services:
+  app:
+    deploy:
+      replicas: 1
+
+  postgres:
+    # Test VM: still no published DB port (access via docker exec / app network only)
+    ports: []
+
+  caddy:
+    environment:
+      APP_DOMAIN: ${APP_DOMAIN:-test-qm.example.de}
