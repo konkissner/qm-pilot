@@ -37,6 +37,9 @@ jobs:
     env:
       DATABASE_URL: postgresql://qmpilot:qmpilot@localhost:5432/qmpilot?schema=public
       DATABASE_URL_APP: postgresql://qmpilot_app:qmpilot_app@localhost:5432/qmpilot?schema=public
+      BETTER_AUTH_SECRET: test-secret-32chars-minimum!!!!
+      BETTER_AUTH_URL: http://localhost:4321
+      DEFAULT_TENANT_SLUG: pharmazeutika-73-3
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -52,6 +55,9 @@ jobs:
     env:
       DATABASE_URL: postgresql://qmpilot:qmpilot@localhost:5432/qmpilot?schema=public
       DATABASE_URL_APP: postgresql://qmpilot_app:qmpilot_app@localhost:5432/qmpilot?schema=public
+      BETTER_AUTH_SECRET: test-secret-32chars-minimum!!!!
+      BETTER_AUTH_URL: http://localhost:4321
+      DEFAULT_TENANT_SLUG: pharmazeutika-73-3
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -80,6 +86,9 @@ jobs:
     env:
       DATABASE_URL: postgresql://qmpilot:qmpilot@localhost:5432/qmpilot?schema=public
       DATABASE_URL_APP: postgresql://qmpilot_app:qmpilot_app@localhost:5432/qmpilot?schema=public
+      BETTER_AUTH_SECRET: test-secret-32chars-minimum!!!!
+      BETTER_AUTH_URL: http://localhost:4321
+      DEFAULT_TENANT_SLUG: pharmazeutika-73-3
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4

@@ -1,0 +1,23 @@
+---
+import '../styles/global.css';
+import LoginForm from '../islands/LoginForm';
+import { prisma } from '../lib/db';
+import { getDefaultTenantSlug } from '../lib/auth/config';
+
+const tenant = await prisma.tenant.findUnique({
+  where: { slug: getDefaultTenantSlug() },
+  include: { config: true },
+});
+const ssoEnabled = tenant?.config?.ssoEnabled ?? false;
+---
+
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Anmelden — QM-Pilot</title>
+  </head>
+  <body class="flex min-h-screen items-center justify-center bg-[#eef1f0] antialiased">
+    <LoginForm client:load ssoEnabled={ssoEnabled} />
+  </body>
+</html>

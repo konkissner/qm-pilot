@@ -33,7 +33,7 @@ describe.runIf(run)('AuditEvent DB hardening (R-013)', () => {
         name: 'Audit',
         slug: `audit-${Date.now()}`,
         config: { create: {} },
-        users: { create: { firstName: 'Audit', lastName: 'Actor', email: `audit-${Date.now()}@example.com` } },
+        users: { create: { name: 'Audit Actor', firstName: 'Audit', lastName: 'Actor', email: `audit-${Date.now()}@example.com` } },
       },
       include: { users: true },
     });
@@ -105,6 +105,7 @@ describe.runIf(run)('audited user service completeness (R-012)', () => {
       data: {
         tenantId,
         email: `gl-audit-${Date.now()}@example.com`,
+        name: 'GL Audit',
         firstName: 'GL',
         lastName: 'Audit',
         roles: { connect: { id: tenant.roles.find((r) => r.key === 'gl')!.id } },
@@ -112,7 +113,7 @@ describe.runIf(run)('audited user service completeness (R-012)', () => {
     });
     glId = gl.id;
     const target = await db.user.create({
-      data: { tenantId, email: `tgt-${Date.now()}@example.com`, firstName: 'Target', lastName: 'User' },
+      data: { tenantId, email: `tgt-${Date.now()}@example.com`, name: 'Target User', firstName: 'Target', lastName: 'User' },
     });
     targetId = target.id;
     const other = await db.tenant.create({ data: { name: 'Other', slug: `other-${Date.now()}`, config: { create: {} } } });
@@ -272,6 +273,7 @@ describe.runIf(run)('ZenStack audit read policies', () => {
     const gl = await db.user.create({
       data: {
         tenantId: tenantA,
+        name: 'GL A',
         firstName: 'GL',
         lastName: 'A',
         email: `gla-${Date.now()}@example.com`,
@@ -281,6 +283,7 @@ describe.runIf(run)('ZenStack audit read policies', () => {
     const aud = await db.user.create({
       data: {
         tenantId: tenantA,
+        name: 'Aud A',
         firstName: 'Aud',
         lastName: 'A',
         email: `auda-${Date.now()}@example.com`,

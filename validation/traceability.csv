@@ -28,3 +28,19 @@ URS-F-033,E-Signatur Metadaten,schema.zmodel Signature + signature.ts,src/lib/au
 URS-F-056,DSGVO personenbezogene Felder tenant-isoliert,schema.zmodel ZenStack @@allow Policies,src/lib/tenant-policy.test.ts,WP-01,done
 URS-F-058,Diff-Redaktion sensible Felder,src/lib/audit/diff.ts DEFAULT_REDACT_KEYS,src/lib/audit/diff.test.ts (R-015),WP-02,done
 URS-F-066,TenantConfig statt Hardcoding,schema.zmodel TenantConfig + scripts/seed.ts,src/lib/prisma-schema.test.ts,WP-01,done
+URS-F-010,Starke Authentifizierung E-Mail/Passwort+TOTP (E5 Abweichung M365),src/lib/auth/config.ts + docs/auth.md,src/lib/auth/auth.integration.test.ts,WP-03,done
+URS-F-011,2FA Pflicht für GL/RP/QMB (TOTP per E5),src/lib/auth/constants.ts TOTP_REQUIRED_ROLES,e2e/auth.spec.ts,WP-03,done
+URS-F-012,Sofortiger Zugangsentzug bei Austritt,src/lib/services/users.ts retireUser + sessions.ts,e2e/auth.spec.ts + src/lib/auth/auth.integration.test.ts (R-007 Pflicht),WP-03,done
+URS-F-013,PIN-Kiosk Kachel+PIN,src/pages/kiosk + src/lib/auth/kiosk-session.ts,e2e/kiosk.spec.ts,WP-03,done
+URS-F-014,Auditor befristet read-only,src/lib/services/auditor-invites.ts activateAuditorInvite,e2e/auditor.spec.ts,WP-03,done
+URS-F-015,Login/Logout auditpflichtig,src/lib/auth/audit.ts writeAuthAuditEvent,src/lib/auth/auth.integration.test.ts (R-011),WP-03,done
+URS-F-016,Fehlgeschlagene Logins auditpflichtig,src/lib/auth/kiosk-session.ts + config.ts,src/lib/auth/pin.test.ts (R-011),WP-03,done
+URS-F-017,Session-Timeout Inaktivität,src/lib/auth/session-resolver.ts + TenantConfig,e2e/auth.spec.ts (R-010),WP-03,done
+URS-F-018,Abmelden + Kiosk-Wechsel,src/pages/logout.ts + kiosk logout API,e2e/kiosk.spec.ts (R-010 Pflicht),WP-03,done
+URS-F-006,Deaktivierung statt Löschen (Session-Revocation),src/lib/auth/sessions.ts revokeAllUserSessions,src/lib/auth/auth.integration.test.ts (R-007),WP-03,done
+R-006,Unbefugter Zugriff durch geteilte Credentials,src/lib/auth/pin.ts device binding,src/lib/auth/auth.integration.test.ts,WP-03,done
+R-007,Zugang nach Austritt sofort entzogen (Pflicht),src/lib/services/users.ts,src/lib/auth/auth.integration.test.ts (Pflicht),WP-03,done
+R-008,Brute-Force Passwort/PIN,src/lib/auth/password-lock.ts + pin.ts,src/lib/auth/pin.test.ts,WP-03,done
+R-009,Auditor Schreibzugriff,src/middleware.ts readOnly guard,e2e/auditor.spec.ts,WP-03,done
+R-010,Kiosk Session-Timeout/Wechsel (Pflicht),src/lib/auth/kiosk-session.ts,e2e/kiosk.spec.ts (Pflicht),WP-03,done
+R-011,Login-Versuche im Audit-Trail,src/lib/auth/audit.ts,src/lib/auth/auth.integration.test.ts,WP-03,done

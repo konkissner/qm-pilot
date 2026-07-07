@@ -25,6 +25,9 @@ export default defineConfig({
     env: {
       ALLOW_DEV_API: 'true',
       DATABASE_URL: process.env.DATABASE_URL ?? '',
+      BETTER_AUTH_SECRET: process.env.BETTER_AUTH_SECRET ?? 'test-secret-32chars-minimum!!!!',
+      BETTER_AUTH_URL: 'http://localhost:4321',
+      DEFAULT_TENANT_SLUG: 'pharmazeutika-73-3',
     },
   },
 });

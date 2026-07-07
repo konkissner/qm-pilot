@@ -21,6 +21,7 @@ test.describe('DEV audit endpoint', () => {
     const gl = await db.user.create({
       data: {
         tenantId: tenant.id,
+        name: 'E2E GL',
         firstName: 'E2E',
         lastName: 'GL',
         email: `e2e-gl-${Date.now()}@example.com`,

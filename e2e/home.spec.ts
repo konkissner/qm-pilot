@@ -1,18 +1,17 @@
 import { test, expect } from '@playwright/test';
+import { DEV_USER_PASSWORD } from '../scripts/seed';
 
 test.describe('Startseite', () => {
-  test('lädt mit Titel QM-Pilot und hydrierter Island', async ({ page }) => {
-    const response = await page.goto('/');
-    expect(response?.status()).toBe(200);
+  test('erfordert Login und zeigt Cockpit nach Anmeldung', async ({ page }) => {
+    await page.goto('/');
+    await expect(page).toHaveURL(/\/login/);
 
-    await expect(page).toHaveTitle(/QM-Pilot/);
-    await expect(page.getByRole('heading', { name: /QM-Pilot/ })).toBeVisible();
+    await page.getByLabel('E-Mail').fill('j.reuter@pharmazeutika.net');
+    await page.getByLabel('Passwort').fill(DEV_USER_PASSWORD);
+    await page.getByRole('button', { name: 'Anmelden' }).click();
 
-    const button = page.getByTestId('hello-island-button');
-    await expect(button).toBeVisible();
-    await expect(button).toContainText('React-Island aktiv — Klicks: 0');
-
-    await button.click();
-    await expect(button).toContainText('React-Island aktiv — Klicks: 1');
+    await expect(page).toHaveURL('/', { timeout: 15_000 });
+    await expect(page.getByRole('heading', { name: /QM-Pilot Cockpit/ })).toBeVisible();
+    await expect(page.getByTestId('hello-island-button')).toBeVisible();
   });
 });
